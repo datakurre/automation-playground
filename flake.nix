@@ -6,7 +6,7 @@
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/release-22.05";
   inputs.nixpkgs-unstable.url = "github:NixOS/nixpkgs/master";
   inputs.home-manager = { url = "github:rycee/home-manager/release-22.05"; inputs.nixpkgs.follows = "nixpkgs"; inputs.utils.follows = "flake-utils"; };
-  inputs.parrot-rcc = { url = "github:datakurre/parrot-rcc/flake"; inputs.nixpkgs.follows = "nixpkgs"; inputs.flake-utils.follows = "flake-utils"; };
+  inputs.parrot-rcc = { url = "github:datakurre/parrot-rcc/main"; inputs.nixpkgs.follows = "nixpkgs"; inputs.flake-utils.follows = "flake-utils"; };
 
   # Sources
   inputs.rcc = { url = "github:robocorp/rcc/65cb4b6f9fb30cffd61c3f0d3617d33b51390c61"; flake = false; }; # v11.31.2
