@@ -64,8 +64,8 @@ in {
       };
     }];
 
-    nix.binaryCaches = [ "https://datakurre.cachix.org" "https://cache.nixos.org" ];
-    nix.binaryCachePublicKeys = [ "datakurre.cachix.org-1:ayZJTy5BDd8K4PW9uc9LHV+WCsdi/fu1ETIYZMooK78=" ];
+    nix.settings.substituters = [ "https://datakurre.cachix.org" "https://cache.nixos.org" ];
+    nix.settings.trusted-public-keys = [ "datakurre.cachix.org-1:ayZJTy5BDd8K4PW9uc9LHV+WCsdi/fu1ETIYZMooK78=" ];
     nix.gc = {
       automatic = true;
       dates = "weekly";
@@ -146,11 +146,11 @@ experimental-features = nix-command flakes
         xterm.enable = false;
         xfce.enable = true;
         xfce.enableScreensaver = false;
-        xfce.thunarPlugins = with pkgs.xfce; [
-          thunar-archive-plugin
-        ];
       };
     };
+    programs.thunar.plugins = with pkgs.xfce; [
+      thunar-archive-plugin
+    ];
 
     # Set test secret
     systemd.services.vault.environment = {
@@ -889,16 +889,16 @@ fi
             mktplcRef = {
               name = "robotframework-lsp";
               publisher = "robocorp";
-              version = "1.5.1";
-              sha256 = "sha256-DolhMQ/LAD3IPvWNxdOLeof4hnvPricI56LeU4oDKVQ=";
+              version = "1.6.0";
+              sha256 = "sha256-DlEvWO7FIW1hClQuLbeIEQCDWMA3qITkN93qCoYm384=";
             };
           })
           (pkgs.vscode-utils.buildVscodeMarketplaceExtension rec {
             mktplcRef = {
               name = "robocorp-code";
               publisher = "robocorp";
-              version = "0.39.0";
-              sha256 = "sha256-UqgsrF9RrPpUiPgkZELG/nSTMfTvk4r2TzVFzLwY7fk=";
+              version = "0.40.3";
+              sha256 = "sha256-+fNOXciJDA48tto+4tP8KkaXMxknC9bakiSFF8473qY=";
             };
             postInstall = ''
               mkdir -p $out/share/vscode/extensions/robocorp.robocorp-code/bin

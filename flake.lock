@@ -34,46 +34,49 @@
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
+        ],
+        "utils": [
+          "flake-utils"
         ]
       },
       "locked": {
-        "lastModified": 1667216695,
-        "narHash": "sha256-xz6IKKXP/wQUUXUJGwWNpXqNc9x/zq0K+KZLXj47rx0=",
+        "lastModified": 1670253003,
+        "narHash": "sha256-/tJIy4+FbsQyslq1ipyicZ2psOEd8dvl4OJ9lfisjd0=",
         "owner": "rycee",
         "repo": "home-manager",
-        "rev": "d8b233ad03dd3d82424561512b40971569b2e5d2",
+        "rev": "0e8125916b420e41bf0d23a0aa33fadd0328beb3",
         "type": "github"
       },
       "original": {
         "owner": "rycee",
-        "ref": "release-22.05",
+        "ref": "release-22.11",
         "repo": "home-manager",
         "type": "github"
       }
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1667143918,
-        "narHash": "sha256-cxT2vqUVxbhbKz7wLty6S9P2NFvsvUf4QbViMAw75R4=",
+        "lastModified": 1670419328,
+        "narHash": "sha256-BhAVqJD7iV7mgAKIWDS5ixxPeTJa2mTJU7yUDmasuV4=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "7de7ddf239e123027e1a5fe7533efd425a381cd4",
+        "rev": "799e7055b35897675cc021eaae5f1d51798cf6bf",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "release-22.05",
+        "ref": "release-22.11",
         "repo": "nixpkgs",
         "type": "github"
       }
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1667158993,
-        "narHash": "sha256-ROxclIuZmg4Vu1IKZrz6kpKxYxy4em5oRM5fXsbTrrQ=",
+        "lastModified": 1670422165,
+        "narHash": "sha256-+SoqRzF6E1hWc4Oo0cnGqFDVmThGxSbveUUzntNWuSc=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "dc3446688c29ae22a0b424707b15aae3616589a7",
+        "rev": "c0a05be4d4cdfbbe1b6f1c2168855687a8b9160d",
         "type": "github"
       },
       "original": {
@@ -96,11 +99,11 @@
         "zbctl": "zbctl"
       },
       "locked": {
-        "lastModified": 1670361256,
-        "narHash": "sha256-q9mBn2P7HbdGUdaIuResayQJ7tAcm4gYy2GvBYAyf3c=",
+        "lastModified": 1670422483,
+        "narHash": "sha256-lQInKgEf53/gigOPQaEoYGnju8bMJ3NZs1n/yiSYCi4=",
         "owner": "datakurre",
         "repo": "parrot-rcc",
-        "rev": "4ff53b408077f150b79716c64f59a67f6027646a",
+        "rev": "39f4b4570f368aa282750596fd76e6654163f65f",
         "type": "github"
       },
       "original": {

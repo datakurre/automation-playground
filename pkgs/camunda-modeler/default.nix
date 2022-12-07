@@ -3,8 +3,8 @@
 let
 
   mkElectron = import "${pkgs.path}/pkgs/development/tools/electron/generic.nix" { inherit stdenv libXScrnSaver makeWrapper fetchurl wrapGAppsHook glib gtk3 unzip atomEnv libuuid at-spi2-atk at-spi2-core libdrm mesa libxkbcommon libxshmfence lib libappindicator-gtk3 libglvnd; };
-  electron = mkElectron "17.1.0" {
-    x86_64-linux = "1s18zrmqiiks9nq27nw2s65wcl0rqhxc6b343wg6qdk9b65c4vhh";
+  electron = mkElectron "20.2.0" {
+    x86_64-linux = "sha256-wONSLeNIGbg49KNd3zDGKDxhvhu43/Agic2j9kGTiq0=";
   };
 
   bpmn-js-token-simulation-plugin = fetchurl {

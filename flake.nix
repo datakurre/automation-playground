@@ -3,9 +3,9 @@
 
   # Flakes
   inputs.flake-utils.url = "github:numtide/flake-utils";
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/release-22.05";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/release-22.11";
   inputs.nixpkgs-unstable.url = "github:NixOS/nixpkgs/master";
-  inputs.home-manager = { url = "github:rycee/home-manager/release-22.05"; inputs.nixpkgs.follows = "nixpkgs"; inputs.utils.follows = "flake-utils"; };
+  inputs.home-manager = { url = "github:rycee/home-manager/release-22.11"; inputs.nixpkgs.follows = "nixpkgs"; inputs.utils.follows = "flake-utils"; };
   inputs.parrot-rcc = { url = "github:datakurre/parrot-rcc/main"; inputs.nixpkgs.follows = "nixpkgs"; inputs.flake-utils.follows = "flake-utils"; };
 
   # Sources
