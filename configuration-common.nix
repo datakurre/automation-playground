@@ -655,16 +655,17 @@ Type=Application
 Categories=Network;WebBrowser;
 MimeType=application/pdf;application/rdf+xml;application/rss+xml;application/xhtml+xml;application/xhtml_xml;application/xml;image/gif;image/jpeg;image/png;image/webp;text/plain;text/html;text/xml;x-scheme-handler/ftp;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/webcal;x-scheme-handler/mailto;x-scheme-handler/about;x-scheme-handler/unknown
         '';
-        home.file.".config/${config.options.username}/journal.desktop".source = pkgs.writeText "journal.desktop" ''
+        home.file.".config/${config.options.username}/journal.desktop".source = pkgs.writeText "RCC.desktop" ''
 [Desktop Entry]
-StartupWMClass=ksystemlog
 Version=1.0
-Name=Journal
-Exec=nix-shell -p ksystemlog --run ksystemlog
-StartupNotify=false
-Terminal=false
-Icon=system-search
 Type=Application
+Name=RCC
+Comment=
+Exec=journalctl -f -u parrot-rcc -o cat
+Icon=utilities-terminal
+Path=
+Terminal=true
+StartupNotify=false
         '';
         home.file.".config/${config.options.username}/keyboard.desktop".source = pkgs.writeText "keyboard.desktop" ''
 [Desktop Entry]
@@ -833,7 +834,7 @@ fi
 
 # ~/.bashrc
 if [ ! -f "$HOME/.bashrc" ]; then
-  touch $HOME/.bashrc
+  echo 'alias wrap="rcc robot wrap; touch ."' > $HOME/.bashrc
 fi
 
 # Default panel
