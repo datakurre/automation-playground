@@ -585,7 +585,7 @@ exec zeebe-play
         rm -f $STATE_DIRECTORY/rcc
         cd $STATE_DIRECTORY
         export HOME=/home/${config.options.username}
-        exec parrot-rcc $(find . -name "*.zip") --rcc-fixed-spaces=true --log-level=debug
+        exec parrot-rcc $(find . -name "*.zip") --rcc-fixed-spaces --log-level=debug
       '';
     };
 
@@ -810,6 +810,11 @@ if [ ! -f "$HOME/.config/Code/User/settings.json" ]; then
   "terminal.integrated.inheritEnv": false
 }
 EOF
+fi
+
+# ~/.bashrc
+if [ ! -f "$HOME/.bashrc" ]; then
+  touch $HOME/.bashrc
 fi
 
 # Default panel
