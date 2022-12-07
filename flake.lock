@@ -152,17 +152,17 @@
     "rcc_2": {
       "flake": false,
       "locked": {
-        "lastModified": 1667908409,
-        "narHash": "sha256-gXaFMXMRrMn/U4hSfnsWowycHMa6OYR8NJexAFOo2WY=",
+        "lastModified": 1670416074,
+        "narHash": "sha256-il7Yx3bZ8ssuzT62T3VzU9RHN1mUdQu6wFqq+Edi9Yo=",
         "owner": "robocorp",
         "repo": "rcc",
-        "rev": "65cb4b6f9fb30cffd61c3f0d3617d33b51390c61",
+        "rev": "13a822cf33b1f27c9f042085ec6d330f5d1d8073",
         "type": "github"
       },
       "original": {
         "owner": "robocorp",
         "repo": "rcc",
-        "rev": "65cb4b6f9fb30cffd61c3f0d3617d33b51390c61",
+        "rev": "13a822cf33b1f27c9f042085ec6d330f5d1d8073",
         "type": "github"
       }
     },

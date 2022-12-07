@@ -1,6 +1,6 @@
-{ buildGoPackage, go-bindata, rake, zip, micromamba, src, version }:
+{ buildGoPackage, go_1_18, go-bindata, rake, zip, micromamba, src, version }:
 
-buildGoPackage rec {
+(buildGoPackage.override { go = go_1_18; }) rec {
   name = "rcc-${version}";
   goPackagePath = "github.com/robocorp/rcc";
   nativeBuildInputs = [ go-bindata rake zip ];
