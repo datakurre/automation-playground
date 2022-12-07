@@ -103,8 +103,31 @@ experimental-features = nix-command flakes
       enable = true;
     };
 
+    # Fix to run vault with -dev, because this is just a development VM
+    systemd.services.vault.serviceConfig.ExecStart =
+      pkgs.lib.mkForce "${config.services.vault.package}/bin/vault server -dev";
+
     services.minio = {
       enable = true;
+    };
+
+    # Fix to run vault with -dev, because this is just a development VM
+    systemd.services.minio.after = [ "minio-init.service" ];
+
+    systemd.services.minio-init = {
+      enable = true;
+      after = [ "network-online.target" ];
+      wantedBy = [ "multi-user.target" ];
+      serviceConfig = {
+        Type = "oneshot";
+        RemainAfterExit = true;
+        User = "minio";
+        Group = "minio";
+      };
+      script = ''
+        mkdir -p "${builtins.head config.services.minio.dataDir}/rcc"
+        mkdir -p "${builtins.head config.services.minio.dataDir}/zeebe"
+      '';
     };
 
     services.xserver = {
@@ -128,10 +151,6 @@ experimental-features = nix-command flakes
         ];
       };
     };
-
-    # Fix to run vault with -dev, because this is just a development VM
-    systemd.services.vault.serviceConfig.ExecStart =
-      pkgs.lib.mkForce "${config.services.vault.package}/bin/vault server -dev";
 
     # Set test secret
     systemd.services.vault.environment = {
