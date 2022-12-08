@@ -57,8 +57,8 @@
 
     packages.gce = (import (nixpkgs + "/nixos/lib/eval-config.nix") {
       modules = [
-        (import "${home-manager}/nixos")
         (nixpkgs + "/nixos/modules/virtualisation/google-compute-image.nix")
+        (import "${home-manager}/nixos")
         ({config, pkgs, ...}: { nixpkgs.overlays = [ self.overlays.${system}.default ]; })
         ./configuration-gce.nix
         ./configuration-common.nix
@@ -95,6 +95,17 @@
     };
 
   }) // {
+
+    nixosConfigurations."gce" = nixpkgs.lib.nixosSystem {
+      modules = [
+        (nixpkgs + "/nixos/modules/virtualisation/google-compute-image.nix")
+        (import "${home-manager}/nixos")
+        ({config, pkgs, ...}: { nixpkgs.overlays = [ self.overlays.x86_64-linux.default ]; })
+        ./configuration-gce.nix
+        ./configuration-common.nix
+      ];
+      system = "x86_64-linux";
+    };
 
     nixosConfigurations."vagrant" = nixpkgs.lib.nixosSystem {
       modules = [

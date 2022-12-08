@@ -15,7 +15,7 @@
         home            = "/home/${config.options.username}";
         password        = "${config.options.username}";
         useDefaultShell = true;
-        uid             = 1000;
+        uid             = 1000;https://34.88.49.199/
       };
     }];
 
@@ -23,6 +23,20 @@
 
     services.xserver.enable = true;
     services.xserver.videoDrivers = [];
+
+    services.xserver.displayManager.job.execCmd = let lightdm = pkgs.lightdm.overrideDerivation(old: rec {
+      pname = "lightdm";
+      version = "1.30.0";
+      src = pkgs.fetchFromGitHub {
+        owner = "CanonicalLtd";
+        repo = pname;
+        rev = version;
+        sha256 = "0i1yygmjbkdjnqdl9jn8zsa1mfs2l19qc4k2capd8q1ndhnjm2dx";
+      };
+    }); in pkgs.lib.mkForce ''
+      export PATH=${lightdm}/sbin:$PATH
+      exec ${lightdm}/sbin/lightdm
+    '';
 
     # https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/services/x11/display-managers/lightdm.nix
     environment.etc."lightdm/lightdm.conf".source = with lib; let

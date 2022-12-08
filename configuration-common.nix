@@ -812,6 +812,22 @@ xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/rg
 if [ $? -ne 0 ]; then
   xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/rgba1 -t double -t double -t double -t double -s 0.368627 -s 0.360784 -s 0.392157 -s 1.0 --create
 fi
+xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorscreen/workspace0/last-image -t string -s $HOME/.config/vagrant/robot-framework.png
+if [ $? -ne 0 ]; then
+  xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorscreen/workspace0/last-image -t string -s $HOME/.config/vagrant/robot-framework.png --create
+fi
+xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorscreen/workspace0/color-style -t int -s 0
+if [ $? -ne 0 ]; then
+  xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorscreen/workspace0/color-style -t int -s 0 --create
+fi
+xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorscreen/workspace0/image-style -t int -s 1
+if [ $? -ne 0 ]; then
+  xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorscreen/workspace0/image-style -t int -s 1 --create
+fi
+xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorscreen/workspace0/rgba1 -t double -t double -t double -t double -s 0.368627 -s 0.360784 -s 0.392157 -s 1.0
+if [ $? -ne 0 ]; then
+  xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorscreen/workspace0/rgba1 -t double -t double -t double -t double -s 0.368627 -s 0.360784 -s 0.392157 -s 1.0 --create
+fi
 
 # Cleanup of weirdly appearing symlinks
 rm -f /var/www/pub/pub /var/lib/rcc/rcc
