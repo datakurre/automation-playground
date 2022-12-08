@@ -24,6 +24,20 @@
     services.xserver.enable = true;
     services.xserver.videoDrivers = [];
 
+    services.xserver.displayManager.job.execCmd = let lightdm = pkgs.lightdm.overrideDerivation(old: rec {
+      pname = "lightdm";
+      version = "1.30.0";
+      src = pkgs.fetchFromGitHub {
+        owner = "CanonicalLtd";
+        repo = pname;
+        rev = version;
+        sha256 = "0i1yygmjbkdjnqdl9jn8zsa1mfs2l19qc4k2capd8q1ndhnjm2dx";
+      };
+    }); in pkgs.lib.mkForce ''
+      export PATH=${lightdm}/sbin:$PATH
+      exec ${lightdm}/sbin/lightdm
+    '';
+
     # https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/services/x11/display-managers/lightdm.nix
     environment.etc."lightdm/lightdm.conf".source = with lib; let
       xcfg = config.services.xserver;
@@ -34,6 +48,7 @@
       xserverWrapper = pkgs.writeScript "xserver-wrapper" ''
         #! ${pkgs.bash}/bin/bash
         ${concatMapStrings (n: "export ${n}=\"${getAttr n xEnv}\"\n") (attrNames xEnv)}
+        echo "FOO" > /tmp/foo
         exec ${pkgs.xorg.xorgserver}/bin/Xvfb -screen 0 1920x1080x24 :0 -seat seat0 -auth /var/run/lightdm/root/:0 -nolisten tcp
     '';
     in mkForce (pkgs.writeText "lightdm.conf" ''
