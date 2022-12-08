@@ -15,7 +15,7 @@
         home            = "/home/${config.options.username}";
         password        = "${config.options.username}";
         useDefaultShell = true;
-        uid             = 1000;https://34.88.49.199/
+        uid             = 1000;
       };
     }];
 
