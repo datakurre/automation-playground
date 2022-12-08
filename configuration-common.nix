@@ -796,9 +796,9 @@ ${if config.options.shared-folder then "ln -s /${config.options.username} $XDG_D
 ln -s /var/lib/rcc $XDG_DESKTOP_DIR/Robots
 
 # configure desktop background
-xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/last-image -t string -s $HOME/.config/vagrant/robot-framework.png
+xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/last-image -t string -s $HOME/.config/${config.options.username}/robot-framework.png
 if [ $? -ne 0 ]; then
-  xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/last-image -t string -s $HOME/.config/vagrant/robot-framework.png --create
+  xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/last-image -t string -s $HOME/.config/${config.options.username}/robot-framework.png --create
 fi
 xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/color-style -t int -s 0
 if [ $? -ne 0 ]; then
@@ -812,9 +812,9 @@ xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/rg
 if [ $? -ne 0 ]; then
   xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/rgba1 -t double -t double -t double -t double -s 0.368627 -s 0.360784 -s 0.392157 -s 1.0 --create
 fi
-xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorscreen/workspace0/last-image -t string -s $HOME/.config/vagrant/robot-framework.png
+xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorscreen/workspace0/last-image -t string -s $HOME/.config/${config.options.username}/robot-framework.png
 if [ $? -ne 0 ]; then
-  xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorscreen/workspace0/last-image -t string -s $HOME/.config/vagrant/robot-framework.png --create
+  xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorscreen/workspace0/last-image -t string -s $HOME/.config/${config.options.username}/robot-framework.png --create
 fi
 xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorscreen/workspace0/color-style -t int -s 0
 if [ $? -ne 0 ]; then
