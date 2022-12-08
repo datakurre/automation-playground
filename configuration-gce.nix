@@ -15,7 +15,7 @@
         home            = "/home/${config.options.username}";
         password        = "${config.options.username}";
         useDefaultShell = true;
-        uid             = 1000;
+        uid             = 1000;https://34.88.49.199/
       };
     }];
 
@@ -48,7 +48,6 @@
       xserverWrapper = pkgs.writeScript "xserver-wrapper" ''
         #! ${pkgs.bash}/bin/bash
         ${concatMapStrings (n: "export ${n}=\"${getAttr n xEnv}\"\n") (attrNames xEnv)}
-        echo "FOO" > /tmp/foo
         exec ${pkgs.xorg.xorgserver}/bin/Xvfb -screen 0 1920x1080x24 :0 -seat seat0 -auth /var/run/lightdm/root/:0 -nolisten tcp
     '';
     in mkForce (pkgs.writeText "lightdm.conf" ''
