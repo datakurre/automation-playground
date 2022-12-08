@@ -23,6 +23,7 @@ in {
     options.shared-folder = lib.mkOption { default = false; };
     options.vscode-with-vim = lib.mkOption { default = false; };
     options.vscode-unfree = lib.mkOption { default = false; };
+    options.rcc-service = lib.mkOption { default = false; };
   };
 
   config = {
@@ -212,7 +213,6 @@ proxy_set_header Host $host;
         StartLimitIntervalSec = 0;
       };
       script = ''
-rm -f /var/www/pub/pub
 mkdir -p /var/www/pub
 chown ${config.options.username}:users -R /var/www/pub
       '';
@@ -544,8 +544,21 @@ exec zeebe-play
       '';
     };
 
+    systemd.services.parrot-rcc-init = {
+      enable = !config.options.rcc-service;
+      after = [ "network-online.target" ];
+      wantedBy = [ "multi-user.target" ];
+      serviceConfig = {
+        Type = "oneshot";
+      };
+      script = ''
+        mkdir -p /var/lib/rcc
+        chown -R ${config.options.username}:users /var/lib/rcc
+      '';
+    };
+
     systemd.paths.parrot-rcc-watcher = {
-      enable = true;
+      enable = config.options.rcc-service;
       wantedBy = [ "multi-user.target" ];
       pathConfig = {
         PathChanged = "/var/lib/rcc";
@@ -557,7 +570,7 @@ exec zeebe-play
     };
 
     systemd.services.parrot-rcc-watcher = {
-      enable = true;
+      enable = config.options.rcc-service;
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {
         Type = "oneshot";
@@ -574,7 +587,7 @@ exec zeebe-play
     };
 
     systemd.services.parrot-rcc = {
-      enable = true;
+      enable = config.options.rcc-service;
       after = [ "zeebe.service" ];
       bindsTo = [ "zeebe.service" ];
       wantedBy = [ "multi-user.target" ];
@@ -655,7 +668,7 @@ Type=Application
 Categories=Network;WebBrowser;
 MimeType=application/pdf;application/rdf+xml;application/rss+xml;application/xhtml+xml;application/xhtml_xml;application/xml;image/gif;image/jpeg;image/png;image/webp;text/plain;text/html;text/xml;x-scheme-handler/ftp;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/webcal;x-scheme-handler/mailto;x-scheme-handler/about;x-scheme-handler/unknown
         '';
-        home.file.".config/${config.options.username}/journal.desktop".source = pkgs.writeText "RCC.desktop" ''
+        home.file.".config/${config.options.username}/rcc.desktop".source = pkgs.writeText "rcc.desktop" (if config.options.rcc-service then ''
 [Desktop Entry]
 Version=1.0
 Type=Application
@@ -666,7 +679,18 @@ Icon=utilities-terminal
 Path=
 Terminal=true
 StartupNotify=false
-        '';
+        '' else ''
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=RCC
+Comment=
+Exec=env SMTP_HOST=localhost SMTP_PORT=${toString config.services.mailhog.smtpPort} VAULT_ADDR=http://${config.services.vault.address} VAULT_TOKEN=secret parrot-rcc "$(find . -name '*.zip')" --rcc-fixed-spaces --log-level=debug
+Icon=utilities-terminal
+Path=/var/lib/Rcc
+Terminal=true
+StartupNotify=false
+        '');
         home.file.".config/${config.options.username}/keyboard.desktop".source = pkgs.writeText "keyboard.desktop" ''
 [Desktop Entry]
 StartupWMClass=xfce4-keyboard-settings
@@ -788,6 +812,9 @@ xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/rg
 if [ $? -ne 0 ]; then
   xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/rgba1 -t double -t double -t double -t double -s 0.368627 -s 0.360784 -s 0.392157 -s 1.0 --create
 fi
+
+# Cleanup of weirdly appearing symlinks
+rm -f /var/www/pub/pub /var/lib/rcc/rcc
 
 # configure desktop user experience
 xfconf-query -c xsettings -p /Net/IconThemeName -t string -s gnome --create
