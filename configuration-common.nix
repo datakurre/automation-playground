@@ -685,9 +685,9 @@ Version=1.0
 Type=Application
 Name=RCC
 Comment=
-Exec=env SMTP_HOST=localhost SMTP_PORT=${toString config.services.mailhog.smtpPort} VAULT_ADDR=http://${config.services.vault.address} VAULT_TOKEN=secret parrot-rcc "$(find . -name '*.zip')" --rcc-fixed-spaces --log-level=debug
+Exec=env SMTP_HOST=localhost SMTP_PORT=${toString config.services.mailhog.smtpPort} VAULT_ADDR=http://${config.services.vault.address} VAULT_TOKEN=secret bash -c "parrot-rcc $(find . -name '*.zip') --rcc-fixed-spaces --log-level=debug"
 Icon=utilities-terminal
-Path=/var/lib/Rcc
+Path=/var/lib/rcc
 Terminal=true
 StartupNotify=false
         '');
