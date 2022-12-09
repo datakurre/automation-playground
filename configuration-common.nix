@@ -264,7 +264,7 @@ chown nginx:root /etc/novnc-selfsigned.crt
 systemctl restart display-manager
 while ! /run/wrappers/bin/su - ${config.options.username} -c "${pkgs.xorg.xset}/bin/xset -q"; do sleep 1; done
 sleep 5  # allow slow GCE instance to catch up
-/run/wrappers/bin/su - ${config.options.username} -c "exec ${tigervnc}/bin/x0vncserver -localhost -SecurityTypes none -AlwaysShared"
+/run/wrappers/bin/su - ${config.options.username} -c "exec ${tigervnc}/bin/x0vncserver -localhost -SecurityTypes none -AlwaysShared -RawKeyboard"
       '';
     };
 
