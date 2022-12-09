@@ -24,20 +24,6 @@
     services.xserver.enable = true;
     services.xserver.videoDrivers = [];
 
-    services.xserver.displayManager.job.execCmd = let lightdm = pkgs.lightdm.overrideDerivation(old: rec {
-      pname = "lightdm";
-      version = "1.30.0";
-      src = pkgs.fetchFromGitHub {
-        owner = "CanonicalLtd";
-        repo = pname;
-        rev = version;
-        sha256 = "0i1yygmjbkdjnqdl9jn8zsa1mfs2l19qc4k2capd8q1ndhnjm2dx";
-      };
-    }); in pkgs.lib.mkForce ''
-      export PATH=${lightdm}/sbin:$PATH
-      exec ${lightdm}/sbin/lightdm
-    '';
-
     # https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/services/x11/display-managers/lightdm.nix
     environment.etc."lightdm/lightdm.conf".source = with lib; let
       xcfg = config.services.xserver;
@@ -75,6 +61,29 @@
           ${dmcfg.setupCommands}
         ''}
       ''}
+    '');
+
+    systemd.services.vnc.script = pkgs.lib.mkForce (let
+      tigervnc = pkgs.tigervnc.overrideDerivation(old: {
+        buildInputs = old.buildInputs ++ [
+          pkgs.xorg.libXdamage.dev
+          pkgs.xorg.libXfixes.dev
+          pkgs.xorg.libXrandr.dev
+          pkgs.xorg.libXtst
+        ];
+      });
+    in ''
+systemctl restart display-manager
+while ! /run/wrappers/bin/su - ${config.options.username} -c "${pkgs.xorg.xset}/bin/xset -q"; do sleep 1; done
+sleep 5  # allow slow GCE instance to catch up
+response=$(${pkgs.curl}/bin/curl --write-out '%{http_code}' --silent --output /dev/null http://metadata.google.internal/computeMetadata/v1/instance/attributes/password -H "Metadata-Flavor:Google")
+password=$(${pkgs.curl}/bin/curl http://metadata.google.internal/computeMetadata/v1/instance/attributes/password -H "Metadata-Flavor:Google")
+if test "$response" != "200"; then
+  /run/wrappers/bin/su - ${config.options.username} -c "exec ${tigervnc}/bin/x0vncserver -localhost -SecurityTypes none -AlwaysShared -RawKeyboard"
+else
+  echo $password|${tigervnc}/bin/vncpasswd -f>/var/run/.vncpasswd
+  /run/wrappers/bin/su - ${config.options.username} -c "exec ${tigervnc}/bin/x0vncserver -localhost -PasswordFile /var/run/.vncpasswd -AlwaysShared -RawKeyboard"
+fi
     '');
   };
 }
