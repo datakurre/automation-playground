@@ -20,10 +20,10 @@ let
 
   asar = stdenv.mkDerivation rec {
     name = "camunda-modeler-${version}-asar";
-    version = "5.5.1";
+    version = "5.6.0";
     src = fetchurl {
       url = "https://github.com/camunda/camunda-modeler/releases/download/v${version}/camunda-modeler-${version}-linux-x64.tar.gz";
-      sha256 = "sha256-HZrzUKwY4xKA2MKvz3tHbv5GYgKQq05iZj2smXyJ2iQ=";
+      sha256 = "sha256-HJky0jnzpSNoqjzKwBwpw5mpYtzFKicdRU0dZbOQ3CY=";
     };
     nativeBuildInputs = [ nodePackages.asar autoPatchelfHook gcc-unwrapped ];
     installPhase = ''
@@ -35,7 +35,7 @@ in
 
 stdenv.mkDerivation rec {
   name = "camunda-modeler-${version}";
-  version = "5.5.1";
+  version = "5.6.0";
   src = asar;
   unpackPhase = "";
   nativeBuildInputs = [ electron makeWrapper nodePackages.asar autoPatchelfHook gcc-unwrapped ];
