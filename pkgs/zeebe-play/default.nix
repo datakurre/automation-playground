@@ -2,11 +2,11 @@
 
 stdenv.mkDerivation rec {
   pname = "zeebe-play";
-  version = "1.0.0";
+  version = "1.1.0";
   name = "${pname}-${version}";
   src = fetchurl {
     url = "https://github.com/camunda-community-hub/${pname}/releases/download/${version}/${name}.zip";
-    sha256 = "sha256-OwbOgNWd4Ly8JJrGLrNRBV16k1bF6I6IgdKSG75lYKw=";
+    sha256 = "sha256-2asbGslpPtVvKBk6fR+e6JZZwKm8F94Pl3mt/AYXM6o=";
   };
   nativeBuildInputs = [ unzip ];
   buildInputs = [ makeWrapper ];
