@@ -63,6 +63,11 @@
       ''}
     '');
 
+    swapDevices = [{
+      device = "/var/swap";
+      size = 4096;
+    }];
+
     systemd.services.vnc.script = pkgs.lib.mkForce (let
       tigervnc = pkgs.tigervnc.overrideDerivation(old: {
         buildInputs = old.buildInputs ++ [
