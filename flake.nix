@@ -75,6 +75,7 @@
       zeebe-play
       zeebe-simple-monitor
       parrot-rcc
+      bpmn-to-image
       ;
     };
 
@@ -135,6 +136,7 @@
     devShells.docs = pkgs.mkShell {
       buildInputs = [
         (pkgs.python3.withPackages(ps: [ ps.sphinx ps.myst-parser ps.sphinx_rtd_theme ]))
+        self.packages.${system}.bpmn-to-image
       ];
     };
 
