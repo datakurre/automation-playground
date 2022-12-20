@@ -298,6 +298,7 @@ sleep 5  # allow slow GCE instance to catch up
       wantedBy = [ "multi-user.target" ];
       path = [ pkgs.zeebe ];
       environment = {
+        ZEEBE_CLOCK_CONTROLLED = "true";
       };
       serviceConfig = {
         User = config.options.username;
@@ -893,7 +894,7 @@ fi
 
 # ~/.bashrc
 if [ ! -f "$HOME/.bashrc" ]; then
-  echo 'alias wrap="rcc robot wrap; touch ."' > $HOME/.bashrc
+  echo 'alias wrap="echo 'rcc robot wrap'; rcc robot wrap; touch ."' > $HOME/.bashrc
 fi
 
 # Default panel
