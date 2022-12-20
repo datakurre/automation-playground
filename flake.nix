@@ -51,6 +51,17 @@
         PUPPETEER_SKIP_DOWNLOAD = "true";
       };
     };
+    packages.docs = pkgs.stdenv.mkDerivation {
+      name = "open-automation-playground-docs";
+      src = ./docs;
+      buildInputs = [
+        (pkgs.python3.withPackages(ps: [ ps.sphinx ps.myst-parser ps.sphinx_rtd_theme ]))
+      ];
+      phases = [ "unpackPhase" "installPhase" ];
+      installPhase = ''
+        sphinx-build -b html . $out
+      '';
+    };
 
     # Overlay
     overlays.default = final: prev: {
@@ -117,6 +128,13 @@
           multiPkgs = pkgs: (with pkgs; []);
           runScript = "mvn2nix";
         })
+      ];
+    };
+
+    # Sphinx
+    devShells.docs = pkgs.mkShell {
+      buildInputs = [
+        (pkgs.python3.withPackages(ps: [ ps.sphinx ps.myst-parser ps.sphinx_rtd_theme ]))
       ];
     };
 
