@@ -901,9 +901,11 @@ zeebe-reset () {
   sudo systemctl stop zeebe-play
   sudo systemctl stop zeebe-simple-monitor
   sudo systemctl stop postgresql
+  sudo systemctl stop zeebe
   echo "Zeebe data being cleared."
   sudo rm -rf /var/lib/zeebe /var/lib/postgresql
   echo "Zeebe getting back online."
+  sudo systemctl start zeebe
   sudo systemctl start postgresql
   sudo systemctl start zeebe-simple-monitor-init
   sudo systemctl start zeebe-simple-monitor
