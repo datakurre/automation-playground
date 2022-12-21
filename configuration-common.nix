@@ -894,7 +894,25 @@ fi
 
 # ~/.bashrc
 if [ ! -f "$HOME/.bashrc" ]; then
-  echo 'alias wrap="echo 'rcc robot wrap'; rcc robot wrap; touch ."' > $HOME/.bashrc
+  cat << EOF > $HOME/.bashrc
+alias wrap="echo 'rcc robot wrap'; rcc robot wrap; touch ."
+zeebe-reset () {
+  echo "Zeebe being shut down."
+  sudo systemctl stop zeebe-play
+  sudo systemctl stop zeebe-simple-monitor
+  sudo systemctl stop postgresql
+  echo "Zeebe data being cleared."
+  sudo rm -rf /var/lib/zeebe /var/lib/postgresql
+  echo "Zeebe getting back online."
+  sudo systemctl start postgresql
+  sudo systemctl start zeebe-simple-monitor-init
+  sudo systemctl start zeebe-simple-monitor
+  sudo systemctl start zeebe-play-init
+  sudo systemctl start zeebe-play
+  while ! nc -zv localhost 8081; do sleep 1; done
+  echo "Zeebe is back."
+}
+EOF
 fi
 
 # Default panel
