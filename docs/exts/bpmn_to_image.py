@@ -9,25 +9,16 @@ class BpmnToImage(Image):
     def run(self):
         bpmn = Path(self.arguments[0])
         self.state.document.settings.record_dependencies.add(str(bpmn))
-        png = bpmn.with_suffix(".png")
+        svg = bpmn.with_suffix(".svg")
         subprocess.call(
             [
                 "bpmn-to-image",
-                f"{bpmn}:{png}",
+                f"{bpmn}:{svg}",
                 "--no-title",
                 "--no-footer",
             ]
         )
-        subprocess.call(
-            [
-                "convert",
-                png,
-                "-transparent",
-                "white",
-                png,
-            ]
-        )
-        self.arguments[0] = str(png)
+        self.arguments[0] = str(svg)
         return super().run()
 
 
