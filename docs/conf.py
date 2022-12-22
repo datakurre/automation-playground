@@ -13,7 +13,10 @@ author = 'Asko Soukka'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ['myst_parser']
+import sys, os
+
+sys.path.append(os.path.abspath('exts'))
+extensions = ['myst_parser', 'bpmn_to_image']
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']

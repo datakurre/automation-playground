@@ -135,8 +135,9 @@
     # Sphinx
     devShells.docs = pkgs.mkShell {
       buildInputs = [
-        (pkgs.python3.withPackages(ps: [ ps.sphinx ps.myst-parser ps.sphinx_rtd_theme ]))
+        (pkgs.python3.withPackages(ps: [ ps.sphinx ps.myst-parser ps.sphinx_rtd_theme ps.sphinx-autobuild ]))
         self.packages.${system}.bpmn-to-image
+        pkgs.imagemagick
       ];
     };
 
