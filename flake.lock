@@ -70,6 +70,22 @@
         "type": "github"
       }
     },
+    "lezer-feel": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1668679543,
+        "narHash": "sha256-TvWPT6JRLq1DQ5Dy0M+VpfVYzWNQDTrQQ+/hgEtFEB0=",
+        "owner": "nikku",
+        "repo": "lezer-feel",
+        "rev": "e143b8b35694074e870df2cf64a374d987eb366c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nikku",
+        "repo": "lezer-feel",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1670461440,
@@ -206,6 +222,7 @@
         "bpmn-to-image": "bpmn-to-image",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
+        "lezer-feel": "lezer-feel",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "npmlock2nix": "npmlock2nix",

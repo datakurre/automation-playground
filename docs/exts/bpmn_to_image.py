@@ -8,34 +8,40 @@ import subprocess
 class BpmnToImage(Image):
     def run(self):
         parent = Path(self.state.document.current_source).parent
-        image = (parent / self.arguments[0]).with_suffix(".svg")
-        subprocess.call(
-            [
-                "bpmn-to-image",
-                f"{parent / self.arguments[0]}:{image}",
-                "--no-title",
-                "--no-footer",
-            ]
-        )
-        self.state.document.settings.record_dependencies.add(self.arguments[0])
-        self.arguments[0] = str(image.relative_to(parent))
+        bpmn = parent / self.arguments[0]
+        if bpmn.exists():
+            image = bpmn.with_suffix(".svg")
+            if not image.exists() or image.stat().st_mtime < bpmn.stat().st_mtime:
+                subprocess.call(
+                    [
+                        "bpmn-to-image",
+                        f"{bpmn}:{image}",
+                        "--no-title",
+                        "--no-footer",
+                    ]
+                )
+            self.state.document.settings.record_dependencies.add(self.arguments[0])
+            self.arguments[0] = str(image.relative_to(parent))
         return super().run()
 
 
 class BpmnToFigure(Figure):
     def run(self):
         parent = Path(self.state.document.current_source).parent
-        image = (parent / self.arguments[0]).with_suffix(".svg")
-        subprocess.call(
-            [
-                "bpmn-to-image",
-                f"{parent / self.arguments[0]}:{image}",
-                "--no-title",
-                "--no-footer",
-            ]
-        )
-        self.state.document.settings.record_dependencies.add(self.arguments[0])
-        self.arguments[0] = str(image.relative_to(parent))
+        bpmn = parent / self.arguments[0]
+        if bpmn.exists():
+            image = bpmn.with_suffix(".svg")
+            if not image.exists() or image.stat().st_mtime < bpmn.stat().st_mtime:
+                subprocess.call(
+                    [
+                        "bpmn-to-image",
+                        f"{bpmn}:{image}",
+                        "--no-title",
+                        "--no-footer",
+                    ]
+                )
+            self.state.document.settings.record_dependencies.add(self.arguments[0])
+            self.arguments[0] = str(image.relative_to(parent))
         return super().run()
 
 

@@ -31,4 +31,13 @@ html_show_sourcelink = False
 html_show_sphinx = False
 html_theme_options = dict(display_version=False, logo_only=True)
 html_static_path = ['_static']
+html_css_files = ['custom.css']
 html_js_files = ['minipres.js']
+
+# FEEL lexer
+
+from pygments.lexers import get_lexer_by_name
+from feel import FeelLexer
+
+def setup(app):
+    app.add_lexer("feel", FeelLexer())

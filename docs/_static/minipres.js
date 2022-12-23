@@ -1,4 +1,5 @@
 // https://raw.githubusercontent.com/coderefinery/sphinx-minipres/master/sphinx_minipres/_static/minipres.js
+
 // Add goTo method to elements
 // http://stackoverflow.com/questions/4801655/how-to-go-to-a-specific-element-on-page
 (function($) {
@@ -27,7 +28,7 @@ var urlParams;
 
 // Select heading levels
 var maxHeading = urlParams['h']
-if (maxHeading === undefined) maxHeading = 2
+if (maxHeading === undefined) maxHeading = 3
 var headingLevels = [];
 for (h=2 ; h<maxHeading+1 ; h++)
     headingLevels.push("h"+h);

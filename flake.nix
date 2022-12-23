@@ -7,6 +7,7 @@
   inputs.nixpkgs-unstable.url = "github:NixOS/nixpkgs/master";
   inputs.home-manager = { url = "github:rycee/home-manager/release-22.11"; inputs.nixpkgs.follows = "nixpkgs"; inputs.utils.follows = "flake-utils"; };
   inputs.bpmn-to-image = { url = "github:bpmn-io/bpmn-to-image"; flake = false; };
+  inputs.lezer-feel = { url = "github:nikku/lezer-feel"; flake = false; };
   inputs.npmlock2nix = { url = "github:nix-community/npmlock2nix"; flake = false; };
   inputs.parrot-rcc = { url = "github:datakurre/parrot-rcc/main"; inputs.nixpkgs.follows = "nixpkgs"; inputs.flake-utils.follows = "flake-utils"; };
 
@@ -15,7 +16,7 @@
   inputs.zbctl = { url = "github:camunda/zeebe/clients/go/v8.1.5"; flake = false; };
 
   # Systems
-  outputs = { self, nixpkgs, flake-utils, home-manager, npmlock2nix, bpmn-to-image, parrot-rcc, rcc, zbctl, ... }: flake-utils.lib.eachDefaultSystem (system: let pkgs = nixpkgs.legacyPackages.${system}; in {
+  outputs = { self, nixpkgs, flake-utils, home-manager, npmlock2nix, bpmn-to-image, lezer-feel, parrot-rcc, rcc, zbctl, ... }: flake-utils.lib.eachDefaultSystem (system: let pkgs = nixpkgs.legacyPackages.${system}; in {
 
     # Packages
     packages.camunda-modeler = pkgs.callPackage ./pkgs/camunda-modeler {};
@@ -51,11 +52,73 @@
         PUPPETEER_SKIP_DOWNLOAD = "true";
       };
     };
+    packages.feel-tokenizer = (import npmlock2nix { inherit pkgs; }).v2.build {
+      src = lezer-feel;
+      installPhase = ''
+        mkdir -p $out/bin $out/lib $out/lib/lezer-feel/lezer-feel
+        cp -a package.json $out/lib/lezer-feel/lezer-feel
+        cp -a dist $out/lib/lezer-feel/lezer-feel
+        cp -a node_modules $out/lib
+        cat > $out/bin/feel-tokenizer << EOF
+#!/usr/bin/env node
+const classHighlighter = require("@lezer/highlight").classHighlighter;
+const highlightTree = require("@lezer/highlight").highlightTree;
+const parser = require('lezer-feel').parser;
+const source = require('fs').readFileSync(0, 'utf-8');
+console.log(JSON.stringify(((source, tree) => {
+  const children = [];
+  let index = 0;
+  highlightTree(tree, classHighlighter, (from, to, classes) => {
+    if (from > index) {
+      children.push({
+        type: "text",
+        index: index,
+        value: source.slice(index, from)
+      })
+    }
+    children.push({
+      type: classes.replace(/^tok-/, ""),
+      index: from,
+      children: [{
+        type: "text",
+        index: from,
+        value: source.slice(from, to)
+      }]
+    });
+    index = to;
+  });
+  if (index < source.length) {
+    children.push({
+      type: "text",
+      index: index,
+      value: source.slice(index)
+    });
+  }
+  return children;
+})(source, parser.parse(source))));
+EOF
+        chmod u+x $out/bin/feel-tokenizer
+        wrapProgram $out/bin/feel-tokenizer \
+          --set PATH ${pkgs.lib.makeBinPath [ pkgs.nodejs ]} \
+          --set NODE_PATH $out/lib/lezer-feel:$out/lib/node_modules
+      '';
+      buildInputs = [ pkgs.makeWrapper ];
+      buildCommands = [ "npm run build" ];
+      node_modules_attrs = {
+        preBuild = ''
+          cp package.json x; rm package.json; mv x package.json
+          substituteInPlace package.json \
+            --replace "run-s build" "echo run-s build"
+        '';
+      };
+    };
     packages.docs = pkgs.stdenv.mkDerivation {
       name = "open-automation-playground-docs";
       src = ./docs;
       buildInputs = [
         (pkgs.python3.withPackages(ps: [ ps.sphinx ps.myst-parser ps.sphinx_rtd_theme ]))
+        self.packages.${system}.feel-tokenizer
+        self.packages.${system}.bpmn-to-image
       ];
       phases = [ "unpackPhase" "installPhase" ];
       installPhase = ''
@@ -76,6 +139,7 @@
       zeebe-simple-monitor
       parrot-rcc
       bpmn-to-image
+      feel-tokenizer
       ;
     };
 
@@ -135,7 +199,8 @@
     # Sphinx
     devShells.docs = pkgs.mkShell {
       buildInputs = [
-        (pkgs.python3.withPackages(ps: [ ps.sphinx ps.myst-parser ps.sphinx_rtd_theme ps.sphinx-autobuild ]))
+        (pkgs.python3.withPackages(ps: [ ps.sphinx ps.myst-parser ps.sphinx_rtd_theme ps.sphinx-autobuild ps.sly ]))
+        self.packages.${system}.feel-tokenizer
         self.packages.${system}.bpmn-to-image
       ];
     };
