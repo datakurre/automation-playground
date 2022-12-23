@@ -7,7 +7,6 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'Open Automation Playground'
-copyright = '2022, Asko Soukka'
 author = 'Asko Soukka'
 
 # -- General configuration ---------------------------------------------------
@@ -27,4 +26,9 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = 'sphinx_rtd_theme'
+html_show_copyright = False
+html_show_sourcelink = False
+html_show_sphinx = False
+html_theme_options = dict(display_version=False, logo_only=True)
 html_static_path = ['_static']
+html_js_files = ['minipres.js']
