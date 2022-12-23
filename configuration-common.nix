@@ -32,19 +32,22 @@ in {
 
     environment.systemPackages = with pkgs; [
       (python3Full.withPackages(ps: [(robotframework ps)]))
+      ammonite
       camunda-modeler
       chromium
+      evince
       git
+      gnome.file-roller
       gnumake
+      gnumeric
       mockoon
+      parrot-rcc
       podman-compose
       rccFHSUserEnv
       unzip
       vim
-      gnome.file-roller
       zbctl
       zip
-      parrot-rcc
     ];
 
     users.groups = builtins.listToAttrs [{
@@ -642,6 +645,10 @@ exec zeebe-play
       name = config.options.username;
       value = { lib, ... }: {
         home.stateVersion = "22.05";
+        home.file.".config/${config.options.username}/feel-repl.sc".source = builtins.fetchurl {
+          url = "https://raw.githubusercontent.com/camunda/feel-scala/8ace3a5e484134cd679b1ce4bd787aaba4e59c5d/feel-repl.sc";
+          sha256 = "3ea2b6b4fd5e04958725fcbdb7839beea7b1e62b246ebd5980451e38a384f669";
+        };
         home.file.".config/${config.options.username}/camunda-modeler.png".source = ./files/camunda-modeler.png;
         home.file.".config/${config.options.username}/camunda-modeler.desktop".source = pkgs.writeText "camunda-modeler.desktop" ''
 [Desktop Entry]
@@ -896,6 +903,7 @@ fi
 if [ ! -f "$HOME/.bashrc" ]; then
   cat << EOF > $HOME/.bashrc
 alias wrap="echo 'rcc robot wrap'; rcc robot wrap; touch ."
+alias feel-repl="amm --predef $HOME/.config/${config.options.username}/feel-repl.sc"
 zeebe-reset () {
   echo "Zeebe being shut down."
   sudo systemctl stop zeebe-play
@@ -911,7 +919,7 @@ zeebe-reset () {
   sudo systemctl start zeebe-simple-monitor
   sudo systemctl start zeebe-play-init
   sudo systemctl start zeebe-play
-  while ! nc -zv localhost 8081; do sleep 1; done
+  while ! nc -z localhost 8081; do echo "..."; sleep 5; done
   echo "Zeebe is back."
 }
 EOF
