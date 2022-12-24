@@ -4,6 +4,7 @@ from pygments.token import Token
 import json
 import subprocess
 
+# https://github.com/nikku/lezer-feel/blob/master/src/highlight.js
 # https://github.com/pygments/pygments/blob/cc1d176c1e607a57c9c19baa3db22a8f5a67aafb/pygments/token.py#L123
 
 RESERVED_WORDS = [
