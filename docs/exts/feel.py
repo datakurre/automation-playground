@@ -7,16 +7,26 @@ import subprocess
 # https://github.com/pygments/pygments/blob/cc1d176c1e607a57c9c19baa3db22a8f5a67aafb/pygments/token.py#L123
 
 RESERVED_WORDS = [
-    "and",
     "between",
     "else",
     "every",
     "false",
     "for",
     "if",
-    "in",
-    "instance",
     "null",
+    "return",
+    "satisfies",
+    "some",
+    "then",
+    "true",
+]
+
+OPERATOR_WORDS = [
+    "in"
+    "instance"
+    "and"
+    "or"
+    "xor",
     "of Any",
     "of boolean",
     "of context",
@@ -29,13 +39,6 @@ RESERVED_WORDS = [
     "of number",
     "of string",
     "of time",
-    "or",
-    "return",
-    "satisfies",
-    "some",
-    "then",
-    "true",
-    "xor",
 ]
 
 FUNCTION_NAMES = [
@@ -158,9 +161,19 @@ class FeelLexer(Lexer):
     filenames = ["*.feel"]
 
     token_map = {
-        "text": Token.Text,
-        "operator": Token.Operator,
+        "literal": Token.Literal,
+        "bool": Token.Keyword.Constant,
+        "keyword": Token.Keyword.Reserved,
         "number": Token.Number,
+        "operator": Token.Operator,
+        "punctuation": Token.Punctuation,
+        "string": Token.String,
+        "text": Token.Text,
+        "variableName": Token.Name.Variable,
+        "variableName2": Token.Name.Variable,
+        "variableName definition": Token.Name.Variable,
+        "propertyName": Token.Name.Property,
+        "propertyName definition": Token.Name.Property,
     }
 
     def __init__(self, **options):
@@ -175,8 +188,9 @@ class FeelLexer(Lexer):
         tree = json.loads(result.stdout.decode())
         def walk(children, token_type=Token.Text):
             for token in children:
+                # print(token["type"])
                 if "value" in token:
-                    if token_type is Token.Text:
+                    if token_type in [Token.Text, Token.Name.Variable]:
                         if token["value"].strip().startswith('"'):
                             token_type = Token.String
                         elif token["value"].strip() in RESERVED_WORDS:

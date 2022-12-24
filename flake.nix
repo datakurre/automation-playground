@@ -77,7 +77,7 @@ console.log(JSON.stringify(((source, tree) => {
       })
     }
     children.push({
-      type: classes.replace(/^tok-/, ""),
+      type: classes.replace(/tok-/g, ""),
       index: from,
       children: [{
         type: "text",
