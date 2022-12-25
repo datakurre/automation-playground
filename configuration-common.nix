@@ -19,7 +19,7 @@ in {
   options = {
     options.username = lib.mkOption { default = "vagrant"; };
     options.ssl = lib.mkOption { default = false; };
-    options.vault = lib.mkOption { default = false; };
+    options.vault = lib.mkOption { default = true; };
     options.shared-folder = lib.mkOption { default = false; };
     options.vscode-with-vim = lib.mkOption { default = false; };
     options.vscode-unfree = lib.mkOption { default = false; };

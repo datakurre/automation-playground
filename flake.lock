@@ -147,11 +147,11 @@
         "zbctl": "zbctl"
       },
       "locked": {
-        "lastModified": 1671963636,
-        "narHash": "sha256-dJQpGSrekeovYNa9kDFM9tmow81bF/iaZNusxIfyiYo=",
+        "lastModified": 1672001459,
+        "narHash": "sha256-yBK2OvgicXyk0G/TwGKk6/1D2coQLdELvb8lDDk74kM=",
         "owner": "datakurre",
         "repo": "parrot-rcc",
-        "rev": "d4428c33cdfca5e119ab3183aa4e3eeeb04a88f6",
+        "rev": "f6ffbe603fa581661772cf5682acc999ad29a59a",
         "type": "github"
       },
       "original": {
