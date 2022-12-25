@@ -645,12 +645,12 @@ exec zeebe-play
       name = config.options.username;
       value = { lib, ... }: {
         home.stateVersion = "22.05";
-        home.file.".config/${config.options.username}/feel-repl.sc".source = builtins.fetchurl {
+        home.file.".config/playground/feel-repl.sc".source = builtins.fetchurl {
           url = "https://raw.githubusercontent.com/camunda/feel-scala/8ace3a5e484134cd679b1ce4bd787aaba4e59c5d/feel-repl.sc";
           sha256 = "3ea2b6b4fd5e04958725fcbdb7839beea7b1e62b246ebd5980451e38a384f669";
         };
-        home.file.".config/${config.options.username}/camunda-modeler.png".source = ./files/camunda-modeler.png;
-        home.file.".config/${config.options.username}/camunda-modeler.desktop".source = pkgs.writeText "camunda-modeler.desktop" ''
+        home.file.".config/playground/camunda-modeler.png".source = ./files/camunda-modeler.png;
+        home.file.".config/playground/camunda-modeler.desktop".source = pkgs.writeText "camunda-modeler.desktop" ''
 [Desktop Entry]
 StartupWMClass=camunda-modeler
 Version=1.0
@@ -658,28 +658,28 @@ Name=Modeler
 Exec=camunda-modeler
 StartupNotify=true
 Terminal=false
-Icon=/home/${config.options.username}/.config/${config.options.username}/camunda-modeler.png
+Icon=/home/${config.options.username}/.config/playground/camunda-modeler.png
 Type=Application
 MimeType=application/bpmn+xml;application/dmn+xml
         '';
-        home.file.".config/${config.options.username}/zeebe.png".source = ./files/zeebe.png;
-        home.file.".config/${config.options.username}/zeebe-monitor.desktop".source = pkgs.writeText "zeebe-monitor.desktop" ''
+        home.file.".config/playground/zeebe.png".source = ./files/zeebe.png;
+        home.file.".config/playground/zeebe-monitor.desktop".source = pkgs.writeText "zeebe-monitor.desktop" ''
 [Desktop Entry]
 Version=1.0
 Type=Link
 Name=Monitor
-Icon=/home/${config.options.username}/.config/${config.options.username}/zeebe.png
+Icon=/home/${config.options.username}/.config/playground/zeebe.png
 URL=http://localhost:8080/
         '';
-        home.file.".config/${config.options.username}/zeebe-play.desktop".source = pkgs.writeText "zeebe-play.desktop" ''
+        home.file.".config/playground/zeebe-play.desktop".source = pkgs.writeText "zeebe-play.desktop" ''
 [Desktop Entry]
 Version=1.0
 Type=Link
 Name=Play
-Icon=/home/${config.options.username}/.config/${config.options.username}/zeebe.png
+Icon=/home/${config.options.username}/.config/playground/zeebe.png
 URL=http://localhost:8081/
         '';
-        home.file.".config/${config.options.username}/chromium-browser.desktop".source = pkgs.writeText "chromium-browser.desktop" ''
+        home.file.".config/playground/chromium-browser.desktop".source = pkgs.writeText "chromium-browser.desktop" ''
 [Desktop Entry]
 StartupWMClass=chromium-browser
 Version=1.0
@@ -692,7 +692,7 @@ Type=Application
 Categories=Network;WebBrowser;
 MimeType=application/pdf;application/rdf+xml;application/rss+xml;application/xhtml+xml;application/xhtml_xml;application/xml;image/gif;image/jpeg;image/png;image/webp;text/plain;text/html;text/xml;x-scheme-handler/ftp;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/webcal;x-scheme-handler/mailto;x-scheme-handler/about;x-scheme-handler/unknown
         '';
-        home.file.".config/${config.options.username}/rcc.desktop".source = pkgs.writeText "rcc.desktop" (if config.options.rcc-service then ''
+        home.file.".config/playground/rcc.desktop".source = pkgs.writeText "rcc.desktop" (if config.options.rcc-service then ''
 [Desktop Entry]
 Version=1.0
 Type=Application
@@ -715,7 +715,7 @@ Path=/var/lib/rcc
 Terminal=true
 StartupNotify=false
         '');
-        home.file.".config/${config.options.username}/keyboard.desktop".source = pkgs.writeText "keyboard.desktop" ''
+        home.file.".config/playground/keyboard.desktop".source = pkgs.writeText "keyboard.desktop" ''
 [Desktop Entry]
 StartupWMClass=xfce4-keyboard-settings
 Version=1.0
@@ -726,17 +726,17 @@ Terminal=false
 Icon=input-keyboard
 Type=Application
         '';
-        home.file.".config/${config.options.username}/mailhog.png".source = ./files/mailhog.png;
-        home.file.".config/${config.options.username}/mailhog.desktop".source = pkgs.writeText "mailhog.desktop" ''
+        home.file.".config/playground/mailhog.png".source = ./files/mailhog.png;
+        home.file.".config/playground/mailhog.desktop".source = pkgs.writeText "mailhog.desktop" ''
 [Desktop Entry]
 Version=1.0
 Type=Link
 Name=MailHog
-Icon=/home/${config.options.username}/.config/${config.options.username}/mailhog.png
+Icon=/home/${config.options.username}/.config/playground/mailhog.png
 URL=http://localhost:8025/
         '';
-        home.file.".config/${config.options.username}/mockoon.png".source = ./files/mockoon.png;
-        home.file.".config/${config.options.username}/mockoon.desktop".source = pkgs.writeText "mockoon.desktop" ''
+        home.file.".config/playground/mockoon.png".source = ./files/mockoon.png;
+        home.file.".config/playground/mockoon.desktop".source = pkgs.writeText "mockoon.desktop" ''
 [Desktop Entry]
 StartupWMClass=mockoon
 Version=1.0
@@ -744,17 +744,17 @@ Name=Mockoon
 Exec=mockoon-1.20.0
 StartupNotify=true
 Terminal=false
-Icon=/home/${config.options.username}/.config/${config.options.username}/mockoon.png
+Icon=/home/${config.options.username}/.config/playground/mockoon.png
 Type=Application
         '';
-        home.file.".config/${config.options.username}/robocorp-code.png".source = ./files/robocorp-code.png;
-        home.file.".config/${config.options.username}/robocorp-code.desktop".source = pkgs.writeText "robocorp-code.desktop" ''
+        home.file.".config/playground/robocorp-code.png".source = ./files/robocorp-code.png;
+        home.file.".config/playground/robocorp-code.desktop".source = pkgs.writeText "robocorp-code.desktop" ''
 [Desktop Entry]
 Categories=Utility;TextEditor;Development;IDE;
 Comment=Code Editing. Redefined.
 Exec=${if config.options.vscode-unfree then "code" else "codium"} /var/lib/rcc
 GenericName=Text Editor
-Icon=/home/${config.options.username}/.config/${config.options.username}/robocorp-code.png
+Icon=/home/${config.options.username}/.config/playground/robocorp-code.png
 MimeType=text/plain;inode/directory;
 Name=Code
 StartupNotify=true
@@ -764,25 +764,46 @@ StartupWMClass=Code
 Actions=new-empty-window;
 Keywords=${if config.options.vscode-unfree then "vscode" else "vscodium"};
         '';
-        home.file.".config/${config.options.username}/vault.png".source = ./files/vault.png;
-        home.file.".config/${config.options.username}/vault.desktop".source = pkgs.writeText "vault.desktop" ''
+        home.file.".config/playground/vault.png".source = ./files/vault.png;
+        home.file.".config/playground/vault.desktop".source = pkgs.writeText "vault.desktop" ''
 [Desktop Entry]
 Version=1.0
 Type=Link
 Name=Vault
-Icon=/home/${config.options.username}/.config/${config.options.username}/vault.png
+Icon=/home/${config.options.username}/.config/playground/vault.png
 URL=http://localhost:8200/
         '';
-        home.file.".config/${config.options.username}/minio.png".source = ./files/minio.png;
-        home.file.".config/${config.options.username}/minio.desktop".source = pkgs.writeText "minio.desktop" ''
+        home.file.".config/playground/minio.png".source = ./files/minio.png;
+        home.file.".config/playground/minio.desktop".source = pkgs.writeText "minio.desktop" ''
 [Desktop Entry]
 Version=1.0
 Type=Link
 Name=MinIO
-Icon=/home/${config.options.username}/.config/${config.options.username}/minio.png
+Icon=/home/${config.options.username}/.config/playground/minio.png
 URL=http://localhost:9000/
         '';
-        home.file.".config/${config.options.username}/xfce4-session-logout.desktop".source = pkgs.writeText "xfce4-session-logout.desktop" ''
+        home.file.".config/playground/DMN-simulator.desktop".source = pkgs.writeText "DMN-simulator.desktop" ''
+[Desktop Entry]
+Version=1.0
+Type=Link
+Name=DMN Simulator
+Comment=
+Icon=web-browser
+URL=https://consulting.camunda.com/dmn-simulator/
+        '';
+        home.file.".config/playground/FEEL.desktop".source = pkgs.writeText "FEEL.desktop" ''
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=FEEL
+Comment=
+Exec=amm --predef /home/${config.options.username}/.config/playground/feel-repl.sc
+Icon=utilities-terminal
+Path=
+Terminal=true
+StartupNotify=false
+        '';
+        home.file.".config/playground/xfce4-session-logout.desktop".source = pkgs.writeText "xfce4-session-logout.desktop" ''
 [Desktop Entry]
 Version=1.0
 Type=Application
@@ -795,7 +816,7 @@ OnlyShowIn=XFCE;
 Name=Log Out
 Name[fi]=Kirjaudu ulos
         '';
-        home.file.".config/${config.options.username}/robot-framework.png".source = ./files/robot-framework.png;
+        home.file.".config/playground/robot-framework.png".source = ./files/robot-framework.png;
         xsession = {
           enable = true;
           windowManager.command = ''test -n "$1" && eval "$@"'';
@@ -810,8 +831,8 @@ fi
 
 # configure desktop icons
 mkdir -p $XDG_DESKTOP_DIR
-${if config.options.vault then "" else "rm -f $HOME/.config/${config.options.username}/vault.desktop"}
-cp -L $HOME/.config/${config.options.username}/*.desktop $XDG_DESKTOP_DIR
+${if config.options.vault then "" else "rm -f $HOME/.config/playground/vault.desktop"}
+cp -L $HOME/.config/playground/*.desktop $XDG_DESKTOP_DIR
 chmod 0744 $XDG_DESKTOP_DIR/*.desktop
 ln -s /var/www/pub $XDG_DESKTOP_DIR/Public
 
@@ -820,9 +841,9 @@ ${if config.options.shared-folder then "ln -s /${config.options.username} $XDG_D
 ln -s /var/lib/rcc $XDG_DESKTOP_DIR/Robots
 
 # configure desktop background
-xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/last-image -t string -s $HOME/.config/${config.options.username}/robot-framework.png
+xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/last-image -t string -s $HOME/.config/playground/robot-framework.png
 if [ $? -ne 0 ]; then
-  xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/last-image -t string -s $HOME/.config/${config.options.username}/robot-framework.png --create
+  xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/last-image -t string -s $HOME/.config/playground/robot-framework.png --create
 fi
 xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/color-style -t int -s 0
 if [ $? -ne 0 ]; then
@@ -836,9 +857,9 @@ xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/rg
 if [ $? -ne 0 ]; then
   xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVirtual1/workspace0/rgba1 -t double -t double -t double -t double -s 0.368627 -s 0.360784 -s 0.392157 -s 1.0 --create
 fi
-xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorscreen/workspace0/last-image -t string -s $HOME/.config/${config.options.username}/robot-framework.png
+xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorscreen/workspace0/last-image -t string -s $HOME/.config/playground/robot-framework.png
 if [ $? -ne 0 ]; then
-  xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorscreen/workspace0/last-image -t string -s $HOME/.config/${config.options.username}/robot-framework.png --create
+  xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorscreen/workspace0/last-image -t string -s $HOME/.config/playground/robot-framework.png --create
 fi
 xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorscreen/workspace0/color-style -t int -s 0
 if [ $? -ne 0 ]; then
@@ -903,7 +924,7 @@ fi
 if [ ! -f "$HOME/.bashrc" ]; then
   cat << EOF > $HOME/.bashrc
 alias wrap="echo 'rcc robot wrap'; rcc robot wrap; touch ."
-alias feel-repl="amm --predef $HOME/.config/${config.options.username}/feel-repl.sc"
+alias feel-repl="amm --predef $HOME/.config/playground/feel-repl.sc"
 zeebe-reset () {
   echo "Zeebe being shut down."
   sudo systemctl stop zeebe-play
