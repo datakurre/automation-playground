@@ -782,7 +782,7 @@ Name=MinIO
 Icon=/home/${config.options.username}/.config/playground/minio.png
 URL=http://localhost:9000/
         '';
-        home.file.".config/playground/DMN-simulator.desktop".source = pkgs.writeText "DMN-simulator.desktop" ''
+        home.file.".config/playground/dmn-simulator.desktop".source = pkgs.writeText "dmn-simulator.desktop" ''
 [Desktop Entry]
 Version=1.0
 Type=Link
@@ -791,7 +791,7 @@ Comment=
 Icon=web-browser
 URL=https://consulting.camunda.com/dmn-simulator/
         '';
-        home.file.".config/playground/FEEL.desktop".source = pkgs.writeText "FEEL.desktop" ''
+        home.file.".config/playground/feel.desktop".source = pkgs.writeText "feel.desktop" ''
 [Desktop Entry]
 Version=1.0
 Type=Application
