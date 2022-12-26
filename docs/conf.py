@@ -36,8 +36,8 @@ html_js_files = ['minipres.js']
 
 # FEEL lexer
 
-from pygments.lexers import get_lexer_by_name
 from feel import FeelLexer
+from pygments.lexers import get_lexer_by_name
 
 def setup(app):
     app.add_lexer("feel", FeelLexer())

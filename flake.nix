@@ -12,7 +12,7 @@
   inputs.parrot-rcc = { url = "github:datakurre/parrot-rcc/main"; inputs.nixpkgs.follows = "nixpkgs"; inputs.flake-utils.follows = "flake-utils"; };
 
   # Sources
-  inputs.rcc = { url = "github:robocorp/rcc/13a822cf33b1f27c9f042085ec6d330f5d1d8073"; flake = false; }; # v11.35.2
+  inputs.rcc = { url = "github:robocorp/rcc/13a822cf33b1f27c9f042085ec6d330f5d1d8073"; flake = false; }; # v11.36.4
   inputs.zbctl = { url = "github:camunda/zeebe/clients/go/v8.1.5"; flake = false; };
 
   # Systems
@@ -22,8 +22,8 @@
     packages.camunda-modeler = pkgs.callPackage ./pkgs/camunda-modeler {};
     packages.mockoon = pkgs.callPackage ./pkgs/mockoon {};
     packages.zbctl = pkgs.callPackage ./pkgs/zbctl { src = zbctl; version = "v8.1.5"; };
-    packages.rcc = pkgs.callPackage ./pkgs/rcc/rcc.nix { src = rcc; version = "v11.35.2"; };
-    packages.rccFHSUserEnv = pkgs.callPackage ./pkgs/rcc { src = rcc; version = "v11.35.2"; };
+    packages.rcc = pkgs.callPackage ./pkgs/rcc/rcc.nix { src = rcc; version = "v11.36.4"; };
+    packages.rccFHSUserEnv = pkgs.callPackage ./pkgs/rcc { src = rcc; version = "v11.36.4"; };
     packages.zeebe = pkgs.callPackage ./pkgs/zeebe {};
     packages.zeebe-play = pkgs.callPackage ./pkgs/zeebe-play {};
     packages.zeebe-simple-monitor = pkgs.callPackage ./pkgs/zeebe-simple-monitor {};
