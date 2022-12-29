@@ -8,6 +8,7 @@
   inputs.home-manager = { url = "github:rycee/home-manager/release-22.11"; inputs.nixpkgs.follows = "nixpkgs"; inputs.utils.follows = "flake-utils"; };
   inputs.bpmn-to-image = { url = "github:bpmn-io/bpmn-to-image"; flake = false; };
   inputs.lezer-feel = { url = "github:nikku/lezer-feel"; flake = false; };
+  inputs.robot-task = { url = "github:datakurre/camunda-modeler-robot-plugin"; flake = false; };
   inputs.npmlock2nix = { url = "github:nix-community/npmlock2nix"; flake = false; };
   inputs.parrot-rcc = { url = "github:datakurre/parrot-rcc/main"; inputs.nixpkgs.follows = "nixpkgs"; inputs.flake-utils.follows = "flake-utils"; };
 
@@ -16,7 +17,7 @@
   inputs.zbctl = { url = "github:camunda/zeebe/clients/go/v8.1.5"; flake = false; };
 
   # Systems
-  outputs = { self, nixpkgs, flake-utils, home-manager, npmlock2nix, bpmn-to-image, lezer-feel, parrot-rcc, rcc, zbctl, ... }: flake-utils.lib.eachDefaultSystem (system: let pkgs = nixpkgs.legacyPackages.${system}; in {
+  outputs = { self, nixpkgs, flake-utils, home-manager, npmlock2nix, bpmn-to-image, robot-task, lezer-feel, parrot-rcc, rcc, zbctl, ... }: flake-utils.lib.eachDefaultSystem (system: let pkgs = nixpkgs.legacyPackages.${system}; in {
 
     # Packages
     packages.camunda-modeler = pkgs.callPackage ./pkgs/camunda-modeler {};
@@ -28,7 +29,7 @@
     packages.zeebe-play = pkgs.callPackage ./pkgs/zeebe-play {};
     packages.zeebe-simple-monitor = pkgs.callPackage ./pkgs/zeebe-simple-monitor {};
     packages.parrot-rcc = parrot-rcc.packages.${system}.default;
-    packages.bpmn-to-image = (import npmlock2nix { inherit pkgs; }).v1.build {
+    packages.bpmn-to-image = (import npmlock2nix { inherit pkgs; }).v1.build rec {
       src = bpmn-to-image;
       installPhase = ''
         mkdir -p $out/bin $out/lib
@@ -36,12 +37,18 @@
         cp -a cli.js $out/bin/bpmn-to-image
         cp -a index.js $out/lib
         cp -a skeleton.html $out/lib
+        cp ${robot-task}/dist/module-iife.js $out/lib/robot-task.js
         substituteInPlace $out/bin/bpmn-to-image \
           --replace "'./'" \
                     "'$out/lib'"
         substituteInPlace $out/lib/index.js \
           --replace "puppeteer.launch();" \
-                    "puppeteer.launch({executablePath: '${pkgs.chromium}/bin/chromium'});"
+                    "puppeteer.launch({executablePath: '${pkgs.chromium}/bin/chromium'});" \
+          --replace "await loadScript(viewerScript);"\
+                    "await loadScript(viewerScript); await loadScript('$out/lib/robot-task.js')"
+        substituteInPlace $out/lib/skeleton.html \
+          --replace "container: '#canvas'" \
+                    "container: '#canvas', additionalModules: [ RobotTaskModule ]"
         wrapProgram $out/bin/bpmn-to-image \
           --set PATH ${pkgs.lib.makeBinPath [ pkgs.nodejs ]} \
           --set NODE_PATH $out/lib/node_modules

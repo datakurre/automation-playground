@@ -217,6 +217,22 @@
         "type": "github"
       }
     },
+    "robot-task": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1671908169,
+        "narHash": "sha256-+buHqx+zYW4lFiM9cBjYPNssYICKa0tBTxJq83fHSrg=",
+        "owner": "datakurre",
+        "repo": "camunda-modeler-robot-plugin",
+        "rev": "7a70112bb9cd72713823003bb13101f44a7bc67c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "datakurre",
+        "repo": "camunda-modeler-robot-plugin",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "bpmn-to-image": "bpmn-to-image",
@@ -228,6 +244,7 @@
         "npmlock2nix": "npmlock2nix",
         "parrot-rcc": "parrot-rcc",
         "rcc": "rcc_2",
+        "robot-task": "robot-task",
         "zbctl": "zbctl_2"
       }
     },
