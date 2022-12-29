@@ -30,6 +30,8 @@ in {
 
     system.stateVersion = "22.05";
 
+    powerManagement.cpuFreqGovernor = "ondemand";
+
     environment.systemPackages = with pkgs; [
       (python3Full.withPackages(ps: [(robotframework ps)]))
       ammonite
@@ -1000,7 +1002,29 @@ fi
         programs.vscode.enable = true;
         programs.vscode.package = ((if config.options.vscode-unfree then pkgs.vscode-fhsWithPackages else pkgs.vscodium-fhsWithPackages) (ps: with ps; [
           (ps.python3Full.withPackages(ps: [(robotframework ps)]))
+          pkgs.alsa-lib
+          pkgs.at-spi2-atk
+          pkgs.cairo
+          pkgs.cups
+          pkgs.dbus
+          pkgs.expat
+          pkgs.glib
+          pkgs.libdrm
+          pkgs.libudev0-shim
+          pkgs.libxkbcommon
+          pkgs.mesa
+          pkgs.nspr
+          pkgs.nss
+          pkgs.pango
           pkgs.rcc
+          pkgs.wayland
+          pkgs.xorg.libX11
+          pkgs.xorg.libXcomposite
+          pkgs.xorg.libXdamage
+          pkgs.xorg.libXext
+          pkgs.xorg.libXfixes
+          pkgs.xorg.libXrandr
+          pkgs.xorg.libxcb
         ]));
         programs.vscode.extensions = (with pkgs.vscode-extensions; [
           ms-python.python
