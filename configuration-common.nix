@@ -251,7 +251,7 @@ chown ${config.options.username}:users -R /var/www/pub
       };
       script = ''
 openssl req -new -newkey rsa:4096 -days 365 -nodes -x509 \
- -subj "/C=US/ST=Denial/L=Springfield/O=Carrot-RCC/CN=www.example.com" \
+ -subj "/C=US/ST=Denial/L=Springfield/O=automation-playground/CN=www.example.com" \
  -keyout /etc/novnc-selfsigned.key -out /etc/novnc-selfsigned.crt
 chown nginx:root /etc/novnc-selfsigned.key
 chown nginx:root /etc/novnc-selfsigned.crt
@@ -565,15 +565,15 @@ exec zeebe-play
     };
 
     systemd.services.parrot-rcc-init = {
-      enable = !config.options.rcc-service;
+      enable = true;
       after = [ "network-online.target" ];
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {
         Type = "oneshot";
       };
       script = ''
-        mkdir -p /var/lib/rcc
-        chown -R ${config.options.username}:users /var/lib/rcc
+        mkdir -p /var/lib/rcc /opt/robocorp
+        chown -R ${config.options.username}:users /var/lib/rcc /opt/robocorp
       '';
     };
 
