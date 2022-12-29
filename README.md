@@ -1,8 +1,8 @@
 # Open Automation Playground
 
-[Documentation](https://datakurre.github.io/automation-playground/)
+[View documentation](https://datakurre.github.io/automation-playground/)
 
-VirtualBox based Vagrant image available with the following `Vagrantfile` and `vagrant up`:
+VirtualBox based Vagrant image is available by running `vagrant up` with the following `Vagrantfile:
 
 ```ruby
 # -*- mode: ruby -*-
