@@ -1022,6 +1022,8 @@ fi
             postInstall = ''
               mkdir -p $out/share/vscode/extensions/robocorp.robocorp-code/bin
               ln -s ${pkgs.rcc}/bin/rcc $out/share/vscode/extensions/robocorp.robocorp-code/bin
+              substituteInPlace $out/share/vscode/extensions/robocorp.robocorp-code/bin/create_env/conda_vscode_linux_amd64.yaml \
+                --replace "openssl>=3.0.7" "openssl"
             '';
             })
         ] ++ (if config.options.vscode-with-vim then [ vscodevim.vim ] else []))
