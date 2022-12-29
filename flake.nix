@@ -231,7 +231,7 @@ EOF
         (nixpkgs + "/nixos/modules/virtualisation/vagrant-virtualbox-image.nix")
         (import "${home-manager}/nixos")
         ({config, pkgs, ...}: { nixpkgs.overlays = [ self.overlays.x86_64-linux.default ]; })
-        ./configuration-virtualbox.nix
+        ./configuration-vagrant.nix
         ./configuration-common.nix
       ];
       system = "x86_64-linux";
