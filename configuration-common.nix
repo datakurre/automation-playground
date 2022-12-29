@@ -786,7 +786,7 @@ URL=http://localhost:9000/
 [Desktop Entry]
 Version=1.0
 Type=Link
-Name=DMN Simulator
+Name=DMN
 Comment=
 Icon=web-browser
 URL=https://consulting.camunda.com/dmn-simulator/

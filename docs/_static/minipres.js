@@ -187,7 +187,7 @@ function minipres() {
     // Increase space between sections
     //$("div .section").css('margin-bottom', '50%');
     $(sectionSelector).css('margin-top', '80vh');
-    $(sectionSelector).css('padding-top', '20vh');
+    $(sectionSelector).css('padding-top', '15vh');
     $(".wy-nav-content").css('max-width', '100vw');
     $(".wy-nav-content").css('padding-left', '10vw');
     $(".wy-nav-content").css('padding-right', '10vw');
