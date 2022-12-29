@@ -8,11 +8,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2.4.0
-    - uses: cachix/install-nix-action@v16
+    - uses: actions/checkout@v3.2.0
+    - uses: cachix/install-nix-action@v18
       with:
         nix_path: nixpkgs=channel:nixos-unstable
-    - uses: cachix/cachix-action@v10
+    - uses: cachix/cachix-action@v12
       with:
         name: datakurre
         signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
@@ -23,7 +23,7 @@ jobs:
         rm result
     - run: nix-shell shell.nix --run "echo OK"
     - run: nix-shell default.nix --run "echo OK"
-    - uses: JamesIves/github-pages-deploy-action@4.1.4
+    - uses: JamesIves/github-pages-deploy-action@4.4.1
       with:
         branch: gh-pages
         folder: build
