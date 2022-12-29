@@ -1016,8 +1016,8 @@ fi
             mktplcRef = {
               name = "robocorp-code";
               publisher = "robocorp";
-              version = "0.42.0";
-              sha256 = "sha256-XARVTVWfP8HTHsr8U1azvcL0zGjRFcVVGnBjBPyVesQ=";
+              version = "0.42.1";
+              sha256 = "sha256-CKqfSH0d1hjplksYKMsQ22HMVbO697mE1v17K2c7Hk4=";
             };
             postInstall = ''
               mkdir -p $out/share/vscode/extensions/robocorp.robocorp-code/bin
