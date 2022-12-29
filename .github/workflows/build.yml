@@ -21,8 +21,6 @@ jobs:
         cp -aL result build;
         chmod a+w -R build;
         rm result
-    - run: nix-shell shell.nix --run "echo OK"
-    - run: nix-shell default.nix --run "echo OK"
     - uses: JamesIves/github-pages-deploy-action@v4.4.1
       with:
         branch: gh-pages
