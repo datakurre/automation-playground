@@ -20,7 +20,7 @@ jobs:
         nix build .#docs;
         cp -aL result build;
         chmod a+w -R build;
-        touch build/.nojekyll
+        touch build/.nojekyll;
         rm result
     - uses: JamesIves/github-pages-deploy-action@v4.4.1
       with:
