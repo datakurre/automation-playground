@@ -803,6 +803,15 @@ Path=
 Terminal=true
 StartupNotify=false
         '';
+        home.file.".config/playground/docs.desktop".source = pkgs.writeText "docs.desktop" ''
+[Desktop Entry]
+Version=1.0
+Type=Link
+Name=Docs
+Comment=
+Icon=emblem-documents
+URL=https://datakurre.github.io/automation-playground/
+        '';
         home.file.".config/playground/xfce4-session-logout.desktop".source = pkgs.writeText "xfce4-session-logout.desktop" ''
 [Desktop Entry]
 Version=1.0
