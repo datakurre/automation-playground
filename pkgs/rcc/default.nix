@@ -9,6 +9,7 @@ in buildFHSUserEnv {
   targetPkgs = pkgs: (with pkgs; [
     micromamba
     rcc
+    # Inject enough dependencies to make robotframework-browser work
     pkgs.alsa-lib
     pkgs.at-spi2-atk
     pkgs.cairo

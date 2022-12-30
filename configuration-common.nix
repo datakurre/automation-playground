@@ -897,6 +897,11 @@ xfce4-panel &
         };
         home.activation = {
           xfce4Configuration = lib.hm.dag.entryAfter ["writeBoundary"] ''
+# Disable RCC telemetry by default
+if [ ! -d "$HOME/.robocorp" ]; then
+  rcc configuration identity -t
+fi
+
 # Default applications
 if [ ! -f "$HOME/.config/xfce4/helpers.rc" ]; then
   mkdir -p $HOME/.config/xfce4
@@ -1002,6 +1007,8 @@ fi
         programs.vscode.enable = true;
         programs.vscode.package = ((if config.options.vscode-unfree then pkgs.vscode-fhsWithPackages else pkgs.vscodium-fhsWithPackages) (ps: with ps; [
           (ps.python3Full.withPackages(ps: [(robotframework ps)]))
+          pkgs.rcc
+          # Inject enough dependencies to make robotframework-browser work
           pkgs.alsa-lib
           pkgs.at-spi2-atk
           pkgs.cairo
@@ -1016,7 +1023,6 @@ fi
           pkgs.nspr
           pkgs.nss
           pkgs.pango
-          pkgs.rcc
           pkgs.wayland
           pkgs.xorg.libX11
           pkgs.xorg.libXcomposite
@@ -1044,10 +1050,16 @@ fi
               sha256 = "sha256-CKqfSH0d1hjplksYKMsQ22HMVbO697mE1v17K2c7Hk4=";
             };
             postInstall = ''
+              # Use nix built RCC
               mkdir -p $out/share/vscode/extensions/robocorp.robocorp-code/bin
               ln -s ${pkgs.rcc}/bin/rcc $out/share/vscode/extensions/robocorp.robocorp-code/bin
+              # Patch code env to make inspectors work
               substituteInPlace $out/share/vscode/extensions/robocorp.robocorp-code/bin/create_env/conda_vscode_linux_amd64.yaml \
-                --replace "openssl>=3.0.7" "openssl"
+                --replace "- openssl>=3.0.7" "- openssl" \
+                --replace "- pyqt" "# pyqt"
+              substituteInPlace $out/share/vscode/extensions/robocorp.robocorp-code/bin/create_env/get_env_info.py \
+                --replace "dict(os.environ)" "dict(os.environ) | {'GI_TYPELIB_PATH': ':'.join([os.environ['GI_TYPELIB_PATH'], '${pkgs.webkitgtk}/lib/girepository-1.0', '${pkgs.gnome.libsoup}/lib/girepository-1.0']), 'PYTHONPATH': '${pkgs.python39Packages.pygobject3}/lib/python3.9/site-packages/'}" \
+                --replace "flush()" "flush(); from pathlib import Path; import sys; p=Path(f'{sys.prefix}/lib/python3.9/site-packages/inspector/windows/base.py'); p.write_text(p.read_text().replace('resizable=False', 'resizable=True'))"
             '';
             })
         ] ++ (if config.options.vscode-with-vim then [ vscodevim.vim ] else []))
