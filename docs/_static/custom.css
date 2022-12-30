@@ -1,2 +1,5 @@
 figcaption { margin-top: 2ex; }
 .clear-both { clear: both; }
+.djs-container > svg { min-height: 400px; max-height: 60vh; }
+.bts-toggle-mode { display: none; }
+button.fa-play, button.fa-stop { margin-left: 1ex; border: none; background: none; }
