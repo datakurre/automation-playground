@@ -17,6 +17,10 @@ jQuery(function($) {
     var id = "simulation-" + Math.floor(Math.random() * (new Date().getTime()));
     play.bind("click keypress", handleClickAndPress(function (e) {
       if (!document.getElementById(id)) {
+        if ($(el).parents("figcaption").length && $(el).parents(".legend").length) {
+          $(el).parents("figcaption").siblings().hide();
+          $(el).parents(".legend").siblings().hide();
+        }
         play.hide();
         stop.show().focus();
         stop.after('<div id="'+ id + '"/>');
@@ -28,6 +32,10 @@ jQuery(function($) {
         $('#' + id).remove();
         stop.hide();
         play.show().focus();
+        if ($(el).parents("figcaption").length && $(el).parents(".legend").length) {
+          $(el).parents("figcaption").siblings().show();
+          $(el).parents(".legend").siblings().show();
+        }
       }
     }));
     stop.hide();

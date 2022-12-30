@@ -31,8 +31,14 @@ html_show_sourcelink = False
 html_show_sphinx = False
 html_theme_options = dict(display_version=False, logo_only=True)
 html_static_path = ['_static']
-html_css_files = ['custom.css']
-html_js_files = ['minipres.js']
+html_css_files = [
+  'diagram-js.css',
+  'bpmn-js.css',
+  'bpmn-embedded.css',
+  'bpmn-js-token-simulation.css',
+  'custom.css',
+]
+html_js_files = ['minipres.js', 'bpmn-js-token-simulation.js', 'custom.js']
 
 # FEEL lexer
 

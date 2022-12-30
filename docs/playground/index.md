@@ -66,6 +66,10 @@ Camunda Modeler can also deploy and start processes at the Zeebe running on the 
 Robocorp Code and Robot Framework LSP extensions together allow to debug Robot Framework automation packages with example data and visual breakpoints.
 ```
 
+```{note}
+Due to the setup of the playground, browser locator picker in Robocorp Code is not fully functional.
+```
+
 
 ## RCC integration
 
