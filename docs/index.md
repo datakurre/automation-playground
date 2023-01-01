@@ -1,8 +1,20 @@
-Open Automation Playground
-==========================
+# Open Automation Playground
 
-<!-- https://myst-parser.readthedocs.io/ -->
+**Welcome!** This is the documentation for so called [Open Automation Playground](https://github.com/datakurre/automation-playground/): a preconfigured and opinionated virtual desktop for mostly open source process automation with [Camunda Zeebe](https://camunda.com/platform/zeebe/) process orcestrator and [Robot Framework](https://robotframework.org/) with  [RCC toolchain](https://robocorp.com/docs/rcc/overview) (and [parrot-rcc](https://github.com/datakurre/parrot-rcc/)).
+
+![](./playground/desktop-full.png)
+
+The playground is a standalone virtual desktop environment and requires neither [Camunda](https://camunda.com/platform/) nor [Robocorp Cloud](https://robocorp.com/docs/control-room) to function. [Robocon 2023 workshop](https://robocon.io#business-process-automation-with-robot-framework-and-camunda-platform) participants will have access to dedicated cloud virtual machines with playground installed, but the [playground is also avaible for VirtualBox with Vagrant](vagrant).
+
+## Table of Contents
 
 ```{toctree}
-./playground/index.md
+:maxdepth: 1
+
+workshop/index.md
+playground/index.md
+bpmn/index.md
+
 ```
+
+<!-- See: https://myst-parser.readthedocs.io/ -->

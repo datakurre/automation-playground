@@ -23,11 +23,7 @@ RESERVED_WORDS = [
 ]
 
 OPERATOR_WORDS = [
-    "in"
-    "instance"
-    "and"
-    "or"
-    "xor",
+    "in" "instance" "and" "or" "xor",
     "of Any",
     "of boolean",
     "of context",
@@ -187,6 +183,7 @@ class FeelLexer(Lexer):
             stdout=subprocess.PIPE,
         )
         tree = json.loads(result.stdout.decode())
+
         def walk(children, token_type=Token.Text):
             for token in children:
                 # print(token["type"])
@@ -206,6 +203,7 @@ class FeelLexer(Lexer):
                     yield from walk(
                         token["children"], self.token_map.get(token["type"], Token.Text)
                     )
+
         yield from walk(tree)
 
     def __call__(self, *args, **kwargkwargss):

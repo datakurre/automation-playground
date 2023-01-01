@@ -3,3 +3,6 @@ figcaption { margin-top: 2ex; }
 .djs-container > svg { min-height: 400px; max-height: 60vh; }
 .bts-toggle-mode { display: none; }
 button.fa-play, button.fa-stop { margin: 0 0.5ex 0 0.5ex; padding: 0 0.5ex 0 0.5ex; border: none; background: none; }
+img.role-bpmn { height: 3ex; }
+img.role-bpmn[src$="boundary-event.svg"] { scale: 3; margin: -5ex 1ex 0 1ex; clip-path: inset(50% 25% 0 25%); }
+img.role-bpmn[src$="subprocess-start-event.svg"] { scale: 3; clip-path: inset(33% 33% 33% 33%); }
