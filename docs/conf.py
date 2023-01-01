@@ -15,7 +15,7 @@ author = 'Asko Soukka'
 import sys, os
 
 sys.path.append(os.path.abspath('exts'))
-extensions = ['myst_parser', 'sphinx_copybutton', 'bpmn_to_image']
+extensions = ['myst_parser', 'sphinx_copybutton', 'bpmn_to_image', 'dmn_to_html']
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
@@ -37,6 +37,10 @@ html_css_files = [
   'bpmn-embedded.css',
   'bpmn-js-token-simulation.css',
   'custom.css',
+  'dmn-js-shared.css',
+  'dmn-js-decision-table.css',
+  'dmn-js-literal-expression.css',
+  'dmn.css',
 ]
 html_js_files = ['minipres.js', 'bpmn-js-token-simulation.js', 'custom.js']
 

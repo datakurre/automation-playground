@@ -16,6 +16,22 @@
         "type": "github"
       }
     },
+    "dmn-to-html": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1672565898,
+        "narHash": "sha256-sHdgaH3yGUKrBDJVZm18epX4ieyt9mYQksDru4zCba0=",
+        "owner": "datakurre",
+        "repo": "dmn-to-html",
+        "rev": "1ab9c42ddb69dda8baaa5d248782980fc12834dd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "datakurre",
+        "repo": "dmn-to-html",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "locked": {
         "lastModified": 1667395993,
@@ -236,6 +252,7 @@
     "root": {
       "inputs": {
         "bpmn-to-image": "bpmn-to-image",
+        "dmn-to-html": "dmn-to-html",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "lezer-feel": "lezer-feel",
