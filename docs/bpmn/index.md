@@ -58,6 +58,19 @@ Attaching events to task boundaries is where BPMN super powers begin. In this ex
 ```
 
 
+## Errors at boundary
+
+There are two kind of errors in process automation:
+
+* **Application errors** are caused by technical issues like network outages or programming errors, and are fixed by retrying the failing part of the process after the issue has been fixed.
+
+* **Business errors** are known exceptions in the process itself, which cannot be fixed by simply retrying, but they must be expected and handled on the BPMN diagram level.
+
+```{bpmn-figure} boundary-bpmn-error
+In this example, a business error is being expected with {bpmn}`bpmn-error-boundary-event` **error boundary event** (which is always interrupting), and it is used to route the process to alterntive end event. {download}`boundary-bpmn-error.bpmn`
+```
+
+
 ## Embedded sub-process
 
 ```{bpmn-figure} embedded-subprocess
@@ -76,8 +89,13 @@ The subprocess example above could also be implemented with use of multiple boun
 {download}`event-subprocess.bpmn`
 ```
 
+## Multi-instance
 
-## Task types
+```{bpmn-figure} multi-instance-subprocess
+**Tasks** and **embedded sub-processes** can be configured to be **multi-instance**: either {bpmn}`parallel-multi-instance` **parallel** or {bpmn}`sequential-multi-instance` **sequential**. Multi-instance requires an input collection to be configured for it, but then it executes task or sub-process separately for every input item in the collection (and on Zeebe engine also collects the output into configured output collection). {download}`multi-instance-subprocess.bpmn`
+```
+
+## Available task types
 
 The examples above, use only so called {bpmn}`undefined-task` **undefined task**. It is useful in drafting and documenting processes, but not really in actually implementing and automating the processes. Obviously, there are many more concrete task types.
 
@@ -110,13 +128,26 @@ Now that  **service task** has become the core component in process automation, 
 ```
 
 
-### Business rule task
-
-```{bpmn-figure} business-rule-task
-```
-
-
 ### Call activity
 
 ```{bpmn-figure} call-activity-task
+**Call activity** calls a such configured sub-process, which is defined separately from the main process (unlike embedded sub-process). It allows to abstract recurring parts of process into re-used sub-processes.
 ```
+
+```{bpmn-figure} call-activity-process
+In this example, **Call activity** is used to hide the embedded sub-process details shown in the earlier examples.
+{download}`call-activity-process.bpmn`
+```
+
+### Business rule task
+
+```{bpmn-figure} business-rule-task
+**Business rule task** is a special task type reserved for automated rule-based decision making in a process. It's typically configured to use DMN (Decision Model and Notation) decision tables, designed to describe business rules. In addition, DMN tables can be maintained separately from the process models, for example, to allow faster iterations.
+```
+
+This imaginary bus ticket pricing is an example, in which decision table should be superior to possible alternatives like "just coding it":
+
+```{dmn-html} bus-ticket-price
+```
+{download}`bus-ticket-price.dmn`
+
