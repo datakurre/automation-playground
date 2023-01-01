@@ -1,6 +1,6 @@
 # Open Automation Playground
 
-**Welcome!** This is the documentation for so called [Open Automation Playground](https://github.com/datakurre/automation-playground/): a preconfigured and opinionated virtual desktop for mostly open source process automation with [Camunda Zeebe](https://camunda.com/platform/zeebe/) process orcestrator and [Robot Framework](https://robotframework.org/) with  [RCC toolchain](https://robocorp.com/docs/rcc/overview) (and [parrot-rcc](https://github.com/datakurre/parrot-rcc/)).
+**Welcome!** This is the documentation for so called [Open Automation Playground](https://github.com/datakurre/automation-playground/): a preconfigured and opinionated virtual desktop for mostly open source process automation with [Camunda Zeebe](https://camunda.com/platform/zeebe/) process orchestrator and [Robot Framework](https://robotframework.org/) with  [RCC toolchain](https://robocorp.com/docs/rcc/overview) (and [parrot-rcc](https://github.com/datakurre/parrot-rcc/)).
 
 ![](./playground/desktop-full.png)
 

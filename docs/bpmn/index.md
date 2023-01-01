@@ -1,11 +1,11 @@
-# Gentle BPMN primer
+# BPMN basics by examples
 
 Business Process Model and Notation (BPMN) is a graphical representation for specifying business processes in a business process model [{sup}`Wikipedia`](https://en.wikipedia.org/wiki/Business_Process_Model_and_Notation).
 
 This is an opinionated introduction to some of the most common BPMN 2.0 symbols and their use. For a more complete overview, check [Camunda BPMN primer](https://docs.camunda.io/docs/components/modeler/bpmn/bpmn-primer/) or take a free [Camunda online BPMN 2.0 Training](https://academy.camunda.com/camunda-bpmn) course.
 
 ```{note}
-This primer intentionally excludes {bpmn}`event-based-gateway` event based gateways, most of BPMN messaging, and everything not yet supported by Camunda Zeebe engine (in time of writing).
+This starter intentionally excludes {bpmn}`event-based-gateway` event based gateways, most of the BPMN messaging symbols, and everything not yet supported by Camunda Zeebe engine (in time of writing).
 ```
 
 
@@ -24,7 +24,7 @@ BPMN flow elements are named by using their process' business domain terms. Even
 ## Gateways and paths
 
 ```{bpmn-figure} gateways-and-paths
-BPMN gateways control which one of the available paths is taken at the time of execution. {bpmn}`exclusive-gateway` **exclusive gateway** (in the example) allows only one path at time to be followed at once (either to split or join the flow). {download}`gateways-and-paths.bpmn`
+BPMN gateways control which one of the available paths is taken at the time of execution. {bpmn}`exclusive-gateway` **exclusive gateway** in the example allows only one path at time to be followed at time (either to split or join the flow). {download}`gateways-and-paths.bpmn`
 ```
 
 ## Concurrent tokens
@@ -42,7 +42,7 @@ Not all BPMN tokens need to reach the same {bpmn}`end-event` **end event** for t
 ## Intermediate events
 
 ```{bpmn-figure} intermediate-events
-In addition to start and end events, BPMN has {bpmn}`intermediate-throw-event` intermediate (throw) events too. The most simply use case for them, is to use empty intermediate throw events to mark relevant business states in the process (as metrics for later historic data analysis). {download}`intermediate-events.bpmn`
+In addition to start and end events, BPMN has {bpmn}`intermediate-throw-event` intermediate (throw) events too. The most simply use case for them, is to use empty intermediate throw events to mark relevant business states in the process (as metrics like KPIs in later data analysis). {download}`intermediate-events.bpmn`
 ```
 
 ## Alternative start events
@@ -54,7 +54,7 @@ While the plain {bpmn}`start-event` **start event** could be triggered through A
 ## Events at boundary
 
 ```{bpmn-figure} boundary-events
-Attaching events to task boundaries is where BPMN super powers begin. In this example, a {bpmn}`non-interrupting-timer-boundary-event` **non-interrupting timer boundary event** is used to send reminders about incomplete tasks, creating a new token, until the actual task is done. {download}`boundary-events.bpmn`
+Attaching events to task boundaries is where BPMN super powers really begin. In this example, a {bpmn}`non-interrupting-timer-boundary-event` **non-interrupting timer boundary event** is used to send reminders about incomplete tasks. Non-interrupting events, by their name, don't interrupt the task, which they are connected to. Instead, they create a new token for the path they start (in the example, regularly as long as the task has not been completed). {download}`boundary-events.bpmn`
 ```
 
 
@@ -62,37 +62,37 @@ Attaching events to task boundaries is where BPMN super powers begin. In this ex
 
 There are two kind of errors in process automation:
 
-* **Application errors** are caused by technical issues like network outages or programming errors, and are fixed by retrying the failing part of the process after the issue has been fixed.
+* **Application errors**, which are caused by technical issues like network outages or programming errors, and are fixed by retrying the failing part of the process once the technical issue has been solved.
 
-* **Business errors** are known exceptions in the process itself, which cannot be fixed by simply retrying, but they must be expected and handled on the BPMN diagram level.
+* **Business errors**, which are known exceptions in the process itself, and cannot be fixed by simply retrying, but must be expected and handled on the BPMN diagram level instead.
 
 ```{bpmn-figure} boundary-bpmn-error
-In this example, a business error is being expected with {bpmn}`bpmn-error-boundary-event` **error boundary event** (which is always interrupting), and it is used to route the process to alterntive end event. {download}`boundary-bpmn-error.bpmn`
+In this example, a business error is being expected with {bpmn}`bpmn-error-boundary-event` **error boundary event** (which is always interrupting), and it is used to route the process to alternative end event. {download}`boundary-bpmn-error.bpmn`
 ```
 
 
 ## Embedded sub-process
 
-```{bpmn-figure} embedded-subprocess
-**Embedded sub-process** looks like a process with its own {bpmn}`start-event` **start event** and {bpmn}`end-event` **end event**(s) within its host process. It is a powerful pattern to use subprocess for wrapping tasks, which should share boundary events. In this example an {bpmn}`interrupting-timer-boundary-event` **interrupting boundary timer event** is used to cancel the whole subprocess. {download}`embedded-subprocess.bpmn`
+```{bpmn-figure} embedded-
+**Embedded sub-process** looks like a process with its own {bpmn}`start-event` **start event** and {bpmn}`end-event` **end event**(s) within its host process. It is a powerful pattern to use  for wrapping tasks, which should share some boundary events. In this example, an {bpmn}`interrupting-timer-boundary-event` **interrupting boundary timer event** is used to cancel the whole sub-process. {download}`embedded-subprocess.bpmn`
 ```
 ```{note}
-The subprocess example above could also be implemented with use of multiple boundary events task. But how would this change the behavior?
+The  example above could also be implemented with use of multiple boundary events task. But how would this change the behavior?
 ```{bpmn-image} multiple-boundary-events
 ```
 
 
 ## Event sub-process
 
-```{bpmn-figure} event-subprocess
-**Event sub-process** can either interrupt the execution of the main process (with interrupting start event) or run sub-processes in parallel to the main process (with non-interrupting start event). The example does latter with a {bpmn}`non-interrupting-timer-subprocess-start-event` **non-interrupting start timer event**.
-{download}`event-subprocess.bpmn`
+```{bpmn-figure} event-
+**Event sub-process** can either interrupt the execution of the main process (with interrupting start event) or run sub-processes in parallel to the main process (with non-interrupting start event). The example does latter with a {bpmn}`non-interrupting-timer--start-event` **non-interrupting start timer event**.
+{download}`event-.bpmn`
 ```
 
 ## Multi-instance
 
-```{bpmn-figure} multi-instance-subprocess
-**Tasks** and **embedded sub-processes** can be configured to be **multi-instance**: either {bpmn}`parallel-multi-instance` **parallel** or {bpmn}`sequential-multi-instance` **sequential**. Multi-instance requires an input collection to be configured for it, but then it executes task or sub-process separately for every input item in the collection (and on Zeebe engine also collects the output into configured output collection). {download}`multi-instance-subprocess.bpmn`
+```{bpmn-figure} multi-instance-
+**Tasks** and **embedded sub-processes** can be configured to be **multi-instance**: either {bpmn}`parallel-multi-instance` **parallel** or {bpmn}`sequential-multi-instance` **sequential**. Multi-instance requires an input collection to be configured for it, but then it executes task or sub-process separately for every input item in the collection with one BPN symbol (and on Zeebe engine also collects the output into configured output collection). {download}`multi-instance-.bpmn`
 ```
 
 ## Available task types
@@ -103,7 +103,7 @@ The examples above, use only so called {bpmn}`undefined-task` **undefined task**
 ### User task
 
 ```{bpmn-figure} user-task
-**User task** is a task mean to be completed by a human through a connected user interface. Most common way to implement a user task is to show the user a form.
+**User task** is a task, which is meant to be completed by a human through a connected user interface. Most common way to implement a user task is to show the user a form.
 ```
 
 
@@ -116,14 +116,14 @@ The examples above, use only so called {bpmn}`undefined-task` **undefined task**
 ### Service task
 
 ```{bpmn-figure} service-task
-**Service task** represents automated task. All **Robot Framework** tasks are service tasks.
+**Service task** represents automated task. All **Robot Framework** automation tasks are service tasks.
 ```
 
 
 ### Service task (custom)
 
 ```{bpmn-figure} robot-task
-Now that  **service task** has become the core component in process automation, it has also become a thing to customize its symbol to make it easier to reconize service tasks by some categorization. So, when you se a task element with weird symbol, like **Robot Framework** logo, it is safe to assume that it is a service task with just a custom symbol.
+Now that  **service task** has become the core component in process automation, it has also become a thing to customize its symbol to make it easier to reconize service tasks by some categorization. So, when you see a task element with weird symbol, like **Robot Framework** logo, it is safe to assume that it is a service task with just a custom symbol.
 
 ```
 
@@ -131,11 +131,11 @@ Now that  **service task** has become the core component in process automation, 
 ### Call activity
 
 ```{bpmn-figure} call-activity-task
-**Call activity** calls a such configured sub-process, which is defined separately from the main process (unlike embedded sub-process). It allows to abstract recurring parts of process into re-used sub-processes.
+**Call activity** calls a such configured sub-process, which is defined separately from the main process (unlike embedded sub-process). It allows to abstract recurring parts of process into re-usable sub-processes (while cleaning up clutter.
 ```
 
 ```{bpmn-figure} call-activity-process
-In this example, **Call activity** is used to hide the embedded sub-process details shown in the earlier examples.
+In this example, **Call activity** is used to hide the embedded sub-process details, which have been shown in the earlier examples.
 {download}`call-activity-process.bpmn`
 ```
 
@@ -145,9 +145,8 @@ In this example, **Call activity** is used to hide the embedded sub-process deta
 **Business rule task** is a special task type reserved for automated rule-based decision making in a process. It's typically configured to use DMN (Decision Model and Notation) decision tables, designed to describe business rules. In addition, DMN tables can be maintained separately from the process models, for example, to allow faster iterations.
 ```
 
-This imaginary bus ticket pricing is an example, in which decision table should be superior to possible alternatives like "just coding it":
+This imaginary bus ticket pricing is an example, in which decision table should be superior to possible alternatives, like "just coding it":
 
 ```{dmn-html} bus-ticket-price
 ```
 {download}`bus-ticket-price.dmn`
-

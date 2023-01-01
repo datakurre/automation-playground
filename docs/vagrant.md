@@ -1,3 +1,7 @@
+---
+orphan: true
+---
+
 # Playground for Vagrant
 
 [Open Automation Playground](https://github.com/datakurre/automation-playground) is also available for [Oracle VM VirtualBox](https://www.virtualbox.org/) with [HashiCorp Vagrant](https://www.vagrantup.com/) with the following `Vagrantfile`:
