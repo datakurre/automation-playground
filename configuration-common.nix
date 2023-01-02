@@ -39,6 +39,7 @@ in {
       chromium
       evince
       git
+      xfce.xfce4-screenshooter
       gnome.file-roller
       gnumake
       gnumeric
