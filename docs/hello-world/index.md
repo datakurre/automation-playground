@@ -29,6 +29,8 @@ Robot: {download}`hello-world.zip`
 
 ## Deploy model definition
 
+The playground Zeebe matches *Camunda Platform 8 Self-Managed* with Cluster endpoint `http://localhost:26500` and *Authentication: None*.
+
 ![](./hello-world-modeler-04.png)
 
 ## Start new process instance
@@ -115,6 +117,8 @@ ignoreFiles:
 ```
 
 ## Wrap robot
+
+With **Open Robot Terminal** and typing `wrap`, the playground alias for `rcc robot wrap`.
 
 ![](./hello-world-code-07.png)
 
