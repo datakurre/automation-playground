@@ -11,23 +11,23 @@ This agenda is preliminary and is up to changes.
 * Welcome & Introductions
 * Open Automation Playground
 * BPMN, DMN, FEEL, Forms
-* Camunda Modeler & excercises
+* Camunda Modeler & exercises
 
 "Coffee break"
 
 * BPMN configuration
-* Zeebe Play & excercises
+* Zeebe Play & exercises
 * RPA Framework work items
 
 "Lunch break"
 
 * Robocorp Code and RCC
-* Robocorp Code excercises
-* RCC & Zeebe Play excercises
+* Robocorp Code exercises
+* RCC & Zeebe Play exercises
 
 "Coffee break"
 
-* Comprehensive excercise
+* Comprehensive exercise
 * Camunda Platform versions
 * Discussion
 
