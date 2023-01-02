@@ -73,7 +73,7 @@ In this example, a business error is being expected with {bpmn}`bpmn-error-bound
 
 ## Embedded sub-process
 
-```{bpmn-figure} embedded-
+```{bpmn-figure} embedded-subprocess
 **Embedded sub-process** looks like a process with its own {bpmn}`start-event` **start event** and {bpmn}`end-event` **end event**(s) within its host process. It is a powerful pattern to use  for wrapping tasks, which should share some boundary events. In this example, an {bpmn}`interrupting-timer-boundary-event` **interrupting boundary timer event** is used to cancel the whole sub-process. {download}`embedded-subprocess.bpmn`
 ```
 ```{note}
