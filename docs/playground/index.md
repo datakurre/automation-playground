@@ -1,13 +1,19 @@
 # Playground introduction
 
-Open automation playground desktop is a fully preconfigured virtual desktop environment for testing and learning how Robot Framework could be used to implement business process automation with Camunda Platform.
-
+Open automation playground desktop is a fully preconfigured virtual desktop environment for testing and learning how [Robot Framework](https://robotframework.org/rpa/) could be used to implement business process automation with [Camunda Platform](https://camunda.com/platform/).
 
 ```{figure} ./desktop-full.png
 :name: Desktop screenshot
 
 Automation playground desktop with preconfigured shortcuts.
 ```
+
+Technically, the playground desktop is a [NixOS](https://nixos.org/) based [Xfce Desktop Environment](https://www.xfce.org/), configured to look minimal and simple. To make it easier to ease focus on learning.
+
+```{note}
+Do not try to manually update the applications on the playround, or install new ones. Take it as a managed environment.
+```
+
 
 ## Keyboard configuration
 
@@ -27,13 +33,6 @@ The first thing you want to do after launching the playground, is to configure y
 At first, disable **Use system defaults**. Then **add** your own keyboard layout and **remove** all the other to make sure that yours stay always active.
 ```
 
-Technically, the playground desktop is a NixOS based Xfce Desktop Environment, configured to look minimal and simple. To make it easier to ease focus on learning.
-
-```{note}
-
-Do not try to manually update the applications on the playround, or install new ones. Take it as a managed environment.
-```
-
 
 ## Camunda Modeler
 
@@ -42,12 +41,12 @@ Do not try to manually update the applications on the playround, or install new 
 :align: left
 ```
 
-**Camunda Modeler** is the open source BPMN, DMN (and user task form) modeling tool made available for free by Camunda. The playground version comes also with Token Simulation plugin preinstalled.
+**[Camunda Modeler](https://camunda.com/download/modeler/)** is the open source BPMN, DMN (and user task form) modeling tool made available for free by Camunda. The playground version comes also with [Token Simulation plugin](https://github.com/camunda/camunda-modeler-token-simulation-plugin) preinstalled.
 
 ```{figure} ./window-modeler.png
 :alt:
 
-Camunda Modeler can also deploy and start processes at the Zeebe running on the playground (at `http://localhost:26500/` without authentication). 
+Camunda Modeler can also deploy and start processes at the [Zeebe](https://camunda.com/platform/zeebe/) running on the playground (at `http://localhost:26500/` without authentication). 
 ```
 
 
@@ -58,7 +57,7 @@ Camunda Modeler can also deploy and start processes at the Zeebe running on the 
 :align: left
 ```
 
-**Robocorp Code** is the open source Robot Framework development extension for VSCode (or VSCodium) made available for free by Robocorp. Together with Robot Framework LSP extension, it provides the best available Robot Framework based automation development experience.
+[**Robocorp Code**](https://marketplace.visualstudio.com/items?itemName=robocorp.robocorp-code) is the open source Robot Framework development extension for [VSCode](https://code.visualstudio.com/) (or [VSCodium](https://vscodium.com/)) made available for free by [Robocorp](https://robocorp.com/). Together with [Robot Framework LSP](https://marketplace.visualstudio.com/items?itemName=robocorp.robocorp-code) extension, it provides the best available Robot Framework based automation development experience.
 
 ```{figure} ./window-code.png
 :alt:
@@ -78,9 +77,9 @@ Due to the setup of the playground, browser locator picker in Robocorp Code is n
 :align: left
 ```
 
-**RCC** icon launches a new terminal window with **parrot-rcc** Zeebe worker integration. It delegates Zeebe jobs and their variables to their respective Robot Framework automation packages, and submits responses back to Zeebe.
+[**RCC**](https://robocorp.com/docs/rcc/overview) icon launches a new terminal window with [**parrot-rcc**](https://github.com/datakurre/parrot-rcc) Zeebe worker integration. It delegates Zeebe jobs and their variables to their respective Robot Framework automation packages, and submits responses back to Zeebe.
 
-RCC is an open source tool by Robocorp for executing Robot Framework or Python automation packages (while implicitly also managing their dependencies). **parrot-rcc** is a bridge between RCC style "robots" using RPA Framework work items and Zeebe-run BPMN processes.
+RCC is an open source tool by Robocorp for executing [Robot Framework or Python automation packages](https://robocorp.com/docs/setup/robot-structure) (while implicitly also managing their dependencies). parrot-rcc is a bridge between RCC style "robots" using RPA Framework work items and Zeebe-run BPMN processes.
 
 ```{figure} ./window-rcc.png
 :alt:
@@ -96,14 +95,14 @@ RCC integration is not run automatically, but can be started from the desktop wh
 :align: left
 ```
 
-**Zeebe Simple Monitor** is an open source web application for observing the running and completed processes on Zeebe engine. It is mainly intented for developer use, but it could be used as a starter for building for monitoring small production deployments [^footnote1]. *(Zeebe Simple Monitor is a Camunda Community project and its use is not officially supported by Camunda.)*
+[**Zeebe Simple Monitor**](https://github.com/camunda-community-hub/zeebe-simple-monitor) is an open source web application for observing the running and completed processes on [Zeebe engine](https://github.com/camunda-community-hub/zeebe-simple-monitor). It is mainly intented for developer use, but it could be used as a starter for building for monitoring small production deployments [^footnote1]. *(Zeebe Simple Monitor is a Camunda Community project and its use is not officially supported by Camunda.)*
 
-[^footnote1]: **Zeebe Simple Monitor** is [neither developed nor tested for production use](https://github.com/camunda-community-hub/zeebe-simple-monitor/issues/237), but thanks to the architecture of Zeebe, it cannot do any harm to production deployments. That said, as long as it supports only in-memory Hazelcast ring buffer for importing data from Zeebe, Zeebe Simple Monitor may not being able to receive all Zeebe data during high load.
+[^footnote1]: **Zeebe Simple Monitor** is [neither developed nor tested for production use](https://github.com/camunda-community-hub/zeebe-simple-monitor/issues/237), but thanks to the architecture of Zeebe, it cannot do any harm to production deployments. That said, as long as it supports only [in-memory Hazelcast ring buffer](https://github.com/camunda-community-hub/zeebe-hazelcast-exporter) for importing data from Zeebe, Zeebe Simple Monitor may not being able to receive all Zeebe data during high load.
 
 ```{figure} ./window-monitor.png
 :alt:
 
-**Zeebe Simple Monitor** is mostly read-only user-interface for observing processes. Yet, it does support creating new process instances and resolving incidents. *(Zeebe Play is a Camunda Community project and its use is not supported by Camunda.)*
+**Zeebe Simple Monitor** is mostly read-only user-interface for observing processes. Yet, it does support creating new process instances and resolving incidents. *(Zeebe Simple Monitor is a Camunda Community project and its use is not supported by Camunda.)*
 ```
 
 
@@ -114,7 +113,7 @@ RCC integration is not run automatically, but can be started from the desktop wh
 :align: left
 ```
 
-**Zeebe Play** is an open source developer tool for playing with and learning how BPMN processes are being executed by Zeebe. Lately, Play has been getting more love from its developers than Simple Monitor, and is currently the recommended open source user interface for learning process automation and orchestration with Zeebe. *(Zeebe Simple Monitor is a Camunda Community project and its use is not officially supported by Camunda.)*
+[**Zeebe Play**](https://github.com/camunda-community-hub/zeebe-play) is an open source developer tool for playing with and learning how BPMN processes are being executed by Zeebe. Lately, Play has been getting more love from its developers than Simple Monitor, and is currently the recommended open source user interface for learning process automation and orchestration with Zeebe. *(Zeebe Play is a Camunda Community project and its use is not officially supported by Camunda.)*
 
 ```{figure} ./window-play.png
 :alt:
@@ -130,12 +129,16 @@ Zeebe Play allows to interact with the running processes with completing their s
 :align: left
 ```
 
-**DMN simulator** is a free to use web service from Camunda to try out how DMN tables get executed. After execution, it uses DMN table itself to visualize the effective rows.
+[**DMN simulator**](https://consulting.camunda.com/dmn-simulator/) is a free to use web service from Camunda to try out how DMN tables get executed. After execution, it uses DMN table itself to visualize the effective rows.
 
 ```{figure} ./window-dmn.png
 :name: DMN simulator icon
 
 Unfortunately, there is no open source alternative for Camunda DMN simulator yet.
+```
+
+```{note}
+In time of writing, DMN simulator does not support all value types available in Zeebe.
 ```
 
 
@@ -146,17 +149,31 @@ Unfortunately, there is no open source alternative for Camunda DMN simulator yet
 :align: left
 ```
 
-**FEEL** icon launches a new terminal window with FEEL
-repl (Read-Eval-Print-Loop) to help in learning FEEL
-Friendly Enough Expression Language). It is a simple
+**FEEL** icon launches a new terminal window with [FEEL
+repl](https://camunda.github.io/feel-scala/docs/reference#usage) (Read-Eval-Print-Loop) to help in learning FEEL
+Friendly Enough Expression Language). It is [a simple
 functional expression language defined in DMN
-specification, and is the only built-in expression
+specification](https://camunda.github.io/feel-scala/docs/reference/what-is-feel), and is the only built-in expression
 language supported by Zeebe.
 
 ```{figure} ./window-feel.png
 :alt:
 
-FEEL repl helps to test out FEEL expressions, before using them in BPMN or DMN.
+FEEL repl helps to test out FEEL expressions with the [Camunda FEEL implementation](https://camunda.github.io/feel-scala/docs/reference/language-guide/language-guide-introduction), before using them in BPMN or DMN.
+```
+
+```{note}
+
+While FEEL repl uses the same implementation as Camunda Platform, an unofficial JavaScript implementation at [FEEL playground](https://nikku.github.io/feel-playground/) could be more convenient, as long as you are ready to double check weird results (seen with unaryTests) with the official implementation.
+
+Here is an embedded example of a full FEEL expressions (those used in input/output mappings and gateway expressions of BPMN in Camunda):
+
+```{raw} html
+<div style="background:white"><iframe src="../_static/feel/?e=user.consent&c=%7B%0A++%22user%22%3A+%7B%0A++++%22name%22%3A+%22Jane+Doe%22%2C%0A++++%22email%22%3A+%22jane.doe%40example.com%22%2C%0A++++%22consent%22%3A+true%0A++%7D%0A%7D&t=expression" width="100%" height="400"></iframe></div>
+
+<p style="margin-top:1em">And here is another one for FEEL unary test expression used in DMN decision table:</p>
+
+<div style="background:white"><iframe src="../_static/feel/?e=%5B%22student%22%2C+%22pensioner%22%5D&c=%7B%0A++%22%3F%22%3A+%22student%22%0A%7D&t=unaryTest" width="100%" height="400"></iframe></div>
 ```
 
 
@@ -167,7 +184,7 @@ FEEL repl helps to test out FEEL expressions, before using them in BPMN or DMN.
 :align: left
 ```
 
-**Mailhog** is an open source development email service with both SMTP and HTTP API, and also nice web user interface for reading the mail. Traditional email is still in widely used, and sending email is popular way to communicate information in business processes. Mailhog make is possible to test out email tasks on the playground.
+[**Mailhog**](https://github.com/mailhog/MailHog) is an open source development email service with both SMTP and HTTP API, and also nice web user interface for reading the mail. Traditional email is still in widely used, and sending email is popular way to communicate information in business processes. Mailhog make is possible to test out email tasks on the playground.
 
 ```{figure} ./window-mailhog.png
 :alt:
@@ -182,7 +199,7 @@ On the playground, Mailhog waits for email at SMTP port is `1025`, and the web s
 :alt: MinIO desktop icon
 :align: left
 ```
-**MinIO** is a S3 compatible open source file storage. On the playground MinIO is used to store and manage Robot Framework execution logs and RPA Framework work item files. While MinIO is used transparently by the RCC integration (parrot-rcc), MinIO user interface could be used to access the files outside the processes, or clean up the storage.
+[**MinIO**](https://min.io/) is a S3 compatible open source file storage. On the playground MinIO is used to store and manage Robot Framework execution logs and RPA Framework work item files. While MinIO is used transparently by the RCC integration (parrot-rcc), MinIO user interface could be used to access the files outside the processes, or clean up the storage.
 
 ```{figure} ./window-minio.png
 :name: MinIO icon
@@ -197,7 +214,7 @@ Both the username and password for accessing MinIO on the playground is simply `
 :align: left
 ```
 
-Hashicorp **Vault** is a popular open source secret management service. It is also a one possible option to provide secrets for Robot Framework automation run by RCC integration.
+[Hashicorp **Vault**](https://www.vaultproject.io/) is a popular open source secret management service. It is also a one possible option to provide secrets for Robot Framework automation run by RCC integration.
 
 ```{figure} ./window-vault.png
 :name: Vault icon
@@ -263,12 +280,12 @@ It is possible to search for applications not included on the playground by open
 
 If the playground upstream configuration has been updated, it is possible to do in-place upgrade for the playground virtual machine.
 
-On Vagrant, open a new terminal window and type:
+On [Vagrant](../vagrant), open a new terminal window and type:
 ```shell
 sudo nixos-rebuild switch --flake github:datakurre/automation-playground/main#vagrant
 ```
 
-On Google Computing engine, open a new terminal window and type:
+On [Google Computen Engine](https://cloud.google.com/compute), open a new terminal window and type:
 ```shell
 sudo nixos-rebuild switch --flake github:datakurre/automation-playground/main#gce
 ```

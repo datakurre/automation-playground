@@ -150,3 +150,7 @@ This imaginary bus ticket pricing is an example, in which decision table should 
 ```{dmn-html} bus-ticket-price
 ```
 {download}`bus-ticket-price.dmn`
+
+```{note}
+This example is designed for [Camunda Platform 7](https://camunda.com/platform-7/), because DMN simulator does not fully support value types available in Zeebe.
+```
