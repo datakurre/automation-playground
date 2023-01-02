@@ -184,7 +184,7 @@ Here is an embedded example of a full FEEL expressions (those used in input/outp
 :align: left
 ```
 
-[**Mailhog**](https://github.com/mailhog/MailHog) is an open source development email service with both SMTP and HTTP API, and also nice web user interface for reading the mail. Traditional email is still in widely used, and sending email is popular way to communicate information in business processes. Mailhog make is possible to test out email tasks on the playground.
+[**Mailhog**](https://github.com/mailhog/MailHog) is an open source development email service with both SMTP and HTTP API. In also has nice web user interface for reading the mail. Traditional email is still in widely used, and sending email is popular way to communicate information in business processes. Mailhog makes it possible to test out email tasks on the playground.
 
 ```{figure} ./window-mailhog.png
 :alt:
@@ -199,7 +199,7 @@ On the playground, Mailhog waits for email at SMTP port is `1025`, and the web s
 :alt: MinIO desktop icon
 :align: left
 ```
-[**MinIO**](https://min.io/) is a S3 compatible open source file storage. On the playground MinIO is used to store and manage Robot Framework execution logs and RPA Framework work item files. While MinIO is used transparently by the RCC integration (parrot-rcc), MinIO user interface could be used to access the files outside the processes, or clean up the storage.
+[**MinIO**](https://min.io/) is an S3 compatible open source file storage. On the playground MinIO is used to store and manage Robot Framework execution logs and [RPA Framework work item](https://rpaframework.org/libraries/robocorp_workitems/) files. While MinIO is used transparently by the RCC integration (parrot-rcc), MinIO user interface could be used to access the files outside the processes, or for cleaning up the storage.
 
 ```{figure} ./window-minio.png
 :name: MinIO icon
@@ -214,7 +214,7 @@ Both the username and password for accessing MinIO on the playground is simply `
 :align: left
 ```
 
-[Hashicorp **Vault**](https://www.vaultproject.io/) is a popular open source secret management service. It is also a one possible option to provide secrets for Robot Framework automation run by RCC integration.
+[Hashicorp **Vault**](https://www.vaultproject.io/) is a popular open source secret management service. It is also a one possible option to provide [secrets for Robot Framework automation](https://rpaframework.org/libraries/robocorp_vault/) run by RCC integration.
 
 ```{figure} ./window-vault.png
 :name: Vault icon
@@ -229,7 +229,7 @@ The most simple Vault feature static key value style secret management. On the p
 :align: left
 ```
 
-The playground, when run at Google Computing Engine, serves the folder at Public-folder shortcut at https://ipv4-address/pub/ to make it easier to export your work from the playground. Simply drag files here and they become downloadable to your local machine.
+The playground, when run at Google Compute Engine, serves the Public-folder shortcut at https://[ipv4-address]/pub/ to make it easier to export your work from the playground. Simply drag files here and they become downloadable to your local machine.
 
 ```{rst-class} clear-both
 ```
@@ -241,7 +241,7 @@ The playground, when run at Google Computing Engine, serves the folder at Public
 :align: left
 ```
 
-Robots-folder icon a shortcut to the workspace shared with both Robocorp Code and RCC to develop and discover Robot Framework code packages.
+Robots-folder shortcut opens the folder shared with both Robocorp Code and RCC to develop and discover Robot Framework code packages.
 
 
 ```{rst-class} clear-both
@@ -250,13 +250,11 @@ Robots-folder icon a shortcut to the workspace shared with both Robocorp Code an
 
 ## Tips and tricks
 
-For known common use cases...
-
 ### Open command line
 
 ```{figure} ./tricks-shell.png
 
-You may open command line terminal at the desktop or the open folder by selecting **Open Terminal Here** from the context menu (usually opened with a right click on mouse or track pad).
+You may open command line terminal at the desktop or the current folder by selecting **Open Terminal Here** from the context menu (usually opened with a right click on mouse or track pad).
 ```
 
 ### Reset Zeebe
@@ -285,7 +283,7 @@ On [Vagrant](../vagrant), open a new terminal window and type:
 sudo nixos-rebuild switch --flake github:datakurre/automation-playground/main#vagrant
 ```
 
-On [Google Computen Engine](https://cloud.google.com/compute), open a new terminal window and type:
+On [Google Compute Engine](https://cloud.google.com/compute), open a new terminal window and type:
 ```shell
 sudo nixos-rebuild switch --flake github:datakurre/automation-playground/main#gce
 ```
