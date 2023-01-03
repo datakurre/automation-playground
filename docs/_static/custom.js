@@ -23,7 +23,7 @@ jQuery(function($) {
           $(el).parents("figcaption").siblings().hide();
           $(el).parents("figcaption").before('<div id="'+ id + '"/>');
         } else {
-          stop.after('<div id="'+ id + '"/>');
+          $(el).after('<div id="'+ id + '"/>');
         }
         TokenSimulation(id, $(el).attr("href"));
       }
@@ -43,7 +43,7 @@ jQuery(function($) {
     if ($(el).parents("figcaption").length) {
       $(el).parents("figcaption").children().first().prepend(play).prepend(stop);
     } else {
-      $(el).after(play).after(stop);
+      $(el).before(play).before(stop);
     }
   })
 });

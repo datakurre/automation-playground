@@ -50,10 +50,14 @@ Now you are ready to practice.
 3. **Toggle Simulation** to observe, how tokens multiple on splits and merge back in joins.
 4. While on the simulator,  **toggle pause** on tasks to observe, how joining gateways wait for all incoming paths before letting merged token to continue.
 5. Turn the first {bpmn}`../bpmn/parallel-gateway` parallel gateway back to {bpmn}`../bpmn/exclusive-gateway` exclusive gateway and simulate. What happens at the joining gateways? Why?
+6. Revert the last step, and turn one of the latter {bpmn}`../bpmn/parallel-gateway` parallel gateways back to {bpmn}`../bpmn/exclusive-gateway` exclusive gateway and simulate. What happens now? Why?
 
 ```{bpmn-figure} concurrent-paths
 {download}`concurrent-paths.bpmn`
 ```
+{download}`concurrent-paths-locked.bpmn`<br/>
+{download}`concurrent-paths-doubled.bpmn`<br/>
+{download}`concurrent-paths-mixed.bpmn`
 
 ## Multiple end-events
 
