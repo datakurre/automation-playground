@@ -37,6 +37,7 @@ Now you are ready to practice.
 1. Model a flow that splits and joins with {bpmn}`../bpmn/exclusive-gateway` **exclusive gateways** (clear diamond symbol on the palette).
 2. **Toggle Simulation** to observe, how tokens choose their path on splits and join.
 3. While on the simulator, use **switch button** on the gateways to change the path.
+4. Observe, how the {bpmn}`../bpmn/start-event` start event and the {bpmn}`../bpmn/end-event` end event are vertically aligned with the **happy path** of the process. This usually makes the process easier to understand.
 
 ```{bpmn-figure} exclusive-paths
 {download}`exclusive-paths.bpmn`
