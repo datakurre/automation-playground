@@ -59,7 +59,7 @@ Now you are ready to practice.
 1. Re-use the model from the previous exercise.
 2. Replace some of the joining {bpmn}`../bpmn/parallel-gateway` parallel gateways with additional {bpmn}`../bpmn/end-event` end events.
 3. **Toggle Simulation** to observe, how the process completes only when all parallelized tokens have reached to at least some of the end events.
-4. While on the simulator, **toggle pause** on tasks to observe even easier, how completion of the process is delayed, even some tokens reach end events at their paths.
+4. While on the simulator, **toggle pause** on tasks to observe even easier, how completion of the process is delayed, even when some tokens reach end events at their paths.
 
 ```{bpmn-figure} multiple-end-events
 {download}`multiple-end-events.bpmn`

@@ -14,6 +14,7 @@ The playground is a standalone virtual desktop environment and requires neither 
 workshop/index.md
 playground/index.md
 bpmn/index.md
+modeling/index.md
 hello-world/index.md
 
 ```
