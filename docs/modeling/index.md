@@ -1,6 +1,6 @@
-# BPMN exercises
+# BPMN flow exercises
 
-Once learning [the basics of BPMN](../bpmn) it is now time to practice. Please, open **Camunda Modeler** from the desktop
+Once you've learned [the basics of BPMN](../bpmn) it is now time to practice. Please, open **Camunda Modeler** from the desktop
 
 ![](../playground/desktop-modeler.png)
 
@@ -34,10 +34,10 @@ Now you are ready to practice.
 
 ## Exclusive paths
 
-1. Model a flow that splits and joins with {bpmn}`../bpmn/exclusive-gateway` **exclusive gateways** (clear diamond symbol on the palette).
-2. **Toggle Simulation** to observe, how tokens choose their path on splits and join.
+1. Model a flow that splits and joins with {bpmn}`../bpmn/exclusive-gateway` **exclusive gateways** (plain diamond symbol on the palette).
+2. **Toggle Simulation** to observe, how tokens choose their path on splits and joins.
 3. While on the simulator, use **switch button** on the gateways to change the path.
-4. Observe, how the {bpmn}`../bpmn/start-event` start event and the {bpmn}`../bpmn/end-event` end event are vertically aligned with the **happy path** of the process. This usually makes the process easier to understand.
+4. See also, how the {bpmn}`../bpmn/start-event` start event and the {bpmn}`../bpmn/end-event` end event are vertically aligned with the **happy path** of the process. This usually makes the process easier to understand.
 
 ```{bpmn-figure} exclusive-paths
 {download}`exclusive-paths.bpmn`
@@ -70,4 +70,44 @@ Now you are ready to practice.
 {download}`multiple-end-events.bpmn`
 ```
 
-## to becontinued...
+## Embedded sub-process
+
+1. Re-use the model from the previous exercise.
+2. Wrap some of the {bpmn}`../bpmn/task.png` tasks with an embedded subprocess by looking up **expanded SubProcess** from modeling palette.
+3. **Toggle Simulation** to ensure that your process is still integrated (all tokens reach end events and process completes).
+
+All this should just refactor your model with an abstraction useful for the next practice. Tasks or their execution order should not change.
+
+```{bpmn-figure} embedded-sub-process
+{download}`embedded-sub-process.bpmn`
+```
+
+
+## Boundary event
+
+1. Re-use the model from the previous exercise.
+2. Allow the tasks within the embedded sub-process to be cancelled with a timeout using {bpmn}`../bpmn/interrupting-timer-boundary-event` interrupting timer boundary event.
+3. Add path from the {bpmn}`../bpmn/interrupting-timer-boundary-event` boundary event to a new joining {bpmn}`../bpmn/exclusive-gateway` to properly merge tokens before the {bpmn}`../bpmn/end-event` end event.
+4. **Toggle Simulation** and **toggle pause** for a task within the sub-process to let you manually simulate timer event and confirm that the process is completed properly also when triggering the timeout.
+5. Investigate, what happens, if you had used {bpmn}`../bpmn/non-interrupting-timer-boundary-event` non-interrupting timer boundary event instead?
+
+```{bpmn-figure} boundary-event
+{download}`boundary-event.bpmn`
+```
+
+{download}`wrong-boundary-event.bpmn`
+
+
+## More boundary events
+
+1. Re-use the model from the previous exercise.
+2. Add at least two more boundary events into the model with necessary paths and other elements. Make at least one of these to be a {bpmn}`../bpmn/non-interrupting-timer-boundary-event` non-interrupting timer boundary event.
+3. **Toggle Simulation** to ensure your model's integrity. Make sure to try out your new boundary events.
+
+```{bpmn-figure} more-boundary-events
+{download}`more-boundary-events.bpmn`
+```
+
+```{warning}
+Be aware of a possible issue in token simulator, where multiple boundary timer events at the same element boundary don't trigger correctly.
+```
