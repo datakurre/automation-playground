@@ -15,7 +15,7 @@
       <bpmn:outgoing>Flow_0tn4fv0</bpmn:outgoing>
     </bpmn:task>
     <bpmn:sequenceFlow id="Flow_0yjmr1r" sourceRef="Gateway_0gbjgii" targetRef="Activity_0mp6upp" />
-    <bpmn:task id="Activity_0vij27f" name="Play">
+    <bpmn:task id="Activity_0vij27f" name="Work">
       <bpmn:incoming>Flow_0o98lkx</bpmn:incoming>
       <bpmn:outgoing>Flow_1m6asja</bpmn:outgoing>
     </bpmn:task>
