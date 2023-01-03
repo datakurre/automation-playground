@@ -1,4 +1,4 @@
-# BPMN flow exercises
+# BPMN modeling exercises
 
 Once you've learned [the basics of BPMN](../bpmn) it is now time to practice. Please, open **Camunda Modeler** from the desktop
 
