@@ -41,6 +41,8 @@ Input and output mappings on the properties panel allow to adapt domain specific
 ```{figure} modeler-properties-inputs.png
 :alt:
 :width: 100%
+
+In our example, at service task, we use **Inputs** to set local variable `completed` with value `false`, expect the service task worker to update it, and then map its final using Outputs as variable `workCompleted` having the value of executed FEEL expression `completed` (which evaluates to the value of that local task variable during output mapping).
 ```
 
 ## Gateway paths
@@ -52,6 +54,8 @@ At first, one of the outgoing paths from an exclusive gateway, could be configur
 ```{figure} modeler-properties-gateway.png
 :alt:
 :width: 100%
+
+In our example, the exclusive gateway has two ongoing paths. The default path with label **No** goes back join the main flow just before the service task. The other path with label **Yes** is followed when FEEL expression `workCompleted` evaluates to `true`. That happen when the process variable `workCompleted` has value `true`.
 ```
 
 ```{warning}
