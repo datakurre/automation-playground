@@ -60,7 +60,7 @@ If expression for more than one path on a exclusive gateway results in *true*, a
 
 ## Feel expressions
 
-What are those FEEL expressions required for service task inputs, service task outputs and exclusive gateway conditions? FEEL stands for *Friendly Enough Expression Language*, which is a pretty simple functional expression language. With Camunda tools we use [Camunda FEEL implementation](https://camunda.github.io/feel-scala/docs/reference/), but nofficial [FEEL playground](https://nikku.github.io/feel-playground/) is probably stll the easiest place to learn, how to use FEEL expressions to map or test process variables.
+What are those FEEL expressions required for service task inputs, service task outputs and exclusive gateway conditions? FEEL stands for *Friendly Enough Expression Language*, which is a pretty simple functional expression language. With Camunda tools we use [Camunda FEEL implementation](https://camunda.github.io/feel-scala/docs/reference/), but unofficial [FEEL playground](https://nikku.github.io/feel-playground/) is probably stll the easiest place to learn, how to use FEEL expressions to map or test process variables.
 
 ```{raw} html
 <iframe src="../_static/feel/?e=user.name&c={%0A++%22completed%22%3A+true%2C%0A++%22user%22%3A+{%0A++++%22name%22%3A+%22Jane+Doe%22%2C%0A++++%22email%22%3A+%22jane.doe%40example.com%22%2C%0A++++%22consent%22%3A+true%0A++}%0A}&t=expression" width="100%" height="400"></iframe>
