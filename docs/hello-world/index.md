@@ -17,25 +17,40 @@ Robot: {download}`hello-world.zip`
 
 ## Choose Camunda 8 BPMN
 
-![](./hello-world-modeler-01.png)
+```{figure} hello-world-modeler-01.png
+:alt:
+:width: 100%
+```
 
 ## Draw minimal process flow
 
-![](./hello-world-modeler-02.png)
+```{figure} hello-world-modeler-02.png
+:alt:
+:width: 100%
+```
 
 ## Configure the service task
 
-![](./hello-world-modeler-03.png)
+```{figure} hello-world-modeler-03.png
+:alt:
+:width: 100%
+```
 
 ## Deploy model definition
 
 The playground Zeebe matches *Camunda Platform 8 Self-Managed* with Cluster endpoint `http://localhost:26500` and *Authentication: None*.
 
-![](./hello-world-modeler-04.png)
+```{figure} hello-world-modeler-04.png
+:alt:
+:width: 100%
+```
 
 ## Start new process instance
 
-![](./hello-world-modeler-05.png)
+```{figure} hello-world-modeler-05.png
+:alt:
+:width: 100%
+```
 
 ## Open Zeebe Play
 
@@ -43,19 +58,31 @@ The playground Zeebe matches *Camunda Platform 8 Self-Managed* with Cluster endp
 
 ## Choose deployments
 
-![](./hello-world-play-01.png)
+```{figure} hello-world-play-01.png
+:alt:
+:width: 100%
+```
 
 ## Choose your deployment
 
-![](./hello-world-play-02.png)
+```{figure} hello-world-play-02.png
+:alt:
+:width: 100%
+```
 
 ## Choose the started instance
 
-![](./hello-world-play-03.png)
+```{figure} hello-world-play-03.png
+:alt:
+:width: 100%
+```
 
 ## See how task is waiting
 
-![](./hello-world-play-04.png)
+```{figure} hello-world-play-04.png
+:alt:
+:width: 100%
+```
 
 ## Open Robocorp Code
 
@@ -63,27 +90,45 @@ The playground Zeebe matches *Camunda Platform 8 Self-Managed* with Cluster endp
 
 ## On the first run, wait...
 
-![](./hello-world-code-01.png)
+```{figure} hello-world-code-01.png
+:alt:
+:width: 100%
+```
 
 ## Create new robot
 
-![](./hello-world-code-02.png)
+```{figure} hello-world-code-02.png
+:alt:
+:width: 100%
+```
 
 ## Choose standard template
 
-![](./hello-world-code-03.png)
+```{figure} hello-world-code-03.png
+:alt:
+:width: 100%
+```
 
 ## Confirm children in workspace
 
-![](./hello-world-code-04.png)
+```{figure} hello-world-code-04.png
+:alt:
+:width: 100%
+```
 
 ## Give robot a name
 
-![](./hello-world-code-05.png)
+```{figure} hello-world-code-05.png
+:alt:
+:width: 100%
+```
 
 ## Align robot.yml with BPMN
 
-![](./hello-world-code-06.png)
+```{figure} hello-world-code-06.png
+:alt:
+:width: 100%
+```
 
 Update `tasks:` to have a task with your service task definition type `Hello World` and map it to the default task in the standard template in its tasks.robot with `robotTaskName: Minimal task`.
 
@@ -120,7 +165,10 @@ ignoreFiles:
 
 With **Open Robot Terminal** and typing `wrap`, the playground alias for `rcc robot wrap`.
 
-![](./hello-world-code-07.png)
+```{figure} hello-world-code-07.png
+:alt:
+:width: 100%
+```
 
 ## Start RCC
 
@@ -128,19 +176,31 @@ With **Open Robot Terminal** and typing `wrap`, the playground alias for `rcc ro
 
 ## Watch RCC warming up
 
-![](./hello-world-rcc-01.png)
+```{figure} hello-world-rcc-01.png
+:alt:
+:width: 100%
+```
 
 ## Watch RCC working
 
-![](./hello-world-rcc-02.png)
+```{figure} hello-world-rcc-02.png
+:alt:
+:width: 100%
+```
 
 ## Open the log file link
 
-![](./hello-world-rcc-03.png)
+```{figure} hello-world-rcc-03.png
+:alt:
+:width: 100%
+```
 
 ## Return to Zeebe Play
 
-![](./hello-world-play-05.png)
+```{figure} hello-world-play-05.png
+:alt:
+:width: 100%
+```
 
 That's all! It's time to congratulate yourself!
 

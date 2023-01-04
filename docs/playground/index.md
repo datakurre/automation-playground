@@ -3,7 +3,8 @@
 Open automation playground desktop is a fully preconfigured virtual desktop environment for testing and learning how [Robot Framework](https://robotframework.org/rpa/) could be used to implement business process automation with [Camunda Platform](https://camunda.com/platform/).
 
 ```{figure} ./desktop-full.png
-:name: Desktop screenshot
+:alt:
+:width: 100%
 
 Automation playground desktop with preconfigured shortcuts.
 ```
@@ -45,6 +46,7 @@ At first, disable **Use system defaults**. Then **add** your own keyboard layout
 
 ```{figure} ./window-modeler.png
 :alt:
+:width: 100%
 
 Camunda Modeler can also deploy and start processes at the [Zeebe](https://camunda.com/platform/zeebe/) running on the playground (at `http://localhost:26500/` without authentication). 
 ```
@@ -61,6 +63,7 @@ Camunda Modeler can also deploy and start processes at the [Zeebe](https://camun
 
 ```{figure} ./window-code.png
 :alt:
+:width: 100%
 
 Robocorp Code and Robot Framework LSP extensions together allow to debug Robot Framework automation packages with example data and visual breakpoints.
 ```
@@ -83,6 +86,7 @@ RCC is an open source tool by Robocorp for executing [Robot Framework or Python 
 
 ```{figure} ./window-rcc.png
 :alt:
+:width: 100%
 
 RCC integration is not run automatically, but can be started from the desktop when RCC execution is needed. It is run with debug logging for more insight how it works, and to ease access to the Robot Framework log files it creates.
 ```
@@ -101,6 +105,7 @@ RCC integration is not run automatically, but can be started from the desktop wh
 
 ```{figure} ./window-monitor.png
 :alt:
+:width: 100%
 
 **Zeebe Simple Monitor** is mostly read-only user-interface for observing processes. Yet, it does support creating new process instances and resolving incidents. *(Zeebe Simple Monitor is a Camunda Community project and its use is not supported by Camunda.)*
 ```
@@ -117,6 +122,7 @@ RCC integration is not run automatically, but can be started from the desktop wh
 
 ```{figure} ./window-play.png
 :alt:
+:width: 100%
 
 Zeebe Play allows to interact with the running processes with completing their service tasks, triggering timers and publishing BPMN messages directly from its user interface.
 ```
@@ -132,7 +138,8 @@ Zeebe Play allows to interact with the running processes with completing their s
 [**DMN simulator**](https://consulting.camunda.com/dmn-simulator/) is a free to use web service from Camunda to try out how DMN tables get executed. After execution, it uses DMN table itself to visualize the effective rows.
 
 ```{figure} ./window-dmn.png
-:name: DMN simulator icon
+:alt:
+:width: 100%
 
 Unfortunately, there is no open source alternative for Camunda DMN simulator yet.
 ```
@@ -158,6 +165,7 @@ language supported by Zeebe.
 
 ```{figure} ./window-feel.png
 :alt:
+:width: 100%
 
 FEEL repl helps to test out FEEL expressions with the [Camunda FEEL implementation](https://camunda.github.io/feel-scala/docs/reference/language-guide/language-guide-introduction), before using them in BPMN or DMN.
 ```
@@ -188,6 +196,7 @@ Here is an embedded example of a full FEEL expressions (those used in input/outp
 
 ```{figure} ./window-mailhog.png
 :alt:
+:width: 100%
 
 On the playground, Mailhog waits for email at SMTP port is `1025`, and the web service is available at `http://localhost:8025/`.
 
@@ -202,7 +211,8 @@ On the playground, Mailhog waits for email at SMTP port is `1025`, and the web s
 [**MinIO**](https://min.io/) is an S3 compatible open source file storage. On the playground MinIO is used to store and manage Robot Framework execution logs and [RPA Framework work item](https://rpaframework.org/libraries/robocorp_workitems/) files. While MinIO is used transparently by the RCC integration (parrot-rcc), MinIO user interface could be used to access the files outside the processes, or for cleaning up the storage.
 
 ```{figure} ./window-minio.png
-:name: MinIO icon
+:alt:
+:width: 100%
 
 Both the username and password for accessing MinIO on the playground is simply `minioadmin`. The playground comes with two buckets: *rcc* for Robot Framework execution logs and *zeebe* to store RPA Framework work item files by their related business processes.
 ```
@@ -217,7 +227,8 @@ Both the username and password for accessing MinIO on the playground is simply `
 [Hashicorp **Vault**](https://www.vaultproject.io/) is a popular open source secret management service. It is also a one possible option to provide [secrets for Robot Framework automation](https://rpaframework.org/libraries/robocorp_vault/) run by RCC integration.
 
 ```{figure} ./window-vault.png
-:name: Vault icon
+:alt:
+:width: 100%
 
 The most simple Vault feature static key value style secret management. On the playground, the admin token to enter Vault is simply `secret`.
 ```
@@ -253,6 +264,7 @@ Robots-folder shortcut opens the folder shared with both Robocorp Code and RCC t
 ### Open command line
 
 ```{figure} ./tricks-shell.png
+:alt:
 
 You may open command line terminal at the desktop or the current folder by selecting **Open Terminal Here** from the context menu (usually opened with a right click on mouse or track pad).
 ```
@@ -260,6 +272,8 @@ You may open command line terminal at the desktop or the current folder by selec
 ### Reset Zeebe
 
 ```{figure} ./tricks-reset.png
+:alt:
+:width: 100%
 
 By typing **reset-zeebe** on terminal window command line, you'll be able to reset Zeebe, Zeebe Simple Monitor and Zeebe Play back to their clean initial states.
 ```
@@ -267,6 +281,9 @@ By typing **reset-zeebe** on terminal window command line, you'll be able to res
 ### Wrap folders for export
 
 ```{figure} ./tricks-zip.png
+:alt:
+:width: 100%
+
 To make it easier to export your work from *Public** folder, you should archive them first into single easily downloadable files. This can be done by selecting the folders and files to be exported and then by selecting **Create Archive...** from the context menu (usually opened with a right click on mouse or track pad).
 ```
 

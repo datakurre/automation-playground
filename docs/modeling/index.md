@@ -1,16 +1,22 @@
 # BPMN modeling exercises
 
-Once you've learned [the basics of BPMN](../bpmn) it is now time to practice. Please, open **Camunda Modeler** from the desktop
+Once you've learned [the basics of BPMN](../bpmn/index), it is now time to practice. Please, open **Camunda Modeler** from the desktop
 
 ![](../playground/desktop-modeler.png)
 
 and choose **Camunda Platform 8 BPMN diagram** from its welcome screen
 
-![](modeler-welcome.png)
+```{figure} modeler-welcome.png
+:alt:
+:width: 100%
+```
 
 and almost ready to begin. Just make sure that you find the following important elements from the modeler user interface:
 
-![](modeler-empty.png)
+```{figure} modeler-empty.png
+:alt:
+:width: 100%
+```
 
 1. **Token Simulation toggle** just above the main modeling palette. Leave it off, but be ready to use it for these exercises.
 
