@@ -71,7 +71,7 @@ Use the embedded playground above to practice, how to access task variable
 <code class="docutils literal notranslate"><span class="pre">completed</span></code>,
 then add it into <stong>Variables</strong> as
 <code class="docutils literal notranslate"><span class="pre">workCompleted</span></code>
-and access it again. You have now implemented the expressions used in the on-going example!
+and access it again. You have now implemented the expressions used in our example.
 </p>
 ```
 
