@@ -15,7 +15,7 @@ function openDiagram(id, diagram) {
       if (warnings.length) {
         console.warn(warnings);
       }
-      viewer.get('canvas').zoom('fit-viewport');
+      viewer.get('canvas').zoom('fit-viewport', true);
       if (typeof jQuery === 'function') {
         jQuery('#' + id + ' .bts-toggle-mode').click();
       }

@@ -45,16 +45,7 @@
       <bpmn:incoming>Flow_0p6gvm6</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_0p6gvm6" sourceRef="Event_0zqe5tj" targetRef="Event_0ba2v97" />
-    <bpmn:boundaryEvent id="Event_1qcwvkf" name="Impossible request" attachedToRef="Robot_Work">
-      <bpmn:outgoing>Flow_1om0hif</bpmn:outgoing>
-      <bpmn:errorEventDefinition id="ErrorEventDefinition_17jbaa2" errorRef="Error_0d9t6g3" />
-    </bpmn:boundaryEvent>
-    <bpmn:endEvent id="Event_1q76873" name="Work abandoned">
-      <bpmn:incoming>Flow_1om0hif</bpmn:incoming>
-    </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_1om0hif" sourceRef="Event_1qcwvkf" targetRef="Event_1q76873" />
   </bpmn:process>
-  <bpmn:error id="Error_0d9t6g3" name="Impossible Work" errorCode="IMPOSSIBLE_REQUEST_ERROR" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="exampleRequestWork">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
@@ -88,22 +79,10 @@
           <dc:Bounds x="618" y="305" width="65" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1q76873_di" bpmnElement="Event_1q76873">
-        <dc:Bounds x="632" y="352" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="610" y="395" width="84" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0vnzbwe_di" bpmnElement="Event_0zqe5tj">
         <dc:Bounds x="432" y="199" width="36" height="36" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="468" y="233" width="64" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0znzijm_di" bpmnElement="Event_1qcwvkf">
-        <dc:Bounds x="382" y="199" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="323" y="226" width="53" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1ldfjne_di" bpmnElement="Flow_1ldfjne">
@@ -138,11 +117,6 @@
         <di:waypoint x="450" y="235" />
         <di:waypoint x="450" y="280" />
         <di:waypoint x="632" y="280" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1om0hif_di" bpmnElement="Flow_1om0hif">
-        <di:waypoint x="400" y="235" />
-        <di:waypoint x="400" y="370" />
-        <di:waypoint x="632" y="370" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

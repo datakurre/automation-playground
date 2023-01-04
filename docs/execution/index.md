@@ -205,3 +205,9 @@ Finally, refresh the Zeebe Play view on process instance for one more time and o
 
 That's how Zeebe Play allows us to play with the process and manually confirm that we have modeled its execution properly (without really implementing any of its service tasks yet).
 
+Similarly to completing the service task, Zeebe Play also allows to trigger timer and error events (the later by throwing error from a task):
+
+{download}`request-work-with-timer.bpmn`<br/>
+{download}`request-work-with-error.bpmn`<br/>
+
+
