@@ -67,7 +67,7 @@ FEEL stands for *Friendly Enough Expression Language*. It is a pretty simple fun
 ```{raw} html
 <iframe src="../_static/feel/?e=user.name&c={%0A++%22completed%22%3A+true%2C%0A++%22user%22%3A+{%0A++++%22name%22%3A+%22Jane+Doe%22%2C%0A++++%22email%22%3A+%22jane.doe%40example.com%22%2C%0A++++%22consent%22%3A+true%0A++}%0A}&t=expression" width="100%" height="400"></iframe>
 <p style="margin-top: 1em">
-Use the embedded playgrounde above to practic, how to access task variable
+Use the embedded playground above to practice, how to access task variable
 <code class="docutils literal notranslate"><span class="pre">completed</span></code>,
 then add it into <stong>Variables</strong> as
 <code class="docutils literal notranslate"><span class="pre">workCompleted</span></code>
