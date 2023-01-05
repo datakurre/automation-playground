@@ -84,15 +84,15 @@ The  example above could also be implemented with use of multiple boundary event
 
 ## Event sub-process
 
-```{bpmn-figure} event-
+```{bpmn-figure} event-subprocess
 **Event sub-process** can either interrupt the execution of the main process (with interrupting start event) or run sub-processes in parallel to the main process (with non-interrupting start event). The example does latter with a {bpmn}`non-interrupting-timer--start-event` **non-interrupting start timer event**.
-{download}`event-.bpmn`
+{download}`event-subprocess.bpmn`
 ```
 
 ## Multi-instance
 
-```{bpmn-figure} multi-instance-
-**Tasks** and **embedded sub-processes** can be configured to be **multi-instance**: either {bpmn}`parallel-multi-instance` **parallel** or {bpmn}`sequential-multi-instance` **sequential**. Multi-instance requires an input collection to be configured for it, but then it executes task or sub-process separately for every input item in the collection with one BPN symbol (and on Zeebe engine also collects the output into configured output collection). {download}`multi-instance-.bpmn`
+```{bpmn-figure} multi-instance-subprocess
+**Tasks** and **embedded sub-processes** can be configured to be **multi-instance**: either {bpmn}`parallel-multi-instance` **parallel** or {bpmn}`sequential-multi-instance` **sequential**. Multi-instance requires an input collection to be configured for it, but then it executes task or sub-process separately for every input item in the collection with one BPN symbol (and on Zeebe engine also collects the output into configured output collection). {download}`multi-instance-subprocess.bpmn`
 ```
 
 ## Available task types
