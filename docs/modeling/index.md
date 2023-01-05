@@ -2,7 +2,7 @@
 
 Once you've learned [the basics of BPMN](../bpmn/index), it is now time to practice. Please, open **Camunda Modeler** from the desktop
 
-![](../playground/desktop-modeler.png)
+![Camunda Modeler desktop icon](../playground/desktop-modeler.png)
 
 and choose **Camunda Platform 8 BPMN diagram** from its welcome screen
 

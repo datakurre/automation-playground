@@ -13,7 +13,7 @@ Robot: {download}`hello-world.zip`
 
 ## Start Camunda Modeler
 
-![](../playground/desktop-modeler.png)
+![Camunda Modeler desktop icon](../playground/desktop-modeler.png)
 
 ## Choose Camunda 8 BPMN
 
@@ -54,7 +54,7 @@ The playground Zeebe matches *Camunda Platform 8 Self-Managed* with Cluster endp
 
 ## Open Zeebe Play
 
-![](../playground/desktop-play.png)
+l![Zeebe Play desktop icon](../playground/desktop-play.png)
 
 ## Choose deployments
 
@@ -86,7 +86,7 @@ The playground Zeebe matches *Camunda Platform 8 Self-Managed* with Cluster endp
 
 ## Open Robocorp Code
 
-![](../playground/desktop-code.png)
+![Robocorp Code desktop icon](../playground/desktop-code.png)
 
 ## On the first run, wait...
 
@@ -172,7 +172,7 @@ With **Open Robot Terminal** and typing `wrap`, the playground alias for `rcc ro
 
 ## Start RCC
 
-![](../playground/desktop-rcc.png)
+![RCC integration desktop icon](../playground/desktop-rcc.png)
 
 ## Watch RCC warming up
 

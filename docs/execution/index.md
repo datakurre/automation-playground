@@ -113,7 +113,7 @@ Just press **Start**.
 
 [Zeebe Play](https://github.com/camunda-community-hub/zeebe-play) is an open source web application for [Zeebe](https://camunda.com/platform/zeebe/) to play with processes while developing them. On the playground, Zeebe Play is opened from the **Play** desktop shortcut.
 
-![](../playground/desktop-play.png)
+![Zeebe Play desktop icon](../playground/desktop-play.png)
 
 
 ### Zeebe Welcome

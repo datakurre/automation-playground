@@ -44,6 +44,7 @@ in {
       gnumake
       gnumeric
       mockoon
+      mockoon-cli
       parrot-rcc
       podman-compose
       rccFHSUserEnv
