@@ -26,6 +26,7 @@ class BpmnToImage(Image):
                 )
             self.state.document.settings.record_dependencies.add(self.arguments[0])
             self.arguments[0] = str(image.relative_to(parent))
+            self.options["width"] = "100%"
         return super().run()
 
 
@@ -75,6 +76,7 @@ class BpmnToFigure(Figure):
                 )
             self.state.document.settings.record_dependencies.add(self.arguments[0])
             self.arguments[0] = str(image.relative_to(parent))
+            self.options["width"] = "100%"
         return super().run()
 
 

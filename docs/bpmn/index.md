@@ -92,7 +92,7 @@ The  example above could also be implemented with use of multiple boundary event
 ## Multi-instance
 
 ```{bpmn-figure} multi-instance-subprocess
-**Tasks** and **embedded sub-processes** can be configured to be **multi-instance**: either {bpmn}`parallel-multi-instance` **parallel** or {bpmn}`sequential-multi-instance` **sequential**. Multi-instance requires an input collection to be configured for it, but then it executes task or sub-process separately for every input item in the collection with one BPN symbol (and on Zeebe engine also collects the output into configured output collection). {download}`multi-instance-subprocess.bpmn`
+**Tasks** and **embedded sub-processes** can be configured to be **multi-instance** -- the BPMN way to loop over a collection. The configuration can be either {bpmn}`parallel-multi-instance` **parallel** or {bpmn}`sequential-multi-instance` **sequential**. Multi-instance requires an input collection to be configured for it, but then it executes task or sub-process separately for every input item in the collection with one BPN symbol (and on Zeebe engine also collects the output into configured output collection). {download}`multi-instance-subprocess.bpmn`
 ```
 
 ## Available task types
