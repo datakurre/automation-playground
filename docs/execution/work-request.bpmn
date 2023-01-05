@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0rhhn4n" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.6.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.1.0">
-  <bpmn:process id="exampleRequestWork" name="Example: Request Work" isExecutable="true">
+  <bpmn:process id="WorkRequest" name="Work Request" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1" name="Work requested">
       <bpmn:outgoing>Flow_1ldfjne</bpmn:outgoing>
     </bpmn:startEvent>
@@ -37,21 +37,12 @@
     <bpmn:sequenceFlow id="Flow_1b2nhko" name="No" sourceRef="Gateway_111hplm" targetRef="Gateway_096qfbz" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="exampleRequestWork">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="WorkRequest">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="158" y="202" width="78" height="14" />
         </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0dla07c_di" bpmnElement="Event_0dla07c">
-        <dc:Bounds x="632" y="159" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="610" y="202" width="80" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_096qfbz_di" bpmnElement="Gateway_096qfbz" isMarkerVisible="true">
-        <dc:Bounds x="267" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_01rfh5b_di" bpmnElement="Robot_Work">
         <dc:Bounds x="374" y="137" width="100" height="80" />
@@ -62,6 +53,15 @@
         <bpmndi:BPMNLabel>
           <dc:Bounds x="526" y="209" width="60" height="14" />
         </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0dla07c_di" bpmnElement="Event_0dla07c">
+        <dc:Bounds x="632" y="159" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="610" y="202" width="80" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_096qfbz_di" bpmnElement="Gateway_096qfbz" isMarkerVisible="true">
+        <dc:Bounds x="267" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1ldfjne_di" bpmnElement="Flow_1ldfjne">
         <di:waypoint x="215" y="177" />

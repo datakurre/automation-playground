@@ -83,8 +83,8 @@ and access it again. You have now implemented the expressions used in our exampl
 
 Before deploying a model, it must be saved and given a filename. This is the model we've been building so far:
 
-```{bpmn-figure} request-work
-{download}`request-work.bpmn`
+```{bpmn-figure} work-request
+{download}`work-request.bpmn`
 ```
 
 ## Deploy to Zeebe
@@ -207,7 +207,7 @@ That's how Zeebe Play allows us to play with the process and manually confirm th
 
 Similarly to completing the service task, Zeebe Play also allows to trigger timer and error events (the later by throwing error from a task):
 
-{download}`request-work-with-timer.bpmn`<br/>
-{download}`request-work-with-error.bpmn`<br/>
+{download}`work-request-with-timer.bpmn`<br/>
+{download}`work-request-with-error.bpmn`<br/>
 
 
