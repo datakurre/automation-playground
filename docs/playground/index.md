@@ -42,7 +42,7 @@ At first, disable **Use system defaults**. Then **add** your own keyboard layout
 :align: left
 ```
 
-**[Camunda Modeler](https://camunda.com/download/modeler/)** is the open source BPMN, DMN (and user task form) modeling tool made available for free by Camunda. The playground version comes also with [Token Simulation plugin](https://github.com/camunda/camunda-modeler-token-simulation-plugin) preinstalled.
+**[Camunda Modeler](https://camunda.com/download/modeler/)** is the open source BPMN, DMN (and user task form) modeling tool made available for free by Camunda. The playground version comes with preinstalled [Token Simulation plugin](https://github.com/camunda/camunda-modeler-token-simulation-plugin).
 
 ```{figure} ./window-modeler.png
 :alt:
@@ -59,7 +59,7 @@ Camunda Modeler can also deploy and start processes at the [Zeebe](https://camun
 :align: left
 ```
 
-[**Robocorp Code**](https://marketplace.visualstudio.com/items?itemName=robocorp.robocorp-code) is the open source Robot Framework development extension for [VSCode](https://code.visualstudio.com/) (or [VSCodium](https://vscodium.com/)) made available for free by [Robocorp](https://robocorp.com/). Together with [Robot Framework LSP](https://marketplace.visualstudio.com/items?itemName=robocorp.robocorp-code) extension, it provides the best available Robot Framework based automation development experience.
+[**Robocorp Code**](https://marketplace.visualstudio.com/items?itemName=robocorp.robocorp-code) is the open source Robot Framework development extension for [VSCode](https://code.visualstudio.com/) (or [VSCodium](https://vscodium.com/)) made available for free by [Robocorp](https://robocorp.com/). Together with [Robot Framework LSP](https://marketplace.visualstudio.com/items?itemName=robocorp.robocorp-code) extension, it provides the best Robot Framework based automation development experience available.
 
 ```{figure} ./window-code.png
 :alt:
@@ -82,13 +82,13 @@ Due to the setup of the playground, browser locator picker in Robocorp Code is n
 
 [**RCC**](https://robocorp.com/docs/rcc/overview) icon launches a new terminal window with [**parrot-rcc**](https://github.com/datakurre/parrot-rcc) Zeebe worker integration. It delegates Zeebe jobs and their variables to their respective Robot Framework automation packages, and submits responses back to Zeebe.
 
-RCC is an open source tool by Robocorp for executing [Robot Framework or Python automation packages](https://robocorp.com/docs/setup/robot-structure) (while implicitly also managing their dependencies). parrot-rcc is a bridge between RCC style "robots" using RPA Framework work items and Zeebe-run BPMN processes.
+RCC is an open source tool by Robocorp for executing [Robot Framework or Python automation packages](https://robocorp.com/docs/setup/robot-structure) (while implicitly also managing their dependencies). parrot-rcc is a bridge between RCC style "robots" using [RPA Framework work items](https://rpaframework.org/libraries/robocorp_workitems/) and Zeebe-run BPMN processes.
 
 ```{figure} ./window-rcc.png
 :alt:
 :width: 100%
 
-RCC integration is not run automatically, but can be started from the desktop when RCC execution is needed. It is run with debug logging for more insight how it works, and to ease access to the Robot Framework log files it creates.
+RCC integration is not run automatically, but can be started from the desktop when RCC execution is needed. It runs with debug logging enabled for more insight how it works, and to ease access to the Robot Framework log files it creates.
 ```
 
 
@@ -99,7 +99,7 @@ RCC integration is not run automatically, but can be started from the desktop wh
 :align: left
 ```
 
-[**Zeebe Simple Monitor**](https://github.com/camunda-community-hub/zeebe-simple-monitor) is an open source web application for observing the running and completed processes on [Zeebe engine](https://github.com/camunda-community-hub/zeebe-simple-monitor). It is mainly intented for developer use, but it could be used as a starter for building for monitoring small production deployments [^footnote1]. *(Zeebe Simple Monitor is a Camunda Community project and its use is not officially supported by Camunda.)*
+[**Zeebe Simple Monitor**](https://github.com/camunda-community-hub/zeebe-simple-monitor) is an open source web application for observing the running and completed processes on [Zeebe engine](https://github.com/camunda-community-hub/zeebe-simple-monitor). It is mainly intented for developer use, but it could work as a base for building monitoring small production deployments [^footnote1]. *(Zeebe Simple Monitor is a Camunda Community project and its use is not officially supported by Camunda.)*
 
 [^footnote1]: **Zeebe Simple Monitor** is [neither developed nor tested for production use](https://github.com/camunda-community-hub/zeebe-simple-monitor/issues/237), but thanks to the architecture of Zeebe, it cannot do any harm to production deployments. That said, as long as it supports only [in-memory Hazelcast ring buffer](https://github.com/camunda-community-hub/zeebe-hazelcast-exporter) for importing data from Zeebe, Zeebe Simple Monitor may not being able to receive all Zeebe data during high load.
 
@@ -107,7 +107,7 @@ RCC integration is not run automatically, but can be started from the desktop wh
 :alt:
 :width: 100%
 
-**Zeebe Simple Monitor** is mostly read-only user-interface for observing processes. Yet, it does support creating new process instances and resolving incidents. *(Zeebe Simple Monitor is a Camunda Community project and its use is not supported by Camunda.)*
+**Zeebe Simple Monitor** is mostly read-only user-interface for observing processes. Yet, it does support creating new process instances and resolving incidents.
 ```
 
 
@@ -141,11 +141,11 @@ Zeebe Play allows to interact with the running processes with completing their s
 :alt:
 :width: 100%
 
-Unfortunately, there is no open source alternative for Camunda DMN simulator yet.
+Unfortunately, there is no open source alternative for Camunda DMN Simulator yet.
 ```
 
 ```{note}
-In time of writing, DMN simulator does not support all value types available in Zeebe.
+In time of writing, Camunda DMN Simulator does not support all value types available in Zeebe.
 ```
 
 

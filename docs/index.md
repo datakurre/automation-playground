@@ -20,6 +20,7 @@ bpmn/index.md
 modeling/index.md
 execution/index.md
 play/index.md
+dmn/index.md
 hello-world/index.md
 
 ```

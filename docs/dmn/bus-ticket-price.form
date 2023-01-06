@@ -1,0 +1,69 @@
+{
+  "components": [
+    {
+      "text": "# Passenger facts",
+      "type": "text",
+      "id": "Field_10p2uoa"
+    },
+    {
+      "label": "Age",
+      "type": "number",
+      "id": "Field_0sg39tc",
+      "key": "age",
+      "validate": {
+        "required": true,
+        "min": 0,
+        "max": 120
+      },
+      "defaultValue": 99,
+      "description": "Effective only up to 12 years old"
+    },
+    {
+      "label": "Travelling without parent",
+      "type": "checkbox",
+      "id": "Field_16gf8he",
+      "key": "alone",
+      "description": "Effective for 5–6  years old children only"
+    },
+    {
+      "values": [
+        {
+          "label": "No discount",
+          "value": "none"
+        },
+        {
+          "label": "Student",
+          "value": "student"
+        },
+        {
+          "label": "Pensioner",
+          "value": "pensioner"
+        }
+      ],
+      "label": "Discount group",
+      "type": "radio",
+      "id": "Field_0q51p6o",
+      "key": "discountGroup",
+      "defaultValue": "none",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "action": "submit",
+      "label": "Submit",
+      "type": "button",
+      "id": "Field_0ggr8ag",
+      "key": "field_125k4tc"
+    }
+  ],
+  "type": "default",
+  "id": "PassengerFacts",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.1.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.6.0"
+  },
+  "schemaVersion": 5
+}

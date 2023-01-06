@@ -20,14 +20,14 @@ Every BPMN model (process definition) for executable processes should have descr
 
 ## Service task configuration
 
-At first, use element **context modeling palette** to turn a plain task into a **Service task**. Once you see service task's properties panel, the only really required property there is the service task **Type** on **Task definition**. This is the identifier you'll be giving to your automation code executing the task later. The type should be unique on your environment, and it is up to you to guard that.
+At first, use element **context modeling palette** to turn a plain task into a {bpmn}`../bpmn/robot-task` **service task**. Once you see service task's properties panel, the only really required property there is the service task **Type** on **Task definition**. This is the identifier you'll be giving to your automation code executing the task later. The type should be unique on your environment, and it is up to you to guard that.
 
 ```{figure} modeler-properties-task.png
 :alt:
 :width: 100%
 ```
 
-The Name and ID of the task has no effect on the execution. Choose a **Name** that describes the task work with verb in the domain language of the process. Having a naming policy for **ID** would help to identify service tasks from your logs. In addition, the playground has a feature to show a Robot Framework logo for service tasks with `robot` in their ID. (The feature is case insensitive.)
+The Name and ID of the task has no effect on the execution. Choose a **Name** that describes the task work with verb in the domain language of the process. Having a naming policy for **ID** would help to identify service tasks from your logs. In addition, the playground has a feature to show {bpmn}`../bpmn/robot-task` Robot Framework logo for service tasks with `robot` in their ID. (The feature is case insensitive.)
 
 ## Inputs and outputs
 

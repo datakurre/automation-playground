@@ -85,7 +85,7 @@ The  example above could also be implemented with use of multiple boundary event
 ## Event sub-process
 
 ```{bpmn-figure} event-subprocess
-**Event sub-process** can either interrupt the execution of the main process (with interrupting start event) or run sub-processes in parallel to the main process (with non-interrupting start event). The example does latter with a {bpmn}`non-interrupting-timer--start-event` **non-interrupting start timer event**.
+**Event sub-process** can either interrupt the execution of the main process (with interrupting start event) or run sub-processes in parallel to the main process (with non-interrupting start event). The example does latter with a {bpmn}`non-interrupting-timer-subprocess-start-event` **non-interrupting start timer event**.
 {download}`event-subprocess.bpmn`
 ```
 
@@ -97,60 +97,59 @@ The  example above could also be implemented with use of multiple boundary event
 
 ## Available task types
 
-The examples above, use only so called {bpmn}`undefined-task` **undefined task**. It is useful in drafting and documenting processes, but not really in actually implementing and automating the processes. Obviously, there are many more concrete task types.
+The examples above, use only so called {bpmn}`task` **undefined task**. It is useful in drafting and documenting processes, but not really in actually implementing and automating the processes. Obviously, there are many more concrete task types.
 
 
 ### User task
 
 ```{bpmn-figure} user-task
-**User task** is a task, which is meant to be completed by a human through a connected user interface. Most common way to implement a user task is to show the user a form.
+**User task** {bpmn}`user-task` is a task, which is meant to be completed by a human through a connected user interface. Most common way to implement a user task is to show the user a form.
 ```
 
 
 ### Manual task
 
 ```{bpmn-figure} manual-task
-**Manual task** is usually a human task, which cannot completed through a connected user interface. Manual task symbols are rare in automated processes, but are sometimes for documentation purposes (while BPMN engines skip them similarly to {bpmn}`undefined-task` undefined tasks).
+**Manual task** {bpmn}`manual-task` is usually a human task, which cannot completed through a connected user interface. Manual task symbols are rare in automated processes, but are sometimes for documentation purposes (while BPMN engines skip them similarly to {bpmn}`undefined-task` undefined tasks).
 ```
 
 ### Service task
 
 ```{bpmn-figure} service-task
-**Service task** represents automated task. All **Robot Framework** automation tasks are service tasks.
+**Service task** {bpmn}`service-task` represents automated task. All {bpmn}`robot-task` **Robot Framework** automation tasks are service tasks.
 ```
 
 
 ### Service task (custom)
 
 ```{bpmn-figure} robot-task
-Now that  **service task** has become the core component in process automation, it has also become a thing to customize its symbol to make it easier to reconize service tasks by some categorization. So, when you see a task element with weird symbol, like **Robot Framework** logo, it is safe to assume that it is a service task with just a custom symbol.
-
+Now that {bpmn}`service-task` **service task** has become the core component in process automation, it has also become a thing to customize its symbol to make it easier to reconize service tasks by some categorization. So, when you see a task element with weird symbol, like {bpmn}`robot-task` **Robot Framework** logo, it is safe to assume that it is a service task with just a custom symbol.
 ```
 
 
 ### Call activity
 
 ```{bpmn-figure} call-activity-task
-**Call activity** calls a such configured sub-process, which is defined separately from the main process (unlike embedded sub-process). It allows to abstract recurring parts of process into re-usable sub-processes (while cleaning up clutter.
+**Call activity** {bpmn}`call-activity-task` calls a such configured sub-process, which is defined separately from the main process (unlike embedded sub-process). It allows to abstract recurring parts of process into re-usable sub-processes (while cleaning up clutter.
 ```
 
 ```{bpmn-figure} call-activity-process
-In this example, **Call activity** is used to hide the embedded sub-process details, which have been shown in the earlier examples.
+In this example, {bpmn}`call-activity-task` **Call activity** is used to hide the embedded sub-process details, which have been shown in the earlier examples.
 {download}`call-activity-process.bpmn`
 ```
 
 ### Business rule task
 
 ```{bpmn-figure} business-rule-task
-**Business rule task** is a special task type reserved for automated rule-based decision making in a process. It's typically configured to use DMN (Decision Model and Notation) decision tables, designed to describe business rules. In addition, DMN tables can be maintained separately from the process models, for example, to allow faster iterations.
+**Business rule task** {bpmn}`business-rule-task` is a special task type reserved for automated rule-based decision making in a process. It's typically configured to use DMN (Decision Model and Notation) decision tables, designed to describe business rules. In addition, DMN tables can be maintained separately from the process models, for example, to allow faster iterations.
 ```
 
 This imaginary bus ticket pricing is an example, in which decision table should be superior to possible alternatives, like "just coding it":
 
-```{dmn-html} bus-ticket-price
+```{dmn-html} ../dmn/bus-ticket-price
 ```
-{download}`bus-ticket-price.dmn`
+{download}`../dmn/bus-ticket-price.dmn`
 
 ```{note}
-This example is designed for [Camunda Platform 7](https://camunda.com/platform-7/), because [Camunda's DMN simulator](https://consulting.camunda.com/dmn-simulator/) does not fully support value types available in Zeebe.
+This example is designed for [Camunda Platform 7](https://camunda.com/platform-7/), because [Camunda's DMN Simulator](https://consulting.camunda.com/dmn-simulator/) does not fully support value types available in Zeebe.
 ```

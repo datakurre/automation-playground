@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="Definitions_14ou3p3" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.6.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.18.0">
-  <decision id="busTicketPrice" name="Bus ticket price">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="Definitions_0mppz14" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.6.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.1.0">
+  <decision id="BusTicketPrice" name="Bus ticket price">
     <decisionTable id="DecisionTable_0vlcsn5" biodi:annotationsWidth="400">
       <input id="Input_1" label="Age" biodi:width="150">
-        <inputExpression id="InputExpression_1" typeRef="integer">
+        <inputExpression id="InputExpression_1" typeRef="number">
           <text>age</text>
         </inputExpression>
       </input>
@@ -20,7 +20,7 @@
           <text>alone</text>
         </inputExpression>
       </input>
-      <output id="Output_1" label="Price" name="price" typeRef="double" biodi:width="150" />
+      <output id="Output_1" label="Price" name="price" typeRef="number" biodi:width="150" />
       <rule id="DecisionRule_0116we3">
         <description></description>
         <inputEntry id="UnaryTests_1qlx0m9">
@@ -129,7 +129,7 @@
   </decision>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram>
-      <dmndi:DMNShape dmnElementRef="busTicketPrice">
+      <dmndi:DMNShape dmnElementRef="BusTicketPrice">
         <dc:Bounds height="80" width="180" x="160" y="100" />
       </dmndi:DMNShape>
     </dmndi:DMNDiagram>
