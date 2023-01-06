@@ -29,7 +29,6 @@ class DmnToHtml(Raw):
         return super().run()
 
 
-
 def setup(app):
 
     app.add_directive("dmn-html", DmnToHtml)

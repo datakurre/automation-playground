@@ -62,6 +62,22 @@
         "type": "github"
       }
     },
+    "form-js-to-image": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1673001857,
+        "narHash": "sha256-D8+y6ZKVBmeapZnIMdP3n2Ra4PUtW1mNQ4Hv37GUkcM=",
+        "owner": "datakurre",
+        "repo": "form-js-to-image",
+        "rev": "aca8d1438ea04b82ae5e0812df418c2a778c1f3a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "datakurre",
+        "repo": "form-js-to-image",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -254,6 +270,7 @@
         "bpmn-to-image": "bpmn-to-image",
         "dmn-to-html": "dmn-to-html",
         "flake-utils": "flake-utils",
+        "form-js-to-image": "form-js-to-image",
         "home-manager": "home-manager",
         "lezer-feel": "lezer-feel",
         "nixpkgs": "nixpkgs",

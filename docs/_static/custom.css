@@ -13,3 +13,11 @@ img.role-bpmn { height: 3ex; }
 img.role-bpmn[src$="-boundary-event.svg"] { scale: 3; margin: -5ex 1ex 0 1ex; clip-path: inset(50% 25% 0 25%); }
 img.role-bpmn[src$="-subprocess-start-event.svg"] { scale: 3; clip-path: inset(33% 33% 33% 33%); }
 img.role-bpmn[src$="-multi-instance.svg"] { scale: 4; margin: -7.5ex -1ex 0 -1ex; clip-path: inset(66% 42% 10% 44%); }
+
+.fjs-container {
+  max-width: 400px;
+/*
+  border: 1px solid #eee;
+  margin-bottom: 1ex;
+*/
+}
