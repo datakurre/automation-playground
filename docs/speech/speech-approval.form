@@ -1,0 +1,48 @@
+{
+  "components": [
+    {
+      "text": "# Your speech is ready",
+      "type": "text",
+      "id": "Field_0t9x9vg"
+    },
+    {
+      "label": "Speech",
+      "type": "textfield",
+      "id": "Field_1wlpooj",
+      "key": "speech",
+      "disabled": true
+    },
+    {
+      "values": [
+        {
+          "label": "Add another sentence",
+          "value": "no"
+        },
+        {
+          "label": "Wrap it up",
+          "value": "yes"
+        }
+      ],
+      "type": "radio",
+      "id": "Field_0xu1z8n",
+      "key": "accepted",
+      "defaultValue": "no"
+    },
+    {
+      "action": "submit",
+      "label": "Continue",
+      "type": "button",
+      "id": "Field_1qu96z1",
+      "key": "field_0pxyq38"
+    }
+  ],
+  "type": "default",
+  "id": "Form_0go4xzb",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.1.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.6.0"
+  },
+  "schemaVersion": 5
+}

@@ -21,6 +21,7 @@ modeling/index.md
 execution/index.md
 play/index.md
 dmn/index.md
+speech/index.md
 hello-world/index.md
 
 ```

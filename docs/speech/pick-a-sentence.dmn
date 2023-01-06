@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_118edkh" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.6.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.1.0">
+  <decision id="PickASentence" name="Pick a sentence">
+    <decisionTable id="DecisionTable_19u80ij">
+      <input id="Input_1" label="Dice">
+        <inputExpression id="InputExpression_1" typeRef="number">
+          <text>dice</text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="Sentence" name="result" typeRef="string" />
+      <rule id="DecisionRule_0yhap6k">
+        <inputEntry id="UnaryTests_0gyy1rb">
+          <text>1</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0xo0wx3">
+          <text>"We need to address the root causes of inequality."</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_13upe5q">
+        <inputEntry id="UnaryTests_0pslxng">
+          <text>2</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0g6p9on">
+          <text>"The government has a responsibility to its citizens."</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1hcj923">
+        <inputEntry id="UnaryTests_1qsrhil">
+          <text>3</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1wkxsbz">
+          <text>"We must come together and find solutions to our problems."</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1s2lmop">
+        <inputEntry id="UnaryTests_1lg6cub">
+          <text>4</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09u07y5">
+          <text>"Political corruption is a cancer on our society."</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1xd7hhy">
+        <inputEntry id="UnaryTests_16ifggv">
+          <text>5</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0mjejxw">
+          <text>"We must hold our elected officials accountable."</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0tncjqv">
+        <inputEntry id="UnaryTests_0kj5bk8">
+          <text>6</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_14yo74v">
+          <text>"Our democracy is at stake."</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1u7hb1o">
+        <inputEntry id="UnaryTests_09j2cil">
+          <text>7</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1lo8r9v">
+          <text>"We cannot afford to remain divided."</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_04zgd54">
+        <inputEntry id="UnaryTests_0wvnvcz">
+          <text>8</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_17vqe3t">
+          <text>"We must work towards a more inclusive society."</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_02nkkoz">
+        <inputEntry id="UnaryTests_0rdntd2">
+          <text>9</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0p2rtli">
+          <text>"Power should not be concentrated in the hands of a few."</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0evticx">
+        <inputEntry id="UnaryTests_1iuukct">
+          <text>10</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_101hy0h">
+          <text>"We need to stand up for what is right, even when it is difficult."</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1v9fb20">
+        <inputEntry id="UnaryTests_01idd9z">
+          <text>11</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_06yxgxj">
+          <text>"The voices of the people must be heard."</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1fuama1">
+        <inputEntry id="UnaryTests_1glshzi">
+          <text>12</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1q5gfxp">
+          <text>"We must put the needs of the people before the interests of corporations."</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_10fyszy">
+        <inputEntry id="UnaryTests_1794cg3">
+          <text>13</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0yqhvt9">
+          <text>"Political polarization is tearing our country apart."</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1xynhw6">
+        <inputEntry id="UnaryTests_0eaef36">
+          <text>14</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1s31cea">
+          <text>"We need to put aside our differences and come together."</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0byuzel">
+        <inputEntry id="UnaryTests_1lb26a6">
+          <text>15</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0oz112s">
+          <text>"We must fight for a fair and just society."</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_04qrjpm">
+        <inputEntry id="UnaryTests_1fywxbf">
+          <text>16</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1cv3yqw">
+          <text>"The future of our country depends on the actions we take today."</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0rtjq0t">
+        <inputEntry id="UnaryTests_1fquh71">
+          <text>17</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1r7w3bx">
+          <text>"We cannot allow our democracy to be dismantled."</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0hgbjub">
+        <inputEntry id="UnaryTests_1pk4wyj">
+          <text>18</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_17mkh3a">
+          <text>"We must not let fear and hatred dictate our actions."</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0d8iek3">
+        <inputEntry id="UnaryTests_1awt99p">
+          <text>19</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0n6f570">
+          <text>"We must work towards a brighter future for all."</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0r1weni">
+        <inputEntry id="UnaryTests_0x8q2xm">
+          <text>20</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1o5318b">
+          <text>"It is time for change."</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="PickASentence">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
