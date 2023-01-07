@@ -6,7 +6,7 @@
       "id": "Field_0wtbe5v"
     },
     {
-      "label": "Result",
+      "label": "Result ",
       "type": "number",
       "id": "Field_1dl7l26",
       "key": "result",
@@ -14,7 +14,8 @@
         "required": true,
         "min": 1,
         "max": 20
-      }
+      },
+      "defaultValue": 1
     },
     {
       "action": "submit",

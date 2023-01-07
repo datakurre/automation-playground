@@ -18,7 +18,8 @@
         "required": true,
         "min": 1,
         "max": 20
-      }
+      },
+      "defaultValue": 1
     },
     {
       "action": "submit",
@@ -63,10 +64,14 @@
           "value": "yes"
         }
       ],
+      "label": "Are we ready yet?",
       "type": "radio",
       "id": "Field_0xu1z8n",
-      "key": "accepted",
-      "defaultValue": "no"
+      "key": "ready",
+      "defaultValue": "no",
+      "validate": {
+        "required": true
+      }
     },
     {
       "action": "submit",
@@ -91,6 +96,7 @@
       <bpmn:extensionElements>
         <zeebe:ioMapping>
           <zeebe:output source="=&#34;&#34;" target="speech" />
+          <zeebe:output source="=1" target="dice" />
         </zeebe:ioMapping>
       </bpmn:extensionElements>
       <bpmn:outgoing>Flow_1imm7fe</bpmn:outgoing>
@@ -99,7 +105,7 @@
     <bpmn:userTask id="Activity_0wzv8ng" name="Throw a dice with 20 sides">
       <bpmn:extensionElements>
         <zeebe:ioMapping>
-          <zeebe:input source="=0" target="result" />
+          <zeebe:input source="=dice" target="result" />
           <zeebe:output source="=result" target="dice" />
         </zeebe:ioMapping>
         <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_04hljfi" />
@@ -127,7 +133,8 @@
       <bpmn:extensionElements>
         <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_09ot8g9" />
         <zeebe:ioMapping>
-          <zeebe:output source="=accepted = &#34;yes&#34;" target="accepted" />
+          <zeebe:input source="=&#34;no&#34;" target="ready" />
+          <zeebe:output source="=ready = &#34;yes&#34;" target="accepted" />
         </zeebe:ioMapping>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1m2gznx</bpmn:incoming>

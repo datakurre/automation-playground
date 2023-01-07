@@ -11,7 +11,7 @@ Automation playground desktop with preconfigured shortcuts.
 
 Technically, the playground desktop is a [NixOS](https://nixos.org/) based [Xfce Desktop Environment](https://www.xfce.org/), configured to look minimal and simple. To make it easier to ease focus on learning.
 
-```{note}
+```{tip}
 Do not try to manually update the applications on the playround, or install new ones. Take it as a managed environment.
 ```
 

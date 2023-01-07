@@ -23,10 +23,14 @@
           "value": "yes"
         }
       ],
+      "label": "Are we ready yet?",
       "type": "radio",
       "id": "Field_0xu1z8n",
-      "key": "accepted",
-      "defaultValue": "no"
+      "key": "ready",
+      "defaultValue": "no",
+      "validate": {
+        "required": true
+      }
     },
     {
       "action": "submit",
