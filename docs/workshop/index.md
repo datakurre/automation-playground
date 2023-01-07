@@ -9,18 +9,20 @@
 This agenda is preliminary and is up to changes.
 
 * Welcome & Introductions
-* Open Automation Playground
-* BPMN, DMN, FEEL, Forms
-* Camunda Modeler & exercises
+* [Virtual desktop overview](../playground/index.md)
+* [BPMN modeling basics](../bpmn/index.md)
+* [Exercises on modeling](../modeling/index.md)
 
 "Coffee break"
 
-* BPMN configuration
-* Zeebe Play & exercises
-* RPA Framework work items
+* [Modeling for execution](../execution/index.md)
+* [Exercises on execution](../play/index.md)
+* [DMN, user tasks and forms](../dmn/index.md)
+* [Exercise with DMN and forms](../speech/index.md)
 
 "Lunch break"
 
+* RPAFramework WorkItems API
 * Robocorp Code and RCC
 * Robocorp Code exercises
 * RCC & Zeebe Play exercises
