@@ -74,10 +74,12 @@ jQuery(function($) {
               return {};
             }
           })();
-          FormViewer.createForm({
-              container: '#' + id,
-              schema: schema,
-              data: data
+          (await FormViewer.createForm({
+            container: '#' + id,
+            schema: schema,
+            data: data
+          })).on('submit', function(e) {
+            alert(JSON.stringify(e.data, null, 2));
           });
         })();
       }

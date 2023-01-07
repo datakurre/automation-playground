@@ -21,7 +21,7 @@
 ## Second form
 
 ```{form-figure} speech-approval
-{download}`speech-approval.form`
+{download}`speech-approval.form`{download}`speech-approval.json`
 ```
 
 
