@@ -19,8 +19,8 @@ Let's start with simple:
 2. Give the process **Name** and **ID** that you can recognize from **Zeebe Play** user interface.
 3. Deploy process to **Zeebe**, start an instance of it and complete its {bpmn}`../bpmn/robot-task` service task as shown in the chapter [Execute with Zeebe Play](../execution/index.md#execute-with-zeebe-play).
 
-```{bpmn-figure} sole-robot-task
-{download}`sole-robot-task.bpmn`
+```{bpmn-figure} sole-service-task
+{download}`sole-service-task.bpmn`
 ```
 
 ## Add exclusive gateway
