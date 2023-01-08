@@ -1,8 +1,10 @@
 # Service tasks for Robots
 
-We are soon ready to start implementing BPMN {bpmn}`bpmn/service-task` service tasks in Robot Framework and let Camunda Platform Zeebe to be used for orchestrating {bpmn}`bpmn/robot-task` Robot Framework automation. A single issue remains:
+We are soon ready to start implementing BPMN {bpmn}`bpmn/service-task` service tasks in Robot Framework and let Camunda Platform Zeebe to be used for orchestrating {bpmn}`bpmn/robot-task` Robot Framework automation. There's only one remaining issue:
 
 **Robot Framework is a generic automation framework. How should we use it specifically with Camunda Platform?**
+
+*(TL;DR; With a custom Camunda worker and RPA framework work items adapter.)*
 
 
 ## Tasks are work items

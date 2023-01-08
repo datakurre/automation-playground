@@ -23,7 +23,7 @@ This agenda is preliminary and is up to changes.
 "Lunch break"
 
 * [Service tasks in Robot Framework](../workitems.md)
-* Robocorp Code and RCC
+* [Robocorp Code and RCC](../code/index.md)
 * Robocorp Code exercises
 * RCC & Zeebe Play exercises
 

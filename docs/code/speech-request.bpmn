@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1m9cnvg" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.7.0-nightly.20230107" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.1.0">
+  <bpmn:process id="SpeechRequest" name="Speech Request" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Speech requested">
+      <bpmn:outgoing>Flow_1wqgwwq</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1wqgwwq" sourceRef="StartEvent_1" targetRef="Activity_0x56u4i" />
+    <bpmn:subProcess id="Activity_0x56u4i">
+      <bpmn:extensionElements />
+      <bpmn:incoming>Flow_1wqgwwq</bpmn:incoming>
+      <bpmn:outgoing>Flow_1e6sf7f</bpmn:outgoing>
+      <bpmn:multiInstanceLoopCharacteristics>
+        <bpmn:extensionElements>
+          <zeebe:loopCharacteristics inputCollection="=[1,2,3,4,5]" inputElement="idx" outputCollection="sentences" outputElement="=sentence" />
+        </bpmn:extensionElements>
+      </bpmn:multiInstanceLoopCharacteristics>
+      <bpmn:startEvent id="Event_0yn7dnh" name="Sentence requested">
+        <bpmn:outgoing>Flow_1dsl0bk</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:sequenceFlow id="Flow_1dsl0bk" sourceRef="Event_0yn7dnh" targetRef="Robot_D20" />
+      <bpmn:sequenceFlow id="Flow_1u7e580" sourceRef="Robot_D20" targetRef="Activity_1ph4nhu" />
+      <bpmn:endEvent id="Event_0wcsqf7" name="Sentence selected">
+        <bpmn:incoming>Flow_0i7wpxi</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="Flow_0i7wpxi" sourceRef="Activity_1ph4nhu" targetRef="Event_0wcsqf7" />
+      <bpmn:serviceTask id="Robot_D20" name="Throw D20">
+        <bpmn:extensionElements>
+          <zeebe:ioMapping>
+            <zeebe:output source="=result" target="dice" />
+          </zeebe:ioMapping>
+          <zeebe:taskDefinition type="Throw D20" />
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1dsl0bk</bpmn:incoming>
+        <bpmn:outgoing>Flow_1u7e580</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:businessRuleTask id="Activity_1ph4nhu" name="Pick a sentence">
+        <bpmn:extensionElements>
+          <zeebe:calledDecision decisionId="PickASentence" resultVariable="sentence" />
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1u7e580</bpmn:incoming>
+        <bpmn:outgoing>Flow_0i7wpxi</bpmn:outgoing>
+      </bpmn:businessRuleTask>
+    </bpmn:subProcess>
+    <bpmn:endEvent id="Event_1a012fd" name="Speech generated">
+      <bpmn:incoming>Flow_1phbacx</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1e6sf7f" sourceRef="Activity_0x56u4i" targetRef="Event_1jyil2t" />
+    <bpmn:intermediateThrowEvent id="Event_1jyil2t" name="Join sencentes">
+      <bpmn:extensionElements>
+        <zeebe:ioMapping>
+          <zeebe:output source="=string join(sentences, &#34; &#34;)" target="speech" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1e6sf7f</bpmn:incoming>
+      <bpmn:outgoing>Flow_1phbacx</bpmn:outgoing>
+    </bpmn:intermediateThrowEvent>
+    <bpmn:sequenceFlow id="Flow_1phbacx" sourceRef="Event_1jyil2t" targetRef="Event_1a012fd" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="SpeechRequest">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="159" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="152" y="202" width="90" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1a012fd_di" bpmnElement="Event_1a012fd">
+        <dc:Bounds x="942" y="159" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="915" y="202" width="90" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1jyil2t_di" bpmnElement="Event_1jyil2t">
+        <dc:Bounds x="848" y="159" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="830" y="202" width="74" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_03syojd_di" bpmnElement="Activity_0x56u4i" isExpanded="true">
+        <dc:Bounds x="274" y="77" width="510" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0yn7dnh_di" bpmnElement="Event_0yn7dnh">
+        <dc:Bounds x="304.33333333333337" y="159" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="298" y="202" width="49" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0wcsqf7_di" bpmnElement="Event_0wcsqf7">
+        <dc:Bounds x="716" y="159" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="711" y="202" width="47" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1pyftjd_di" bpmnElement="Robot_D20">
+        <dc:Bounds x="394" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1su8s8u_di" bpmnElement="Activity_1ph4nhu">
+        <dc:Bounds x="554" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1dsl0bk_di" bpmnElement="Flow_1dsl0bk">
+        <di:waypoint x="340" y="177" />
+        <di:waypoint x="394" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0i7wpxi_di" bpmnElement="Flow_0i7wpxi">
+        <di:waypoint x="654" y="177" />
+        <di:waypoint x="716" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1u7e580_di" bpmnElement="Flow_1u7e580">
+        <di:waypoint x="494" y="177" />
+        <di:waypoint x="554" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1wqgwwq_di" bpmnElement="Flow_1wqgwwq">
+        <di:waypoint x="215" y="177" />
+        <di:waypoint x="274" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1e6sf7f_di" bpmnElement="Flow_1e6sf7f">
+        <di:waypoint x="784" y="177" />
+        <di:waypoint x="848" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1phbacx_di" bpmnElement="Flow_1phbacx">
+        <di:waypoint x="884" y="177" />
+        <di:waypoint x="942" y="177" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

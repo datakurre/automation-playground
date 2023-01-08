@@ -23,6 +23,7 @@ play/index.md
 dmn/index.md
 speech/index.md
 workitems.md
+code/index.md
 hello-world/index.md
 
 ```
