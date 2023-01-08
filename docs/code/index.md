@@ -10,13 +10,13 @@ We can also reuse the same DMN:<br/>
 {download}`../speech/pick-a-sentence.dmn`{download}`../speech/pick-a-sentence.html`
 
 
-## Launch Code
+## Launch Robocorp Code
 
 ```{figure} ../playground/desktop-code.png
 :alt:
 ```
 
-## Create robot
+## Create a new robot
 
 ```{figure} code-create.png
 :alt:
@@ -30,7 +30,7 @@ We can also reuse the same DMN:<br/>
 :width: 100%
 ```
 
-### Choose standard template
+### Choose standard robot
 
 ```{figure} code-standard.png
 :alt:
@@ -44,7 +44,7 @@ We can also reuse the same DMN:<br/>
 :width: 100%
 ```
 
-## Code robot tasks
+## Implement robot tasks
 
 ```{figure} code-tasks.png
 :alt:
@@ -115,7 +115,7 @@ ignoreFiles:
 :width: 100%
 ```
 
-## Wrap robot
+## Wrap robot package
 
 ```{figure} code-wrap.png
 :alt:
