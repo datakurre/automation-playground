@@ -142,7 +142,7 @@ ignoreFiles:
 :width: 100%
 ```
 
-### RCC logs at S3
+### RCC logs at storage
 
 ```{figure} rcc-log.png
 :alt:
