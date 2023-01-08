@@ -19,7 +19,11 @@ In this naive interpretation of the bus ticket sale process, **fact collection**
 
 ## Automating repeatable decisions
 
-**DMN** stands for Decision Model and Notation. It is a standard approach for describing and modeling repeatable business decisions, and like BPMN, it is designed to be readable by business and IT users alike. **DMN is the recommended way to implement** {bpmn}`../bpmn/business-rule-task` **business rule tasks** for most use cases. DM
+**DMN** stands for Decision Model and Notation. It is a standard approach for describing and modeling repeatable business decisions, and like BPMN, it is designed to be readable by business and IT users alike. **DMN is the recommended way to implement** {bpmn}`../bpmn/business-rule-task` **business rule tasks** for most use cases.
+
+```{tip}
+For really learn DMN, check [Camunda DMN Tutorial](https://camunda.com/dmn/) and take a free [Camunda DMN online course](https://academy.camunda.com/camunda-dmn).
+```
 
 This is, how a DMN decision table for deducing bus ticket price from the facts known about a passenger, could look like (designed using Camunda Modeler):
 

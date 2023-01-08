@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1ayu21j" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.6.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.1.0">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1ayu21j" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.7.0-nightly.20230107" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.1.0">
   <bpmn:process id="SpeechRequest" name="Speech Request" isExecutable="true">
     <bpmn:extensionElements>
       <zeebe:userTaskForm id="userTaskForm_04hljfi">{
@@ -10,14 +10,14 @@
       "id": "Field_0wtbe5v"
     },
     {
-      "label": "Result",
+      "label": "Result ",
       "type": "number",
       "id": "Field_1dl7l26",
       "key": "result",
       "validate": {
         "required": true,
-        "min": 1,
-        "max": 20
+        "max": 20,
+        "min": 1
       },
       "defaultValue": 1
     },
@@ -35,9 +35,9 @@
   "executionPlatformVersion": "8.1.0",
   "exporter": {
     "name": "Camunda Modeler",
-    "version": "5.6.0"
+    "version": "5.7.0-nightly.20230107"
   },
-  "schemaVersion": 5
+  "schemaVersion": 6
 }</zeebe:userTaskForm>
       <zeebe:userTaskForm id="userTaskForm_09ot8g9">{
   "components": [
@@ -47,11 +47,9 @@
       "id": "Field_0t9x9vg"
     },
     {
-      "label": "Speech",
-      "type": "textfield",
-      "id": "Field_1wlpooj",
-      "key": "speech",
-      "disabled": true
+      "text": "=\"\\\"\" + speech + \"\\\"\"",
+      "type": "text",
+      "id": "Field_13g4vyb"
     },
     {
       "values": [
@@ -84,12 +82,12 @@
   "type": "default",
   "id": "Form_0go4xzb",
   "executionPlatform": "Camunda Cloud",
-  "executionPlatformVersion": "8.1.0",
+  "executionPlatformVersion": "8.2.0",
   "exporter": {
     "name": "Camunda Modeler",
-    "version": "5.6.0"
+    "version": "5.7.0-nightly.20230107"
   },
-  "schemaVersion": 5
+  "schemaVersion": 6
 }</zeebe:userTaskForm>
     </bpmn:extensionElements>
     <bpmn:startEvent id="StartEvent_1" name="Speech requested">
@@ -106,7 +104,7 @@
       <bpmn:extensionElements>
         <zeebe:ioMapping>
           <zeebe:input source="=dice" target="result" />
-          <zeebe:output source="=result" target="dice" />
+          <zeebe:output source="=max([1, min([result, 20])])" target="dice" />
         </zeebe:ioMapping>
         <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_04hljfi" />
       </bpmn:extensionElements>
@@ -164,21 +162,18 @@
           <dc:Bounds x="152" y="202" width="90" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_18m5muk_di" bpmnElement="Event_18m5muk">
-        <dc:Bounds x="892" y="159" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="865" y="202" width="90" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_1qqchky_di" bpmnElement="Gateway_1qqchky" isMarkerVisible="true">
-        <dc:Bounds x="258" y="152" width="50" height="50" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1rzgdx4_di" bpmnElement="Activity_0wzv8ng">
         <dc:Bounds x="356" y="137" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1f4eda6_di" bpmnElement="Activity_03i20kk">
         <dc:Bounds x="504" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_18m5muk_di" bpmnElement="Event_18m5muk">
+        <dc:Bounds x="892" y="159" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="865" y="202" width="90" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1ug3qsk_di" bpmnElement="Activity_08ijamx">
         <dc:Bounds x="652" y="137" width="100" height="80" />
@@ -189,6 +184,9 @@
         <bpmndi:BPMNLabel>
           <dc:Bounds x="799" y="209" width="52" height="14" />
         </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1qqchky_di" bpmnElement="Gateway_1qqchky" isMarkerVisible="true">
+        <dc:Bounds x="258" y="152" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1imm7fe_di" bpmnElement="Flow_1imm7fe">
         <di:waypoint x="215" y="177" />

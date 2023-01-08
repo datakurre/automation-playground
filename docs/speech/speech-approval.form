@@ -6,11 +6,9 @@
       "id": "Field_0t9x9vg"
     },
     {
-      "label": "Speech",
-      "type": "textfield",
-      "id": "Field_1wlpooj",
-      "key": "speech",
-      "disabled": true
+      "text": "=\"\\\"\" + speech + \"\\\"\"",
+      "type": "text",
+      "id": "Field_13g4vyb"
     },
     {
       "values": [
@@ -43,10 +41,10 @@
   "type": "default",
   "id": "Form_0go4xzb",
   "executionPlatform": "Camunda Cloud",
-  "executionPlatformVersion": "8.1.0",
+  "executionPlatformVersion": "8.2.0",
   "exporter": {
     "name": "Camunda Modeler",
-    "version": "5.6.0"
+    "version": "5.7.0-nightly.20230107"
   },
-  "schemaVersion": 5
+  "schemaVersion": 6
 }

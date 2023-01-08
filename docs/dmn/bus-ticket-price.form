@@ -23,7 +23,10 @@
       "type": "checkbox",
       "id": "Field_16gf8he",
       "key": "alone",
-      "description": "Effective for 5–6  years old children only"
+      "description": "Effective for 5–6  years old children only",
+      "conditional": {
+        "hide": "=age < 5 or age > 6"
+      }
     },
     {
       "values": [
@@ -47,6 +50,9 @@
       "defaultValue": "none",
       "validate": {
         "required": true
+      },
+      "conditional": {
+        "hide": "=age < 12"
       }
     },
     {
@@ -60,10 +66,10 @@
   "type": "default",
   "id": "PassengerFacts",
   "executionPlatform": "Camunda Cloud",
-  "executionPlatformVersion": "8.1.0",
+  "executionPlatformVersion": "8.2.0",
   "exporter": {
     "name": "Camunda Modeler",
-    "version": "5.6.0"
+    "version": "5.7.0-nightly.20230107"
   },
-  "schemaVersion": 5
+  "schemaVersion": 6
 }

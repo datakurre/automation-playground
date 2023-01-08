@@ -2,7 +2,9 @@
 
 Business Process Model and Notation (BPMN) is a graphical representation for specifying business processes in a business process model [{sup}`Wikipedia`](https://en.wikipedia.org/wiki/Business_Process_Model_and_Notation).
 
-This is an opinionated introduction to some of the most common BPMN 2.0 symbols and their use. For a more complete overview, check [Camunda BPMN primer](https://docs.camunda.io/docs/components/modeler/bpmn/bpmn-primer/) or take a free [Camunda online BPMN 2.0 Training](https://academy.camunda.com/camunda-bpmn) course.
+```{tip}
+This is an opinionated introduction to some of the most common BPMN 2.0 symbols and their use. For a more complete overview, check [Camunda BPMN Tutorial](https://camunda.com/bpmn/), [Camunda BPMN Primer](https://docs.camunda.io/docs/components/modeler/bpmn/bpmn-primer/) or take a free [Camunda BPMN 2.0 online course](https://academy.camunda.com/camunda-bpmn).
+```
 
 ```{note}
 This starter intentionally excludes {bpmn}`event-based-gateway` event based gateways, most of the BPMN messaging symbols, and everything not yet supported by Camunda Zeebe engine (in time of writing).
