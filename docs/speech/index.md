@@ -4,7 +4,7 @@ This is a single exercise with simple process to practice, how {bpmn}`../bpmn/bu
 
 ## I have a dream...
 
-... to build a process for generating a nonsensical speech by picking random sentences from a list, sentence by sentence.
+... to build a process for generating a nonsensical speech by picking random sentences from a list, sentence by sentence, until ready. For now, I could use dice to choose the sentence (and not care about possible duplicates).
 
 1. At first, use output mapping of {bpmn}`../bpmn/start-event` start event to initialize the global process variables for the latest `dice` throw result and also for the `speech` to be build. FEEL expression for an empty string is:
    ```feel
@@ -58,8 +58,8 @@ When you are ready, save the form and toggle JSON source view to be able to copy
 
 ```{tip}
 Values collected and submitted by forms, could be further transformed using output mapping of the BPMN user task. For example, a string variable could be transformed into boolean with a FEEL expression:
-   ```feel
-   ready = "yes"
+```feel
+ready = "yes"
 ```
 
 {download}`submit-d20.form`<br/>
