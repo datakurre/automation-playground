@@ -1,10 +1,12 @@
 # Robocorp Code in action
 
-It's now time to write our first Zeebe orchestrated Robot Framework automation.
+It's now time to write our first Zeebe orchestrated Robot Framework automation. In [a previous exercise](../speech/index.md) we had {bpmn}`../bpmn/user-task` user task for just throwing a dice. Let's implement automation for a process with similar task:
 
 ```{bpmn-figure} speech-request
 {download}`speech-request.bpmn`
 ```
+
+We can also reuse the same DMN:<br/>
 {download}`../speech/pick-a-sentence.dmn`{download}`../speech/pick-a-sentence.html`
 
 
