@@ -22,6 +22,7 @@ execution/index.md
 play/index.md
 dmn/index.md
 speech/index.md
+workitems.md
 hello-world/index.md
 
 ```
