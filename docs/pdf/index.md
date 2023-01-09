@@ -6,7 +6,7 @@ This exercise has simpler process, but more complex robot. The goals is no less 
 {download}`create-certificate.bpmn`
 ```
 
-# Re-use existing robot
+## Re-use existing robot
 
 Luckily, for this time, we have been delivered prepackaged robot &nbsp;{bpmn}`../bpmn/robot-task`&nbsp; {download}`create-certificate.zip`, and we only need to wire it up.
 
@@ -20,7 +20,7 @@ Open the robots folder, and save the robot package as it is there.
 Done. The Playground RCC integration is configured to find it from there.
 
 
-# Form for the details
+## Form for the details
 
 Next up, is designing the form. We've been told that the robot requires three input variables:
 
