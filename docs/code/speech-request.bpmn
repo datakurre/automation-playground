@@ -45,7 +45,7 @@
       <bpmn:incoming>Flow_1phbacx</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1e6sf7f" sourceRef="Activity_0x56u4i" targetRef="Event_1jyil2t" />
-    <bpmn:intermediateThrowEvent id="Event_1jyil2t" name="Join sencentes">
+    <bpmn:intermediateThrowEvent id="Event_1jyil2t" name="Sentences ready">
       <bpmn:extensionElements>
         <zeebe:ioMapping>
           <zeebe:output source="=string join(sentences, &#34; &#34;)" target="speech" />
@@ -73,7 +73,7 @@
       <bpmndi:BPMNShape id="Event_1jyil2t_di" bpmnElement="Event_1jyil2t">
         <dc:Bounds x="848" y="159" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="830" y="202" width="74" height="14" />
+          <dc:Bounds x="825" y="202" width="84" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_03syojd_di" bpmnElement="Activity_0x56u4i" isExpanded="true">
