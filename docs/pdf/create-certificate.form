@@ -1,0 +1,64 @@
+{
+  "components": [
+    {
+      "text": "# Certificate of participation",
+      "type": "text",
+      "id": "Field_0axvo9k"
+    },
+    {
+      "label": "Name",
+      "type": "textfield",
+      "id": "Field_04j573t",
+      "key": "name",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Email",
+      "type": "textfield",
+      "id": "Field_1l5c4ta",
+      "key": "email",
+      "validate": {
+        "required": true,
+        "pattern": "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+      }
+    },
+    {
+      "values": [
+        {
+          "label": "modeling BPMN and DMN",
+          "value": "modeling BPMN and DMN"
+        },
+        {
+          "label": "building RCC robot packages",
+          "value": "building RCC robot packages"
+        },
+        {
+          "label": "orchestrating  with Zeebe",
+          "value": "orchestrating  with Zeebe"
+        }
+      ],
+      "label": "Achievements",
+      "type": "checklist",
+      "id": "Field_1wov462",
+      "key": "achievements"
+    },
+    {
+      "action": "submit",
+      "label": "Create certificate",
+      "type": "button",
+      "id": "Field_10c0ta8",
+      "key": "field_07g1yxj"
+    }
+  ],
+  "type": "default",
+  "id": "CreateCertificate",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.1.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.7.0-nightly.20230107"
+  },
+  "schemaVersion": 6
+}

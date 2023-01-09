@@ -1,8 +1,6 @@
----
-orphan: true
----
+# Exercise: API consuming robot
 
-# Mockoon Mock APIs
+## Mockoon Mock APIs
 
 [Mockoon](https://mockoon.com/) is a convenient open source tool for mocking HTTP APIs. It supports simple Open API import, but also allows to enrich end points with [Handlebars](https://handlebarsjs.com/) based response templating using [FakerJS](https://fakerjs.dev/) helpers for random mock data.
 

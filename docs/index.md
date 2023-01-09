@@ -24,6 +24,9 @@ dmn/index.md
 speech/index.md
 workitems.md
 code/index.md
+pdf/index.md
+# email/index.md
+# mockoon/index.md
 hello-world/index.md
 
 ```

@@ -1,0 +1,8 @@
+{
+  "name": "Jane Doe",
+  "email": "jane.doe@example.com",
+  "achievements": [
+     "modeling BPMN and DMN",
+     "orchestrating  with Zeebe"
+  ]
+}
