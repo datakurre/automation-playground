@@ -1,5 +1,11 @@
 # Exercise: API consuming robot
 
+This exercise continues to iterate on top of the [the previous exercise](../email/index.md) by replacing the {bpmn}`../bpmn/user-task` with a new {bpmn}`../bpmn/robot-task` Robot Famework service task for fetching the participants and their achievements from an API instead.
+
+```{bpmn-figure} create-certificate
+{download}`create-certificate.bpmn`
+```
+
 ## Mockoon Mock APIs
 
 [Mockoon](https://mockoon.com/) is a convenient open source tool for mocking HTTP APIs. It supports simple Open API import, but also allows to enrich end points with [Handlebars](https://handlebarsjs.com/) based response templating using [FakerJS](https://fakerjs.dev/) helpers for random mock data.
@@ -77,5 +83,14 @@ Later we might want to introduce randomly missing data. The following would rand
   "total": "{{queryParam 'total' '10'}}"
 }
 ```
+
+
+## Resource summary
+
+{download}`create-certificate.bpmn`<br/>
+{download}`../pdf/create-certificate.form`{download}`../pdf/create-certificate.json`<br/>
+{download}`workshop-achievement.dmn`{download}`workshop-achievement.html`<br/>
+&nbsp;{bpmn}`../bpmn/robot-task`&nbsp; {download}`fetch-participants.zip`<br/>
+&nbsp;{bpmn}`../bpmn/robot-task`&nbsp; {download}`../email/create-certificate.zip`
 
 
