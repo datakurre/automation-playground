@@ -2,7 +2,7 @@
 
 let
 
-  modelerVersion = "5.7.0-rc.1";
+  modelerVersion = "5.7.0";
 
   mkElectron = import "${pkgs.path}/pkgs/development/tools/electron/generic.nix" { inherit stdenv libXScrnSaver makeWrapper fetchurl wrapGAppsHook glib gtk3 unzip atomEnv libuuid at-spi2-atk at-spi2-core libdrm mesa libxkbcommon libxshmfence lib libappindicator-gtk3 libglvnd; };
   electron = mkElectron "20.2.0" {
@@ -24,9 +24,8 @@ let
     name = "camunda-modeler-${version}-asar";
     version = modelerVersion;
     src = fetchurl {
-#     url = "https://github.com/camunda/camunda-modeler/releases/download/v${version}/camunda-modeler-${version}-linux-x64.tar.gz";
-      url = "https://pandala.org/tmp/camunda-modeler-nightly-2023-01-08-linux-x64.tar.gz";
-      sha256 = "sha256-jZ/Y9Y0E6OdWpDA9dKj5hvdzNN+kdfx8N5H8fXuVsM4=";
+      url = "https://github.com/camunda/camunda-modeler/releases/download/v${version}/camunda-modeler-${version}-linux-x64.tar.gz";
+      sha256 = "sha256-eFCvq9ecQ4WFnaibKWvhQe/VmOo62LipJUIXna1+aVY=";
     };
     nativeBuildInputs = [ nodePackages.asar autoPatchelfHook gcc-unwrapped ];
     installPhase = ''
