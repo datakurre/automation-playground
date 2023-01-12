@@ -1,6 +1,6 @@
 # Exercise: API consuming robot
 
-This exercise continues to iterate on top of the [the previous exercise](../email/index.md) by replacing the {bpmn}`../bpmn/user-task` with a new {bpmn}`../bpmn/robot-task` Robot Famework service task for fetching the participants and their achievements from an API instead.
+Also this exercise continues to iterate on top of the [the previous exercise](../email/index.md) by replacing the {bpmn}`../bpmn/user-task` with a new {bpmn}`../bpmn/robot-task` Robot Famework service task for fetching the participants and their achievements from an API instead.
 
 ```{bpmn-figure} create-certificate
 {download}`create-certificate.bpmn`
@@ -88,7 +88,6 @@ Later we might want to introduce randomly missing data. The following would rand
 ## Resource summary
 
 {download}`create-certificate.bpmn`<br/>
-{download}`../pdf/create-certificate.form`{download}`../pdf/create-certificate.json`<br/>
 {download}`workshop-achievement.dmn`{download}`workshop-achievement.html`<br/>
 &nbsp;{bpmn}`../bpmn/robot-task`&nbsp; {download}`fetch-participants.zip`<br/>
 &nbsp;{bpmn}`../bpmn/robot-task`&nbsp; {download}`../email/create-certificate.zip`

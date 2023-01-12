@@ -27,6 +27,7 @@ code/index.md
 pdf/index.md
 email/index.md
 mockoon/index.md
+spreadsheet/index.md
 hello-world/index.md
 
 ```
