@@ -15,6 +15,7 @@
     vmFileName = "parrot-rcc-nixos-${config.system.nixos.label}-${pkgs.stdenv.hostPlatform.system}.ova";
     vmName = "parrot-rcc (NixOS ${config.system.nixos.label} ${pkgs.stdenv.hostPlatform.system})";
     memorySize = 8 * 1024;
+  # baseImageSize = 60 * 1024;
   # params = { usbehci = "off"; };
   };
 
