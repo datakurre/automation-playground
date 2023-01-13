@@ -28,9 +28,10 @@ pdf/index.md
 email/index.md
 mockoon/index.md
 spreadsheet/index.md
+final/index.md
 classification/index.md
+platforms.md
 hello-world/index.md
-
 ```
 
 <!-- See: https://myst-parser.readthedocs.io/ -->

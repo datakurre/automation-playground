@@ -24,12 +24,11 @@ This agenda is preliminary and is up to changes.
 
 * [Service tasks in Robot Framework](../workitems.md)
 * [Robocorp Code and RCC](../code/index.md)
-* Robocorp Code exercises
-* RCC & Zeebe Play exercises
+* [Code, RCC, Play and exercises](../pdf/index.md)
 
-"Coffee break"
+"Coffee break
 
-* Comprehensive exercise
-* Camunda Platform versions
+* [More exercises...](../mockoon/index.md)
+* [About Camunda Platforms](../platforms.md)
 * Discussion
 
