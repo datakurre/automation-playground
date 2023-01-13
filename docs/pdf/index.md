@@ -1,6 +1,6 @@
 # Exercise: PDF creation robot
 
-This exercise has simpler process, but more complex robot. The goals is no less than create a **Certificate of participation** (PDF) with user submitted details.
+This exercise has simpler process than [the introduction](../code/index.md), but a more complex robot. The goals is no less than create a **Certificate of participation** (PDF) with user submitted details.
 
 ```{bpmn-figure} create-certificate
 {download}`create-certificate.bpmn`
@@ -17,7 +17,9 @@ Luckily, for this time, we have been delivered prepackaged robot &nbsp;{bpmn}`..
 
 Open the robots folder, and save the robot package as it is there.
 
-Done. The Playground RCC integration is configured to find it from there.
+Done.
+
+The Playground RCC integration is configured to find it from there.
 
 
 ## Form for the details
@@ -34,6 +36,13 @@ Next up, is designing the form. We've been told that the robot requires three in
 ```
 
 ## Beam it up and play
+
+```{figure} ../playground/desktop-rcc.png
+:alt:
+:align: right
+```
+
+Once process with the {bpmn}`../bpmn/user-task` user task form has been saved and deployed, everything should be ready. Just start the **RCC integration**, it will discover the robotpackge, and process is now available to be completed at Zeebe Play.
 
 ```{figure} play-submit-details.png
 :alt:
