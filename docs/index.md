@@ -28,6 +28,7 @@ pdf/index.md
 email/index.md
 mockoon/index.md
 spreadsheet/index.md
+classification/index.md
 hello-world/index.md
 
 ```
