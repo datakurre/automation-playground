@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0poxanu" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.7.0-nightly.20230107" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.1.0">
+  <bpmn:process id="CreateCertificate" name="Create certificate" isExecutable="true">
+    <bpmn:extensionElements>
+      <zeebe:userTaskForm id="userTaskForm_3156jl8">{
+  "components": [
+    {
+      "text": "# Certificate of participation",
+      "type": "text",
+      "id": "Field_0axvo9k"
+    },
+    {
+      "label": "Name",
+      "type": "textfield",
+      "id": "Field_04j573t",
+      "key": "name",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Email",
+      "type": "textfield",
+      "id": "Field_1l5c4ta",
+      "key": "email",
+      "validate": {
+        "required": true,
+        "pattern": "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+      }
+    },
+    {
+      "values": [
+        {
+          "label": "modeling BPMN and DMN",
+          "value": "modeling BPMN and DMN"
+        },
+        {
+          "label": "building RCC robot packages",
+          "value": "building RCC robot packages"
+        },
+        {
+          "label": "orchestrating  with Zeebe",
+          "value": "orchestrating  with Zeebe"
+        }
+      ],
+      "label": "Achievements",
+      "type": "checklist",
+      "id": "Field_1wov462",
+      "key": "achievements"
+    },
+    {
+      "action": "submit",
+      "label": "Create certificate",
+      "type": "button",
+      "id": "Field_10c0ta8",
+      "key": "field_07g1yxj"
+    }
+  ],
+  "type": "default",
+  "id": "CreateCertificate",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.1.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.7.0-nightly.20230107"
+  },
+  "schemaVersion": 6
+}</zeebe:userTaskForm>
+    </bpmn:extensionElements>
+    <bpmn:startEvent id="StartEvent_1" name="Certificate requested">
+      <bpmn:outgoing>Flow_0ewd4i6</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0ewd4i6" sourceRef="StartEvent_1" targetRef="Activity_1hu4sce" />
+    <bpmn:userTask id="Activity_1hu4sce" name="Submit  details">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_3156jl8" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0ewd4i6</bpmn:incoming>
+      <bpmn:outgoing>Flow_0tdwv7l</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0tdwv7l" sourceRef="Activity_1hu4sce" targetRef="Robot_CertificatePDF" />
+    <bpmn:endEvent id="Event_1lb7vjm" name="Certificate created">
+      <bpmn:incoming>Flow_07gp2bl</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_07gp2bl" sourceRef="Robot_CertificatePDF" targetRef="Event_1lb7vjm" />
+    <bpmn:serviceTask id="Robot_CertificatePDF" name="Create certificate">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="Create certificate" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0tdwv7l</bpmn:incoming>
+      <bpmn:outgoing>Flow_07gp2bl</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="CreateCertificate">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="172" y="142" width="50" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1hyh4tn_di" bpmnElement="Activity_1hu4sce">
+        <dc:Bounds x="270" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1lb7vjm_di" bpmnElement="Event_1lb7vjm">
+        <dc:Bounds x="592" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="565" y="142" width="90" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1mxv4xd_di" bpmnElement="Robot_CertificatePDF">
+        <dc:Bounds x="430" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0ewd4i6_di" bpmnElement="Flow_0ewd4i6">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="270" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0tdwv7l_di" bpmnElement="Flow_0tdwv7l">
+        <di:waypoint x="370" y="117" />
+        <di:waypoint x="430" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_07gp2bl_di" bpmnElement="Flow_07gp2bl">
+        <di:waypoint x="530" y="117" />
+        <di:waypoint x="592" y="117" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

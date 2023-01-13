@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1ayu21j" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.7.0-nightly.20230107" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.1.0">
+  <bpmn:process id="SpeechRequest" name="Speech Request" isExecutable="true">
+    <bpmn:extensionElements>
+      <zeebe:userTaskForm id="userTaskForm_04hljfi">{
+  "components": [
+    {
+      "text": "# Throw dice\n\nThrow a dice with 20 sides and submit the result.",
+      "type": "text",
+      "id": "Field_0wtbe5v"
+    },
+    {
+      "label": "Result ",
+      "type": "number",
+      "id": "Field_1dl7l26",
+      "key": "result",
+      "validate": {
+        "required": true,
+        "max": 20,
+        "min": 1
+      },
+      "defaultValue": 1
+    },
+    {
+      "action": "submit",
+      "label": "Submit result",
+      "type": "button",
+      "id": "Field_0yuauyj",
+      "key": "field_021j8b1"
+    }
+  ],
+  "type": "default",
+  "id": "SubmitD20",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.1.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.7.0-nightly.20230107"
+  },
+  "schemaVersion": 6
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_09ot8g9">{
+  "components": [
+    {
+      "text": "# Your speech is ready",
+      "type": "text",
+      "id": "Field_0t9x9vg"
+    },
+    {
+      "text": "=\"\\\"\" + speech + \"\\\"\"",
+      "type": "text",
+      "id": "Field_13g4vyb"
+    },
+    {
+      "values": [
+        {
+          "label": "Add another sentence",
+          "value": "no"
+        },
+        {
+          "label": "Wrap it up",
+          "value": "yes"
+        }
+      ],
+      "label": "Are we ready yet?",
+      "type": "radio",
+      "id": "Field_0xu1z8n",
+      "key": "ready",
+      "defaultValue": "no",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "action": "submit",
+      "label": "Continue",
+      "type": "button",
+      "id": "Field_1qu96z1",
+      "key": "field_0pxyq38"
+    }
+  ],
+  "type": "default",
+  "id": "Form_0go4xzb",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.7.0-nightly.20230107"
+  },
+  "schemaVersion": 6
+}</zeebe:userTaskForm>
+    </bpmn:extensionElements>
+    <bpmn:startEvent id="StartEvent_1" name="Speech requested">
+      <bpmn:extensionElements>
+        <zeebe:ioMapping>
+          <zeebe:output source="=&#34;&#34;" target="speech" />
+          <zeebe:output source="=1" target="dice" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>Flow_1imm7fe</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1imm7fe" sourceRef="StartEvent_1" targetRef="Gateway_1qqchky" />
+    <bpmn:userTask id="Activity_0wzv8ng" name="Throw a dice with 20 sides">
+      <bpmn:extensionElements>
+        <zeebe:ioMapping>
+          <zeebe:input source="=dice" target="result" />
+          <zeebe:output source="=max([1, min([result, 20])])" target="dice" />
+        </zeebe:ioMapping>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_04hljfi" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1k3zurd</bpmn:incoming>
+      <bpmn:outgoing>Flow_0voxkt0</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0voxkt0" sourceRef="Activity_0wzv8ng" targetRef="Activity_03i20kk" />
+    <bpmn:businessRuleTask id="Activity_03i20kk" name="Pick a sentence">
+      <bpmn:extensionElements>
+        <zeebe:calledDecision decisionId="PickASentence" resultVariable="sentence" />
+        <zeebe:ioMapping>
+          <zeebe:output source="=replace(speech + &#34; &#34; + sentence, &#34;^\s+|\s+$&#34;, &#34;&#34;)" target="speech" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0voxkt0</bpmn:incoming>
+      <bpmn:outgoing>Flow_1m2gznx</bpmn:outgoing>
+    </bpmn:businessRuleTask>
+    <bpmn:endEvent id="Event_18m5muk" name="Speech generated">
+      <bpmn:incoming>Flow_09u96xr</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1m2gznx" sourceRef="Activity_03i20kk" targetRef="Activity_08ijamx" />
+    <bpmn:sequenceFlow id="Flow_1nliji8" sourceRef="Activity_08ijamx" targetRef="Gateway_097skiq" />
+    <bpmn:userTask id="Activity_08ijamx" name="Accept speech">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_09ot8g9" />
+        <zeebe:ioMapping>
+          <zeebe:input source="=&#34;no&#34;" target="ready" />
+          <zeebe:output source="=ready = &#34;yes&#34;" target="accepted" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1m2gznx</bpmn:incoming>
+      <bpmn:outgoing>Flow_1nliji8</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="Gateway_097skiq" name="Accepted?" default="Flow_0ijtsmz">
+      <bpmn:incoming>Flow_1nliji8</bpmn:incoming>
+      <bpmn:outgoing>Flow_09u96xr</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0ijtsmz</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_09u96xr" name="Yes" sourceRef="Gateway_097skiq" targetRef="Event_18m5muk">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=accepted</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:exclusiveGateway id="Gateway_1qqchky">
+      <bpmn:incoming>Flow_1imm7fe</bpmn:incoming>
+      <bpmn:incoming>Flow_0ijtsmz</bpmn:incoming>
+      <bpmn:outgoing>Flow_1k3zurd</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1k3zurd" sourceRef="Gateway_1qqchky" targetRef="Activity_0wzv8ng" />
+    <bpmn:sequenceFlow id="Flow_0ijtsmz" name="No" sourceRef="Gateway_097skiq" targetRef="Gateway_1qqchky" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="SpeechRequest">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="159" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="152" y="202" width="90" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1rzgdx4_di" bpmnElement="Activity_0wzv8ng">
+        <dc:Bounds x="356" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1f4eda6_di" bpmnElement="Activity_03i20kk">
+        <dc:Bounds x="504" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_18m5muk_di" bpmnElement="Event_18m5muk">
+        <dc:Bounds x="892" y="159" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="865" y="202" width="90" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ug3qsk_di" bpmnElement="Activity_08ijamx">
+        <dc:Bounds x="652" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_097skiq_di" bpmnElement="Gateway_097skiq" isMarkerVisible="true">
+        <dc:Bounds x="800" y="152" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="799" y="209" width="52" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1qqchky_di" bpmnElement="Gateway_1qqchky" isMarkerVisible="true">
+        <dc:Bounds x="258" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1imm7fe_di" bpmnElement="Flow_1imm7fe">
+        <di:waypoint x="215" y="177" />
+        <di:waypoint x="258" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0voxkt0_di" bpmnElement="Flow_0voxkt0">
+        <di:waypoint x="456" y="177" />
+        <di:waypoint x="504" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1m2gznx_di" bpmnElement="Flow_1m2gznx">
+        <di:waypoint x="604" y="177" />
+        <di:waypoint x="652" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1nliji8_di" bpmnElement="Flow_1nliji8">
+        <di:waypoint x="752" y="177" />
+        <di:waypoint x="800" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_09u96xr_di" bpmnElement="Flow_09u96xr">
+        <di:waypoint x="850" y="177" />
+        <di:waypoint x="892" y="177" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="862" y="159" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1k3zurd_di" bpmnElement="Flow_1k3zurd">
+        <di:waypoint x="308" y="177" />
+        <di:waypoint x="356" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ijtsmz_di" bpmnElement="Flow_0ijtsmz">
+        <di:waypoint x="825" y="152" />
+        <di:waypoint x="825" y="90" />
+        <di:waypoint x="283" y="90" />
+        <di:waypoint x="283" y="152" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="547" y="72" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

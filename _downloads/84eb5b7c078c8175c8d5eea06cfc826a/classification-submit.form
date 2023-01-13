@@ -1,0 +1,76 @@
+{
+  "components": [
+    {
+      "text": "# Classfication training",
+      "type": "text",
+      "id": "Field_0pcuccn"
+    },
+    {
+      "label": "Model",
+      "type": "textfield",
+      "id": "Field_036c4uk",
+      "key": "model",
+      "defaultValue": "mood",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "values": [
+        {
+          "label": "Train",
+          "value": "train"
+        },
+        {
+          "label": "Predict",
+          "value": "predict"
+        }
+      ],
+      "label": "Task",
+      "type": "radio",
+      "id": "Field_045dc0m",
+      "key": "task",
+      "defaultValue": "train",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Text to classify",
+      "type": "textarea",
+      "id": "Field_0dhym56",
+      "key": "text",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Classification",
+      "type": "textfield",
+      "id": "Field_0jpcluz",
+      "key": "class",
+      "conditional": {
+        "hide": "=task != \"train\""
+      },
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "action": "submit",
+      "label": "Submit",
+      "type": "button",
+      "id": "Field_1q4mgfr",
+      "key": "field_1xs7os4"
+    }
+  ],
+  "type": "default",
+  "id": "Form_1lodjz8",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.7.0"
+  },
+  "schemaVersion": 6
+}

@@ -1,0 +1,50 @@
+{
+  "components": [
+    {
+      "text": "# Your speech is ready",
+      "type": "text",
+      "id": "Field_0t9x9vg"
+    },
+    {
+      "text": "=\"\\\"\" + speech + \"\\\"\"",
+      "type": "text",
+      "id": "Field_13g4vyb"
+    },
+    {
+      "values": [
+        {
+          "label": "Add another sentence",
+          "value": "no"
+        },
+        {
+          "label": "Wrap it up",
+          "value": "yes"
+        }
+      ],
+      "label": "Are we ready yet?",
+      "type": "radio",
+      "id": "Field_0xu1z8n",
+      "key": "ready",
+      "defaultValue": "no",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "action": "submit",
+      "label": "Continue",
+      "type": "button",
+      "id": "Field_1qu96z1",
+      "key": "field_0pxyq38"
+    }
+  ],
+  "type": "default",
+  "id": "Form_0go4xzb",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.7.0-nightly.20230107"
+  },
+  "schemaVersion": 6
+}

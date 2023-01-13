@@ -1,0 +1,84 @@
+{
+  "components": [
+    {
+      "text": "# Review classification",
+      "type": "text",
+      "id": "Field_0pcuccn"
+    },
+    {
+      "text": "Model",
+      "type": "text",
+      "id": "Field_0fp74j7"
+    },
+    {
+      "text": "=model",
+      "type": "text",
+      "id": "Field_167ldra"
+    },
+    {
+      "text": "Text",
+      "type": "text",
+      "id": "Field_0gdp02w"
+    },
+    {
+      "text": "=text",
+      "type": "text",
+      "id": "Field_0i7u3eo"
+    },
+    {
+      "label": "Classification",
+      "type": "textfield",
+      "id": "Field_0jpcluz",
+      "key": "class",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "text": "Confidence",
+      "type": "text",
+      "id": "Field_05thdw1"
+    },
+    {
+      "text": "=confidence",
+      "type": "text",
+      "id": "Field_1wuwvyn"
+    },
+    {
+      "values": [
+        {
+          "label": "Train",
+          "value": "train"
+        },
+        {
+          "label": "Accept",
+          "value": "accept"
+        }
+      ],
+      "label": "Action",
+      "type": "radio",
+      "id": "Field_045dc0m",
+      "key": "task",
+      "defaultValue": "train",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "action": "submit",
+      "label": "Submit",
+      "type": "button",
+      "id": "Field_1q4mgfr",
+      "key": "field_1xs7os4"
+    }
+  ],
+  "type": "default",
+  "id": "Form_1lodjz8",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.7.0"
+  },
+  "schemaVersion": 6
+}

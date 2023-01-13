@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1xkgaqc" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.7.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.1.0">
+  <bpmn:process id="ClassificationTraining" name="Train Classification" isExecutable="true">
+    <bpmn:extensionElements>
+      <zeebe:userTaskForm id="userTaskForm_1h6lkcs">{
+  "components": [
+    {
+      "text": "# Classfication training",
+      "type": "text",
+      "id": "Field_0pcuccn"
+    },
+    {
+      "label": "Model",
+      "type": "textfield",
+      "id": "Field_036c4uk",
+      "key": "model",
+      "defaultValue": "mood",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "values": [
+        {
+          "label": "Train",
+          "value": "train"
+        },
+        {
+          "label": "Predict",
+          "value": "predict"
+        }
+      ],
+      "label": "Task",
+      "type": "radio",
+      "id": "Field_045dc0m",
+      "key": "task",
+      "defaultValue": "train",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Text to classify",
+      "type": "textarea",
+      "id": "Field_0dhym56",
+      "key": "text",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Classification",
+      "type": "textfield",
+      "id": "Field_0jpcluz",
+      "key": "class",
+      "conditional": {
+        "hide": "=task != \"train\""
+      },
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "action": "submit",
+      "label": "Submit",
+      "type": "button",
+      "id": "Field_1q4mgfr",
+      "key": "field_1xs7os4"
+    }
+  ],
+  "type": "default",
+  "id": "Form_1lodjz8",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.7.0"
+  },
+  "schemaVersion": 6
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="userTaskForm_1f0a77v">{
+  "components": [
+    {
+      "text": "# Review classification",
+      "type": "text",
+      "id": "Field_0pcuccn"
+    },
+    {
+      "text": "Model",
+      "type": "text",
+      "id": "Field_0fp74j7"
+    },
+    {
+      "text": "=model",
+      "type": "text",
+      "id": "Field_167ldra"
+    },
+    {
+      "text": "Text",
+      "type": "text",
+      "id": "Field_0gdp02w"
+    },
+    {
+      "text": "=text",
+      "type": "text",
+      "id": "Field_0i7u3eo"
+    },
+    {
+      "label": "Classification",
+      "type": "textfield",
+      "id": "Field_0jpcluz",
+      "key": "class",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "text": "Confidence",
+      "type": "text",
+      "id": "Field_05thdw1"
+    },
+    {
+      "text": "=confidence",
+      "type": "text",
+      "id": "Field_1wuwvyn"
+    },
+    {
+      "values": [
+        {
+          "label": "Train",
+          "value": "train"
+        },
+        {
+          "label": "Accept",
+          "value": "accept"
+        }
+      ],
+      "label": "Action",
+      "type": "radio",
+      "id": "Field_045dc0m",
+      "key": "task",
+      "defaultValue": "train",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "action": "submit",
+      "label": "Submit",
+      "type": "button",
+      "id": "Field_1q4mgfr",
+      "key": "field_1xs7os4"
+    }
+  ],
+  "type": "default",
+  "id": "Form_1lodjz8",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.7.0"
+  },
+  "schemaVersion": 6
+}</zeebe:userTaskForm>
+    </bpmn:extensionElements>
+    <bpmn:startEvent id="StartEvent_1" name="Classification task requested">
+      <bpmn:outgoing>Flow_1kowjpy</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1kowjpy" sourceRef="StartEvent_1" targetRef="Activity_1wn71zb" />
+    <bpmn:exclusiveGateway id="Gateway_0itrmg4" name="Train or predict?" default="Flow_1npr4bd">
+      <bpmn:incoming>Flow_1vnvcvh</bpmn:incoming>
+      <bpmn:outgoing>Flow_14zkjbo</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1npr4bd</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1vnvcvh" sourceRef="Activity_1wn71zb" targetRef="Gateway_0itrmg4" />
+    <bpmn:sequenceFlow id="Flow_14zkjbo" name="Predict" sourceRef="Gateway_0itrmg4" targetRef="Robot_Predict">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=task = "predict"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:endEvent id="Event_0p6qxh0" name="Prediction completed">
+      <bpmn:incoming>Flow_0g71q81</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1gt1o01" sourceRef="Robot_Predict" targetRef="Gateway_0byuxzr" />
+    <bpmn:boundaryEvent id="Event_0h0uyqs" attachedToRef="Robot_Predict">
+      <bpmn:extensionElements>
+        <zeebe:ioMapping>
+          <zeebe:output source="=&#34;train&#34;" target="task" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>Flow_15wwqzz</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_1a35z8e" errorRef="Error_038n8rl" />
+    </bpmn:boundaryEvent>
+    <bpmn:endEvent id="Event_1w5o0gd" name="Training completed">
+      <bpmn:incoming>Flow_18uwdt7</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_01vpn07" sourceRef="Activity_0isa60r" targetRef="Gateway_0wipps6" />
+    <bpmn:exclusiveGateway id="Gateway_0wipps6" name="Train or accept?" default="Flow_0g71q81">
+      <bpmn:incoming>Flow_01vpn07</bpmn:incoming>
+      <bpmn:outgoing>Flow_0j3izw1</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0g71q81</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="Activity_1wn71zb" name="Submit task">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_1h6lkcs" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1kowjpy</bpmn:incoming>
+      <bpmn:outgoing>Flow_1vnvcvh</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_0isa60r" name="Review classification">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_1f0a77v" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1ud10bj</bpmn:incoming>
+      <bpmn:outgoing>Flow_01vpn07</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="Robot_Train" name="Train">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="Train classification" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1sq3pt1</bpmn:incoming>
+      <bpmn:outgoing>Flow_18uwdt7</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Robot_Predict" name="Predict">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="Predict classification" />
+        <zeebe:ioMapping>
+          <zeebe:output source="=class" target="class" />
+          <zeebe:output source="=confidence" target="confidence" />
+          <zeebe:output source="=&#34;accept&#34;" target="task" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_14zkjbo</bpmn:incoming>
+      <bpmn:outgoing>Flow_1gt1o01</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="Gateway_0byuxzr">
+      <bpmn:incoming>Flow_1gt1o01</bpmn:incoming>
+      <bpmn:incoming>Flow_15wwqzz</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ud10bj</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1ud10bj" sourceRef="Gateway_0byuxzr" targetRef="Activity_0isa60r" />
+    <bpmn:sequenceFlow id="Flow_15wwqzz" name="Low confidence" sourceRef="Event_0h0uyqs" targetRef="Gateway_0byuxzr" />
+    <bpmn:exclusiveGateway id="Gateway_0rgoi7r">
+      <bpmn:incoming>Flow_0j3izw1</bpmn:incoming>
+      <bpmn:incoming>Flow_1npr4bd</bpmn:incoming>
+      <bpmn:outgoing>Flow_1sq3pt1</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0j3izw1" sourceRef="Gateway_0wipps6" targetRef="Gateway_0rgoi7r">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=task = "train"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0g71q81" name="Accept" sourceRef="Gateway_0wipps6" targetRef="Event_0p6qxh0" />
+    <bpmn:sequenceFlow id="Flow_1sq3pt1" name="Train" sourceRef="Gateway_0rgoi7r" targetRef="Robot_Train" />
+    <bpmn:sequenceFlow id="Flow_18uwdt7" sourceRef="Robot_Train" targetRef="Event_1w5o0gd" />
+    <bpmn:sequenceFlow id="Flow_1npr4bd" name="Train" sourceRef="Gateway_0itrmg4" targetRef="Gateway_0rgoi7r" />
+  </bpmn:process>
+  <bpmn:error id="Error_038n8rl" name="Low confidence on classification" errorCode="LOW_CONFIDENCE" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="ClassificationTraining">
+      <bpmndi:BPMNShape id="Gateway_0itrmg4_di" bpmnElement="Gateway_0itrmg4" isMarkerVisible="true">
+        <dc:Bounds x="421" y="162" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="406" y="138" width="80" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="172" y="169" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="154" y="212" width="73" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0p6qxh0_di" bpmnElement="Event_0p6qxh0">
+        <dc:Bounds x="1222" y="169" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1214" y="132" width="51" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1w5o0gd_di" bpmnElement="Event_1w5o0gd">
+        <dc:Bounds x="1222" y="282" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1215" y="325" width="51" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1k39el7_di" bpmnElement="Robot_Train">
+        <dc:Bounds x="1066" y="260" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1a9gi2r_di" bpmnElement="Activity_1wn71zb">
+        <dc:Bounds x="262" y="147" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_17221t0_di" bpmnElement="Robot_Predict">
+        <dc:Bounds x="530" y="147" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0byuxzr_di" bpmnElement="Gateway_0byuxzr" isMarkerVisible="true">
+        <dc:Bounds x="689" y="162" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0mq0r5x_di" bpmnElement="Activity_0isa60r">
+        <dc:Bounds x="798" y="147" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0wipps6_di" bpmnElement="Gateway_0wipps6" isMarkerVisible="true">
+        <dc:Bounds x="957" y="162" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="942" y="138" width="80" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0rgoi7r_di" bpmnElement="Gateway_0rgoi7r" isMarkerVisible="true">
+        <dc:Bounds x="957" y="275" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1lo2o68_di" bpmnElement="Event_0h0uyqs">
+        <dc:Bounds x="562" y="129" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1vnvcvh_di" bpmnElement="Flow_1vnvcvh">
+        <di:waypoint x="362" y="187" />
+        <di:waypoint x="421" y="187" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_14zkjbo_di" bpmnElement="Flow_14zkjbo">
+        <di:waypoint x="471" y="187" />
+        <di:waypoint x="530" y="187" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="472" y="169" width="35" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1npr4bd_di" bpmnElement="Flow_1npr4bd">
+        <di:waypoint x="446" y="212" />
+        <di:waypoint x="446" y="300" />
+        <di:waypoint x="957" y="300" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="478" y="283" width="25" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1kowjpy_di" bpmnElement="Flow_1kowjpy">
+        <di:waypoint x="208" y="187" />
+        <di:waypoint x="262" y="187" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0g71q81_di" bpmnElement="Flow_0g71q81">
+        <di:waypoint x="1007" y="187" />
+        <di:waypoint x="1222" y="187" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1019" y="169" width="34" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_18uwdt7_di" bpmnElement="Flow_18uwdt7">
+        <di:waypoint x="1166" y="300" />
+        <di:waypoint x="1222" y="300" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1sq3pt1_di" bpmnElement="Flow_1sq3pt1">
+        <di:waypoint x="1007" y="300" />
+        <di:waypoint x="1066" y="300" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1024" y="282" width="25" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1gt1o01_di" bpmnElement="Flow_1gt1o01">
+        <di:waypoint x="630" y="187" />
+        <di:waypoint x="689" y="187" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_15wwqzz_di" bpmnElement="Flow_15wwqzz">
+        <di:waypoint x="580" y="129" />
+        <di:waypoint x="580" y="100" />
+        <di:waypoint x="714" y="100" />
+        <di:waypoint x="714" y="162" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="591" y="113" width="77" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ud10bj_di" bpmnElement="Flow_1ud10bj">
+        <di:waypoint x="739" y="187" />
+        <di:waypoint x="798" y="187" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_01vpn07_di" bpmnElement="Flow_01vpn07">
+        <di:waypoint x="898" y="187" />
+        <di:waypoint x="957" y="187" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0j3izw1_di" bpmnElement="Flow_0j3izw1">
+        <di:waypoint x="982" y="212" />
+        <di:waypoint x="982" y="275" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
