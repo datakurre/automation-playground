@@ -58,33 +58,6 @@ Update `/users` endpoint to include fields `email`, `consent` and `achievements`
 }
 ```
 
-### Randomly missing data
-
-Later we might want to introduce randomly missing data. The following would randomly leave empty values for fields `firstname` and `lastname`:
-
-```
-{
-  "users": [
-    {{# repeat (queryParam 'total' '10') }}
-      {
-        {{#if (faker 'datatype.boolean')}}
-        "firstname": "{{ faker 'name.firstName' }}",
-        "lastname": "{{ faker 'name.lastName' }}",
-        {{else}}
-        "firstname": "",
-        "lastname": "",
-        {{/if}}
-        "email": "{{ faker 'internet.email' }}",
-        "consent": {{ faker 'datatype.boolean' }},
-        "achievements": {{{ faker 'helpers.arrayElements' }}}
-      },
-    {{/ repeat }}
-  ],
-  "total": "{{queryParam 'total' '10'}}"
-}
-```
-
-
 ## Resource summary
 
 {download}`create-certificate.bpmn`<br/>

@@ -4,6 +4,34 @@
 {download}`create-certificate.bpmn`
 ```
 
+### Randomly missing data
+
+The following Mockoon temmplate would randomly leave empty values for fields `firstname` and `lastname`:
+
+```
+{
+  "users": [
+    {{# repeat (queryParam 'total' '10') }}
+      {
+        {{#if (faker 'datatype.boolean')}}
+        "firstname": "{{ faker 'name.firstName' }}",
+        "lastname": "{{ faker 'name.lastName' }}",
+        {{else}}
+        "firstname": "",
+        "lastname": "",
+        {{/if}}
+        "email": "{{ faker 'internet.email' }}",
+        "consent": {{ faker 'datatype.boolean' }},
+        "achievements": {{{ faker 'helpers.arrayElements' }}}
+      },
+    {{/ repeat }}
+  ],
+  "total": "{{queryParam 'total' '10'}}"
+}
+```
+
+
+
 ## Resource summary
 
 {download}`create-certificate.bpmn`<br/>
