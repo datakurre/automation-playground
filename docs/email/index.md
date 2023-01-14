@@ -1,23 +1,25 @@
 # Exercise: Email sending robot
 
-This exercise continues from [the previous one](../pdf/index.md) by adding a new {bpmn}`../bpmn/robot-task` Robot Famework service task for delivering the generated certificate by email.
+This exercise continues from [the previous one](../pdf/index.md) by adding a new {bpmn}`../bpmn/robot-task` Robot Framework {bpmn}`../bpmn/service-task` **service task** for delivering the generated certificate by email as an attachment.
 
 ```{bpmn-figure} create-certificate
 {download}`create-certificate.bpmn`
 ```
 
+The minimal required input or output mapping for this exercise, is to bring `filename` variable back to process from {bpmn}`../bpmn/robot-task` *Create certificate* task. The latter {bpmn}`../bpmn/robot-task` *Email certificate* task may use for [reading the file from work item](../workitems.md#reading-files).
+
 ## Extracting robot package
 
-Start implementing the new automation task by extracting the provided {bpmn}`../bpmn/robot-task` {download}`create-certificate.zip` and then deleting the obsoleted package.
+After the BPMN model changes, start implementing the new automation task by extracting the provided {bpmn}`../bpmn/robot-task` {download}`../pdf/create-certificate.zip` and then deleting the now obsolete package file.
 
 ```{figure} robot-extract.png
 :alt:
 ```
 
 
-## What? Dependencies?
+## Dependencies just work
 
-But now that we have access also to the PDF robot code, why not to look into how it worked? Especially into Robot dependency file, `conda.yaml`, which tells immediately PDF creations is based on combined powers of [xhtml2pdf](https://pypi.org/project/xhtml2pdf/) PDF-converter and [Chamelon](https://pypi.org/project/xhtml2pdf/) HTML templating.
+But now that we have full also to the PDF robot code, why not to look into how it worked? Especially into Robot dependency file, `conda.yaml`, which tells that PDF creations is based on combined powers of [xhtml2pdf](https://pypi.org/project/xhtml2pdf/) PDF-converter and [Chamelon](https://pypi.org/project/xhtml2pdf/) HTML templating.
 
 ```yaml
 channels:
@@ -32,7 +34,10 @@ dependencies:
       - xhtml2pdf
 ```
 
-## Send message
+Compatible runtime environment with these dependencies in place is implicitly managed by Robocorp Code for development and RCC for the orchestrated execution.
+
+
+## Sending the  message
 
 The playground has a local SMTP mock server listening at `localhost:1025`. Let's follow the examples of RPA framework's [Email.ImapSmtp](https://rpaframework.org/libraries/email_imapsmtp/) keyword libray to send the attachment as email.
 
@@ -77,7 +82,15 @@ Mail certificate PDF
     ...           body=${body}
     ...           attachments=${certificate}
 ```
+
+Because RCC can run tasks from any `.robot` from the package root, we can have the above task in its own file next, e.g. `mail.robot`.
+
+
 ## Multiple tasks per package
+
+There is no limits for the amount of task allowed in tasks each RCC compatible Robot Framework automation package (or just "robot"). The only limit is, how many tasks are still practical to be listed in a single `robots.yaml`.
+
+Here's `robot.yaml` from {bpmn}`../bpmn/robot-task` {download}`../pdf/create-certificate.zip` package updated with the new task mapping:
 
 ```yaml
 # For more details on the format and content:
@@ -114,7 +127,11 @@ ignoreFiles:
 
 ```{figure} ../playground/desktop-mailhog.png
 :alt:
+:align: right
 ```
+
+Once you have deployed the new process model, `wrap`ped the updated package, launched **RCC** integration and started executing a new version, you should be able to view the sent email at **Mailhog** web user interface.
+
 
 ```{figure} mailhog-notification.png
 :alt:

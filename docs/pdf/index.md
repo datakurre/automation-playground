@@ -30,6 +30,8 @@ Next up, is designing the form. We've been told that the robot requires three in
 * `email` -- email of the participant as string
 * `achievements` -- list of achievements strings to print on the certificate
 
+When the {bpmn}`../bpmn/user-task` user task form field variable names matches those of the upcoming {bpmn}`../bpmn/robot-task` robot task requirements, and no variables need to be returned back to process, no input or output mapping is technically required.
+
 ```{figure} submit-details.png
 :alt:
 :width: 100%
@@ -42,7 +44,7 @@ Next up, is designing the form. We've been told that the robot requires three in
 :align: right
 ```
 
-Once process with the {bpmn}`../bpmn/user-task` user task form has been saved and deployed, everything should be ready. Just start the **RCC integration**, it will discover the robotpackge, and process is now available to be completed at Zeebe Play.
+Once process with the {bpmn}`../bpmn/user-task` user task form has been saved and deployed, everything should be ready. Just start the **RCC integration**, it will discover the robot automatin package, and process is now available to be completed at Zeebe Play.
 
 ```{figure} play-submit-details.png
 :alt:
