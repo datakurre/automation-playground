@@ -1,7 +1,7 @@
 NIX_BUILD ?= nix build --no-link
 
 BOX_NAME ?= datakurre/automation-playground
-BOX_VERSION ?= 0.3.1
+BOX_VERSION ?= 0.3.2
 
 all:
 	$(NIX_BUILD)
