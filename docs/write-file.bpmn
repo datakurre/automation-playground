@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0cv9zzw" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.7.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.1.0">
+  <bpmn:collaboration id="Collaboration_0mwhkd1">
+    <bpmn:participant id="Participant_1jlpic9" name="Process" processRef="Process_0spayni" />
+    <bpmn:participant id="Participant_1u5cy12" name="File storage" />
+    <bpmn:messageFlow id="Flow_0jqq01o" sourceRef="Robot_Consume" targetRef="Participant_1u5cy12" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_0spayni" isExecutable="true">
+    <bpmn:serviceTask id="Robot_Consume" name="Produce file" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0mwhkd1">
+      <bpmndi:BPMNShape id="Participant_1jlpic9_di" bpmnElement="Participant_1jlpic9" isHorizontal="true">
+        <dc:Bounds x="160" y="180" width="310" height="250" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_05jmqhc_di" bpmnElement="Robot_Consume">
+        <dc:Bounds x="270" y="270" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Participant_0oorl8s_di" bpmnElement="Participant_1u5cy12" isHorizontal="true">
+        <dc:Bounds x="160" y="80" width="310" height="60" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0jqq01o_di" bpmnElement="Flow_0jqq01o">
+        <di:waypoint x="320" y="270" />
+        <di:waypoint x="320" y="140" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

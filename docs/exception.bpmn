@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0cv9zzw" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.7.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.1.0">
+  <bpmn:process id="Process_1xmn1et" isExecutable="false">
+    <bpmn:serviceTask id="Robot_Publish" name="Publish report" />
+    <bpmn:boundaryEvent id="Event_0dhdz3d" name="Invalid format" attachedToRef="Robot_Publish">
+      <bpmn:outgoing>Flow_0whs0ml</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_1fyjpba" />
+    </bpmn:boundaryEvent>
+    <bpmn:task id="Activity_0audpj0">
+      <bpmn:incoming>Flow_0whs0ml</bpmn:incoming>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_0whs0ml" sourceRef="Event_0dhdz3d" targetRef="Activity_0audpj0" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1xmn1et">
+      <bpmndi:BPMNShape id="Activity_1sdvbxt_di" bpmnElement="Robot_Publish">
+        <dc:Bounds x="150" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0audpj0_di" bpmnElement="Activity_0audpj0">
+        <dc:Bounds x="270" y="200" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1evk5vn_di" bpmnElement="Event_0dhdz3d">
+        <dc:Bounds x="182" y="142" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="116" y="173" width="67" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0whs0ml_di" bpmnElement="Flow_0whs0ml">
+        <di:waypoint x="200" y="178" />
+        <di:waypoint x="200" y="240" />
+        <di:waypoint x="270" y="240" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

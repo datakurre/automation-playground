@@ -98,7 +98,8 @@ Similarly to work items library, also Camunda Platforms (including Zeebe) separa
 Library  RPA.Robocorp.WorkItems
 
 *** Tasks ***
-Login into portal
+
+Publish report
     Set task variables from work item
     TRY
         Login Keyword  ${user}
@@ -117,6 +118,11 @@ Login into portal
 
 This example, would allow BPMN error to be expected and handled in process model:
 
+```{bpmn-figure} exception
+:alt:
+:align: right
+```
+
 ```robotframework
 *** Settings ***
 
@@ -124,7 +130,7 @@ Library  RPA.Robocorp.WorkItems
 
 *** Tasks ***
 
-Login into portal
+Publish report
     Set task variables from work item
     TRY
         Login Keyword  ${user}
