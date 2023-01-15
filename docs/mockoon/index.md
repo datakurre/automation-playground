@@ -6,7 +6,7 @@ Also this exercise continues to iterate on top of the [the previous exercise](..
 {download}`create-certificate.bpmn`
 ```
 
-## Mockoon Mock APIs
+## Mockoon for API mocks
 
 [Mockoon](https://mockoon.com/) is a convenient open source tool for mocking HTTP APIs. It supports simple Open API import, but also allows to enrich end points with [Handlebars](https://handlebarsjs.com/) based response templating using [FakerJS](https://fakerjs.dev/) helpers for random mock data.
 
@@ -23,7 +23,7 @@ During the first run, Mockoon greets with a message
 
 and then starts with a demo project containing a few mocked endpoints.
 
-## Demo API
+## Serving the mock API
 
 ```{figure} mockoon-play.png
 :alt:
@@ -37,9 +37,9 @@ Mockoon Mock API server, by default at `http://localhost:3000/`, can be started 
 :width: 100%
 ```
 
-### Customized /users
+### Participants mock API
 
-Update `/users` endpoint to include fields `email`, `consent` and `achievements` by replacing the existing template (this will also remove `friends` field).
+Let's re-use the built-in demo API as our participants API. Update `/users` endpoint to include fields `email`, `consent` and `achievements` by replacing the existing template (this will also remove `friends` field).
 
 ```
 {
@@ -60,7 +60,7 @@ Update `/users` endpoint to include fields `email`, `consent` and `achievements`
 
 ## Calling for participants
 
-At this point, it should be clear, that fetching participants from an API endpoint requires a {bpmn}`../bpmn/robot-task` *Fetch participants* robot task, which exports list of participants on its output mapping.
+At this point, it should be clear, that fetching participants from an API endpoint requires {bpmn}`../bpmn/robot-task` *Fetch participants* robot task, which exports list of participants on its output mapping.
 
 RPA framework, which is included in every new robot created in Robocorp Code by default, comes with [RPA.HTTP keyword library](https://robocorp.com/docs/libraries/rpa-framework/rpa-http), its usage may not be obvious.
 
