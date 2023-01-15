@@ -916,6 +916,7 @@ fi
 mkdir -p $HOME/.config/xfce4/desktop
 if [ ! -e "$HOME/.config/xfce4/desktop/icons.screen.latest.rc" ]; then
   cat ${./files/icons.rc} > $HOME/.config/xfce4/desktop/icons.screen0-1902x1035.rc
+  cat ${./files/icons.rc} > $HOME/.config/xfce4/desktop/icons.screen0-1904x1037.rc
   cat ${./files/icons.rc} > $HOME/.config/xfce4/desktop/icons.screen0-1920x1080.rc
   ln -s $HOME/.config/xfce4/desktop/icons.screen0-1920x1080.rc $HOME/.config/xfce4/desktop/icons.screen.latest.rc
 fi
