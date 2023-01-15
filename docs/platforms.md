@@ -30,6 +30,7 @@ So, what are the differences...?
 
 * Future may depend on the community
 * Complete, transactional, monolith
+* "Embedded Java engine with External Task Pattern"
 * Most of "Camunda Platform" open source
 * Never 100 % feature parity with Zeebe
 * Apache License 2.0, "open core model"
