@@ -8,7 +8,7 @@ This exercise is about handling these exceptions. This is all about modeling, an
 {download}`create-certificate.bpmn`
 ```
 
-### Randomly missing data
+## Randomly missing data
 
 The following Mockoon template would randomly leave empty values for fields `firstname` and `lastname`:
 
