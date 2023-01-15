@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1vtfgme" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.6.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.1.0">
+  <bpmn:process id="WorkRequest" name="Work Request" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Work requested">
+      <bpmn:outgoing>Flow_0n7cn3h</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0n7cn3h" sourceRef="StartEvent_1" targetRef="Robot_Work" />
+    <bpmn:endEvent id="Event_1d9l72q" name="Work completed">
+      <bpmn:incoming>Flow_1y0piwh</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1y0piwh" sourceRef="Robot_Work" targetRef="Event_1d9l72q" />
+    <bpmn:serviceTask id="Robot_Work" name="Work">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="Work" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0n7cn3h</bpmn:incoming>
+      <bpmn:outgoing>Flow_1y0piwh</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:textAnnotation id="TextAnnotation_0s1looo">
+      <bpmn:text>ID: Robot_Work
+Type: Work</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_052kcj2" sourceRef="Robot_Work" targetRef="TextAnnotation_0s1looo" />
+    <bpmn:textAnnotation id="TextAnnotation_1ido1kq">
+      <bpmn:text>Name: Work Request
+ID: WorkRequest</bpmn:text>
+    </bpmn:textAnnotation>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="WorkRequest">
+      <bpmndi:BPMNShape id="TextAnnotation_1ido1kq_di" bpmnElement="TextAnnotation_1ido1kq">
+        <dc:Bounds x="160" y="80" width="160" height="41" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0s1looo_di" bpmnElement="TextAnnotation_0s1looo">
+        <dc:Bounds x="160" y="290" width="100" height="41" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="179" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="158" y="222" width="78" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1d9l72q_di" bpmnElement="Event_1d9l72q">
+        <dc:Bounds x="432" y="179" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="410" y="222" width="80" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_06nyrhl_di" bpmnElement="Robot_Work">
+        <dc:Bounds x="270" y="157" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_052kcj2_di" bpmnElement="Association_052kcj2">
+        <di:waypoint x="279" y="237" />
+        <di:waypoint x="225" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0n7cn3h_di" bpmnElement="Flow_0n7cn3h">
+        <di:waypoint x="215" y="197" />
+        <di:waypoint x="270" y="197" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1y0piwh_di" bpmnElement="Flow_1y0piwh">
+        <di:waypoint x="370" y="197" />
+        <di:waypoint x="432" y="197" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

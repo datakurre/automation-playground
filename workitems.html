@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Service tasks for Robots &mdash; Open Automation Playground  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="_static/diagram-js.css" type="text/css" />
+      <link rel="stylesheet" href="_static/bpmn-js.css" type="text/css" />
+      <link rel="stylesheet" href="_static/bpmn-embedded.css" type="text/css" />
+      <link rel="stylesheet" href="_static/bpmn-js-token-simulation.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="_static/dmn-js-shared.css" type="text/css" />
+      <link rel="stylesheet" href="_static/dmn-js-decision-table.css" type="text/css" />
+      <link rel="stylesheet" href="_static/dmn-js-literal-expression.css" type="text/css" />
+      <link rel="stylesheet" href="_static/dmn.css" type="text/css" />
+      <link rel="stylesheet" href="_static/form-js.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+        <script src="_static/minipres.js"></script>
+        <script src="_static/bpmn-js-token-simulation.js"></script>
+        <script src="_static/form-viewer.umd.js"></script>
+        <script src="_static/custom.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Robocorp Code in action" href="code/index.html" />
+    <link rel="prev" title="DMN exercise with forms" href="speech/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Open Automation Playground
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="workshop/index.html">Robocon 2023 Workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="playground/index.html">Playground introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpmn/index.html">BPMN basics by examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modeling/index.html">BPMN modeling exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="execution/index.html">Camunda basics for execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="play/index.html">Camunda execution exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dmn/index.html">DMN, user tasks and forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="speech/index.html">DMN exercise with forms</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Service tasks for Robots</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#tasks-are-work-items">Tasks are work items</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reading-variables">Reading variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#writing-variables">Writing variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#writing-files">Writing files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reading-files">Reading files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#failing-for-retry">Failing for retry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#throwing-errors">Throwing errors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="code/index.html">Robocorp Code in action</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pdf/index.html">Exercise: PDF creation robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="email/index.html">Exercise: Email sending robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mockoon/index.html">Exercise: API consuming robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spreadsheet/index.html">Exercise: Spreadsheet robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="final/index.html">Exercise: Exception handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classification/index.html">Extra: Classification training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="platforms.html">About Camunda Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hello-world/index.html">Summary: Hello World</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Open Automation Playground</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Service tasks for Robots</li>
+<li class="wy-breadcrumbs-aside">
+    <a href="?pres" class="icon fa-film" title="Presentation Mode"></a>
+</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="service-tasks-for-robots">
+<h1>Service tasks for Robots<a class="headerlink" href="#service-tasks-for-robots" title="Permalink to this heading"></a></h1>
+<p>We are soon ready to start implementing BPMN <img alt="" class="role-bpmn" src="_images/service-task.svg" /> service tasks in Robot Framework and let Camunda Platform Zeebe to be used for orchestrating <img alt="" class="role-bpmn" src="_images/robot-task.svg" /> Robot Framework automation. There’s only one remaining issue:</p>
+<p><strong>Robot Framework is a generic automation framework. How should we use it specifically with Camunda Platform?</strong></p>
+<p><em>(TL;DR; With a custom Camunda worker and RPA framework work items adapter.)</em></p>
+<section id="tasks-are-work-items">
+<h2>Tasks are work items<a class="headerlink" href="#tasks-are-work-items" title="Permalink to this heading"></a></h2>
+<p>On Zeebe, activated instances of BPMN <img alt="" class="role-bpmn" src="_images/service-task.svg" /> service <strong>tasks are called jobs</strong> at <a class="reference external" href="https://docs.camunda.io/docs/apis-clients/grpc/">Zeebe gRPC API</a>. Robocorp, in their <a class="reference external" href="https://rpaframework.org/">RPA framework</a>, introduced a <a class="reference external" href="https://rpaframework.org/libraries/robocorp_workitems/index.html"><strong>library for managing data as work items</strong></a>, and are committed to <strong>support work items in all of their tools</strong>.</p>
+<p><a class="reference external" href="https://rpaframework.org/libraries/robocorp_workitems/index.html">RPA framework work items</a> supports configurable adapter pattern: its behavior can transparently adapted to current run time environment. By adapting job payload from <img alt="" class="role-bpmn" src="_images/service-task.svg" /> service task instances to be compatible with the work items library, everything could just work as the library documentation suggests.</p>
+<p>And that’s exactly, what our RCC integration concept, <a class="reference external" href="https://github.com/datakurre/parrot-rcc/">parrot-rcc</a> does: <strong>BPMN tasks are adapted to work items, and Robocorp’s docs and tools are all you need to build compatible Robot Framework automation.</strong></p>
+<p>The following examples are adapted directly from RPA Framework keyword documentation…</p>
+</section>
+<section id="reading-variables">
+<h2>Reading variables<a class="headerlink" href="#reading-variables" title="Permalink to this heading"></a></h2>
+<p>All Zeebe job variables are made available as such, and can be using work items keywords as documented.</p>
+<div class="highlight-robotframework notranslate"><div class="highlight"><pre><span></span><span class="gh">*** Settings ***</span><span class="p"></span>
+
+<span class="kn">Library</span><span class="p">  </span><span class="nn">RPA.Robocorp.WorkItems</span><span class="p"></span>
+
+<span class="gh">*** Tasks ***</span><span class="p"></span>
+
+<span class="gu">Use variables from Camunda external service task</span><span class="p"></span>
+<span class="p">    </span><span class="nf">Set task variables from work item</span><span class="p"></span>
+<span class="p">    </span><span class="nf">Log</span><span class="p">  </span><span class="s">Variables are now available : </span><span class="p">${</span><span class="nv">user</span><span class="p">}</span><span class="s">, </span><span class="p">${</span><span class="nv">mail</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="writing-variables">
+<h2>Writing variables<a class="headerlink" href="#writing-variables" title="Permalink to this heading"></a></h2>
+<p>All variables set into <em>output work item</em> are saved back to Zeebe as local variables at the job’s scope.</p>
+<div class="highlight-robotframework notranslate"><div class="highlight"><pre><span></span><span class="gh">*** Settings ***</span><span class="p"></span>
+
+<span class="kn">Library</span><span class="p">  </span><span class="nn">RPA.Robocorp.WorkItems</span><span class="p"></span>
+
+<span class="gh">*** Tasks ***</span><span class="p"></span>
+
+<span class="gu">Save variables to Camunda external service task</span><span class="p"></span>
+<span class="p">    </span><span class="nf">Create Output Work Item</span><span class="p"></span>
+<span class="p">    </span><span class="nf">Set work item variables</span><span class="p">  </span><span class="s">user=Dude</span><span class="p">  </span><span class="s">mail=address@company.com</span><span class="p"></span>
+<span class="p">    </span><span class="nf">Save Work Item</span><span class="p"></span>
+</pre></div>
+</div>
+</section>
+<section id="writing-files">
+<h2>Writing files<a class="headerlink" href="#writing-files" title="Permalink to this heading"></a></h2>
+<p>Zeebe does not support files as variables, but playground’s RCC integration stores files transparently into configured S3 compatible storage, and saves time-limited download links as local variables at the job’s scope.</p>
+<div class="highlight-robotframework notranslate"><div class="highlight"><pre><span></span><span class="gh">*** Settings ***</span><span class="p"></span>
+
+<span class="kn">Library</span><span class="p">  </span><span class="nn">RPA.Robocorp.WorkItems</span><span class="p"></span>
+
+<span class="gh">*** Tasks ***</span><span class="p"></span>
+
+<span class="gu">Save file to runtime environments storage</span><span class="p"></span>
+<span class="p">    </span><span class="nf">Create Output Work Item</span><span class="p"></span>
+<span class="p">    </span><span class="nf">Add work item file</span><span class="p">    </span><span class="s">output.xls</span><span class="p"></span>
+<span class="p">    </span><span class="nf">Save Work Item</span><span class="p"></span>
+</pre></div>
+</div>
+</section>
+<section id="reading-files">
+<h2>Reading files<a class="headerlink" href="#reading-files" title="Permalink to this heading"></a></h2>
+<p>Zeebe does not support files as variables, but playground’s RCC integration loads properly located files transparently from configured S3 compatible storage (it greates time-limited download links for the files, and they are downloaded only when requested using work items library keywords).</p>
+<div class="highlight-robotframework notranslate"><div class="highlight"><pre><span></span><span class="gh">*** Settings ***</span><span class="p"></span>
+
+<span class="kn">Library</span><span class="p">  </span><span class="nn">RPA.Robocorp.WorkItems</span><span class="p"></span>
+
+<span class="gh">*** Tasks ***</span><span class="p"></span>
+
+<span class="gu">Load file from runtime environments storage</span><span class="p"></span>
+<span class="p">    ${</span><span class="nv">path</span><span class="p">}=    </span><span class="nf">Get work item file</span><span class="p">    </span><span class="s">input.xls</span><span class="p"></span>
+<span class="p">    </span><span class="nf">Open workbook</span><span class="p">    ${</span><span class="nv">path</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="failing-for-retry">
+<h2>Failing for retry<a class="headerlink" href="#failing-for-retry" title="Permalink to this heading"></a></h2>
+<p>Similarly to work items library, also Camunda Platforms (including Zeebe) separate purely technical application errors from process related business errors. The following example would allow Zeebe to retry the task for the amount allowed in its process model:</p>
+<div class="highlight-robotframework notranslate"><div class="highlight"><pre><span></span><span class="gh">*** Settings ***</span><span class="p"></span>
+
+<span class="kn">Library</span><span class="p">  </span><span class="nn">RPA.Robocorp.WorkItems</span><span class="p"></span>
+
+<span class="gh">*** Tasks ***</span><span class="p"></span>
+
+<span class="gu">Publish report</span><span class="p"></span>
+<span class="p">    </span><span class="nf">Set task variables from work item</span><span class="p"></span>
+<span class="p">    </span><span class="nf">TRY</span><span class="p"></span>
+<span class="p">        </span><span class="nf">Login Keyword</span><span class="p">  ${</span><span class="nv">user</span><span class="p">}</span>
+<span class="p">        </span><span class="nf">Upload Doc Keyword</span><span class="p">  ${</span><span class="nv">doc</span><span class="p">}</span>
+<span class="p">    </span><span class="nf">EXCEPT</span><span class="p">  </span><span class="s">Login Failed</span><span class="p"></span>
+<span class="p">        </span><span class="nf">Release Input Work Item</span><span class="p">  </span><span class="s">FAILED</span><span class="p"></span>
+<span class="p">        ...  </span><span class="s">exception_type=APPLICATION</span><span class="p"></span>
+<span class="p">        ...  </span><span class="s">code=LOGIN_PORTAL_DOWN</span><span class="p"></span>
+<span class="p">        ...  </span><span class="s">message=Unable to login, retry again later.</span><span class="p"></span>
+<span class="p">        </span><span class="nf">Fail</span><span class="p">  </span><span class="c"># stop execution</span>
+<span class="p">    </span><span class="nf">END</span><span class="p"></span>
+</pre></div>
+</div>
+</section>
+<section id="throwing-errors">
+<h2>Throwing errors<a class="headerlink" href="#throwing-errors" title="Permalink to this heading"></a></h2>
+<p>This example, would allow BPMN error to be expected and handled in process model:</p>
+<figure class="align-right">
+<a class="reference internal image-reference" href="_images/exception.svg"><img alt="" src="_images/exception.svg" width="" /></a>
+</figure>
+<div class="highlight-robotframework notranslate"><div class="highlight"><pre><span></span><span class="gh">*** Settings ***</span><span class="p"></span>
+
+<span class="kn">Library</span><span class="p">  </span><span class="nn">RPA.Robocorp.WorkItems</span><span class="p"></span>
+
+<span class="gh">*** Tasks ***</span><span class="p"></span>
+
+<span class="gu">Publish report</span><span class="p"></span>
+<span class="p">    </span><span class="nf">Set task variables from work item</span><span class="p"></span>
+<span class="p">    </span><span class="nf">TRY</span><span class="p"></span>
+<span class="p">        </span><span class="nf">Login Keyword</span><span class="p">  ${</span><span class="nv">user</span><span class="p">}</span>
+<span class="p">        </span><span class="nf">Upload Doc Keyword</span><span class="p">  ${</span><span class="nv">doc</span><span class="p">}</span>
+<span class="p">    </span><span class="nf">EXCEPT</span><span class="p">  </span><span class="s">Format Error</span><span class="p">  </span><span class="s">AS</span><span class="p">  ${</span><span class="nv">err</span><span class="p">}</span>
+<span class="p">        ${</span><span class="nv">message</span><span class="p">} =  </span><span class="nf">Catenate</span><span class="p"></span>
+<span class="p">        ...  </span><span class="s">Document format is not correct and cannot be uploaded.</span><span class="p"></span>
+<span class="p">        ...  </span><span class="s">Correct the format in this work item and try again.</span><span class="p"></span>
+<span class="p">        ...  </span><span class="s">Full error message received : </span><span class="p">${</span><span class="nv">err</span><span class="p">}</span>
+<span class="p">        </span><span class="nf">Release Input Work Item</span><span class="p">  </span><span class="s">FAILED</span><span class="p"></span>
+<span class="p">        ...  </span><span class="s">exception_type=BUSINESS</span><span class="p"></span>
+<span class="p">        ...  </span><span class="s">code=DOC_FORMAT_ERROR</span><span class="p"></span>
+<span class="p">        ...  </span><span class="s">message=</span><span class="p">${</span><span class="nv">message</span><span class="p">}</span>
+<span class="p">        </span><span class="nf">Fail</span><span class="p"></span>
+<span class="p">    </span><span class="nf">END</span><span class="p"></span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="speech/index.html" class="btn btn-neutral float-left" title="DMN exercise with forms" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="code/index.html" class="btn btn-neutral float-right" title="Robocorp Code in action" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

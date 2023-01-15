@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Extra: Classification training &mdash; Open Automation Playground  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/diagram-js.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/bpmn-js.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/bpmn-embedded.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/bpmn-js-token-simulation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn-js-shared.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn-js-decision-table.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn-js-literal-expression.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/form-js.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/minipres.js"></script>
+        <script src="../_static/bpmn-js-token-simulation.js"></script>
+        <script src="../_static/form-viewer.umd.js"></script>
+        <script src="../_static/custom.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="About Camunda Platforms" href="../platforms.html" />
+    <link rel="prev" title="Exercise: Exception handling" href="../final/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Open Automation Playground
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../workshop/index.html">Robocon 2023 Workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../playground/index.html">Playground introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bpmn/index.html">BPMN basics by examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modeling/index.html">BPMN modeling exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../execution/index.html">Camunda basics for execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../play/index.html">Camunda execution exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dmn/index.html">DMN, user tasks and forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../speech/index.html">DMN exercise with forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workitems.html">Service tasks for Robots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/index.html">Robocorp Code in action</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pdf/index.html">Exercise: PDF creation robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../email/index.html">Exercise: Email sending robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mockoon/index.html">Exercise: API consuming robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spreadsheet/index.html">Exercise: Spreadsheet robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final/index.html">Exercise: Exception handling</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Extra: Classification training</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#resource-summary">Resource summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../platforms.html">About Camunda Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hello-world/index.html">Summary: Hello World</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Open Automation Playground</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Extra: Classification training</li>
+<li class="wy-breadcrumbs-aside">
+    <a href="?pres" class="icon fa-film" title="Presentation Mode"></a>
+</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="extra-classification-training">
+<h1>Extra: Classification training<a class="headerlink" href="#extra-classification-training" title="Permalink to this heading"></a></h1>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/classification-training.svg"><img alt="../_images/classification-training.svg" src="../_images/classification-training.svg" width="" /></a>
+<figcaption>
+<p><span class="caption-text"><a class="reference download internal" download="" href="../_downloads/53266acd7ccda7964885999cf222cf24/classification-training.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">classification-training.bpmn</span></code></a></span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<section id="resource-summary">
+<h2>Resource summary<a class="headerlink" href="#resource-summary" title="Permalink to this heading"></a></h2>
+<p><a class="reference download internal" download="" href="../_downloads/53266acd7ccda7964885999cf222cf24/classification-training.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">classification-training.bpmn</span></code></a><br/>
+<a class="reference download internal" download="" href="../_downloads/84eb5b7c078c8175c8d5eea06cfc826a/classification-submit.form"><code class="xref download docutils literal notranslate"><span class="pre">classification-submit.form</span></code></a><br/>
+<a class="reference download internal" download="" href="../_downloads/801fe5f5700faf616951c81e1ffac9fd/classification-review.form"><code class="xref download docutils literal notranslate"><span class="pre">classification-review.form</span></code></a><br/>
+ <img alt="" class="role-bpmn" src="../_images/robot-task.svg" />  <a class="reference download internal" download="" href="../_downloads/be9f0698d1c751ad018ed3761c053ed1/classification.zip"><code class="xref download docutils literal notranslate"><span class="pre">classification.zip</span></code></a><br/></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../final/index.html" class="btn btn-neutral float-left" title="Exercise: Exception handling" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../platforms.html" class="btn btn-neutral float-right" title="About Camunda Platforms" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

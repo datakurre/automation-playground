@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BPMN modeling exercises &mdash; Open Automation Playground  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/diagram-js.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/bpmn-js.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/bpmn-embedded.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/bpmn-js-token-simulation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn-js-shared.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn-js-decision-table.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn-js-literal-expression.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/form-js.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/minipres.js"></script>
+        <script src="../_static/bpmn-js-token-simulation.js"></script>
+        <script src="../_static/form-viewer.umd.js"></script>
+        <script src="../_static/custom.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Camunda basics for execution" href="../execution/index.html" />
+    <link rel="prev" title="BPMN basics by examples" href="../bpmn/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Open Automation Playground
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../workshop/index.html">Robocon 2023 Workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../playground/index.html">Playground introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bpmn/index.html">BPMN basics by examples</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">BPMN modeling exercises</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#sequence-flow">Sequence flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exclusive-paths">Exclusive paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#concurrent-paths">Concurrent paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#multiple-end-events">Multiple end-events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#embedded-sub-process">Embedded sub-process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#boundary-event">Boundary event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#more-boundary-events">More boundary events</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../execution/index.html">Camunda basics for execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../play/index.html">Camunda execution exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dmn/index.html">DMN, user tasks and forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../speech/index.html">DMN exercise with forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workitems.html">Service tasks for Robots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/index.html">Robocorp Code in action</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pdf/index.html">Exercise: PDF creation robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../email/index.html">Exercise: Email sending robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mockoon/index.html">Exercise: API consuming robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spreadsheet/index.html">Exercise: Spreadsheet robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final/index.html">Exercise: Exception handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../classification/index.html">Extra: Classification training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platforms.html">About Camunda Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hello-world/index.html">Summary: Hello World</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Open Automation Playground</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>BPMN modeling exercises</li>
+<li class="wy-breadcrumbs-aside">
+    <a href="?pres" class="icon fa-film" title="Presentation Mode"></a>
+</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bpmn-modeling-exercises">
+<h1>BPMN modeling exercises<a class="headerlink" href="#bpmn-modeling-exercises" title="Permalink to this heading"></a></h1>
+<p>Once you’ve learned <a class="reference internal" href="../bpmn/index.html"><span class="doc std std-doc">the basics of BPMN</span></a>, it is now time to practice. Please, open <strong>Camunda Modeler</strong> from the desktop</p>
+<p><img alt="Camunda Modeler desktop icon" src="../_images/desktop-modeler.png" /></p>
+<p>and choose <strong>Camunda Platform 8 BPMN diagram</strong> from its welcome screen</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/modeler-welcome.png"><img alt="" src="../_images/modeler-welcome.png" style="width: 100%;" /></a>
+</figure>
+<p>and almost ready to begin. Just make sure that you find the following important elements from the modeler user interface:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/modeler-empty1.png"><img alt="" src="../_images/modeler-empty1.png" style="width: 100%;" /></a>
+</figure>
+<ol class="arabic simple">
+<li><p><strong>Token Simulation toggle</strong> just above the main modeling palette. Leave it off, but be ready to use it for these exercises.</p></li>
+<li><p>Element <strong>context modeling palette</strong>, which is visible, when you select an element, like the <img alt="" class="role-bpmn" src="../_images/start-event.svg" /> <strong>Start event</strong>. It’s priceless for efficient modeling.</p></li>
+<li><p><strong>Properties panel toggle</strong> from the right side of the modeler (or on the left border of the panel when itis open). Please, <strong>keep the panel closed for these exercises</strong>.</p></li>
+</ol>
+<p>Now you are ready to practice.</p>
+<section id="sequence-flow">
+<h2>Sequence flow<a class="headerlink" href="#sequence-flow" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Start with a <strong>simple flow</strong> with multiple <img alt="" class="role-bpmn" src="../_images/task.svg" /> tasks in sequence from <img alt="" class="role-bpmn" src="../_images/start-event.svg" /> start to <img alt="" class="role-bpmn" src="../_images/end-event.svg" /> end.</p></li>
+<li><p>Toggle <strong>Token Simulation</strong> to observe, how each token flows through the process one task at time.</p></li>
+<li><p>While on the simulator, hover on a task to <strong>toggle pause</strong> on a task.</p></li>
+<li><p>Observe, how token stops an tasks wait waits for you to <strong>release it with play</strong> button on a task.</p></li>
+</ol>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/simple-flow.svg"><img alt="../_images/simple-flow.svg" src="../_images/simple-flow.svg" width="" /></a>
+<figcaption>
+<p><span class="caption-text"><a class="reference download internal" download="" href="../_downloads/6e62b83c0efb6e1d438e8a58fbaa3626/simple-flow.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">simple-flow.bpmn</span></code></a></span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="exclusive-paths">
+<h2>Exclusive paths<a class="headerlink" href="#exclusive-paths" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Model a flow that splits and joins with <img alt="" class="role-bpmn" src="../_images/exclusive-gateway.svg" /> <strong>exclusive gateways</strong> (plain diamond symbol on the palette).</p></li>
+<li><p><strong>Toggle Simulation</strong> to observe, how tokens choose their path on splits and joins.</p></li>
+<li><p>While on the simulator, use <strong>switch button</strong> on the gateways to change the path.</p></li>
+<li><p>See also, how the <img alt="" class="role-bpmn" src="../_images/start-event.svg" /> start event and the <img alt="" class="role-bpmn" src="../_images/end-event.svg" /> end event are vertically aligned with the <strong>happy path</strong> of the process. This usually makes the process easier to understand.</p></li>
+</ol>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="../_images/exclusive-paths.svg"><img alt="../_images/exclusive-paths.svg" src="../_images/exclusive-paths.svg" width="" /></a>
+<figcaption>
+<p><span class="caption-text"><a class="reference download internal" download="" href="../_downloads/96f7302250c4d825e7ea6876f94f7f8f/exclusive-paths.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">exclusive-paths.bpmn</span></code></a></span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="concurrent-paths">
+<h2>Concurrent paths<a class="headerlink" href="#concurrent-paths" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Re-use the model from the previous exercise.</p></li>
+<li><p>One at time, choose the <img alt="" class="role-bpmn" src="../_images/exclusive-gateway.svg" /> exlusive gateways on your diagram and use their <strong>context modeling palettes</strong> to turn them into <img alt="" class="role-bpmn" src="../_images/parallel-gateway.svg" /> parallel gateways.</p></li>
+<li><p><strong>Toggle Simulation</strong> to observe, how tokens multiple on splits and merge back in joins.</p></li>
+<li><p>While on the simulator,  <strong>toggle pause</strong> on tasks to observe, how joining gateways wait for all incoming paths before letting merged token to continue.</p></li>
+<li><p>Turn the first <img alt="" class="role-bpmn" src="../_images/parallel-gateway.svg" /> parallel gateway back to <img alt="" class="role-bpmn" src="../_images/exclusive-gateway.svg" /> exclusive gateway and simulate. What happens at the joining gateways? Why?</p></li>
+<li><p>Revert the last step, and turn one of the latter <img alt="" class="role-bpmn" src="../_images/parallel-gateway.svg" /> parallel gateways back to <img alt="" class="role-bpmn" src="../_images/exclusive-gateway.svg" /> exclusive gateway and simulate. What happens now? Why?</p></li>
+</ol>
+<figure class="align-default" id="id3">
+<a class="reference internal image-reference" href="../_images/concurrent-paths.svg"><img alt="../_images/concurrent-paths.svg" src="../_images/concurrent-paths.svg" width="" /></a>
+<figcaption>
+<p><span class="caption-text"><a class="reference download internal" download="" href="../_downloads/492082a63b935019fe706899705e0d2c/concurrent-paths.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">concurrent-paths.bpmn</span></code></a></span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p><a class="reference download internal" download="" href="../_downloads/5ecc4a64175ac19d6cd487a87d103ac6/concurrent-paths-locked.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">concurrent-paths-locked.bpmn</span></code></a><br/>
+<a class="reference download internal" download="" href="../_downloads/4096c8797c8a830a103661c239e60a24/concurrent-paths-doubled.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">concurrent-paths-doubled.bpmn</span></code></a><br/>
+<a class="reference download internal" download="" href="../_downloads/735c6d3eb5bcb194fc3890e9544b74e8/concurrent-paths-mixed.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">concurrent-paths-mixed.bpmn</span></code></a></p>
+</section>
+<section id="multiple-end-events">
+<h2>Multiple end-events<a class="headerlink" href="#multiple-end-events" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Re-use the model from the previous exercise.</p></li>
+<li><p>Replace some of the joining <img alt="" class="role-bpmn" src="../_images/parallel-gateway.svg" /> parallel gateways with additional <img alt="" class="role-bpmn" src="../_images/end-event.svg" /> end events.</p></li>
+<li><p><strong>Toggle Simulation</strong> to observe, how the process completes only when all parallelized tokens have reached to at least some of the end events.</p></li>
+<li><p>While on the simulator, <strong>toggle pause</strong> on tasks to observe even easier, how completion of the process is delayed, even when some tokens reach end events at their paths.</p></li>
+</ol>
+<figure class="align-default" id="id4">
+<a class="reference internal image-reference" href="../_images/multiple-end-events1.svg"><img alt="../_images/multiple-end-events1.svg" src="../_images/multiple-end-events1.svg" width="" /></a>
+<figcaption>
+<p><span class="caption-text"><a class="reference download internal" download="" href="../_downloads/38fea7677641c2ed7e5339fe894d5c9d/multiple-end-events.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">multiple-end-events.bpmn</span></code></a></span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="embedded-sub-process">
+<h2>Embedded sub-process<a class="headerlink" href="#embedded-sub-process" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Re-use the model from the previous exercise.</p></li>
+<li><p>Wrap some of the <img alt="" class="role-bpmn" src="../_images/task.svg" /> tasks with an embedded subprocess by looking up <strong>expanded SubProcess</strong> from modeling palette.</p></li>
+<li><p><strong>Toggle Simulation</strong> to ensure that your process is still integrated (all tokens reach end events and process completes).</p></li>
+</ol>
+<p>All this should just refactor your model with an abstraction useful for the next practice. Tasks or their execution order should not change.</p>
+<figure class="align-default" id="id5">
+<a class="reference internal image-reference" href="../_images/embedded-sub-process.svg"><img alt="../_images/embedded-sub-process.svg" src="../_images/embedded-sub-process.svg" width="" /></a>
+<figcaption>
+<p><span class="caption-text"><a class="reference download internal" download="" href="../_downloads/e9e9195e3526dd7dd52cfa6eb1f25cee/embedded-sub-process.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">embedded-sub-process.bpmn</span></code></a></span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="boundary-event">
+<h2>Boundary event<a class="headerlink" href="#boundary-event" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Re-use the model from the previous exercise.</p></li>
+<li><p>Allow the tasks within the embedded sub-process to be cancelled with a timeout using <img alt="" class="role-bpmn" src="../_images/interrupting-timer-boundary-event.svg" /> interrupting timer boundary event.</p></li>
+<li><p>Add path from the <img alt="" class="role-bpmn" src="../_images/interrupting-timer-boundary-event.svg" /> boundary event to a new joining <img alt="" class="role-bpmn" src="../_images/exclusive-gateway.svg" /> to properly merge tokens before the <img alt="" class="role-bpmn" src="../_images/end-event.svg" /> end event.</p></li>
+<li><p><strong>Toggle Simulation</strong> and <strong>toggle pause</strong> for a task within the sub-process to let you manually simulate timer event and confirm that the process is completed properly also when triggering the timeout.</p></li>
+<li><p>Investigate, what happens, if you had used <img alt="" class="role-bpmn" src="../_images/non-interrupting-timer-boundary-event.svg" /> non-interrupting timer boundary event instead?</p></li>
+</ol>
+<figure class="align-default" id="id6">
+<a class="reference internal image-reference" href="../_images/boundary-event.svg"><img alt="../_images/boundary-event.svg" src="../_images/boundary-event.svg" width="" /></a>
+<figcaption>
+<p><span class="caption-text"><a class="reference download internal" download="" href="../_downloads/33f732380116b65e19b44b78fce2d1ca/boundary-event.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">boundary-event.bpmn</span></code></a></span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p><a class="reference download internal" download="" href="../_downloads/eab97e5dd80c0ffe417c0f7ce62dcabe/wrong-boundary-event.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">wrong-boundary-event.bpmn</span></code></a></p>
+</section>
+<section id="more-boundary-events">
+<h2>More boundary events<a class="headerlink" href="#more-boundary-events" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Re-use the model from the previous exercise.</p></li>
+<li><p>Add at least two more boundary events into the model with necessary paths and other elements. Make at least one of these to be a <img alt="" class="role-bpmn" src="../_images/non-interrupting-timer-boundary-event.svg" /> non-interrupting timer boundary event.</p></li>
+<li><p><strong>Toggle Simulation</strong> to ensure your model’s integrity. Make sure to try out your new boundary events.</p></li>
+</ol>
+<figure class="align-default" id="id7">
+<a class="reference internal image-reference" href="../_images/more-boundary-events.svg"><img alt="../_images/more-boundary-events.svg" src="../_images/more-boundary-events.svg" width="" /></a>
+<figcaption>
+<p><span class="caption-text"><a class="reference download internal" download="" href="../_downloads/0bdf037b4bbd1fd259afb18d03649b3e/more-boundary-events.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">more-boundary-events.bpmn</span></code></a></span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Be aware of a possible issue in token simulator, where multiple boundary timer events at the same element boundary don’t trigger correctly.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../bpmn/index.html" class="btn btn-neutral float-left" title="BPMN basics by examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../execution/index.html" class="btn btn-neutral float-right" title="Camunda basics for execution" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

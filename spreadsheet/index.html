@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exercise: Spreadsheet robot &mdash; Open Automation Playground  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/diagram-js.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/bpmn-js.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/bpmn-embedded.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/bpmn-js-token-simulation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn-js-shared.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn-js-decision-table.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn-js-literal-expression.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/form-js.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/minipres.js"></script>
+        <script src="../_static/bpmn-js-token-simulation.js"></script>
+        <script src="../_static/form-viewer.umd.js"></script>
+        <script src="../_static/custom.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Exercise: Exception handling" href="../final/index.html" />
+    <link rel="prev" title="Exercise: API consuming robot" href="../mockoon/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Open Automation Playground
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../workshop/index.html">Robocon 2023 Workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../playground/index.html">Playground introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bpmn/index.html">BPMN basics by examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modeling/index.html">BPMN modeling exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../execution/index.html">Camunda basics for execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../play/index.html">Camunda execution exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dmn/index.html">DMN, user tasks and forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../speech/index.html">DMN exercise with forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workitems.html">Service tasks for Robots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/index.html">Robocorp Code in action</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pdf/index.html">Exercise: PDF creation robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../email/index.html">Exercise: Email sending robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mockoon/index.html">Exercise: API consuming robot</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Exercise: Spreadsheet robot</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#multi-instance-to-rows">Multi-instance to rows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mapping-a-row-in-feel">Mapping a row in FEEL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spreadsheet-as-in-excel">Spreadsheet as in Excel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#resource-summary">Resource summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../final/index.html">Exercise: Exception handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../classification/index.html">Extra: Classification training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platforms.html">About Camunda Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hello-world/index.html">Summary: Hello World</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Open Automation Playground</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Exercise: Spreadsheet robot</li>
+<li class="wy-breadcrumbs-aside">
+    <a href="?pres" class="icon fa-film" title="Presentation Mode"></a>
+</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="exercise-spreadsheet-robot">
+<h1>Exercise: Spreadsheet robot<a class="headerlink" href="#exercise-spreadsheet-robot" title="Permalink to this heading"></a></h1>
+<p>This exercise introduces the last robot implementation in this certificate of participation story, building on top of <a class="reference internal" href="../mockoon/index.html"><span class="doc std std-doc">the previous exercise</span></a>. The new requirement is to create a summary spreadsheet to help reporting on the certificates.</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/create-certificate4.svg"><img alt="../_images/create-certificate4.svg" src="../_images/create-certificate4.svg" width="" /></a>
+<figcaption>
+<p><span class="caption-text"><a class="reference download internal" download="" href="../_downloads/8eca1d89e6575e8af34ad609e666cc10/create-certificate.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">create-certificate.bpmn</span></code></a></span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<section id="multi-instance-to-rows">
+<h2>Multi-instance to rows<a class="headerlink" href="#multi-instance-to-rows" title="Permalink to this heading"></a></h2>
+<p>Because multi-instance <em>output element</em> definition is really a FEEL expression, it could be used to wrap local variables from single sub process execution into map added into output collection.</p>
+<div class="highlight-feel notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="py">name</span><span class="p">: </span><span class="nv">name</span><span class="l">, </span><span class="py">email</span><span class="p">: </span><span class="nv">email</span><span class="l">, </span><span class="py">filename</span><span class="p">: </span><span class="nv">filename</span><span class="p">}</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/modeler-multi-instance-output.png"><img alt="" src="../_images/modeler-multi-instance-output.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="mapping-a-row-in-feel">
+<h2>Mapping a row in FEEL<a class="headerlink" href="#mapping-a-row-in-feel" title="Permalink to this heading"></a></h2>
+<p>While the example FEEL expression looks like it does nothing, actually it collects selected individual variables from its execution context ito a single map value:</p>
+<div style="background:white"><iframe src="../_static/feel/?e=%7Bname%3A+name%2C+email%3A+email%2C+filename%3A+filename%7D%0A&c=%7B%0A++%22name%22%3A+%22Quentin+Conn%22%2C%0A++%22email%22%3A+%22Terry.Toy%40gmail.com%22%2C%0A++%22filename%22%3A+%22Quentin+Conn.pdf%22%0A%7D&t=expression" width="100%" height="400"></iframe></div><br/>
+</section>
+<section id="spreadsheet-as-in-excel">
+<h2>Spreadsheet as in Excel<a class="headerlink" href="#spreadsheet-as-in-excel" title="Permalink to this heading"></a></h2>
+<p>After all the “hard work” has already done in BPMN (to make the its variables easy to use), the new <img alt="" class="role-bpmn" src="../_images/robot-task.svg" /> <em>Create summary sheet</em> robot is straightforward with the default RPA framework keywords:</p>
+<div class="highlight-robotframework notranslate"><div class="highlight"><pre><span></span><span class="gh">*** Settings ***</span><span class="p"></span>
+
+<span class="kn">Library</span><span class="p">    </span><span class="nn">RPA.Robocorp.WorkItems</span><span class="p"></span>
+<span class="kn">Library</span><span class="p">    </span><span class="nn">RPA.Excel.Files</span><span class="p"></span>
+<span class="kn">Library</span><span class="p">    </span><span class="nn">Collections</span><span class="p"></span>
+
+
+<span class="gh">*** Variables ***</span><span class="p"></span>
+
+<span class="p">${</span><span class="nv">filename</span><span class="p">}    </span><span class="s">summary.xlsx</span><span class="p"></span>
+
+
+<span class="gh">*** Tasks ***</span><span class="p"></span>
+
+<span class="gu">Create summary sheet</span><span class="p"></span>
+<span class="p">    ${</span><span class="nv">rows</span><span class="p">}=    </span><span class="nf">Create List</span><span class="p"></span>
+
+<span class="p">    </span><span class="nf">Set task variables from work item</span><span class="p"></span>
+
+<span class="p">    </span><span class="nf">Should Not Be Empty</span><span class="p">    ${</span><span class="nv">filename</span><span class="p">}    </span><span class="s">Summary sheet filename is missing</span><span class="p"></span>
+
+<span class="p">    </span><span class="nf">Create Workbook</span><span class="p">   ${</span><span class="nv">OUTPUT_DIR</span><span class="p">}${</span><span class="nv">/</span><span class="p">}${</span><span class="nv">filename</span><span class="p">}</span>
+<span class="p">    </span><span class="nf">Append Rows To Worksheet</span><span class="p">    ${</span><span class="nv">rows</span><span class="p">}  </span><span class="s">header=</span><span class="p">${</span><span class="nv">True</span><span class="p">}</span>
+<span class="p">    </span><span class="nf">Save Workbook</span><span class="p"></span>
+
+<span class="p">    </span><span class="nf">Create output work item</span><span class="p"></span>
+<span class="p">    </span><span class="nf">Add Work Item File</span><span class="p">    ${</span><span class="nv">OUTPUT_DIR</span><span class="p">}${</span><span class="nv">/</span><span class="p">}${</span><span class="nv">filename</span><span class="p">}</span>
+<span class="p">    </span><span class="nf">Save work item</span><span class="p"></span>
+</pre></div>
+</div>
+<p>Just remember proper input mapping for mapping doain specific <code class="docutils literal notranslate"><span class="pre">participants</span></code> into generic <code class="docutils literal notranslate"><span class="pre">rows</span></code> for a our generic robot code.</p>
+</section>
+<section id="resource-summary">
+<h2>Resource summary<a class="headerlink" href="#resource-summary" title="Permalink to this heading"></a></h2>
+<p><a class="reference download internal" download="" href="../_downloads/8eca1d89e6575e8af34ad609e666cc10/create-certificate.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">create-certificate.bpmn</span></code></a><br/>
+<a class="reference download internal" download="" href="../_downloads/cf0b31861c8e9fa7d29d3def6bee485e/workshop-achievement.dmn"><code class="xref download docutils literal notranslate"><span class="pre">../mockoon/workshop-achievement.dmn</span></code></a><a class="reference download internal" download="" href="../_downloads/513f2051318fdca69d13157a4469519a/workshop-achievement.html"><code class="xref download docutils literal notranslate"><span class="pre">../mockoon/workshop-achievement.html</span></code></a><br/>
+ <img alt="" class="role-bpmn" src="../_images/robot-task.svg" />  <a class="reference download internal" download="" href="../_downloads/79c9b1607a867e95a4297ca9f0e79747/fetch-participants.zip"><code class="xref download docutils literal notranslate"><span class="pre">../mockoon/fetch-participants.zip</span></code></a><br/>
+ <img alt="" class="role-bpmn" src="../_images/robot-task.svg" />  <a class="reference download internal" download="" href="../_downloads/afa49c10373b4a4804fa1c573af178f3/create-certificate.zip"><code class="xref download docutils literal notranslate"><span class="pre">../email/create-certificate.zip</span></code></a><br/>
+ <img alt="" class="role-bpmn" src="../_images/robot-task.svg" />  <a class="reference download internal" download="" href="../_downloads/8ec829de478078e1ff84647a3e352fc2/summary-sheet.zip"><code class="xref download docutils literal notranslate"><span class="pre">summary-sheet.zip</span></code></a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../mockoon/index.html" class="btn btn-neutral float-left" title="Exercise: API consuming robot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../final/index.html" class="btn btn-neutral float-right" title="Exercise: Exception handling" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

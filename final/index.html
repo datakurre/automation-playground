@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exercise: Exception handling &mdash; Open Automation Playground  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/diagram-js.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/bpmn-js.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/bpmn-embedded.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/bpmn-js-token-simulation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn-js-shared.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn-js-decision-table.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn-js-literal-expression.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/form-js.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/minipres.js"></script>
+        <script src="../_static/bpmn-js-token-simulation.js"></script>
+        <script src="../_static/form-viewer.umd.js"></script>
+        <script src="../_static/custom.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Extra: Classification training" href="../classification/index.html" />
+    <link rel="prev" title="Exercise: Spreadsheet robot" href="../spreadsheet/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Open Automation Playground
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../workshop/index.html">Robocon 2023 Workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../playground/index.html">Playground introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bpmn/index.html">BPMN basics by examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modeling/index.html">BPMN modeling exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../execution/index.html">Camunda basics for execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../play/index.html">Camunda execution exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dmn/index.html">DMN, user tasks and forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../speech/index.html">DMN exercise with forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workitems.html">Service tasks for Robots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/index.html">Robocorp Code in action</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pdf/index.html">Exercise: PDF creation robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../email/index.html">Exercise: Email sending robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mockoon/index.html">Exercise: API consuming robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spreadsheet/index.html">Exercise: Spreadsheet robot</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Exercise: Exception handling</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#randomly-missing-data">Randomly missing data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#resource-summary">Resource summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../classification/index.html">Extra: Classification training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platforms.html">About Camunda Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hello-world/index.html">Summary: Hello World</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Open Automation Playground</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Exercise: Exception handling</li>
+<li class="wy-breadcrumbs-aside">
+    <a href="?pres" class="icon fa-film" title="Presentation Mode"></a>
+</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="exercise-exception-handling">
+<h1>Exercise: Exception handling<a class="headerlink" href="#exercise-exception-handling" title="Permalink to this heading"></a></h1>
+<p>During the <a class="reference internal" href="../spreadsheet/index.html"><span class="doc std std-doc">previous exercises</span></a> we have build a process generating certificates of participation for the workshop attendees. Unfortunately, at the production, we face issues with the data we get from the participants API. Also, we don’t have consent from all of the participants to email the certificates digitally.</p>
+<p>This exercise is about handling these exceptions. This is all about modeling, and requires no changes for the previously implemented robots.</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/create-certificate1.svg"><img alt="../_images/create-certificate1.svg" src="../_images/create-certificate1.svg" width="" /></a>
+<figcaption>
+<p><span class="caption-text"><a class="reference download internal" download="" href="../_downloads/acac23ff0fd5a82ee617c7fe0295f61c/create-certificate.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">create-certificate.bpmn</span></code></a></span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<section id="randomly-missing-data">
+<h2>Randomly missing data<a class="headerlink" href="#randomly-missing-data" title="Permalink to this heading"></a></h2>
+<p>The following Mockoon template would randomly leave empty values for fields <code class="docutils literal notranslate"><span class="pre">firstname</span></code> and <code class="docutils literal notranslate"><span class="pre">lastname</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;users&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{{</span><span class="c1"># repeat (queryParam &#39;total&#39; &#39;10&#39;) }}</span>
+      <span class="p">{</span>
+        <span class="p">{{</span><span class="c1">#if (faker &#39;datatype.boolean&#39;)}}</span>
+        <span class="s2">&quot;firstname&quot;</span><span class="p">:</span> <span class="s2">&quot;{{ faker &#39;name.firstName&#39; }}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;lastname&quot;</span><span class="p">:</span> <span class="s2">&quot;{{ faker &#39;name.lastName&#39; }}&quot;</span><span class="p">,</span>
+        <span class="p">{{</span><span class="k">else</span><span class="p">}}</span>
+        <span class="s2">&quot;firstname&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;lastname&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="p">{{</span><span class="o">/</span><span class="k">if</span><span class="p">}}</span>
+        <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;{{ faker &#39;internet.email&#39; }}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;consent&quot;</span><span class="p">:</span> <span class="p">{{</span> <span class="n">faker</span> <span class="s1">&#39;datatype.boolean&#39;</span> <span class="p">}},</span>
+        <span class="s2">&quot;achievements&quot;</span><span class="p">:</span> <span class="p">{{{</span> <span class="n">faker</span> <span class="s1">&#39;helpers.arrayElements&#39;</span> <span class="p">}}}</span>
+      <span class="p">},</span>
+    <span class="p">{{</span><span class="o">/</span> <span class="n">repeat</span> <span class="p">}}</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;total&quot;</span><span class="p">:</span> <span class="s2">&quot;{{queryParam &#39;total&#39; &#39;10&#39;}}&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="resource-summary">
+<h2>Resource summary<a class="headerlink" href="#resource-summary" title="Permalink to this heading"></a></h2>
+<p><a class="reference download internal" download="" href="../_downloads/acac23ff0fd5a82ee617c7fe0295f61c/create-certificate.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">create-certificate.bpmn</span></code></a><br/>
+<a class="reference download internal" download="" href="../_downloads/fb6461697cd9bbf8f1a638ee4e7873a3/participant-info.form"><code class="xref download docutils literal notranslate"><span class="pre">participant-info.form</span></code></a><a class="reference download internal" download="" href="../_downloads/efc69f018f7d5d11d674389a0dca5f29/participant-info.json"><code class="xref download docutils literal notranslate"><span class="pre">participant-info.json</span></code></a><br/>
+<a class="reference download internal" download="" href="../_downloads/cf0b31861c8e9fa7d29d3def6bee485e/workshop-achievement.dmn"><code class="xref download docutils literal notranslate"><span class="pre">../mockoon/workshop-achievement.dmn</span></code></a><a class="reference download internal" download="" href="../_downloads/513f2051318fdca69d13157a4469519a/workshop-achievement.html"><code class="xref download docutils literal notranslate"><span class="pre">../mockoon/workshop-achievement.html</span></code></a><br/>
+ <img alt="" class="role-bpmn" src="../_images/robot-task.svg" />  <a class="reference download internal" download="" href="../_downloads/afa49c10373b4a4804fa1c573af178f3/create-certificate.zip"><code class="xref download docutils literal notranslate"><span class="pre">../email/create-certificate.zip</span></code></a><br/>
+ <img alt="" class="role-bpmn" src="../_images/robot-task.svg" />  <a class="reference download internal" download="" href="../_downloads/79c9b1607a867e95a4297ca9f0e79747/fetch-participants.zip"><code class="xref download docutils literal notranslate"><span class="pre">../mockoon/fetch-participants.zip</span></code></a><br/>
+ <img alt="" class="role-bpmn" src="../_images/robot-task.svg" />  <a class="reference download internal" download="" href="../_downloads/8ec829de478078e1ff84647a3e352fc2/summary-sheet.zip"><code class="xref download docutils literal notranslate"><span class="pre">../spreadsheet/summary-sheet.zip</span></code></a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../spreadsheet/index.html" class="btn btn-neutral float-left" title="Exercise: Spreadsheet robot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../classification/index.html" class="btn btn-neutral float-right" title="Extra: Classification training" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

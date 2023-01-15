@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DMN exercise with forms &mdash; Open Automation Playground  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/diagram-js.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/bpmn-js.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/bpmn-embedded.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/bpmn-js-token-simulation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn-js-shared.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn-js-decision-table.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn-js-literal-expression.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/form-js.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/minipres.js"></script>
+        <script src="../_static/bpmn-js-token-simulation.js"></script>
+        <script src="../_static/form-viewer.umd.js"></script>
+        <script src="../_static/custom.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Service tasks for Robots" href="../workitems.html" />
+    <link rel="prev" title="DMN, user tasks and forms" href="../dmn/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Open Automation Playground
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../workshop/index.html">Robocon 2023 Workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../playground/index.html">Playground introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bpmn/index.html">BPMN basics by examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modeling/index.html">BPMN modeling exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../execution/index.html">Camunda basics for execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../play/index.html">Camunda execution exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dmn/index.html">DMN, user tasks and forms</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">DMN exercise with forms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#i-have-a-dream">I have a dream…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#decisions-first">Decisions first</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dry-run-next">Dry run next</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#best-things-last">Best things last</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#enjoy-the-ride">Enjoy the ride</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#resource-summary">Resource summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../workitems.html">Service tasks for Robots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/index.html">Robocorp Code in action</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pdf/index.html">Exercise: PDF creation robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../email/index.html">Exercise: Email sending robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mockoon/index.html">Exercise: API consuming robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spreadsheet/index.html">Exercise: Spreadsheet robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final/index.html">Exercise: Exception handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../classification/index.html">Extra: Classification training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platforms.html">About Camunda Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hello-world/index.html">Summary: Hello World</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Open Automation Playground</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>DMN exercise with forms</li>
+<li class="wy-breadcrumbs-aside">
+    <a href="?pres" class="icon fa-film" title="Presentation Mode"></a>
+</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="dmn-exercise-with-forms">
+<h1>DMN exercise with forms<a class="headerlink" href="#dmn-exercise-with-forms" title="Permalink to this heading"></a></h1>
+<p>This is a single exercise with simple process to practice, how <img alt="" class="role-bpmn" src="../_images/business-rule-task.svg" /> business rule tasks with DMN decision tables work, and how  user tasks with forms could be used tolet users interact with the process.</p>
+<section id="i-have-a-dream">
+<h2>I have a dream…<a class="headerlink" href="#i-have-a-dream" title="Permalink to this heading"></a></h2>
+<p>… to build a process for generating a nonsensical speech by picking random sentences from a list, sentence by sentence, until ready. For now, I could use dice to choose the sentence (and not care about possible duplicates).</p>
+<ol class="arabic">
+<li><p>At first, use output mapping of <img alt="" class="role-bpmn" src="../_images/start-event.svg" /> start event to initialize the global process variables for the latest <code class="docutils literal notranslate"><span class="pre">dice</span></code> throw result and also for the <code class="docutils literal notranslate"><span class="pre">speech</span></code> to be build. FEEL expression for an empty string is:</p>
+<div class="highlight-feel notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Then, really start the process with a <img alt="" class="role-bpmn" src="../_images/user-task.svg" /> user task, in which user should prompted to throw a dice and then submit the result of the throw to complete the task.</p></li>
+<li><p>The next task should be a <img alt="" class="role-bpmn" src="../_images/business-rule-task.svg" /> business rule task, which uses the dice throw result of previous task as a number input, executes a DMN decision table to map the number to a sentence, and outputs the next sentence to be appended to the speech.</p></li>
+<li><p>Use output mapping of the <img alt="" class="role-bpmn" src="../_images/business-rule-task.svg" /> business rule task to append the sentence to <code class="docutils literal notranslate"><span class="pre">speech</span></code>. You may use the following FEEL expression to merge the parts, while trimming possible surrounding spaces:</p>
+<div class="highlight-feel notranslate"><div class="highlight"><pre><span></span><span class="nv">replace</span><span class="p">(</span><span class="nv">speech</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nv">sentence</span><span class="p">, </span><span class="s">&quot;^\s+|\s+$&quot;</span><span class="p">, </span><span class="s">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Next should come another <img alt="" class="role-bpmn" src="../_images/user-task.svg" /> user task, which displays the current speech, and allows the user to decide, whether to continue adding sentences or conclude and complete the process.</p></li>
+<li><p>Finally, add required  exclusive gateways to return the token back to the first <img alt="" class="role-bpmn" src="../_images/user-task.svg" /> user task, until user accpets the process to continue to <img alt="" class="role-bpmn" src="../_images/end-event.svg" /> end event.</p></li>
+</ol>
+<p><a class="reference download internal" download="" href="../_downloads/047aec725f9694efdf4ef54082ccfced/speech-request.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">speech-request.bpmn</span></code></a></p>
+</section>
+<section id="decisions-first">
+<h2>Decisions first<a class="headerlink" href="#decisions-first" title="Permalink to this heading"></a></h2>
+<p>After modeling the first draft, continue with building the required DMN decision table. It really helps to have the DMN ready, and its requirements clear, before building the user task forms required to collect those inputs. (For the same reasons, you should write the required exclusive gateway path expressions, possibly even before the DMN.)</p>
+<p><a class="reference download internal" download="" href="../_downloads/39d3dc6a361e4fbbd6db92593a627096/pick-a-sentence.dmn"><code class="xref download docutils literal notranslate"><span class="pre">pick-a-sentence.dmn</span></code></a><a class="reference download internal" download="" href="../_downloads/c7646e52a47eb626fdda22ce1bb37721/pick-a-sentence.html"><code class="xref download docutils literal notranslate"><span class="pre">pick-a-sentence.html</span></code></a></p>
+<p>Zeebe Play does not support manual completion of <img alt="" class="role-bpmn" src="../_images/business-rule-task.svg" /> business rule tasks yet. But <strong>as soon as you’ve modeled and deployed both BPMN and DMN models, you can start executing the developed process at Play</strong> – well before implementing the forms.</p>
+</section>
+<section id="dry-run-next">
+<h2>Dry run next<a class="headerlink" href="#dry-run-next" title="Permalink to this heading"></a></h2>
+<figure class="align-right">
+<img alt="" src="../_images/play-with-variables-menu.png" />
+</figure>
+<p>At this point, you should have been able to:</p>
+<ol class="arabic simple">
+<li><p>Design and deploy the DMN decision table.</p></li>
+<li><p>Design and deploy the BPMN process model.</p></li>
+<li><p>Start and execute the process at Zeebe Play using the task completion action <strong>with variables</strong>.</p></li>
+</ol>
+<p>This way, you should have been able to confirm that your process is correctly designed and confirmed, before investing time for user interface (the user task forms).</p>
+</section>
+<section id="best-things-last">
+<h2>Best things last<a class="headerlink" href="#best-things-last" title="Permalink to this heading"></a></h2>
+<p>Finally it’s time for the forms. Just remember to wrap the correct variables to form field keys, and you should be fine. Use <em>Window -&gt; Toggle validation mode</em> to enable preview while designing the forms.</p>
+<figure class="align-right">
+<img alt="" src="../_images/modeler-toggle-json.png" />
+</figure>
+<p>When you are ready, save the form and toggle JSON source view to be able to copy the form JSON schema and then paste it into process <img alt="" class="role-bpmn" src="../_images/user-task.svg" /> user task configuration.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Values collected and submitted by forms, could be further transformed using output mapping of the BPMN user task. For example, a string variable could be transformed into boolean with a FEEL expression:</p>
+<div class="highlight-feel notranslate"><div class="highlight"><pre><span></span><span class="nv">ready</span> <span class="o">=</span> <span class="s">&quot;yes&quot;</span>
+</pre></div>
+</div>
+</div>
+<p><a class="reference download internal" download="" href="../_downloads/0c8100bfe602ebe5f2920d10a1175b7c/submit-d20.form"><code class="xref download docutils literal notranslate"><span class="pre">submit-d20.form</span></code></a><br/>
+<a class="reference download internal" download="" href="../_downloads/008ed4cf18c6539be9be98406770b616/speech-approval.form"><code class="xref download docutils literal notranslate"><span class="pre">speech-approval.form</span></code></a><a class="reference download internal" download="" href="../_downloads/d4dfe922d52419b3b18e6ce1186f6b53/speech-approval.json"><code class="xref download docutils literal notranslate"><span class="pre">speech-approval.json</span></code></a></p>
+</section>
+<section id="enjoy-the-ride">
+<h2>Enjoy the ride<a class="headerlink" href="#enjoy-the-ride" title="Permalink to this heading"></a></h2>
+<p>Now you should be able to complete the process together with embedded user task forms using <strong>Zeebe Play</strong> and enjoy the speech you come up with.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/speech-approval-completed.png"><img alt="" src="../_images/speech-approval-completed.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="resource-summary">
+<h2>Resource summary<a class="headerlink" href="#resource-summary" title="Permalink to this heading"></a></h2>
+<p><a class="reference download internal" download="" href="../_downloads/047aec725f9694efdf4ef54082ccfced/speech-request.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">speech-request.bpmn</span></code></a><br/>
+<a class="reference download internal" download="" href="../_downloads/39d3dc6a361e4fbbd6db92593a627096/pick-a-sentence.dmn"><code class="xref download docutils literal notranslate"><span class="pre">pick-a-sentence.dmn</span></code></a><a class="reference download internal" download="" href="../_downloads/c7646e52a47eb626fdda22ce1bb37721/pick-a-sentence.html"><code class="xref download docutils literal notranslate"><span class="pre">pick-a-sentence.html</span></code></a><br/>
+<a class="reference download internal" download="" href="../_downloads/0c8100bfe602ebe5f2920d10a1175b7c/submit-d20.form"><code class="xref download docutils literal notranslate"><span class="pre">submit-d20.form</span></code></a><br/>
+<a class="reference download internal" download="" href="../_downloads/008ed4cf18c6539be9be98406770b616/speech-approval.form"><code class="xref download docutils literal notranslate"><span class="pre">speech-approval.form</span></code></a><a class="reference download internal" download="" href="../_downloads/d4dfe922d52419b3b18e6ce1186f6b53/speech-approval.json"><code class="xref download docutils literal notranslate"><span class="pre">speech-approval.json</span></code></a><br/></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../dmn/index.html" class="btn btn-neutral float-left" title="DMN, user tasks and forms" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../workitems.html" class="btn btn-neutral float-right" title="Service tasks for Robots" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

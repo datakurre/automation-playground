@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DMN, user tasks and forms &mdash; Open Automation Playground  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/diagram-js.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/bpmn-js.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/bpmn-embedded.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/bpmn-js-token-simulation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn-js-shared.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn-js-decision-table.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn-js-literal-expression.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/form-js.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/minipres.js"></script>
+        <script src="../_static/bpmn-js-token-simulation.js"></script>
+        <script src="../_static/form-viewer.umd.js"></script>
+        <script src="../_static/custom.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="DMN exercise with forms" href="../speech/index.html" />
+    <link rel="prev" title="Camunda execution exercises" href="../play/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Open Automation Playground
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../workshop/index.html">Robocon 2023 Workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../playground/index.html">Playground introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bpmn/index.html">BPMN basics by examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modeling/index.html">BPMN modeling exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../execution/index.html">Camunda basics for execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../play/index.html">Camunda execution exercises</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">DMN, user tasks and forms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#collect-facts-make-decisions">Collect facts, make decisions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#automating-repeatable-decisions">Automating repeatable decisions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#camunda-dmn-simulator">Camunda DMN simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dmn-beats-just-coding-it">DMN beats “just coding it”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#camunda-forms-for-user-tasks">Camunda Forms for user tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-forms-and-decisions">Configuring forms and decisions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-camunda-form">Configuring Camunda Form</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-dmn-decision-table">Configuring DMN decision table</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#camunda-forms-at-play">Camunda Forms at Play</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../speech/index.html">DMN exercise with forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workitems.html">Service tasks for Robots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/index.html">Robocorp Code in action</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pdf/index.html">Exercise: PDF creation robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../email/index.html">Exercise: Email sending robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mockoon/index.html">Exercise: API consuming robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spreadsheet/index.html">Exercise: Spreadsheet robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final/index.html">Exercise: Exception handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../classification/index.html">Extra: Classification training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platforms.html">About Camunda Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hello-world/index.html">Summary: Hello World</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Open Automation Playground</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>DMN, user tasks and forms</li>
+<li class="wy-breadcrumbs-aside">
+    <a href="?pres" class="icon fa-film" title="Presentation Mode"></a>
+</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="dmn-user-tasks-and-forms">
+<h1>DMN, user tasks and forms<a class="headerlink" href="#dmn-user-tasks-and-forms" title="Permalink to this heading"></a></h1>
+<p>Until now, we have focused on only one BPMN activity type: <img alt="" class="role-bpmn" src="../_images/robot-task.svg" /> <em>service task</em>. But there are more. Let’s forget service tasks for the next example, and dive into <img alt="" class="role-bpmn" src="../_images/business-rule-task.svg" /> <strong>business rule task</strong> and <img alt="" class="role-bpmn" src="../_images/user-task.svg" /> <strong>user task</strong> instead. They play well together.</p>
+<section id="collect-facts-make-decisions">
+<h2>Collect facts, make decisions<a class="headerlink" href="#collect-facts-make-decisions" title="Permalink to this heading"></a></h2>
+<p>Here’s an imaginary process for selling bus tickets:</p>
+<ol class="arabic simple">
+<li><p>Driver looks into passenger to collect facts about them. Passenger may show some proofs to be eligble for discount.</p></li>
+<li><p>Based on the collected facts, driver decides, into which price group the passenger belongs to.</p></li>
+<li><p>Driver charges the passenger and delivers the ticket.</p></li>
+</ol>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/bus-ticket-sale.svg"><img alt="../_images/bus-ticket-sale.svg" src="../_images/bus-ticket-sale.svg" width="" /></a>
+<figcaption>
+<p><span class="caption-text">In this naive interpretation of the bus ticket sale process, <strong>fact collection</strong> is modeled as <img alt="" class="role-bpmn" src="../_images/user-task.svg" /> <strong>user task</strong> and the <strong>decision</strong> made from the facts as <img alt="" class="role-bpmn" src="../_images/business-rule-task.svg" /> <strong>business-rule-task</strong>. The rest of the tasks are left <img alt="" class="role-bpmn" src="../_images/manual-task.svg" /> manual for now.
+<a class="reference download internal" download="" href="../_downloads/83e0c7bdb08303820daa41d2b395e310/bus-ticket-sale.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">bus-ticket-sale.bpmn</span></code></a></span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="automating-repeatable-decisions">
+<h2>Automating repeatable decisions<a class="headerlink" href="#automating-repeatable-decisions" title="Permalink to this heading"></a></h2>
+<p><strong>DMN</strong> stands for Decision Model and Notation. It is a standard approach for describing and modeling repeatable business decisions, and like BPMN, it is designed to be readable by business and IT users alike. <strong>DMN is the recommended way to implement</strong> <img alt="" class="role-bpmn" src="../_images/business-rule-task.svg" /> <strong>business rule tasks</strong> for most use cases.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For really learn DMN, check <a class="reference external" href="https://camunda.com/dmn/">Camunda DMN Tutorial</a> and take a free <a class="reference external" href="https://academy.camunda.com/camunda-dmn">Camunda DMN online course</a>.</p>
+</div>
+<p>This is, how a DMN decision table for deducing bus ticket price from the facts known about a passenger, could look like (designed using Camunda Modeler):</p>
+<div class="dmn-js-parent" style="width: 100%; height: 100%; position: relative;"><div class="dmn-decision-table-container"><div class="tjs-container"><div class="powered-by"><div class="powered-by__logo" title="Powered by bpmn.io"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.02 5.57" width="53" height="21" style="vertical-align: middle;"><path fill="#000000" d="M1.88.92v.14c0 .41-.13.68-.4.8.33.14.46.44.46.86v.33c0 .61-.33.95-.95.95H0V0h.95c.65 0 .93.3.93.92zM.63.57v1.06h.24c.24 0 .38-.1.38-.43V.98c0-.28-.1-.4-.32-.4zm0 1.63v1.22h.36c.2 0 .32-.1.32-.39v-.35c0-.37-.12-.48-.4-.48H.63zM4.18.99v.52c0 .64-.31.98-.94.98h-.3V4h-.62V0h.92c.63 0 .94.35.94.99zM2.94.57v1.35h.3c.2 0 .3-.09.3-.37v-.6c0-.29-.1-.38-.3-.38h-.3zm2.89 2.27L6.25 0h.88v4h-.6V1.12L6.1 3.99h-.6l-.46-2.82v2.82h-.55V0h.87zM8.14 1.1V4h-.56V0h.79L9 2.4V0h.56v4h-.64zm2.49 2.29v.6h-.6v-.6zM12.12 1c0-.63.33-1 .95-1 .61 0 .95.37.95 1v2.04c0 .64-.34 1-.95 1-.62 0-.95-.37-.95-1zm.62 2.08c0 .28.13.39.33.39s.32-.1.32-.4V.98c0-.29-.12-.4-.32-.4s-.33.11-.33.4z"></path><path fill="#000000" d="M0 4.53h14.02v1.04H0zM11.08 0h.63v.62h-.63zm.63 4V1h-.63v2.98z"></path></svg></div></div><div class="decision-table-properties"><div class="decision-table-name" title="Decision Name: Bus ticket price">Bus ticket price</div><div class="decision-table-header-separator"></div><div class="hit-policy header" title="No overlap is possible and all rules are disjoint. Only a single rule can be matched"><label class="dms-label">Hit Policy:</label><span class="hit-policy-value">Unique</span></div></div><div class="tjs-table-container"><table class="tjs-table"><thead><tr><th class="index-column"></th><th class=" input-cell" data-col-id="Input_1"><div class="clause">When</div><div class="input-label" title="Input Label">Age</div><div class="input-variable" title="Input Type">integer</div></th><th class=" input-cell" data-col-id="InputClause_1jelwl2"><div class="clause">And</div><div class="input-label" title="Input Label">Discount group</div><div class="input-variable" title="Input Type">string</div></th><th class=" input-cell" data-col-id="InputClause_0rq4sqm"><div class="clause">And</div><div class="input-label" title="Input Label">Travelling alone</div><div class="input-variable" title="Input Type">boolean</div></th><th class=" output-cell"><div class="clause">Then</div><div class="output-label" title="Output Label">Price</div><div class="output-variable" title="Output Type">double</div></th><th class="annotation header" style="width: 400px;">Annotations</th></tr></thead><tbody><tr><td class="rule-index" data-element-id="DecisionRule_0116we3" data-row-id="DecisionRule_0116we3">1</td><td class="cell input-cell" data-element-id="UnaryTests_1qlx0m9" data-row-id="DecisionRule_0116we3" data-col-id="Input_1">[0..4]</td><td class="cell input-cell" data-element-id="UnaryTests_0vy3p5x" data-row-id="DecisionRule_0116we3" data-col-id="InputClause_1jelwl2"></td><td class="cell input-cell" data-element-id="UnaryTests_0nlfw83" data-row-id="DecisionRule_0116we3" data-col-id="InputClause_0rq4sqm"></td><td class="cell output-cell" data-element-id="LiteralExpression_0gw4sh3" data-row-id="DecisionRule_0116we3" data-col-id="Output_1">0.00</td><td class="cell annotation" data-element-id="DecisionRule_0116we3">-</td></tr><tr><td class="rule-index" data-element-id="DecisionRule_132d8fs" data-row-id="DecisionRule_132d8fs">2</td><td class="cell input-cell" data-element-id="UnaryTests_0rtzdb7" data-row-id="DecisionRule_132d8fs" data-col-id="Input_1">[5..6]</td><td class="cell input-cell" data-element-id="UnaryTests_0arsg87" data-row-id="DecisionRule_132d8fs" data-col-id="InputClause_1jelwl2"></td><td class="cell input-cell" data-element-id="UnaryTests_00pijc3" data-row-id="DecisionRule_132d8fs" data-col-id="InputClause_0rq4sqm">false</td><td class="cell output-cell" data-element-id="LiteralExpression_0gr1w35" data-row-id="DecisionRule_132d8fs" data-col-id="Output_1">0.00</td><td class="cell annotation" data-element-id="DecisionRule_132d8fs">-</td></tr><tr><td class="rule-index" data-element-id="DecisionRule_1y24mll" data-row-id="DecisionRule_1y24mll">3</td><td class="cell input-cell" data-element-id="UnaryTests_060i93w" data-row-id="DecisionRule_1y24mll" data-col-id="Input_1">[5..6]</td><td class="cell input-cell" data-element-id="UnaryTests_09keagb" data-row-id="DecisionRule_1y24mll" data-col-id="InputClause_1jelwl2"></td><td class="cell input-cell" data-element-id="UnaryTests_0lwzpjz" data-row-id="DecisionRule_1y24mll" data-col-id="InputClause_0rq4sqm">true</td><td class="cell output-cell" data-element-id="LiteralExpression_09zmwuc" data-row-id="DecisionRule_1y24mll" data-col-id="Output_1">2.00</td><td class="cell annotation" data-element-id="DecisionRule_1y24mll">-</td></tr><tr><td class="rule-index" data-element-id="DecisionRule_0is7tp2" data-row-id="DecisionRule_0is7tp2">4</td><td class="cell input-cell" data-element-id="UnaryTests_0k9qo93" data-row-id="DecisionRule_0is7tp2" data-col-id="Input_1">[7..11]</td><td class="cell input-cell" data-element-id="UnaryTests_0ummwf6" data-row-id="DecisionRule_0is7tp2" data-col-id="InputClause_1jelwl2"></td><td class="cell input-cell" data-element-id="UnaryTests_0z1xg2d" data-row-id="DecisionRule_0is7tp2" data-col-id="InputClause_0rq4sqm"></td><td class="cell output-cell" data-element-id="LiteralExpression_0szzy4f" data-row-id="DecisionRule_0is7tp2" data-col-id="Output_1">2.00</td><td class="cell annotation" data-element-id="DecisionRule_0is7tp2">-</td></tr><tr><td class="rule-index" data-element-id="DecisionRule_1wn9fn2" data-row-id="DecisionRule_1wn9fn2">5</td><td class="cell input-cell" data-element-id="UnaryTests_0t8xs4a" data-row-id="DecisionRule_1wn9fn2" data-col-id="Input_1">&gt;=12</td><td class="cell input-cell" data-element-id="UnaryTests_0ufh34r" data-row-id="DecisionRule_1wn9fn2" data-col-id="InputClause_1jelwl2">"student"</td><td class="cell input-cell" data-element-id="UnaryTests_0d1taqv" data-row-id="DecisionRule_1wn9fn2" data-col-id="InputClause_0rq4sqm"></td><td class="cell output-cell" data-element-id="LiteralExpression_1m9o2mg" data-row-id="DecisionRule_1wn9fn2" data-col-id="Output_1">2.80</td><td class="cell annotation" data-element-id="DecisionRule_1wn9fn2">20 % discount</td></tr><tr><td class="rule-index" data-element-id="DecisionRule_0nzy7ho" data-row-id="DecisionRule_0nzy7ho">6</td><td class="cell input-cell" data-element-id="UnaryTests_0gsv7em" data-row-id="DecisionRule_0nzy7ho" data-col-id="Input_1">&gt;=12</td><td class="cell input-cell" data-element-id="UnaryTests_1mntds7" data-row-id="DecisionRule_0nzy7ho" data-col-id="InputClause_1jelwl2">"pensioner"</td><td class="cell input-cell" data-element-id="UnaryTests_05li26a" data-row-id="DecisionRule_0nzy7ho" data-col-id="InputClause_0rq4sqm"></td><td class="cell output-cell" data-element-id="LiteralExpression_12494zh" data-row-id="DecisionRule_0nzy7ho" data-col-id="Output_1">2.80</td><td class="cell annotation" data-element-id="DecisionRule_0nzy7ho">20 % discount</td></tr><tr><td class="rule-index" data-element-id="DecisionRule_0wdj9r3" data-row-id="DecisionRule_0wdj9r3">7</td><td class="cell input-cell" data-element-id="UnaryTests_1c7jvck" data-row-id="DecisionRule_0wdj9r3" data-col-id="Input_1">&gt;=12</td><td class="cell input-cell" data-element-id="UnaryTests_0bj4b9z" data-row-id="DecisionRule_0wdj9r3" data-col-id="InputClause_1jelwl2">not(["student", "pensioner"])</td><td class="cell input-cell" data-element-id="UnaryTests_16t20i8" data-row-id="DecisionRule_0wdj9r3" data-col-id="InputClause_0rq4sqm"></td><td class="cell output-cell" data-element-id="LiteralExpression_0ro39q4" data-row-id="DecisionRule_0wdj9r3" data-col-id="Output_1">3.50</td><td class="cell annotation" data-element-id="DecisionRule_0wdj9r3">Regular price</td></tr></tbody></table></div></div></div></div>
+<p><a class="reference download internal" download="" href="../_downloads/fefbb3dc12ac39275cba9947d6e0312a/bus-ticket-price.dmn"><code class="xref download docutils literal notranslate"><span class="pre">bus-ticket-price.dmn</span></code></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>DMN decision table input rules are written as FEEL unary tests, and output results as FEEL expressions.</p>
+</div>
+</section>
+<section id="camunda-dmn-simulator">
+<h2>Camunda DMN simulator<a class="headerlink" href="#camunda-dmn-simulator" title="Permalink to this heading"></a></h2>
+<figure class="align-right">
+<img alt="DMN simulator desktop shortcut" src="../_images/desktop-dmn.png" />
+</figure>
+<p>The easiest way to understand, how and why DMN is used, is to try it out. Until a good open source solution for playing with DMN emerges, it is possible try out and learn how DMN models work with <a class="reference external" href="https://consulting.camunda.com/dmn-simulator/">Camunda DMN Simulator</a>.</p>
+<p>Simply drag and drop DMN files into the simulator running on a browser window, and they are ready for play:</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/dmn-simulator.png"><img alt="Trying out bus-ticket-price.dmn with Camunda DMN Simulator" src="../_images/dmn-simulator.png" style="width: 100%;" /></a>
+</figure>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This <a class="reference download internal" download="" href="../_downloads/fefbb3dc12ac39275cba9947d6e0312a/bus-ticket-price.dmn"><code class="xref download docutils literal notranslate"><span class="pre">bus-ticket-price.dmn</span></code></a> is designed for <a class="reference external" href="https://camunda.com/platform-7/">Camunda Platform 7</a> to support <a class="reference external" href="https://consulting.camunda.com/dmn-simulator/">Camunda’s DMN Simulator</a>. Unfortunately, the simulator does not yet support all value types available in Zeebe.</p>
+</div>
+</section>
+<section id="dmn-beats-just-coding-it">
+<h2>DMN beats “just coding it”<a class="headerlink" href="#dmn-beats-just-coding-it" title="Permalink to this heading"></a></h2>
+<p>If a business decision can be described with a limited set deterministic rules for matching arguments to one or more resolutions, there is very high chance that DMN beats the traditional programming languages.</p>
+<p>Decision tables</p>
+<ul class="simple">
+<li><p>are more visual than traditional code</p></li>
+<li><p>have less degrees of freedoms to do mistakes</p></li>
+<li><p>are usually more formal and easier to validate</p></li>
+<li><p>can be maintained separately from code (BPMN).</p></li>
+</ul>
+<p>For example, our example decision table is a simple DMN, but could still already result in ugly nested <em>if-then-else</em> expressions with traditional “just coding it” approach:</p>
+<div class="dmn-js-parent" style="width: 100%; height: 100%; position: relative;"><div class="dmn-decision-table-container"><div class="tjs-container"><div class="powered-by"><div class="powered-by__logo" title="Powered by bpmn.io"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.02 5.57" width="53" height="21" style="vertical-align: middle;"><path fill="#000000" d="M1.88.92v.14c0 .41-.13.68-.4.8.33.14.46.44.46.86v.33c0 .61-.33.95-.95.95H0V0h.95c.65 0 .93.3.93.92zM.63.57v1.06h.24c.24 0 .38-.1.38-.43V.98c0-.28-.1-.4-.32-.4zm0 1.63v1.22h.36c.2 0 .32-.1.32-.39v-.35c0-.37-.12-.48-.4-.48H.63zM4.18.99v.52c0 .64-.31.98-.94.98h-.3V4h-.62V0h.92c.63 0 .94.35.94.99zM2.94.57v1.35h.3c.2 0 .3-.09.3-.37v-.6c0-.29-.1-.38-.3-.38h-.3zm2.89 2.27L6.25 0h.88v4h-.6V1.12L6.1 3.99h-.6l-.46-2.82v2.82h-.55V0h.87zM8.14 1.1V4h-.56V0h.79L9 2.4V0h.56v4h-.64zm2.49 2.29v.6h-.6v-.6zM12.12 1c0-.63.33-1 .95-1 .61 0 .95.37.95 1v2.04c0 .64-.34 1-.95 1-.62 0-.95-.37-.95-1zm.62 2.08c0 .28.13.39.33.39s.32-.1.32-.4V.98c0-.29-.12-.4-.32-.4s-.33.11-.33.4z"></path><path fill="#000000" d="M0 4.53h14.02v1.04H0zM11.08 0h.63v.62h-.63zm.63 4V1h-.63v2.98z"></path></svg></div></div><div class="decision-table-properties"><div class="decision-table-name" title="Decision Name: Bus ticket price">Bus ticket price</div><div class="decision-table-header-separator"></div><div class="hit-policy header" title="No overlap is possible and all rules are disjoint. Only a single rule can be matched"><label class="dms-label">Hit Policy:</label><span class="hit-policy-value">Unique</span></div></div><div class="tjs-table-container"><table class="tjs-table"><thead><tr><th class="index-column"></th><th class=" input-cell" data-col-id="Input_1"><div class="clause">When</div><div class="input-label" title="Input Label">Age</div><div class="input-variable" title="Input Type">number</div></th><th class=" input-cell" data-col-id="InputClause_1jelwl2"><div class="clause">And</div><div class="input-label" title="Input Label">Discount group</div><div class="input-variable" title="Input Type">string</div></th><th class=" input-cell" data-col-id="InputClause_0rq4sqm"><div class="clause">And</div><div class="input-label" title="Input Label">Travelling alone</div><div class="input-variable" title="Input Type">boolean</div></th><th class=" output-cell"><div class="clause">Then</div><div class="output-label" title="Output Label">Price</div><div class="output-variable" title="Output Type">number</div></th><th class="annotation header" style="width: 400px;">Annotations</th></tr></thead><tbody><tr><td class="rule-index" data-element-id="DecisionRule_0116we3" data-row-id="DecisionRule_0116we3">1</td><td class="cell input-cell" data-element-id="UnaryTests_1qlx0m9" data-row-id="DecisionRule_0116we3" data-col-id="Input_1">[0..4]</td><td class="cell input-cell" data-element-id="UnaryTests_0vy3p5x" data-row-id="DecisionRule_0116we3" data-col-id="InputClause_1jelwl2"></td><td class="cell input-cell" data-element-id="UnaryTests_0nlfw83" data-row-id="DecisionRule_0116we3" data-col-id="InputClause_0rq4sqm"></td><td class="cell output-cell" data-element-id="LiteralExpression_0gw4sh3" data-row-id="DecisionRule_0116we3" data-col-id="Output_1">0.00</td><td class="cell annotation" data-element-id="DecisionRule_0116we3">-</td></tr><tr><td class="rule-index" data-element-id="DecisionRule_132d8fs" data-row-id="DecisionRule_132d8fs">2</td><td class="cell input-cell" data-element-id="UnaryTests_0rtzdb7" data-row-id="DecisionRule_132d8fs" data-col-id="Input_1">[5..6]</td><td class="cell input-cell" data-element-id="UnaryTests_0arsg87" data-row-id="DecisionRule_132d8fs" data-col-id="InputClause_1jelwl2"></td><td class="cell input-cell" data-element-id="UnaryTests_00pijc3" data-row-id="DecisionRule_132d8fs" data-col-id="InputClause_0rq4sqm">false</td><td class="cell output-cell" data-element-id="LiteralExpression_0gr1w35" data-row-id="DecisionRule_132d8fs" data-col-id="Output_1">0.00</td><td class="cell annotation" data-element-id="DecisionRule_132d8fs">-</td></tr><tr><td class="rule-index" data-element-id="DecisionRule_1y24mll" data-row-id="DecisionRule_1y24mll">3</td><td class="cell input-cell" data-element-id="UnaryTests_060i93w" data-row-id="DecisionRule_1y24mll" data-col-id="Input_1">[5..6]</td><td class="cell input-cell" data-element-id="UnaryTests_09keagb" data-row-id="DecisionRule_1y24mll" data-col-id="InputClause_1jelwl2"></td><td class="cell input-cell" data-element-id="UnaryTests_0lwzpjz" data-row-id="DecisionRule_1y24mll" data-col-id="InputClause_0rq4sqm">true</td><td class="cell output-cell" data-element-id="LiteralExpression_09zmwuc" data-row-id="DecisionRule_1y24mll" data-col-id="Output_1">2.00</td><td class="cell annotation" data-element-id="DecisionRule_1y24mll">-</td></tr><tr><td class="rule-index" data-element-id="DecisionRule_0is7tp2" data-row-id="DecisionRule_0is7tp2">4</td><td class="cell input-cell" data-element-id="UnaryTests_0k9qo93" data-row-id="DecisionRule_0is7tp2" data-col-id="Input_1">[7..11]</td><td class="cell input-cell" data-element-id="UnaryTests_0ummwf6" data-row-id="DecisionRule_0is7tp2" data-col-id="InputClause_1jelwl2"></td><td class="cell input-cell" data-element-id="UnaryTests_0z1xg2d" data-row-id="DecisionRule_0is7tp2" data-col-id="InputClause_0rq4sqm"></td><td class="cell output-cell" data-element-id="LiteralExpression_0szzy4f" data-row-id="DecisionRule_0is7tp2" data-col-id="Output_1">2.00</td><td class="cell annotation" data-element-id="DecisionRule_0is7tp2">-</td></tr><tr><td class="rule-index" data-element-id="DecisionRule_1wn9fn2" data-row-id="DecisionRule_1wn9fn2">5</td><td class="cell input-cell" data-element-id="UnaryTests_0t8xs4a" data-row-id="DecisionRule_1wn9fn2" data-col-id="Input_1">&gt;=12</td><td class="cell input-cell" data-element-id="UnaryTests_0ufh34r" data-row-id="DecisionRule_1wn9fn2" data-col-id="InputClause_1jelwl2">"student"</td><td class="cell input-cell" data-element-id="UnaryTests_0d1taqv" data-row-id="DecisionRule_1wn9fn2" data-col-id="InputClause_0rq4sqm"></td><td class="cell output-cell" data-element-id="LiteralExpression_1m9o2mg" data-row-id="DecisionRule_1wn9fn2" data-col-id="Output_1">2.80</td><td class="cell annotation" data-element-id="DecisionRule_1wn9fn2">20 % discount</td></tr><tr><td class="rule-index" data-element-id="DecisionRule_0nzy7ho" data-row-id="DecisionRule_0nzy7ho">6</td><td class="cell input-cell" data-element-id="UnaryTests_0gsv7em" data-row-id="DecisionRule_0nzy7ho" data-col-id="Input_1">&gt;=12</td><td class="cell input-cell" data-element-id="UnaryTests_1mntds7" data-row-id="DecisionRule_0nzy7ho" data-col-id="InputClause_1jelwl2">"pensioner"</td><td class="cell input-cell" data-element-id="UnaryTests_05li26a" data-row-id="DecisionRule_0nzy7ho" data-col-id="InputClause_0rq4sqm"></td><td class="cell output-cell" data-element-id="LiteralExpression_12494zh" data-row-id="DecisionRule_0nzy7ho" data-col-id="Output_1">2.80</td><td class="cell annotation" data-element-id="DecisionRule_0nzy7ho">20 % discount</td></tr><tr><td class="rule-index" data-element-id="DecisionRule_0wdj9r3" data-row-id="DecisionRule_0wdj9r3">7</td><td class="cell input-cell" data-element-id="UnaryTests_1c7jvck" data-row-id="DecisionRule_0wdj9r3" data-col-id="Input_1">&gt;=12</td><td class="cell input-cell" data-element-id="UnaryTests_0bj4b9z" data-row-id="DecisionRule_0wdj9r3" data-col-id="InputClause_1jelwl2">not(["student", "pensioner"])</td><td class="cell input-cell" data-element-id="UnaryTests_16t20i8" data-row-id="DecisionRule_0wdj9r3" data-col-id="InputClause_0rq4sqm"></td><td class="cell output-cell" data-element-id="LiteralExpression_0ro39q4" data-row-id="DecisionRule_0wdj9r3" data-col-id="Output_1">3.50</td><td class="cell annotation" data-element-id="DecisionRule_0wdj9r3">Regular price</td></tr></tbody></table></div></div></div></div>
+<br/>
+</section>
+<section id="camunda-forms-for-user-tasks">
+<h2>Camunda Forms for user tasks<a class="headerlink" href="#camunda-forms-for-user-tasks" title="Permalink to this heading"></a></h2>
+<p>In our example, the DMN <img alt="" class="role-bpmn" src="../_images/business-rule-task.svg" /> business rule task <em>Choose price</em>, depends on <img alt="" class="role-bpmn" src="../_images/user-task.svg" /> user task <em>Recognize passanger type</em> to provide input facts for the decision table.</p>
+<p>Most common way to implement a user task is to show the user a form. Camunda has developed its own <a class="reference external" href="https://bpmn.io/toolkit/form-js/">open source web form framework</a>, which has its editor integrated into Camunda Modeler. While a web form might not be the best possible final user interface for this process, it’s still good enough for prototyping it.</p>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="../_images/modeler-form-playground.png"><img alt="" src="../_images/modeler-form-playground.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-text">Camunda Modeler includes <a class="reference external" href="https://www.npmjs.com/package/&#64;bpmn-io/form-js-playground">&#64;bpmn-io/form-js-playground</a> for designing and previewing <a class="reference external" href="https://bpmn.io/toolkit/form-js/">&#64;bpmn-io/form-js</a> HTML forms, also known as Camunda Forms. To bind form with <img alt="" class="role-bpmn" src="../_images/user-task.svg" /> user tasks on Zeebe, form JSON schema must be manually copied and pasted into task’s BPMN properties.</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="configuring-forms-and-decisions">
+<h2>Configuring forms and decisions<a class="headerlink" href="#configuring-forms-and-decisions" title="Permalink to this heading"></a></h2>
+<p>Let’s now put all this together into the next iteration of our example processs:</p>
+<ol class="arabic simple">
+<li><p>At first, <img alt="" class="role-bpmn" src="../_images/user-task.svg" /> user task <em>Submit passanger fact</em> is completed with submitting required variables using a Camunda Form. <em>(In reality, this is where passengers scan their personal travel card.)</em></p></li>
+<li><p>Then, <img alt="" class="role-bpmn" src="../_images/business-rule-task.svg" /> business rule task <em>Choose price</em> will take the submitted variables and decide the price by its rules.</p></li>
+<li><p>The rest of the process is still left all manual, because this time we focus on, how forms and DMN works together.</p></li>
+</ol>
+<figure class="align-default" id="id3">
+<a class="reference internal image-reference" href="../_images/bus-ticket-sale-executable.svg"><img alt="../_images/bus-ticket-sale-executable.svg" src="../_images/bus-ticket-sale-executable.svg" width="" /></a>
+<figcaption>
+<p><span class="caption-text"><a class="reference download internal" download="" href="../_downloads/91c89684544f61b15c25b1c18f6fb6d5/bus-ticket-sale-executable.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">bus-ticket-sale-executable.bpmn</span></code></a></span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Form and DMN:<br/>
+<a class="reference download internal" download="" href="../_downloads/aa272d32acdd19b2fdef689af3306a60/bus-ticket-price.form"><code class="xref download docutils literal notranslate"><span class="pre">bus-ticket-price.form</span></code></a><br/>
+<a class="reference download internal" download="" href="../_downloads/2106f438ecc0e5aad6ac1b1ebc615c7c/bus-ticket-price-zeebe.dmn"><code class="xref download docutils literal notranslate"><span class="pre">bus-ticket-price-zeebe.dmn</span></code></a><a class="reference download internal" download="" href="../_downloads/7a9e2c47548ca04db288095d97ac7df0/bus-ticket-price-zeebe.html"><code class="xref download docutils literal notranslate"><span class="pre">bus-ticket-price-zeebe.html</span></code></a></p>
+<section id="configuring-camunda-form">
+<h3>Configuring Camunda Form<a class="headerlink" href="#configuring-camunda-form" title="Permalink to this heading"></a></h3>
+<figure class="align-default" id="id4">
+<a class="reference internal image-reference" href="../_images/bus-ticket-sale-user-task.png"><img alt="" src="../_images/bus-ticket-sale-user-task.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-text">This is how a <img alt="" class="role-bpmn" src="../_images/user-task.svg" /> user task is configured with Camunda Form: by copying and pasting form’s JSON schema in Camunda Modeler from the form editor’s source view into dedicated BPMN editor task property field. Whether the form is actually displayed to end-users, depends on end-user user interface support for open source <a class="reference external" href="https://bpmn.io/toolkit/form-js/">&#64;bpmn-io/form-js</a>.</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="configuring-dmn-decision-table">
+<h3>Configuring DMN decision table<a class="headerlink" href="#configuring-dmn-decision-table" title="Permalink to this heading"></a></h3>
+<figure class="align-default" id="id5">
+<a class="reference internal image-reference" href="../_images/bus-ticket-sale-business-rule.png"><img alt="" src="../_images/bus-ticket-sale-business-rule.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-text">This is how a <img alt="" class="role-bpmn" src="../_images/business-rule-task.svg" /> business rule task is configured to execute DMN decision table. The DMN model is deployed separately, and its ID is configured into task’s properties in Camunda Modeler.</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="camunda-forms-at-play">
+<h2>Camunda Forms at Play<a class="headerlink" href="#camunda-forms-at-play" title="Permalink to this heading"></a></h2>
+<figure class="align-right">
+<img alt="" src="../_images/bus-ticket-sale-complete.png" />
+</figure>
+<p>Finally, once the DMN and BPMN files (with embedded forms) have been deployed to Zeebe, the process can be executed with <strong>Zeebe Play</strong>.</p>
+<p>Play augments current <img alt="" class="role-bpmn" src="../_images/user-task.svg" /> users tasks with the familiar task completion button. Clicking the button will popup the configured Camunda Form within Play’s user interface, and the process can be completed as intended.</p>
+<figure class="align-default" id="id6">
+<a class="reference internal image-reference" href="../_images/bus-ticket-sale-play.png"><img alt="" src="../_images/bus-ticket-sale-play.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-text">After the <img alt="" class="role-bpmn" src="../_images/user-task.svg" /> user task form is submitted, its variables are passed to the <img alt="" class="role-bpmn" src="../_images/business-rule-task.svg" /> business rule tasks, which outputs the decided ticket price to be stored as a process variable. The result can be then checked on Zeebe Play variables table.</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../play/index.html" class="btn btn-neutral float-left" title="Camunda execution exercises" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../speech/index.html" class="btn btn-neutral float-right" title="DMN exercise with forms" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

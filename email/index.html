@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exercise: Email sending robot &mdash; Open Automation Playground  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/diagram-js.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/bpmn-js.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/bpmn-embedded.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/bpmn-js-token-simulation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn-js-shared.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn-js-decision-table.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn-js-literal-expression.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/form-js.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/minipres.js"></script>
+        <script src="../_static/bpmn-js-token-simulation.js"></script>
+        <script src="../_static/form-viewer.umd.js"></script>
+        <script src="../_static/custom.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Exercise: API consuming robot" href="../mockoon/index.html" />
+    <link rel="prev" title="Exercise: PDF creation robot" href="../pdf/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Open Automation Playground
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../workshop/index.html">Robocon 2023 Workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../playground/index.html">Playground introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bpmn/index.html">BPMN basics by examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modeling/index.html">BPMN modeling exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../execution/index.html">Camunda basics for execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../play/index.html">Camunda execution exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dmn/index.html">DMN, user tasks and forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../speech/index.html">DMN exercise with forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workitems.html">Service tasks for Robots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/index.html">Robocorp Code in action</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pdf/index.html">Exercise: PDF creation robot</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Exercise: Email sending robot</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#extracting-robot-package">Extracting robot package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dependencies-just-work">Dependencies just work</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sending-the-message">Sending the  message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#multiple-tasks-per-package">Multiple tasks per package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#you-ve-got-mail">You’ve got mail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#resource-summary">Resource summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../mockoon/index.html">Exercise: API consuming robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spreadsheet/index.html">Exercise: Spreadsheet robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final/index.html">Exercise: Exception handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../classification/index.html">Extra: Classification training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platforms.html">About Camunda Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hello-world/index.html">Summary: Hello World</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Open Automation Playground</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Exercise: Email sending robot</li>
+<li class="wy-breadcrumbs-aside">
+    <a href="?pres" class="icon fa-film" title="Presentation Mode"></a>
+</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="exercise-email-sending-robot">
+<h1>Exercise: Email sending robot<a class="headerlink" href="#exercise-email-sending-robot" title="Permalink to this heading"></a></h1>
+<p>This exercise continues from <a class="reference internal" href="../pdf/index.html"><span class="doc std std-doc">the previous one</span></a> by adding a new <img alt="" class="role-bpmn" src="../_images/robot-task.svg" /> Robot Framework <img alt="" class="role-bpmn" src="../_images/service-task.svg" /> <strong>service task</strong> for delivering the generated certificate by email as an attachment.</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/create-certificate.svg"><img alt="../_images/create-certificate.svg" src="../_images/create-certificate.svg" width="" /></a>
+<figcaption>
+<p><span class="caption-text"><a class="reference download internal" download="" href="../_downloads/93812421da8b443aee6076922f733291/create-certificate.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">create-certificate.bpmn</span></code></a></span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>The minimal required input or output mapping for this exercise, is to bring <code class="docutils literal notranslate"><span class="pre">filename</span></code> variable back to process from <img alt="" class="role-bpmn" src="../_images/robot-task.svg" /> <em>Create certificate</em> task. The latter <img alt="" class="role-bpmn" src="../_images/robot-task.svg" /> <em>Email certificate</em> task may use for <a class="reference internal" href="../workitems.html#reading-files"><span class="std std-doc">reading the file from work item</span></a>.</p>
+<section id="extracting-robot-package">
+<h2>Extracting robot package<a class="headerlink" href="#extracting-robot-package" title="Permalink to this heading"></a></h2>
+<p>After the BPMN model changes, start implementing the new automation task by extracting the provided <img alt="" class="role-bpmn" src="../_images/robot-task.svg" /> <a class="reference download internal" download="" href="../_downloads/ca2f16bb476181e0b4e12131f5cba875/create-certificate.zip"><code class="xref download docutils literal notranslate"><span class="pre">../pdf/create-certificate.zip</span></code></a> and then deleting the now obsolete package file.</p>
+<figure class="align-default">
+<img alt="" src="../_images/robot-extract.png" />
+</figure>
+</section>
+<section id="dependencies-just-work">
+<h2>Dependencies just work<a class="headerlink" href="#dependencies-just-work" title="Permalink to this heading"></a></h2>
+<p>But now that we have full also to the PDF robot code, why not to look into how it worked? Especially into Robot dependency file, <code class="docutils literal notranslate"><span class="pre">conda.yaml</span></code>, which tells that PDF creations is based on combined powers of <a class="reference external" href="https://pypi.org/project/xhtml2pdf/">xhtml2pdf</a> PDF-converter and <a class="reference external" href="https://pypi.org/project/xhtml2pdf/">Chamelon</a> HTML templating.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">channels</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">conda-forge</span><span class="w"></span>
+
+<span class="nt">dependencies</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python=3.9.13</span><span class="w">               </span><span class="c1"># https://pyreadiness.org/3.9/ </span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip=22.1.2</span><span class="w">                  </span><span class="c1"># https://pip.pypa.io/en/stable/news/</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pip</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rpaframework==19.4.1</span><span class="w">    </span><span class="c1"># https://rpaframework.org/releasenotes.html</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">chameleon</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xhtml2pdf</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Compatible runtime environment with these dependencies in place is implicitly managed by Robocorp Code for development and RCC for the orchestrated execution.</p>
+</section>
+<section id="sending-the-message">
+<h2>Sending the  message<a class="headerlink" href="#sending-the-message" title="Permalink to this heading"></a></h2>
+<p>The playground has a local SMTP mock server listening at <code class="docutils literal notranslate"><span class="pre">localhost:1025</span></code>. Let’s follow the examples of RPA framework’s <a class="reference external" href="https://rpaframework.org/libraries/email_imapsmtp/">Email.ImapSmtp</a> keyword libray to send the attachment as email.</p>
+<div class="highlight-robotframework notranslate"><div class="highlight"><pre><span></span><span class="gh">*** Settings ***</span><span class="p"></span>
+
+<span class="kn">Library</span><span class="p">    </span><span class="nn">RPA.Email.ImapSmtp</span><span class="p">   </span><span class="s">smtp_server=</span><span class="p">%{</span><span class="nv">SMTP_HOST=localhost</span><span class="p">}    </span><span class="s">smtp_port=</span><span class="p">%{</span><span class="nv">SMTP_PORT=1025</span><span class="p">}</span>
+<span class="kn">Library</span><span class="p">    </span><span class="nn">RPA.Robocorp.WorkItems</span><span class="p"></span>
+<span class="kn">Library</span><span class="p">    </span><span class="nn">String</span><span class="p"></span>
+
+
+<span class="gh">*** Variables ***</span><span class="p"></span>
+
+<span class="p">${</span><span class="nv">name</span><span class="p">}</span>
+<span class="p">${</span><span class="nv">email</span><span class="p">}</span>
+<span class="p">${</span><span class="nv">filename</span><span class="p">}</span>
+<span class="p">${</span><span class="nv">template</span><span class="p">}    </span><span class="s">SEPARATOR=\n</span><span class="p"></span>
+<span class="p">...            </span><span class="s">Dear {name},</span><span class="p"></span>
+<span class="p">...</span>
+<span class="p">...            </span><span class="s">thank you for participating the workshop.</span><span class="p"></span>
+<span class="p">...</span>
+<span class="p">...            </span><span class="s">Please, check the attachments for your certificate.</span><span class="p"></span>
+<span class="p">...</span>
+<span class="p">...            </span><span class="s">Yours sincerely,</span><span class="p"></span>
+<span class="p">...            </span><span class="s">The Organizers</span><span class="p"></span>
+
+
+<span class="gh">*** Tasks ***</span><span class="p"></span>
+
+<span class="gu">Mail certificate PDF</span><span class="p"></span>
+<span class="p">    </span><span class="nf">Set Task Variables From Work Item</span><span class="p"></span>
+
+<span class="p">    ${</span><span class="nv">name</span><span class="p">}=   </span><span class="nf">Strip String</span><span class="p">    ${</span><span class="nv">name</span><span class="p">}</span>
+<span class="p">    ${</span><span class="nv">email</span><span class="p">}=  </span><span class="nf">Strip String</span><span class="p">    ${</span><span class="nv">email</span><span class="p">}</span>
+
+<span class="p">    ${</span><span class="nv">certificate</span><span class="p">}=  </span><span class="nf">Get Work Item File</span><span class="p">    ${</span><span class="nv">filename</span><span class="p">}</span>
+<span class="p">    ${</span><span class="nv">body</span><span class="p">}=  </span><span class="nf">Format String</span><span class="p">    ${</span><span class="nv">template</span><span class="p">}  </span><span class="s">name=</span><span class="p">${</span><span class="nv">name</span><span class="p">}</span>
+
+<span class="p">    </span><span class="nf">Send Message</span><span class="p">  </span><span class="s">sender=noreply@example.com</span><span class="p"></span>
+<span class="p">    ...           </span><span class="s">recipients=&quot;</span><span class="p">${</span><span class="nv">name</span><span class="p">}</span><span class="s">&quot; &lt;</span><span class="p">${</span><span class="nv">email</span><span class="p">}</span><span class="s">&gt;</span><span class="p"></span>
+<span class="p">    ...           </span><span class="s">subject=Certificate of Participation</span><span class="p"></span>
+<span class="p">    ...           </span><span class="s">body=</span><span class="p">${</span><span class="nv">body</span><span class="p">}</span>
+<span class="p">    ...           </span><span class="s">attachments=</span><span class="p">${</span><span class="nv">certificate</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Because RCC can run tasks from any <code class="docutils literal notranslate"><span class="pre">.robot</span></code> from the package root, we can have the above task in its own file next, e.g. <code class="docutils literal notranslate"><span class="pre">mail.robot</span></code>.</p>
+</section>
+<section id="multiple-tasks-per-package">
+<h2>Multiple tasks per package<a class="headerlink" href="#multiple-tasks-per-package" title="Permalink to this heading"></a></h2>
+<p>There is no limits for the amount of task allowed in tasks each RCC compatible Robot Framework automation package (or just “robot”). The only limit is, how many tasks are still practical to be listed in a single <code class="docutils literal notranslate"><span class="pre">robots.yaml</span></code>.</p>
+<p>Here’s <code class="docutils literal notranslate"><span class="pre">robot.yaml</span></code> from <img alt="" class="role-bpmn" src="../_images/robot-task.svg" /> <a class="reference download internal" download="" href="../_downloads/ca2f16bb476181e0b4e12131f5cba875/create-certificate.zip"><code class="xref download docutils literal notranslate"><span class="pre">../pdf/create-certificate.zip</span></code></a> package updated with the new task mapping:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># For more details on the format and content:</span><span class="w"></span>
+<span class="c1"># https://github.com/robocorp/rcc/blob/master/docs/recipes.md#what-is-in-robotyaml</span><span class="w"></span>
+
+<span class="nt">tasks</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># Task names here are used when executing the bots, so renaming these is recommended.</span><span class="w"></span>
+<span class="w">  </span><span class="nt">Create certificate</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">robotTaskName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create certificate PDF</span><span class="w"></span>
+
+<span class="w">  </span><span class="nt">Email certificate</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">robotTaskName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mail certificate PDF</span><span class="w"></span>
+
+<span class="nt">condaConfigFile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">conda.yaml</span><span class="w"></span>
+
+<span class="nt">environmentConfigs</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">environment_windows_amd64_freeze.yaml</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">environment_linux_amd64_freeze.yaml</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">environment_darwin_amd64_freeze.yaml</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">conda.yaml</span><span class="w"></span>
+
+<span class="nt">artifactsDir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output</span><span class="w">  </span>
+
+<span class="nt">PATH</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span><span class="w"></span>
+<span class="nt">PYTHONPATH</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span><span class="w"></span>
+
+<span class="nt">ignoreFiles</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.gitignore</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="you-ve-got-mail">
+<h2>You’ve got mail<a class="headerlink" href="#you-ve-got-mail" title="Permalink to this heading"></a></h2>
+<figure class="align-right">
+<img alt="" src="../_images/desktop-mailhog.png" />
+</figure>
+<p>Once you have deployed the new process model, <code class="docutils literal notranslate"><span class="pre">wrap</span></code>ped the updated package, launched <strong>RCC</strong> integration and started executing a new version, you should be able to view the sent email at <strong>Mailhog</strong> web user interface.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/mailhog-notification.png"><img alt="" src="../_images/mailhog-notification.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="resource-summary">
+<h2>Resource summary<a class="headerlink" href="#resource-summary" title="Permalink to this heading"></a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/mailhog-pdf.png"><img alt="" src="../_images/mailhog-pdf.png" style="width: 100%;" /></a>
+</figure>
+<p><a class="reference download internal" download="" href="../_downloads/93812421da8b443aee6076922f733291/create-certificate.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">create-certificate.bpmn</span></code></a><br/>
+<a class="reference download internal" download="" href="../_downloads/ed8522c9d23a36c1072c16cd767c2a60/create-certificate.form"><code class="xref download docutils literal notranslate"><span class="pre">../pdf/create-certificate.form</span></code></a><a class="reference download internal" download="" href="../_downloads/b1a59d9451d72028bf0b6509e40efbd9/create-certificate.json"><code class="xref download docutils literal notranslate"><span class="pre">../pdf/create-certificate.json</span></code></a><br/>
+ <img alt="" class="role-bpmn" src="../_images/robot-task.svg" />  <a class="reference download internal" download="" href="../_downloads/afa49c10373b4a4804fa1c573af178f3/create-certificate.zip"><code class="xref download docutils literal notranslate"><span class="pre">create-certificate.zip</span></code></a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../pdf/index.html" class="btn btn-neutral float-left" title="Exercise: PDF creation robot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../mockoon/index.html" class="btn btn-neutral float-right" title="Exercise: API consuming robot" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

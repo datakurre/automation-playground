@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Camunda basics for execution &mdash; Open Automation Playground  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/diagram-js.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/bpmn-js.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/bpmn-embedded.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/bpmn-js-token-simulation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn-js-shared.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn-js-decision-table.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn-js-literal-expression.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/form-js.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/minipres.js"></script>
+        <script src="../_static/bpmn-js-token-simulation.js"></script>
+        <script src="../_static/form-viewer.umd.js"></script>
+        <script src="../_static/custom.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Camunda execution exercises" href="../play/index.html" />
+    <link rel="prev" title="BPMN modeling exercises" href="../modeling/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Open Automation Playground
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../workshop/index.html">Robocon 2023 Workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../playground/index.html">Playground introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bpmn/index.html">BPMN basics by examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modeling/index.html">BPMN modeling exercises</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Camunda basics for execution</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#process-name-and-id">Process name and ID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#service-task-configuration">Service task configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#inputs-and-outputs">Inputs and outputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gateway-paths">Gateway paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#feel-expressions">Feel expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#executable-process">Executable process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deploy-to-zeebe">Deploy to Zeebe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#start-a-new-instance">Start a new instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#execute-with-zeebe-play">Execute with Zeebe Play</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#zeebe-welcome">Zeebe Welcome</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#choosing-deployment">Choosing deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#choosing-instance">Choosing instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#complete-task">Complete task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#refresh-for-results">Refresh for results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#complete-with-variables">Complete with variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#process-completed">Process completed</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../play/index.html">Camunda execution exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dmn/index.html">DMN, user tasks and forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../speech/index.html">DMN exercise with forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workitems.html">Service tasks for Robots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/index.html">Robocorp Code in action</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pdf/index.html">Exercise: PDF creation robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../email/index.html">Exercise: Email sending robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mockoon/index.html">Exercise: API consuming robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spreadsheet/index.html">Exercise: Spreadsheet robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final/index.html">Exercise: Exception handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../classification/index.html">Extra: Classification training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platforms.html">About Camunda Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hello-world/index.html">Summary: Hello World</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Open Automation Playground</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Camunda basics for execution</li>
+<li class="wy-breadcrumbs-aside">
+    <a href="?pres" class="icon fa-film" title="Presentation Mode"></a>
+</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="camunda-basics-for-execution">
+<h1>Camunda basics for execution<a class="headerlink" href="#camunda-basics-for-execution" title="Permalink to this heading"></a></h1>
+<p>After learning <a class="reference internal" href="../modeling/index.html"><span class="doc std std-doc">modeling with Camunda Modeler</span></a>, you are only few steps away from modeling also for execution. Before you start, please, <strong>open the properties panel of Camunda Modeler</strong>, either by clicking its handle on the right side of the modeler window or choosing <em>Window -&gt; Toggle Properties Panel</em> from the menu bar.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/modeler-empty.png"><img alt="" src="../_images/modeler-empty.png" style="width: 100%;" /></a>
+</figure>
+<p>Let’s now learn the minimum requirements for configuring a BPMN model to be ready for execution.</p>
+<section id="process-name-and-id">
+<h2>Process name and ID<a class="headerlink" href="#process-name-and-id" title="Permalink to this heading"></a></h2>
+<p>Every BPMN model (process definition) for executable processes should have descriptive display <strong>Name</strong> and unique definition <strong>ID</strong> set, and <strong>Executable</strong> option checked. These are available on the properties panel when no element selected.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/modeler-properties-process.png"><img alt="" src="../_images/modeler-properties-process.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="service-task-configuration">
+<h2>Service task configuration<a class="headerlink" href="#service-task-configuration" title="Permalink to this heading"></a></h2>
+<p>At first, use element <strong>context modeling palette</strong> to turn a plain task into a <img alt="" class="role-bpmn" src="../_images/robot-task.svg" /> <strong>service task</strong>. Once you see service task’s properties panel, the only really required property there is the service task <strong>Type</strong> on <strong>Task definition</strong>. This is the identifier you’ll be giving to your automation code executing the task later. The type should be unique on your environment, and it is up to you to guard that.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/modeler-properties-task.png"><img alt="" src="../_images/modeler-properties-task.png" style="width: 100%;" /></a>
+</figure>
+<p>The Name and ID of the task has no effect on the execution. Choose a <strong>Name</strong> that describes the task work with verb in the domain language of the process. Having a naming policy for <strong>ID</strong> would help to identify service tasks from your logs. In addition, the playground has a feature to show <img alt="" class="role-bpmn" src="../_images/robot-task.svg" /> Robot Framework logo for service tasks with <code class="docutils literal notranslate"><span class="pre">robot</span></code> in their ID. (The feature is case insensitive.)</p>
+</section>
+<section id="inputs-and-outputs">
+<h2>Inputs and outputs<a class="headerlink" href="#inputs-and-outputs" title="Permalink to this heading"></a></h2>
+<p>Input and output mappings on the properties panel allow to adapt domain specific process to more generic task implementations. All Camunda BPMN engines implement <strong>nested variable scopes</strong> by BPMN elements:</p>
+<ul class="simple">
+<li><p>Element may have local variables not propagated back to process level.</p></li>
+<li><p>Variables introduced in <strong>Inputs</strong>, are only available within the element.</p></li>
+<li><p>Variables introduced in <strong>Inputs</strong>, and set as local by task implementation (<em>job worker</em>), are only propagated back to process through <strong>Outputs</strong>.</p></li>
+<li><p>For Zeebe, variable assignment values on Inputs and Outputs must be valid FEEL expressions.</p></li>
+</ul>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/modeler-properties-inputs.png"><img alt="" src="../_images/modeler-properties-inputs.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-text">In our example, at service task, we use <strong>Inputs</strong> to set local variable <code class="docutils literal notranslate"><span class="pre">completed</span></code> with value <code class="docutils literal notranslate"><span class="pre">false</span></code>, expect the service task worker to update it, and then map its final using Outputs as variable <code class="docutils literal notranslate"><span class="pre">workCompleted</span></code> having the value of executed FEEL expression <code class="docutils literal notranslate"><span class="pre">completed</span></code> (which evaluates to the value of that local task variable during output mapping).</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="gateway-paths">
+<h2>Gateway paths<a class="headerlink" href="#gateway-paths" title="Permalink to this heading"></a></h2>
+<p>How do <img alt="" class="role-bpmn" src="../_images/exclusive-gateway.svg" /> exclusive gateways know which path should the token be directed to? Well, you have to tell them, how to.</p>
+<p>At first, one of the outgoing paths from an exclusive gateway, could be configured as the <strong>default</strong> path from the element <strong>context modeling palette of the path</strong>. The rest of the paths should have <strong>condition</strong> expression defined.</p>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="../_images/modeler-properties-gateway.png"><img alt="" src="../_images/modeler-properties-gateway.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-text">In our example, the exclusive gateway has two ongoing paths. The default path with label <strong>No</strong> goes back join the main flow just before the service task. The other path with label <strong>Yes</strong> is followed when FEEL expression <code class="docutils literal notranslate"><span class="pre">workCompleted</span></code> evaluates to <code class="docutils literal notranslate"><span class="pre">true</span></code>. That happen when the process variable <code class="docutils literal notranslate"><span class="pre">workCompleted</span></code> has value <code class="docutils literal notranslate"><span class="pre">true</span></code>.</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If expression for more than one path on a exclusive gateway results in <em>true</em>, a runtime incident will be raised.</p>
+</div>
+</section>
+<section id="feel-expressions">
+<h2>Feel expressions<a class="headerlink" href="#feel-expressions" title="Permalink to this heading"></a></h2>
+<p>What are those FEEL expressions required for service task inputs, service task outputs and exclusive gateway conditions?</p>
+<p>FEEL stands for <em>Friendly Enough Expression Language</em>. It is a pretty simple functional expression language for manipulating or testing process variables. With Camunda tools we use <a class="reference external" href="https://camunda.github.io/feel-scala/docs/reference/">Camunda FEEL implementation</a>. That said, unofficial <a class="reference external" href="https://nikku.github.io/feel-playground/">FEEL playground</a> is still probably the easiest place to learn how to use FEEL expressions to map or test process variables.</p>
+<iframe src="../_static/feel/?e=user.name&c={%0A++%22completed%22%3A+true%2C%0A++%22user%22%3A+{%0A++++%22name%22%3A+%22Jane+Doe%22%2C%0A++++%22email%22%3A+%22jane.doe%40example.com%22%2C%0A++++%22consent%22%3A+true%0A++}%0A}&t=expression" width="100%" height="400"></iframe>
+<p style="margin-top: 1em">
+Use the embedded playground above to practice, how to access task variable
+<code class="docutils literal notranslate"><span class="pre">completed</span></code>,
+then add it into <stong>Variables</strong> as
+<code class="docutils literal notranslate"><span class="pre">workCompleted</span></code>
+and access it again. You have now implemented the expressions used in our example.
+</p></section>
+<section id="executable-process">
+<h2>Executable process<a class="headerlink" href="#executable-process" title="Permalink to this heading"></a></h2>
+<p>Before deploying a model, it must be saved and given a filename. This is the model we’ve been building so far:</p>
+<figure class="align-default" id="id3">
+<a class="reference internal image-reference" href="../_images/work-request.svg"><img alt="../_images/work-request.svg" src="../_images/work-request.svg" width="" /></a>
+<figcaption>
+<p><span class="caption-text"><a class="reference download internal" download="" href="../_downloads/4901a4331195f3b06fabf8c65d8498a1/work-request.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">work-request.bpmn</span></code></a></span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="deploy-to-zeebe">
+<h2>Deploy to Zeebe<a class="headerlink" href="#deploy-to-zeebe" title="Permalink to this heading"></a></h2>
+<p>The bottom toolbar of the modeler, has a dedicated <em>Rocket button</em> for deploying a model diagram to Zeebe engine. The playground Zeebe matches <em>Camunda Platform 8 Self-Managed</em> with Cluster endpoint <code class="docutils literal notranslate"><span class="pre">http://localhost:26500</span></code> and <em>Authentication: None</em>.</p>
+<figure class="align-default" id="id4">
+<a class="reference internal image-reference" href="../_images/modeler-deploy.png"><img alt="" src="../_images/modeler-deploy.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-text">Just press <strong>Deploy</strong>.</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="start-a-new-instance">
+<h2>Start a new instance<a class="headerlink" href="#start-a-new-instance" title="Permalink to this heading"></a></h2>
+<p>There a are many ways to start a new process instance from deployed definition. A production solution being usually a custom user-interface or by a microservice through an API. While stil llearning, however, it is very convenient start the process directly from Modeler, from <strong>Play button</strong> on the bottom toolbar.</p>
+<figure class="align-default" id="id5">
+<a class="reference internal image-reference" href="../_images/modeler-start.png"><img alt="" src="../_images/modeler-start.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-text">Just press <strong>Start</strong>.</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="execute-with-zeebe-play">
+<h2>Execute with Zeebe Play<a class="headerlink" href="#execute-with-zeebe-play" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/camunda-community-hub/zeebe-play">Zeebe Play</a> is an open source web application for <a class="reference external" href="https://camunda.com/platform/zeebe/">Zeebe</a> to play with processes while developing them. On the playground, Zeebe Play is opened from the <strong>Play</strong> desktop shortcut.</p>
+<p><img alt="Zeebe Play desktop icon" src="../_images/desktop-play.png" /></p>
+<section id="zeebe-welcome">
+<h3>Zeebe Welcome<a class="headerlink" href="#zeebe-welcome" title="Permalink to this heading"></a></h3>
+<p>Next, find your process by choosing <strong>deployments</strong> from Zeebe Play welcome screen.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/play-welcome.png"><img alt="" src="../_images/play-welcome.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="choosing-deployment">
+<h3>Choosing deployment<a class="headerlink" href="#choosing-deployment" title="Permalink to this heading"></a></h3>
+<p>Whenever you deploy a model diagram with an existing process definition id, it will become a new version of the existing process. Zeebe Play lists every deployment and its version on separate rows. To continue, try to find the latest one of the process you were developing.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/play-deployments.png"><img alt="" src="../_images/play-deployments.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="choosing-instance">
+<h3>Choosing instance<a class="headerlink" href="#choosing-instance" title="Permalink to this heading"></a></h3>
+<p>Once you’ve find the deployment, Zeebe Play lists every instance it knows on the chosen deployment, whether active, completed or manually terminated. Choose an active instance or start a new instance directly from Zeebe Play.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/play-instances.png"><img alt="" src="../_images/play-instances.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="complete-task">
+<h3>Complete task<a class="headerlink" href="#complete-task" title="Permalink to this heading"></a></h3>
+<figure class="align-right">
+<img alt="" src="../_images/play-complete.png" />
+</figure>
+<p>Zeebe Play show executed paths as green. Whenever there is a token alive on actionable element, it will show <strong>action buttons</strong> on top of the elements for completing them.</p>
+<figure class="align-default" id="id6">
+<a class="reference internal image-reference" href="../_images/play-instance.png"><img alt="" src="../_images/play-instance.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-text">Simply click the blue button with white checkmark on the left corner of the active service task to complete it.</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="refresh-for-results">
+<h3>Refresh for results<a class="headerlink" href="#refresh-for-results" title="Permalink to this heading"></a></h3>
+<figure class="align-right">
+<img alt="" src="../_images/play-reload.png" />
+</figure>
+<p>Currently Zeebe Play may not yet update the instance view automatically, but you need to manually click the highlighted button <em>You may need to reload the page manually</em> to see the changes.</p>
+<figure class="align-default" id="id7">
+<a class="reference internal image-reference" href="../_images/play-instance-redo.png"><img alt="" src="../_images/play-instance-redo.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-text">Because the task <em>Work</em> on the example process was completed without payload to update task variables with, the variable <code class="docutils literal notranslate"><span class="pre">completed</span></code> remained <code class="docutils literal notranslate"><span class="pre">false</span></code> and process was routed back to the task.</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="complete-with-variables">
+<h3>Complete with variables<a class="headerlink" href="#complete-with-variables" title="Permalink to this heading"></a></h3>
+<figure class="align-right">
+<img alt="" src="../_images/play-with-variables-menu.png" />
+</figure>
+<p>Just clicking the Zeebe action button on service tasks completes the tasks without payload. Fortunately, the dropdown on Zeebe Play action buttons, also offer to complete <strong>with Variables</strong>. Select it to complete the task (<em>Complete job</em> for the task) with the following variables (JSON):</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;completed&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/play-with-variables.png"><img alt="" src="../_images/play-with-variables.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="process-completed">
+<h3>Process completed<a class="headerlink" href="#process-completed" title="Permalink to this heading"></a></h3>
+<p>Finally, refresh the Zeebe Play view on process instance for one more time and observe the process being completed.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/play-completed.png"><img alt="" src="../_images/play-completed.png" style="width: 100%;" /></a>
+</figure>
+<p>That’s how Zeebe Play allows us to play with the process and manually confirm that we have modeled its execution properly (without really implementing any of its service tasks yet).</p>
+<p>Similarly to completing the service task, Zeebe Play also allows to trigger timer and error events (the later by throwing error from a task):</p>
+<p><a class="reference download internal" download="" href="../_downloads/3f1dcff3495b2134ff21bb48975ffcf9/work-request-with-timer.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">work-request-with-timer.bpmn</span></code></a><br/>
+<a class="reference download internal" download="" href="../_downloads/3d27ead2b62417a39c4b8a596ab0538c/work-request-with-error.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">work-request-with-error.bpmn</span></code></a><br/></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../modeling/index.html" class="btn btn-neutral float-left" title="BPMN modeling exercises" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../play/index.html" class="btn btn-neutral float-right" title="Camunda execution exercises" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

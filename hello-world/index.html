@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Summary: Hello World &mdash; Open Automation Playground  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/diagram-js.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/bpmn-js.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/bpmn-embedded.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/bpmn-js-token-simulation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn-js-shared.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn-js-decision-table.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn-js-literal-expression.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/form-js.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/minipres.js"></script>
+        <script src="../_static/bpmn-js-token-simulation.js"></script>
+        <script src="../_static/form-viewer.umd.js"></script>
+        <script src="../_static/custom.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="About Camunda Platforms" href="../platforms.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Open Automation Playground
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../workshop/index.html">Robocon 2023 Workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../playground/index.html">Playground introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bpmn/index.html">BPMN basics by examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modeling/index.html">BPMN modeling exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../execution/index.html">Camunda basics for execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../play/index.html">Camunda execution exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dmn/index.html">DMN, user tasks and forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../speech/index.html">DMN exercise with forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workitems.html">Service tasks for Robots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/index.html">Robocorp Code in action</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pdf/index.html">Exercise: PDF creation robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../email/index.html">Exercise: Email sending robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mockoon/index.html">Exercise: API consuming robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spreadsheet/index.html">Exercise: Spreadsheet robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final/index.html">Exercise: Exception handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../classification/index.html">Extra: Classification training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platforms.html">About Camunda Platforms</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Summary: Hello World</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#start-camunda-modeler">Start Camunda Modeler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#choose-camunda-8-bpmn">Choose Camunda 8 BPMN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#draw-minimal-process-flow">Draw minimal process flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configure-the-service-task">Configure the service task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deploy-model-definition">Deploy model definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#start-new-process-instance">Start new process instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#open-zeebe-play">Open Zeebe Play</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#choose-deployments">Choose deployments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#choose-your-deployment">Choose your deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#choose-the-started-instance">Choose the started instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#see-how-task-is-waiting">See how task is waiting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#open-robocorp-code">Open Robocorp Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#on-the-first-run-wait">On the first run, wait…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-new-robot">Create new robot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#choose-standard-template">Choose standard template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#confirm-children-in-workspace">Confirm children in workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#give-robot-a-name">Give robot a name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#align-robot-yml-with-bpmn">Align robot.yml with BPMN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#wrap-robot">Wrap robot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#start-rcc">Start RCC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#watch-rcc-warming-up">Watch RCC warming up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#watch-rcc-working">Watch RCC working</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#open-the-log-file-link">Open the log file link</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#return-to-zeebe-play">Return to Zeebe Play</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Open Automation Playground</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Summary: Hello World</li>
+<li class="wy-breadcrumbs-aside">
+    <a href="?pres" class="icon fa-film" title="Presentation Mode"></a>
+</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="summary-hello-world">
+<h1>Summary: Hello World<a class="headerlink" href="#summary-hello-world" title="Permalink to this heading"></a></h1>
+<p><em>It’s often the first, but it also works as the last.</em></p>
+<p>Let’s summarize from the very beginning, how to build and execute a minimal dummy BPMN process where Zeebe is used to orchestrate Robot Framework.</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/hello-world.svg"><img alt="../_images/hello-world.svg" src="../_images/hello-world.svg" width="" /></a>
+<figcaption>
+<p><span class="caption-text">It’s the time for Hello World!</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+<div class="legend">
+<p>Process: <a class="reference download internal" download="" href="../_downloads/cf080fad36163d0cbad353600a3e74fc/hello-world.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">hello-world.bpmn</span></code></a></br>
+Robot: <a class="reference download internal" download="" href="../_downloads/ff25c8209e997e2653cd2f02c960d3cf/hello-world.zip"><code class="xref download docutils literal notranslate"><span class="pre">hello-world.zip</span></code></a></p>
+</div>
+</figcaption>
+</figure>
+<section id="start-camunda-modeler">
+<h2>Start Camunda Modeler<a class="headerlink" href="#start-camunda-modeler" title="Permalink to this heading"></a></h2>
+<p><img alt="Camunda Modeler desktop icon" src="../_images/desktop-modeler.png" /></p>
+</section>
+<section id="choose-camunda-8-bpmn">
+<h2>Choose Camunda 8 BPMN<a class="headerlink" href="#choose-camunda-8-bpmn" title="Permalink to this heading"></a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/hello-world-modeler-01.png"><img alt="" src="../_images/hello-world-modeler-01.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="draw-minimal-process-flow">
+<h2>Draw minimal process flow<a class="headerlink" href="#draw-minimal-process-flow" title="Permalink to this heading"></a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/hello-world-modeler-02.png"><img alt="" src="../_images/hello-world-modeler-02.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="configure-the-service-task">
+<h2>Configure the service task<a class="headerlink" href="#configure-the-service-task" title="Permalink to this heading"></a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/hello-world-modeler-03.png"><img alt="" src="../_images/hello-world-modeler-03.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="deploy-model-definition">
+<h2>Deploy model definition<a class="headerlink" href="#deploy-model-definition" title="Permalink to this heading"></a></h2>
+<p>The playground Zeebe matches <em>Camunda Platform 8 Self-Managed</em> with Cluster endpoint <code class="docutils literal notranslate"><span class="pre">http://localhost:26500</span></code> and <em>Authentication: None</em>.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/hello-world-modeler-04.png"><img alt="" src="../_images/hello-world-modeler-04.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="start-new-process-instance">
+<h2>Start new process instance<a class="headerlink" href="#start-new-process-instance" title="Permalink to this heading"></a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/hello-world-modeler-05.png"><img alt="" src="../_images/hello-world-modeler-05.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="open-zeebe-play">
+<h2>Open Zeebe Play<a class="headerlink" href="#open-zeebe-play" title="Permalink to this heading"></a></h2>
+<p>l<img alt="Zeebe Play desktop icon" src="../_images/desktop-play.png" /></p>
+</section>
+<section id="choose-deployments">
+<h2>Choose deployments<a class="headerlink" href="#choose-deployments" title="Permalink to this heading"></a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/hello-world-play-01.png"><img alt="" src="../_images/hello-world-play-01.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="choose-your-deployment">
+<h2>Choose your deployment<a class="headerlink" href="#choose-your-deployment" title="Permalink to this heading"></a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/hello-world-play-02.png"><img alt="" src="../_images/hello-world-play-02.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="choose-the-started-instance">
+<h2>Choose the started instance<a class="headerlink" href="#choose-the-started-instance" title="Permalink to this heading"></a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/hello-world-play-03.png"><img alt="" src="../_images/hello-world-play-03.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="see-how-task-is-waiting">
+<h2>See how task is waiting<a class="headerlink" href="#see-how-task-is-waiting" title="Permalink to this heading"></a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/hello-world-play-04.png"><img alt="" src="../_images/hello-world-play-04.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="open-robocorp-code">
+<h2>Open Robocorp Code<a class="headerlink" href="#open-robocorp-code" title="Permalink to this heading"></a></h2>
+<p><img alt="Robocorp Code desktop icon" src="../_images/desktop-code.png" /></p>
+</section>
+<section id="on-the-first-run-wait">
+<h2>On the first run, wait…<a class="headerlink" href="#on-the-first-run-wait" title="Permalink to this heading"></a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/hello-world-code-01.png"><img alt="" src="../_images/hello-world-code-01.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="create-new-robot">
+<h2>Create new robot<a class="headerlink" href="#create-new-robot" title="Permalink to this heading"></a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/hello-world-code-02.png"><img alt="" src="../_images/hello-world-code-02.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="choose-standard-template">
+<h2>Choose standard template<a class="headerlink" href="#choose-standard-template" title="Permalink to this heading"></a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/hello-world-code-03.png"><img alt="" src="../_images/hello-world-code-03.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="confirm-children-in-workspace">
+<h2>Confirm children in workspace<a class="headerlink" href="#confirm-children-in-workspace" title="Permalink to this heading"></a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/hello-world-code-04.png"><img alt="" src="../_images/hello-world-code-04.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="give-robot-a-name">
+<h2>Give robot a name<a class="headerlink" href="#give-robot-a-name" title="Permalink to this heading"></a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/hello-world-code-05.png"><img alt="" src="../_images/hello-world-code-05.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="align-robot-yml-with-bpmn">
+<h2>Align robot.yml with BPMN<a class="headerlink" href="#align-robot-yml-with-bpmn" title="Permalink to this heading"></a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/hello-world-code-06.png"><img alt="" src="../_images/hello-world-code-06.png" style="width: 100%;" /></a>
+</figure>
+<p>Update <code class="docutils literal notranslate"><span class="pre">tasks:</span></code> to have a task with your service task definition type <code class="docutils literal notranslate"><span class="pre">Hello</span> <span class="pre">World</span></code> and map it to the default task in the standard template in its tasks.robot with <code class="docutils literal notranslate"><span class="pre">robotTaskName:</span> <span class="pre">Minimal</span> <span class="pre">task</span></code>.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">tasks</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># Task names here are used when executing the bots, so renaming these is recommended.</span><span class="w"></span>
+<span class="w">  </span><span class="nt">Hello World</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">robotTaskName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Minimal task</span><span class="w"></span>
+
+<span class="nt">condaConfigFile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">conda.yaml</span><span class="w"></span>
+
+<span class="nt">environmentConfigs</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">environment_windows_amd64_freeze.yaml</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">environment_linux_amd64_freeze.yaml</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">environment_darwin_amd64_freeze.yaml</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">conda.yaml</span><span class="w"></span>
+
+<span class="nt">artifactsDir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output</span><span class="w">  </span>
+
+<span class="nt">PATH</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span><span class="w"></span>
+<span class="nt">PYTHONPATH</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span><span class="w"></span>
+
+<span class="nt">ignoreFiles</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.gitignore</span><span class="w"></span>
+
+<span class="c1"># For more details on the format and content:</span><span class="w"></span>
+
+<span class="c1"># https://github.com/robocorp/rcc/blob/master/docs/recipes.md#what-is-in-robotyaml</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="wrap-robot">
+<h2>Wrap robot<a class="headerlink" href="#wrap-robot" title="Permalink to this heading"></a></h2>
+<p>With <strong>Open Robot Terminal</strong> and typing <code class="docutils literal notranslate"><span class="pre">wrap</span></code>, the playground alias for <code class="docutils literal notranslate"><span class="pre">rcc</span> <span class="pre">robot</span> <span class="pre">wrap</span></code>.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/hello-world-code-07.png"><img alt="" src="../_images/hello-world-code-07.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="start-rcc">
+<h2>Start RCC<a class="headerlink" href="#start-rcc" title="Permalink to this heading"></a></h2>
+<p><img alt="RCC integration desktop icon" src="../_images/desktop-rcc.png" /></p>
+</section>
+<section id="watch-rcc-warming-up">
+<h2>Watch RCC warming up<a class="headerlink" href="#watch-rcc-warming-up" title="Permalink to this heading"></a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/hello-world-rcc-01.png"><img alt="" src="../_images/hello-world-rcc-01.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="watch-rcc-working">
+<h2>Watch RCC working<a class="headerlink" href="#watch-rcc-working" title="Permalink to this heading"></a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/hello-world-rcc-02.png"><img alt="" src="../_images/hello-world-rcc-02.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="open-the-log-file-link">
+<h2>Open the log file link<a class="headerlink" href="#open-the-log-file-link" title="Permalink to this heading"></a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/hello-world-rcc-03.png"><img alt="" src="../_images/hello-world-rcc-03.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="return-to-zeebe-play">
+<h2>Return to Zeebe Play<a class="headerlink" href="#return-to-zeebe-play" title="Permalink to this heading"></a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/hello-world-play-05.png"><img alt="" src="../_images/hello-world-play-05.png" style="width: 100%;" /></a>
+</figure>
+<p>That’s all! It’s time to congratulate yourself!</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../platforms.html" class="btn btn-neutral float-left" title="About Camunda Platforms" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

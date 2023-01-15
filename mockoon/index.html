@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exercise: API consuming robot &mdash; Open Automation Playground  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/diagram-js.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/bpmn-js.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/bpmn-embedded.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/bpmn-js-token-simulation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn-js-shared.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn-js-decision-table.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn-js-literal-expression.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/form-js.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/minipres.js"></script>
+        <script src="../_static/bpmn-js-token-simulation.js"></script>
+        <script src="../_static/form-viewer.umd.js"></script>
+        <script src="../_static/custom.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Exercise: Spreadsheet robot" href="../spreadsheet/index.html" />
+    <link rel="prev" title="Exercise: Email sending robot" href="../email/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Open Automation Playground
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../workshop/index.html">Robocon 2023 Workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../playground/index.html">Playground introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bpmn/index.html">BPMN basics by examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modeling/index.html">BPMN modeling exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../execution/index.html">Camunda basics for execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../play/index.html">Camunda execution exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dmn/index.html">DMN, user tasks and forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../speech/index.html">DMN exercise with forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workitems.html">Service tasks for Robots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/index.html">Robocorp Code in action</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pdf/index.html">Exercise: PDF creation robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../email/index.html">Exercise: Email sending robot</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Exercise: API consuming robot</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#mockoon-for-api-mocks">Mockoon for API mocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#serving-the-mock-api">Serving the mock API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#participants-mock-api">Participants mock API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#calling-for-participants">Calling for participants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#looping-through-a-list">Looping through a list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dmn-for-mapping-values">DMN for mapping values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#resource-summary">Resource summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../spreadsheet/index.html">Exercise: Spreadsheet robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final/index.html">Exercise: Exception handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../classification/index.html">Extra: Classification training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platforms.html">About Camunda Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hello-world/index.html">Summary: Hello World</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Open Automation Playground</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Exercise: API consuming robot</li>
+<li class="wy-breadcrumbs-aside">
+    <a href="?pres" class="icon fa-film" title="Presentation Mode"></a>
+</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="exercise-api-consuming-robot">
+<h1>Exercise: API consuming robot<a class="headerlink" href="#exercise-api-consuming-robot" title="Permalink to this heading"></a></h1>
+<p>Also this exercise continues to iterate on top of the <a class="reference internal" href="../email/index.html"><span class="doc std std-doc">the previous exercise</span></a> by replacing the <img alt="" class="role-bpmn" src="../_images/user-task.svg" /> with a new <img alt="" class="role-bpmn" src="../_images/robot-task.svg" /> Robot Famework service task for fetching the participants and their achievements from an API instead.</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/create-certificate2.svg"><img alt="../_images/create-certificate2.svg" src="../_images/create-certificate2.svg" width="" /></a>
+<figcaption>
+<p><span class="caption-text"><a class="reference download internal" download="" href="../_downloads/4a5d8bdadb61d68889749dd1b03e4476/create-certificate.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">create-certificate.bpmn</span></code></a></span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<section id="mockoon-for-api-mocks">
+<h2>Mockoon for API mocks<a class="headerlink" href="#mockoon-for-api-mocks" title="Permalink to this heading"></a></h2>
+<p><a class="reference external" href="https://mockoon.com/">Mockoon</a> is a convenient open source tool for mocking HTTP APIs. It supports simple Open API import, but also allows to enrich end points with <a class="reference external" href="https://handlebarsjs.com/">Handlebars</a> based response templating using <a class="reference external" href="https://fakerjs.dev/">FakerJS</a> helpers for random mock data.</p>
+<p>Mockoon provides a GUI application for mock API development and <code class="docutils literal notranslate"><span class="pre">mockoon-cli</span></code> command-line tool for CI use. The application can be started from the playground desktop <strong>Mockoon</strong> shortcut.</p>
+<p><img alt="Mockoon desktop icon" src="../_images/desktop-mockoon.png" /></p>
+<p>During the first run, Mockoon greets with a message</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/mockoon-welcome.png"><img alt="" src="../_images/mockoon-welcome.png" style="width: 100%;" /></a>
+</figure>
+<p>and then starts with a demo project containing a few mocked endpoints.</p>
+</section>
+<section id="serving-the-mock-api">
+<h2>Serving the mock API<a class="headerlink" href="#serving-the-mock-api" title="Permalink to this heading"></a></h2>
+<figure class="align-left">
+<img alt="" src="../_images/mockoon-play.png" />
+</figure>
+<p>Mockoon Mock API server, by default at <code class="docutils literal notranslate"><span class="pre">http://localhost:3000/</span></code>, can be started by clicking a green play button (turning red stop button while the API is running). Mock API endpoint templates can be edited while the server is running.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/mockoon-users.png"><img alt="" src="../_images/mockoon-users.png" style="width: 100%;" /></a>
+</figure>
+<section id="participants-mock-api">
+<h3>Participants mock API<a class="headerlink" href="#participants-mock-api" title="Permalink to this heading"></a></h3>
+<p>Let’s re-use the built-in demo API as our participants API. Update <code class="docutils literal notranslate"><span class="pre">/users</span></code> endpoint to include fields <code class="docutils literal notranslate"><span class="pre">email</span></code>, <code class="docutils literal notranslate"><span class="pre">consent</span></code> and <code class="docutils literal notranslate"><span class="pre">achievements</span></code> by replacing the existing template (this will also remove <code class="docutils literal notranslate"><span class="pre">friends</span></code> field).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;users&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{{</span><span class="c1"># repeat (queryParam &#39;total&#39; &#39;10&#39;) }}</span>
+      <span class="p">{</span>
+        <span class="s2">&quot;firstname&quot;</span><span class="p">:</span> <span class="s2">&quot;{{ faker &#39;name.firstName&#39; }}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;lastname&quot;</span><span class="p">:</span> <span class="s2">&quot;{{ faker &#39;name.lastName&#39; }}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;{{ faker &#39;internet.email&#39; }}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;consent&quot;</span><span class="p">:</span> <span class="p">{{</span> <span class="n">faker</span> <span class="s1">&#39;datatype.boolean&#39;</span> <span class="p">}},</span>
+        <span class="s2">&quot;achievements&quot;</span><span class="p">:</span> <span class="p">{{{</span> <span class="n">faker</span> <span class="s1">&#39;helpers.arrayElements&#39;</span> <span class="p">}}}</span>
+      <span class="p">},</span>
+    <span class="p">{{</span><span class="o">/</span> <span class="n">repeat</span> <span class="p">}}</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;total&quot;</span><span class="p">:</span> <span class="s2">&quot;{{queryParam &#39;total&#39; &#39;10&#39;}}&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="calling-for-participants">
+<h2>Calling for participants<a class="headerlink" href="#calling-for-participants" title="Permalink to this heading"></a></h2>
+<p>At this point, it should be clear, that fetching participants from an API endpoint requires <img alt="" class="role-bpmn" src="../_images/robot-task.svg" /> <em>Fetch participants</em> robot task, which exports list of participants on its output mapping.</p>
+<p>RPA framework, which is included in every new robot created in Robocorp Code by default, comes with <a class="reference external" href="https://robocorp.com/docs/libraries/rpa-framework/rpa-http">RPA.HTTP keyword library</a>, its usage may not be obvious.</p>
+<p>So, take a look at this reference implementation:</p>
+<div class="highlight-robotframework notranslate"><div class="highlight"><pre><span></span><span class="gh">*** Settings ***</span><span class="p"></span>
+
+<span class="kn">Library</span><span class="p">  </span><span class="nn">RPA.HTTP</span><span class="p"></span>
+<span class="kn">Library</span><span class="p">  </span><span class="nn">RPA.Robocorp.WorkItems</span><span class="p"></span>
+
+<span class="gh">*** Variables ***</span><span class="p"></span>
+
+<span class="p">${</span><span class="nv">PARTICIPANTS_API</span><span class="p">}    %{</span><span class="nv">PARTICIPANTS_API=http://localhost:3000</span><span class="p">}</span>
+<span class="p">${</span><span class="nv">TOTAL</span><span class="p">}    </span><span class="s">6</span><span class="p"></span>
+
+
+<span class="gh">*** Tasks ***</span><span class="p"></span>
+<span class="gu">Fetch participants</span><span class="p"></span>
+<span class="p">    ${</span><span class="nv">url</span><span class="p">}          </span><span class="nf">Set variable</span><span class="p">    ${</span><span class="nv">PARTICIPANTS_API</span><span class="p">}</span><span class="s">/users?total=</span><span class="p">${</span><span class="nv">TOTAL</span><span class="p">}</span>
+<span class="p">    ${</span><span class="nv">response</span><span class="p">}=    </span><span class="nf">Http Get</span><span class="p">        ${</span><span class="nv">url</span><span class="p">}</span>
+<span class="p">    ${</span><span class="nv">users</span><span class="p">}=       </span><span class="nf">Set Variable</span><span class="p">    ${</span><span class="nv">response.json()</span><span class="p">}</span><span class="s">[users]</span><span class="p"></span>
+
+<span class="p">    </span><span class="nf">Create Output Work Item</span><span class="p"></span>
+<span class="p">    </span><span class="nf">Set Work Item Variable</span><span class="p">    </span><span class="s">participants</span><span class="p">    ${</span><span class="nv">users</span><span class="p">}</span>
+<span class="p">    </span><span class="nf">Save Work Item</span><span class="p"></span>
+</pre></div>
+</div>
+</section>
+<section id="looping-through-a-list">
+<h2>Looping through a list<a class="headerlink" href="#looping-through-a-list" title="Permalink to this heading"></a></h2>
+<p>Now that <code class="docutils literal notranslate"><span class="pre">participants</span></code> is a list of workshop participants, the <a class="reference internal" href="../email/index.html"><span class="doc std std-doc">previous process</span></a> need to be iterated with for every participant. This is possible by copying th previous process and wrapping it into expanded embedded subprocess, which is then configured as multi-instance.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/modeler-multi-instance.png"><img alt="" src="../_images/modeler-multi-instance.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="dmn-for-mapping-values">
+<h2>DMN for mapping values<a class="headerlink" href="#dmn-for-mapping-values" title="Permalink to this heading"></a></h2>
+<p>Another change caused by the API is that instead of full achievement texts for the certificates, we now get a list of codes from <code class="docutils literal notranslate"><span class="pre">[&quot;a&quot;,</span> <span class="pre">&quot;b&quot;,</span> <span class="pre">&quot;c&quot;]</span></code>. This list can be turned into list of full text descriptions with <img alt="" class="role-bpmn" src="../_images/business-rule-task.svg" /> <em>Map achievements</em> business-rule task.: A multi-instance task for mapping list of codes into text with DMN:</p>
+<div class="dmn-js-parent" style="width: 100%; height: 100%; position: relative;"><div class="dmn-decision-table-container"><div class="tjs-container"><div class="powered-by"><div class="powered-by__logo" title="Powered by bpmn.io"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.02 5.57" width="53" height="21" style="vertical-align: middle;"><path fill="#000000" d="M1.88.92v.14c0 .41-.13.68-.4.8.33.14.46.44.46.86v.33c0 .61-.33.95-.95.95H0V0h.95c.65 0 .93.3.93.92zM.63.57v1.06h.24c.24 0 .38-.1.38-.43V.98c0-.28-.1-.4-.32-.4zm0 1.63v1.22h.36c.2 0 .32-.1.32-.39v-.35c0-.37-.12-.48-.4-.48H.63zM4.18.99v.52c0 .64-.31.98-.94.98h-.3V4h-.62V0h.92c.63 0 .94.35.94.99zM2.94.57v1.35h.3c.2 0 .3-.09.3-.37v-.6c0-.29-.1-.38-.3-.38h-.3zm2.89 2.27L6.25 0h.88v4h-.6V1.12L6.1 3.99h-.6l-.46-2.82v2.82h-.55V0h.87zM8.14 1.1V4h-.56V0h.79L9 2.4V0h.56v4h-.64zm2.49 2.29v.6h-.6v-.6zM12.12 1c0-.63.33-1 .95-1 .61 0 .95.37.95 1v2.04c0 .64-.34 1-.95 1-.62 0-.95-.37-.95-1zm.62 2.08c0 .28.13.39.33.39s.32-.1.32-.4V.98c0-.29-.12-.4-.32-.4s-.33.11-.33.4z"></path><path fill="#000000" d="M0 4.53h14.02v1.04H0zM11.08 0h.63v.62h-.63zm.63 4V1h-.63v2.98z"></path></svg></div></div><div class="decision-table-properties"><div class="decision-table-name" title="Decision Name: Workshop achievement">Workshop achievement</div><div class="decision-table-header-separator"></div><div class="hit-policy header" title="No overlap is possible and all rules are disjoint. Only a single rule can be matched"><label class="dms-label">Hit Policy:</label><span class="hit-policy-value">Unique</span></div></div><div class="tjs-table-container"><table class="tjs-table"><thead><tr><th class="index-column"></th><th class=" input-cell" data-col-id="Input_1"><div class="clause">When</div><div class="input-label" title="Input Label">Code</div><div class="input-variable" title="Input Type">string</div></th><th class=" output-cell"><div class="clause">Then</div><div class="output-label" title="Output Label">Description</div><div class="output-variable" title="Output Type">string</div></th><th class="annotation header" style="width: 400px;">Annotations</th></tr></thead><tbody><tr><td class="rule-index" data-element-id="DecisionRule_12k8ehg" data-row-id="DecisionRule_12k8ehg">1</td><td class="cell input-cell" data-element-id="UnaryTests_1isw5t1" data-row-id="DecisionRule_12k8ehg" data-col-id="Input_1">"a"</td><td class="cell output-cell" data-element-id="LiteralExpression_1nzrgcz" data-row-id="DecisionRule_12k8ehg" data-col-id="Output_1">"Modeling BPMN and DMN"</td><td class="cell annotation" data-element-id="DecisionRule_12k8ehg">-</td></tr><tr><td class="rule-index" data-element-id="DecisionRule_0fegj40" data-row-id="DecisionRule_0fegj40">2</td><td class="cell input-cell" data-element-id="UnaryTests_1xsgse4" data-row-id="DecisionRule_0fegj40" data-col-id="Input_1">"b"</td><td class="cell output-cell" data-element-id="LiteralExpression_1lss8ly" data-row-id="DecisionRule_0fegj40" data-col-id="Output_1">"Building RCC robot packages"</td><td class="cell annotation" data-element-id="DecisionRule_0fegj40">-</td></tr><tr><td class="rule-index" data-element-id="DecisionRule_1yv4jgg" data-row-id="DecisionRule_1yv4jgg">3</td><td class="cell input-cell" data-element-id="UnaryTests_1btmw68" data-row-id="DecisionRule_1yv4jgg" data-col-id="Input_1">"c"</td><td class="cell output-cell" data-element-id="LiteralExpression_09kb0ca" data-row-id="DecisionRule_1yv4jgg" data-col-id="Output_1">"Orchestrating RCC with Zeebe"</td><td class="cell annotation" data-element-id="DecisionRule_1yv4jgg">-</td></tr></tbody></table></div></div></div></div>
+<p><a class="reference download internal" download="" href="../_downloads/cf0b31861c8e9fa7d29d3def6bee485e/workshop-achievement.dmn"><code class="xref download docutils literal notranslate"><span class="pre">workshop-achievement.dmn</span></code></a></p>
+</section>
+<section id="resource-summary">
+<h2>Resource summary<a class="headerlink" href="#resource-summary" title="Permalink to this heading"></a></h2>
+<p><a class="reference download internal" download="" href="../_downloads/4a5d8bdadb61d68889749dd1b03e4476/create-certificate.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">create-certificate.bpmn</span></code></a><br/>
+<a class="reference download internal" download="" href="../_downloads/cf0b31861c8e9fa7d29d3def6bee485e/workshop-achievement.dmn"><code class="xref download docutils literal notranslate"><span class="pre">workshop-achievement.dmn</span></code></a><a class="reference download internal" download="" href="../_downloads/513f2051318fdca69d13157a4469519a/workshop-achievement.html"><code class="xref download docutils literal notranslate"><span class="pre">workshop-achievement.html</span></code></a><br/>
+ <img alt="" class="role-bpmn" src="../_images/robot-task.svg" />  <a class="reference download internal" download="" href="../_downloads/79c9b1607a867e95a4297ca9f0e79747/fetch-participants.zip"><code class="xref download docutils literal notranslate"><span class="pre">fetch-participants.zip</span></code></a><br/>
+ <img alt="" class="role-bpmn" src="../_images/robot-task.svg" />  <a class="reference download internal" download="" href="../_downloads/afa49c10373b4a4804fa1c573af178f3/create-certificate.zip"><code class="xref download docutils literal notranslate"><span class="pre">../email/create-certificate.zip</span></code></a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../email/index.html" class="btn btn-neutral float-left" title="Exercise: Email sending robot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../spreadsheet/index.html" class="btn btn-neutral float-right" title="Exercise: Spreadsheet robot" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

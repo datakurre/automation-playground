@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Robocorp Code in action &mdash; Open Automation Playground  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/diagram-js.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/bpmn-js.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/bpmn-embedded.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/bpmn-js-token-simulation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn-js-shared.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn-js-decision-table.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn-js-literal-expression.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/form-js.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/minipres.js"></script>
+        <script src="../_static/bpmn-js-token-simulation.js"></script>
+        <script src="../_static/form-viewer.umd.js"></script>
+        <script src="../_static/custom.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Exercise: PDF creation robot" href="../pdf/index.html" />
+    <link rel="prev" title="Service tasks for Robots" href="../workitems.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Open Automation Playground
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../workshop/index.html">Robocon 2023 Workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../playground/index.html">Playground introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bpmn/index.html">BPMN basics by examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modeling/index.html">BPMN modeling exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../execution/index.html">Camunda basics for execution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../play/index.html">Camunda execution exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dmn/index.html">DMN, user tasks and forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../speech/index.html">DMN exercise with forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workitems.html">Service tasks for Robots</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Robocorp Code in action</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#launch-robocorp-code">Launch Robocorp Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-a-new-robot">Create a new robot</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#create-as-child-folder">Create as child folder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#choose-standard-robot">Choose standard robot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#give-robot-name">Give robot name</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#implement-robot-tasks">Implement robot tasks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tasks-robot">tasks.robot</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#configure-robot-tasks">Configure robot tasks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#robot-yaml">robot.yaml</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#dry-run-robot">Dry run robot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#wrap-robot-package">Wrap robot package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#launch-rcc-integration">Launch RCC integration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rcc-loads-robots">RCC loads robots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rcc-debug-logging">RCC debug logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rcc-logs-at-storage">RCC logs at storage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#launch-zeebe-play">Launch Zeebe Play</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#process-completed">Process completed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#resource-summary">Resource summary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pdf/index.html">Exercise: PDF creation robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../email/index.html">Exercise: Email sending robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mockoon/index.html">Exercise: API consuming robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spreadsheet/index.html">Exercise: Spreadsheet robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final/index.html">Exercise: Exception handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../classification/index.html">Extra: Classification training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platforms.html">About Camunda Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hello-world/index.html">Summary: Hello World</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Open Automation Playground</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Robocorp Code in action</li>
+<li class="wy-breadcrumbs-aside">
+    <a href="?pres" class="icon fa-film" title="Presentation Mode"></a>
+</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="robocorp-code-in-action">
+<h1>Robocorp Code in action<a class="headerlink" href="#robocorp-code-in-action" title="Permalink to this heading"></a></h1>
+<p>It’s now time to write our first Zeebe orchestrated Robot Framework automation. In <a class="reference internal" href="../speech/index.html"><span class="doc std std-doc">a previous exercise</span></a> we had <img alt="" class="role-bpmn" src="../_images/user-task.svg" /> user task for just throwing a dice. Let’s implement automation for a process with similar task:</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/speech-request.svg"><img alt="../_images/speech-request.svg" src="../_images/speech-request.svg" width="" /></a>
+<figcaption>
+<p><span class="caption-text"><a class="reference download internal" download="" href="../_downloads/5a3cb292fad069f1f20af41678b8e0aa/speech-request.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">speech-request.bpmn</span></code></a></span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>We can also reuse the same DMN:<br/>
+<a class="reference download internal" download="" href="../_downloads/39d3dc6a361e4fbbd6db92593a627096/pick-a-sentence.dmn"><code class="xref download docutils literal notranslate"><span class="pre">../speech/pick-a-sentence.dmn</span></code></a><a class="reference download internal" download="" href="../_downloads/c7646e52a47eb626fdda22ce1bb37721/pick-a-sentence.html"><code class="xref download docutils literal notranslate"><span class="pre">../speech/pick-a-sentence.html</span></code></a></p>
+<section id="launch-robocorp-code">
+<h2>Launch Robocorp Code<a class="headerlink" href="#launch-robocorp-code" title="Permalink to this heading"></a></h2>
+<figure class="align-default">
+<img alt="" src="../_images/desktop-code.png" />
+</figure>
+</section>
+<section id="create-a-new-robot">
+<h2>Create a new robot<a class="headerlink" href="#create-a-new-robot" title="Permalink to this heading"></a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/code-create.png"><img alt="" src="../_images/code-create.png" style="width: 100%;" /></a>
+</figure>
+<section id="create-as-child-folder">
+<h3>Create as child folder<a class="headerlink" href="#create-as-child-folder" title="Permalink to this heading"></a></h3>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/code-child.png"><img alt="" src="../_images/code-child.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="choose-standard-robot">
+<h3>Choose standard robot<a class="headerlink" href="#choose-standard-robot" title="Permalink to this heading"></a></h3>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/code-standard.png"><img alt="" src="../_images/code-standard.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="give-robot-name">
+<h3>Give robot name<a class="headerlink" href="#give-robot-name" title="Permalink to this heading"></a></h3>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/code-dice.png"><img alt="" src="../_images/code-dice.png" style="width: 100%;" /></a>
+</figure>
+</section>
+</section>
+<section id="implement-robot-tasks">
+<h2>Implement robot tasks<a class="headerlink" href="#implement-robot-tasks" title="Permalink to this heading"></a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/code-tasks.png"><img alt="" src="../_images/code-tasks.png" style="width: 100%;" /></a>
+</figure>
+<section id="tasks-robot">
+<h3>tasks.robot<a class="headerlink" href="#tasks-robot" title="Permalink to this heading"></a></h3>
+<div class="highlight-robotframework notranslate"><div class="highlight"><pre><span></span><span class="gh">*** Settings ***</span><span class="p"></span>
+
+<span class="kn">Library</span><span class="p">    </span><span class="nn">RPA.Robocorp.WorkItems</span><span class="p"></span>
+<span class="kn">Library</span><span class="p">    </span><span class="nn">random</span><span class="p"></span>
+
+<span class="gh">*** Tasks ***</span><span class="p"></span>
+
+<span class="gu">Throw D20</span><span class="p"></span>
+<span class="p">    ${</span><span class="nv">min</span><span class="p">}=    </span><span class="nf">Convert To Number</span><span class="p">    </span><span class="s">1</span><span class="p"></span>
+<span class="p">    ${</span><span class="nv">max</span><span class="p">}=    </span><span class="nf">Convert To Number</span><span class="p">    </span><span class="s">20</span><span class="p"></span>
+<span class="p">    ${</span><span class="nv">result</span><span class="p">}    </span><span class="nf">Randint</span><span class="p">    ${</span><span class="nv">min</span><span class="p">}    ${</span><span class="nv">max</span><span class="p">}</span>
+
+<span class="p">    </span><span class="nf">Create Output Work Item</span><span class="p"></span>
+<span class="p">    </span><span class="nf">Set Work Item Variable</span><span class="p">    </span><span class="s">result</span><span class="p">    ${</span><span class="nv">result</span><span class="p">}</span>
+<span class="p">    </span><span class="nf">Save Work Item</span><span class="p"></span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="configure-robot-tasks">
+<h2>Configure robot tasks<a class="headerlink" href="#configure-robot-tasks" title="Permalink to this heading"></a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/code-robot.png"><img alt="" src="../_images/code-robot.png" style="width: 100%;" /></a>
+</figure>
+<section id="robot-yaml">
+<h3>robot.yaml<a class="headerlink" href="#robot-yaml" title="Permalink to this heading"></a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># For more details on the format and content:</span><span class="w"></span>
+<span class="c1"># https://github.com/robocorp/rcc/blob/master/docs/recipes.md#what-is-in-robotyaml</span><span class="w"></span>
+
+<span class="nt">tasks</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># Task names here are used when executing the bots, so renaming these is recommended.</span><span class="w"></span>
+<span class="w">  </span><span class="nt">Throw D20</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">robotTaskName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Throw D20</span><span class="w"></span>
+
+<span class="nt">condaConfigFile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">conda.yaml</span><span class="w"></span>
+
+<span class="nt">environmentConfigs</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">environment_windows_amd64_freeze.yaml</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">environment_linux_amd64_freeze.yaml</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">environment_darwin_amd64_freeze.yaml</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">conda.yaml</span><span class="w"></span>
+
+<span class="nt">artifactsDir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">output</span><span class="w">  </span>
+
+<span class="nt">PATH</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span><span class="w"></span>
+<span class="nt">PYTHONPATH</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span><span class="w"></span>
+
+<span class="nt">ignoreFiles</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.gitignore</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="dry-run-robot">
+<h2>Dry run robot<a class="headerlink" href="#dry-run-robot" title="Permalink to this heading"></a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/code-dryrun.png"><img alt="" src="../_images/code-dryrun.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="wrap-robot-package">
+<h2>Wrap robot package<a class="headerlink" href="#wrap-robot-package" title="Permalink to this heading"></a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/code-wrap.png"><img alt="" src="../_images/code-wrap.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="launch-rcc-integration">
+<h2>Launch RCC integration<a class="headerlink" href="#launch-rcc-integration" title="Permalink to this heading"></a></h2>
+<figure class="align-default">
+<img alt="" src="../_images/desktop-rcc.png" />
+</figure>
+<section id="rcc-loads-robots">
+<h3>RCC loads robots<a class="headerlink" href="#rcc-loads-robots" title="Permalink to this heading"></a></h3>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/rcc-start.png"><img alt="" src="../_images/rcc-start.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="rcc-debug-logging">
+<h3>RCC debug logging<a class="headerlink" href="#rcc-debug-logging" title="Permalink to this heading"></a></h3>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/rcc-running.png"><img alt="" src="../_images/rcc-running.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="rcc-logs-at-storage">
+<h3>RCC logs at storage<a class="headerlink" href="#rcc-logs-at-storage" title="Permalink to this heading"></a></h3>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/rcc-log.png"><img alt="" src="../_images/rcc-log.png" style="width: 100%;" /></a>
+</figure>
+</section>
+</section>
+<section id="launch-zeebe-play">
+<h2>Launch Zeebe Play<a class="headerlink" href="#launch-zeebe-play" title="Permalink to this heading"></a></h2>
+<figure class="align-default">
+<img alt="" src="../_images/desktop-play.png" />
+</figure>
+</section>
+<section id="process-completed">
+<h2>Process completed<a class="headerlink" href="#process-completed" title="Permalink to this heading"></a></h2>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/play-speech.png"><img alt="" src="../_images/play-speech.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="resource-summary">
+<h2>Resource summary<a class="headerlink" href="#resource-summary" title="Permalink to this heading"></a></h2>
+<p><a class="reference download internal" download="" href="../_downloads/5a3cb292fad069f1f20af41678b8e0aa/speech-request.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">speech-request.bpmn</span></code></a><br/>
+<a class="reference download internal" download="" href="../_downloads/39d3dc6a361e4fbbd6db92593a627096/pick-a-sentence.dmn"><code class="xref download docutils literal notranslate"><span class="pre">../speech/pick-a-sentence.dmn</span></code></a><a class="reference download internal" download="" href="../_downloads/c7646e52a47eb626fdda22ce1bb37721/pick-a-sentence.html"><code class="xref download docutils literal notranslate"><span class="pre">../speech/pick-a-sentence.html</span></code></a><br/>
+ <img alt="" class="role-bpmn" src="../_images/robot-task.svg" />  <a class="reference download internal" download="" href="../_downloads/89c74b8009afd06d44d88ea0e330f4a6/dice.zip"><code class="xref download docutils literal notranslate"><span class="pre">dice.zip</span></code></a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../workitems.html" class="btn btn-neutral float-left" title="Service tasks for Robots" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../pdf/index.html" class="btn btn-neutral float-right" title="Exercise: PDF creation robot" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

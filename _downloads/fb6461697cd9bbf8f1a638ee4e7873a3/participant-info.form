@@ -1,0 +1,50 @@
+{
+  "components": [
+    {
+      "text": "# Participant info",
+      "type": "text",
+      "id": "Field_1nzw2m6"
+    },
+    {
+      "label": "Full name",
+      "type": "textfield",
+      "id": "Field_06hqn4s",
+      "key": "name",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Email address",
+      "type": "textfield",
+      "id": "Field_0uugqos",
+      "key": "email",
+      "validate": {
+        "required": true,
+        "pattern": "^(\\w&.%#$&'\\*+-/=?^_`{}|~]+!)*[\\w&.%#$&'\\*+-/=?^_`{}|~]+@(([0-9a-z]([0-9a-z-]*[0-9a-z])?\\.)+[a-z]{2,63}|([0-9]{1,3}\\.){3}[0-9]{1,3})$"
+      }
+    },
+    {
+      "label": "Allow to receive emails?",
+      "type": "checkbox",
+      "id": "Field_1bezmei",
+      "key": "consent"
+    },
+    {
+      "action": "submit",
+      "label": "Save",
+      "type": "button",
+      "id": "Field_0zjc752",
+      "key": "field_02g8a6g"
+    }
+  ],
+  "type": "default",
+  "id": "Form_0yv8x2q",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.1.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.7.0"
+  },
+  "schemaVersion": 6
+}

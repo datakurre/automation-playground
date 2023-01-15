@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1vtfgme" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.6.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.1.0">
+  <bpmn:process id="WorkRequest" name="Work Request" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Work requested">
+      <bpmn:outgoing>Flow_0n7cn3h</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0n7cn3h" sourceRef="StartEvent_1" targetRef="Robot_Work" />
+    <bpmn:endEvent id="Event_1d9l72q" name="Work completed">
+      <bpmn:incoming>Flow_1gy0sn5</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1y0piwh" sourceRef="Robot_Work" targetRef="Gateway_0ucihkp" />
+    <bpmn:serviceTask id="Robot_Work" name="Work">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="Work" />
+        <zeebe:ioMapping>
+          <zeebe:input source="=false" target="completed" />
+          <zeebe:output source="=completed" target="workCompleted" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0n7cn3h</bpmn:incoming>
+      <bpmn:outgoing>Flow_1y0piwh</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="Gateway_0ucihkp" name="Completed?" default="Flow_0zcxfxo">
+      <bpmn:incoming>Flow_1y0piwh</bpmn:incoming>
+      <bpmn:outgoing>Flow_1gy0sn5</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0zcxfxo</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1gy0sn5" name="Yes" sourceRef="Gateway_0ucihkp" targetRef="Event_1d9l72q">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=workCompleted</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:endEvent id="Event_0yatf1o" name="Work not completed">
+      <bpmn:incoming>Flow_0zcxfxo</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0zcxfxo" name="No" sourceRef="Gateway_0ucihkp" targetRef="Event_0yatf1o" />
+    <bpmn:textAnnotation id="TextAnnotation_12x7z9j">
+      <bpmn:text>Condition: workCompleted</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1nnq2an" sourceRef="Flow_1gy0sn5" targetRef="TextAnnotation_12x7z9j" />
+    <bpmn:textAnnotation id="TextAnnotation_0s1looo">
+      <bpmn:text>Inputs: completed=false
+Outputs: workCompleted=completed</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_052kcj2" sourceRef="Robot_Work" targetRef="TextAnnotation_0s1looo" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="WorkRequest">
+      <bpmndi:BPMNShape id="TextAnnotation_0s1looo_di" bpmnElement="TextAnnotation_0s1looo">
+        <dc:Bounds x="160" y="291" width="224" height="41" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_12x7z9j_di" bpmnElement="TextAnnotation_12x7z9j">
+        <dc:Bounds x="490" y="80" width="180" height="26" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="179" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="158" y="222" width="78" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_06nyrhl_di" bpmnElement="Robot_Work">
+        <dc:Bounds x="270" y="157" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0ucihkp_di" bpmnElement="Gateway_0ucihkp" isMarkerVisible="true">
+        <dc:Bounds x="425" y="172" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="420" y="153" width="60" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1d9l72q_di" bpmnElement="Event_1d9l72q">
+        <dc:Bounds x="532" y="179" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="510" y="222" width="80" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0yatf1o_di" bpmnElement="Event_0yatf1o">
+        <dc:Bounds x="532" y="292" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="525" y="335" width="51" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_052kcj2_di" bpmnElement="Association_052kcj2">
+        <di:waypoint x="279" y="237" />
+        <di:waypoint x="226" y="291" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1nnq2an_di" bpmnElement="Association_1nnq2an">
+        <di:waypoint x="503.5" y="197" />
+        <di:waypoint x="536" y="106" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0n7cn3h_di" bpmnElement="Flow_0n7cn3h">
+        <di:waypoint x="215" y="197" />
+        <di:waypoint x="270" y="197" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1y0piwh_di" bpmnElement="Flow_1y0piwh">
+        <di:waypoint x="370" y="197" />
+        <di:waypoint x="425" y="197" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1gy0sn5_di" bpmnElement="Flow_1gy0sn5">
+        <di:waypoint x="475" y="197" />
+        <di:waypoint x="532" y="197" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="480" y="179" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0zcxfxo_di" bpmnElement="Flow_0zcxfxo">
+        <di:waypoint x="450" y="222" />
+        <di:waypoint x="450" y="310" />
+        <di:waypoint x="532" y="310" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="458" y="263" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

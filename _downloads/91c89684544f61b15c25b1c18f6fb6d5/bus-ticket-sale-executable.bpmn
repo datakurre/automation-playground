@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1dpv6w2" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.7.0-nightly.20230107" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.1.0">
+  <bpmn:process id="BusTicketSale" name="Bus ticket sale" isExecutable="true">
+    <bpmn:extensionElements>
+      <zeebe:userTaskForm id="userTaskForm_0nv0ae5">{
+  "components": [
+    {
+      "text": "# Passenger facts",
+      "type": "text",
+      "id": "Field_10p2uoa"
+    },
+    {
+      "label": "Age",
+      "type": "number",
+      "id": "Field_0sg39tc",
+      "key": "age",
+      "validate": {
+        "required": true,
+        "min": 0,
+        "max": 120
+      },
+      "defaultValue": 99,
+      "description": "Effective only up to 12 years old"
+    },
+    {
+      "label": "Travelling without parent",
+      "type": "checkbox",
+      "id": "Field_16gf8he",
+      "key": "alone",
+      "description": "Effective for 5–6  years old children only",
+      "conditional": {
+        "hide": "=age &lt; 5 or age &gt; 6"
+      }
+    },
+    {
+      "values": [
+        {
+          "label": "No discount",
+          "value": "none"
+        },
+        {
+          "label": "Student",
+          "value": "student"
+        },
+        {
+          "label": "Pensioner",
+          "value": "pensioner"
+        }
+      ],
+      "label": "Discount group",
+      "type": "radio",
+      "id": "Field_0q51p6o",
+      "key": "discountGroup",
+      "defaultValue": "none",
+      "validate": {
+        "required": true
+      },
+      "conditional": {
+        "hide": "=age &lt; 12"
+      }
+    },
+    {
+      "action": "submit",
+      "label": "Submit",
+      "type": "button",
+      "id": "Field_0ggr8ag",
+      "key": "field_125k4tc"
+    }
+  ],
+  "type": "default",
+  "id": "PassengerFacts",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.2.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.7.0-nightly.20230107"
+  },
+  "schemaVersion": 6
+}</zeebe:userTaskForm>
+    </bpmn:extensionElements>
+    <bpmn:startEvent id="StartEvent_1" name="Bus ticket required">
+      <bpmn:outgoing>Flow_0yacosm</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0yacosm" sourceRef="StartEvent_1" targetRef="Activity_05wb4fv" />
+    <bpmn:sequenceFlow id="Flow_163ngux" sourceRef="Activity_05wb4fv" targetRef="Activity_1szuoe6" />
+    <bpmn:sequenceFlow id="Flow_1pwl9h3" sourceRef="Activity_1szuoe6" targetRef="Activity_187u3nr" />
+    <bpmn:sequenceFlow id="Flow_0fomfdv" sourceRef="Activity_187u3nr" targetRef="Activity_1g1l1fx" />
+    <bpmn:endEvent id="Event_1b8alrt" name="Bus ticket delivered">
+      <bpmn:incoming>Flow_0k7dh2s</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0k7dh2s" sourceRef="Activity_1g1l1fx" targetRef="Event_1b8alrt" />
+    <bpmn:manualTask id="Activity_187u3nr" name="Charge price">
+      <bpmn:incoming>Flow_1pwl9h3</bpmn:incoming>
+      <bpmn:outgoing>Flow_0fomfdv</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:manualTask id="Activity_1g1l1fx" name="Deliver ticket">
+      <bpmn:incoming>Flow_0fomfdv</bpmn:incoming>
+      <bpmn:outgoing>Flow_0k7dh2s</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:userTask id="Activity_05wb4fv" name="Submit passenger facts">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:userTaskForm_0nv0ae5" />
+        <zeebe:ioMapping>
+          <zeebe:input source="=&#34;&#34;" target="discountGroup" />
+          <zeebe:input source="=false" target="alone" />
+          <zeebe:input source="=99" target="age" />
+          <zeebe:output source="=age" target="age" />
+          <zeebe:output source="=alone" target="alone" />
+          <zeebe:output source="=discountGroup" target="discountGroup" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0yacosm</bpmn:incoming>
+      <bpmn:outgoing>Flow_163ngux</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:businessRuleTask id="Activity_1szuoe6" name="Choose price">
+      <bpmn:extensionElements>
+        <zeebe:calledDecision decisionId="BusTicketPrice" resultVariable="price" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_163ngux</bpmn:incoming>
+      <bpmn:outgoing>Flow_1pwl9h3</bpmn:outgoing>
+    </bpmn:businessRuleTask>
+    <bpmn:textAnnotation id="TextAnnotation_0pe26ay">
+      <bpmn:text>Form &gt; Type: Camunda Forms
+Form &gt; Form JSON configuration:
+bus-ticket-price.from (JSON)</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_01oi43s" sourceRef="Activity_05wb4fv" targetRef="TextAnnotation_0pe26ay" />
+    <bpmn:textAnnotation id="TextAnnotation_0boi7ja">
+      <bpmn:text>Implementation: DMN Decision
+Called Decision &gt; ID: BusTicketPrice
+Result variable: price</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_12i28vd" sourceRef="Activity_1szuoe6" targetRef="TextAnnotation_0boi7ja" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="BusTicketSale">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="174" y="142" width="48" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1b8alrt_di" bpmnElement="Event_1b8alrt">
+        <dc:Bounds x="912" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="906" y="142" width="48" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_08yztyf_di" bpmnElement="Activity_187u3nr">
+        <dc:Bounds x="590" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1eiiyo5_di" bpmnElement="Activity_1g1l1fx">
+        <dc:Bounds x="750" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1htu9h3_di" bpmnElement="Activity_05wb4fv">
+        <dc:Bounds x="271" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1cg0koi_di" bpmnElement="Activity_1szuoe6">
+        <dc:Bounds x="430" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0pe26ay_di" bpmnElement="TextAnnotation_0pe26ay">
+        <dc:Bounds x="220" y="190" width="200" height="55" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0boi7ja_di" bpmnElement="TextAnnotation_0boi7ja">
+        <dc:Bounds x="430" y="190" width="270" height="55" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0yacosm_di" bpmnElement="Flow_0yacosm">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="271" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_163ngux_di" bpmnElement="Flow_163ngux">
+        <di:waypoint x="371" y="117" />
+        <di:waypoint x="430" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1pwl9h3_di" bpmnElement="Flow_1pwl9h3">
+        <di:waypoint x="530" y="117" />
+        <di:waypoint x="590" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0fomfdv_di" bpmnElement="Flow_0fomfdv">
+        <di:waypoint x="690" y="117" />
+        <di:waypoint x="750" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0k7dh2s_di" bpmnElement="Flow_0k7dh2s">
+        <di:waypoint x="850" y="117" />
+        <di:waypoint x="912" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_01oi43s_di" bpmnElement="Association_01oi43s">
+        <di:waypoint x="298" y="157" />
+        <di:waypoint x="279" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_12i28vd_di" bpmnElement="Association_12i28vd">
+        <di:waypoint x="480" y="157" />
+        <di:waypoint x="480" y="190" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="workshop-achievement-drd" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.7.0-nightly.20230107" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.1.0">
+  <decision id="WorkshopAchievement" name="Workshop achievement">
+    <decisionTable id="DecisionTable_1wh9vcl">
+      <input id="Input_1" label="Code">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text>code</text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="Description" name="description" typeRef="string" biodi:width="237" />
+      <rule id="DecisionRule_12k8ehg">
+        <inputEntry id="UnaryTests_1isw5t1">
+          <text>"a"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1nzrgcz">
+          <text>"Modeling BPMN and DMN"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0fegj40">
+        <inputEntry id="UnaryTests_1xsgse4">
+          <text>"b"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1lss8ly">
+          <text>"Building RCC robot packages"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1yv4jgg">
+        <inputEntry id="UnaryTests_1btmw68">
+          <text>"c"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09kb0ca">
+          <text>"Orchestrating RCC with Zeebe"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="WorkshopAchievement">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Camunda execution exercises &mdash; Open Automation Playground  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/diagram-js.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/bpmn-js.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/bpmn-embedded.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/bpmn-js-token-simulation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn-js-shared.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn-js-decision-table.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn-js-literal-expression.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dmn.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/form-js.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/minipres.js"></script>
+        <script src="../_static/bpmn-js-token-simulation.js"></script>
+        <script src="../_static/form-viewer.umd.js"></script>
+        <script src="../_static/custom.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="DMN, user tasks and forms" href="../dmn/index.html" />
+    <link rel="prev" title="Camunda basics for execution" href="../execution/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Open Automation Playground
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../workshop/index.html">Robocon 2023 Workshop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../playground/index.html">Playground introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bpmn/index.html">BPMN basics by examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modeling/index.html">BPMN modeling exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../execution/index.html">Camunda basics for execution</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Camunda execution exercises</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#sole-service-task">Sole service task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#add-exclusive-gateway">Add exclusive gateway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#handle-bpmn-error">Handle BPMN error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#embedded-sub-process-wrapping">Embedded sub-process wrapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#multi-instance-sub-process">Multi-instance sub-process</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#toggle-element-multi-instance">Toggle element multi-instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-multi-instance-properties">Configure multi-instance properties</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../dmn/index.html">DMN, user tasks and forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../speech/index.html">DMN exercise with forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workitems.html">Service tasks for Robots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/index.html">Robocorp Code in action</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pdf/index.html">Exercise: PDF creation robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../email/index.html">Exercise: Email sending robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mockoon/index.html">Exercise: API consuming robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spreadsheet/index.html">Exercise: Spreadsheet robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final/index.html">Exercise: Exception handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../classification/index.html">Extra: Classification training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../platforms.html">About Camunda Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hello-world/index.html">Summary: Hello World</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Open Automation Playground</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Camunda execution exercises</li>
+<li class="wy-breadcrumbs-aside">
+    <a href="?pres" class="icon fa-film" title="Presentation Mode"></a>
+</li>
+
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="camunda-execution-exercises">
+<h1>Camunda execution exercises<a class="headerlink" href="#camunda-execution-exercises" title="Permalink to this heading"></a></h1>
+<p>As you  learned in <a class="reference internal" href="../execution/index.html"><span class="doc std std-doc">Camunda basics for execution</span></a>, <strong>Zeebe Play</strong> makes it possible to execute and complete BPMN processes with <img alt="" class="role-bpmn" src="../_images/robot-task.svg" /> service tasks even before those tasks have been implemented. Practice more of that to become truly familiar with</p>
+<ul class="simple">
+<li><p><img alt="" class="role-bpmn" src="../_images/robot-task.svg" /> service task configuration</p></li>
+<li><p>input and output mapping expressions</p></li>
+<li><p>exclusive gateway path condition expressions</p></li>
+<li><p>process deployments</p></li>
+<li><p>process instances</p></li>
+<li><p>completing processes using Zeebe Play.</p></li>
+</ul>
+<p>Eventually you’ll iterate enough to also learn configuration of <strong>multi-instance</strong> tasks.</p>
+<section id="sole-service-task">
+<h2>Sole service task<a class="headerlink" href="#sole-service-task" title="Permalink to this heading"></a></h2>
+<p>Let’s start with simple:</p>
+<ol class="arabic simple">
+<li><p>Model a process with just a single <img alt="" class="role-bpmn" src="../_images/robot-task.svg" /> service task.</p></li>
+<li><p>Give the process <strong>Name</strong> and <strong>ID</strong> that you can recognize from <strong>Zeebe Play</strong> user interface.</p></li>
+<li><p>Deploy process to <strong>Zeebe</strong>, start an instance of it and complete its <img alt="" class="role-bpmn" src="../_images/robot-task.svg" /> service task as shown in the chapter <a class="reference internal" href="../execution/index.html#execute-with-zeebe-play"><span class="std std-doc">Execute with Zeebe Play</span></a>.</p></li>
+</ol>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/sole-service-task.svg"><img alt="../_images/sole-service-task.svg" src="../_images/sole-service-task.svg" width="" /></a>
+<figcaption>
+<p><span class="caption-text"><a class="reference download internal" download="" href="../_downloads/8abf33f5ce4b4bc4fa864feeb7ae92b1/sole-service-task.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">sole-service-task.bpmn</span></code></a></span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="add-exclusive-gateway">
+<h2>Add exclusive gateway<a class="headerlink" href="#add-exclusive-gateway" title="Permalink to this heading"></a></h2>
+<p>And then dive straight to the deep end…</p>
+<ol class="arabic simple">
+<li><p>Re-use the model from the previous exercise.</p></li>
+<li><p>Add <img alt="" class="role-bpmn" src="../_images/exclusive-gateway.svg" /> <strong>exclusive gateway</strong> after the sole <img alt="" class="role-bpmn" src="../_images/robot-task.svg" /> service task and split the flow with a path to an alternative <img alt="" class="role-bpmn" src="../_images/end-event.svg" /> end event: <em>Work not completed</em>.</p></li>
+<li><p>Add local variable <code class="docutils literal notranslate"><span class="pre">completed</span></code> with FEEL expression <code class="docutils literal notranslate"><span class="pre">false</span></code> into <img alt="" class="role-bpmn" src="../_images/robot-task.svg" /> service task <strong>Inputs</strong>.</p></li>
+<li><p>Add process variable <code class="docutils literal notranslate"><span class="pre">workCompleted</span></code> with FEEL expression <code class="docutils literal notranslate"><span class="pre">completed</span></code> into <img alt="" class="role-bpmn" src="../_images/robot-task.svg" /> service task <strong>Outputs</strong>. (You may check chapter <a class="reference internal" href="../execution/index.html#feel-expressions"><span class="std std-doc">Feel expressions</span></a> on how it evaluates local variable back into process scope.)</p></li>
+<li><p>Add FEEL expression <code class="docutils literal notranslate"><span class="pre">workCompleted</span></code> as <strong>condition</strong> for the path from the <img alt="" class="role-bpmn" src="../_images/exclusive-gateway.svg" /> exclusive gateway to the original <img alt="" class="role-bpmn" src="../_images/end-event.svg" /> end event.</p></li>
+<li><p>From the element context modeling palette, make the new path to the new <img alt="" class="role-bpmn" src="../_images/end-event.svg" /> end event the <em>Default Flow</em>.</p></li>
+<li><p>Deploy process to <strong>Zeebe</strong>, start two instances of it and complete their <img alt="" class="role-bpmn" src="../_images/robot-task.svg" /> service tasks properly <strong>with variables</strong> as shown in the chapter <a class="reference internal" href="../execution/index.html#execute-with-zeebe-play"><span class="std std-doc">Execute with Zeebe Play</span></a> to reach both <img alt="" class="role-bpmn" src="../_images/end-event.svg" /> end events (in separate instances, of course).</p></li>
+</ol>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="../_images/add-exclusive-gateway.svg"><img alt="../_images/add-exclusive-gateway.svg" src="../_images/add-exclusive-gateway.svg" width="" /></a>
+<figcaption>
+<p><span class="caption-text"><a class="reference download internal" download="" href="../_downloads/8ee3f49fd1524ddbd0fdff814f28de1c/add-exclusive-gateway.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">add-exclusive-gateway.bpmn</span></code></a></span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="handle-bpmn-error">
+<h2>Handle BPMN error<a class="headerlink" href="#handle-bpmn-error" title="Permalink to this heading"></a></h2>
+<p>Let’s then refactor a little and add a new feature:</p>
+<figure class="align-right">
+<img alt="" src="../_images/play-throw-error-menu.png" />
+</figure>
+<ol class="arabic simple">
+<li><p>Re-use the model from the previous exercise.</p></li>
+<li><p>Remove <img alt="" class="role-bpmn" src="../_images/end-event.svg" /> end event <em>Work not completed</em> and route the path to path back to the <img alt="" class="role-bpmn" src="../_images/robot-task.svg" /> service task instead.</p></li>
+<li><p>Add a <img alt="" class="role-bpmn" src="../_images/bpmn-error-boundary-event.svg" /> error boundary event to <img alt="" class="role-bpmn" src="../_images/robot-task.svg" /> service task with a path to a new <img alt="" class="role-bpmn" src="../_images/end-event.svg" /> <em>Work abandoned</em>.</p></li>
+<li><p>Configure the <img alt="" class="role-bpmn" src="../_images/bpmn-error-boundary-event.svg" /> error boundary event to expect error with some specific error code.</p></li>
+<li><p>Deploy process to <strong>Zeebe</strong>, start an instance of it and <strong>Throw Error</strong> with the code you just configured on its <img alt="" class="role-bpmn" src="../_images/robot-task.svg" /> service task to reach the new <img alt="" class="role-bpmn" src="../_images/end-event.svg" /> end event <em>Work abandoned</em>.</p></li>
+</ol>
+<figure class="align-default" id="id3">
+<a class="reference internal image-reference" href="../_images/add-boundary-error.svg"><img alt="../_images/add-boundary-error.svg" src="../_images/add-boundary-error.svg" width="" /></a>
+<figcaption>
+<p><span class="caption-text"><a class="reference download internal" download="" href="../_downloads/ddbb155a53cf134e008374ec650789b9/add-boundary-error.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">add-boundary-error.bpmn</span></code></a></span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="embedded-sub-process-wrapping">
+<h2>Embedded sub-process wrapping<a class="headerlink" href="#embedded-sub-process-wrapping" title="Permalink to this heading"></a></h2>
+<p>This iteration should not change any behavior of the process, but would make the model ready for <strong>multi-instance</strong>:</p>
+<ol class="arabic simple">
+<li><p>Re-use the model from the previous exercise.</p></li>
+<li><p>Add <strong>Expanded SubProcess</strong> and drag everything else in the process inside it.</p></li>
+<li><p>Add new <img alt="" class="role-bpmn" src="../_images/start-event.svg" /> start event <em>Work requested</em> to lead the flow into the sub-process.</p></li>
+<li><p>Add new <img alt="" class="role-bpmn" src="../_images/end-event.svg" /> end event <em>Request completed</em> to end the process after sub-process.</p></li>
+<li><p>Deploy process to <strong>Zeebe</strong> and start enough instances of it to test with <strong>Zeebe Play</strong> that all the previous features of the process remain.</p></li>
+</ol>
+<figure class="align-default" id="id4">
+<a class="reference internal image-reference" href="../_images/wrap-with-subprocess.svg"><img alt="../_images/wrap-with-subprocess.svg" src="../_images/wrap-with-subprocess.svg" width="" /></a>
+<figcaption>
+<p><span class="caption-text"><a class="reference download internal" download="" href="../_downloads/ba724c7aef566b72dc16293e0f745736/wrap-with-subprocess.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">wrap-with-subprocess.bpmn</span></code></a></span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="multi-instance-sub-process">
+<h2>Multi-instance sub-process<a class="headerlink" href="#multi-instance-sub-process" title="Permalink to this heading"></a></h2>
+<p>Work often comes in batches, and BPMN supports that with multi-instance. An single BPMN element or even a complete embedded sub-process can be configured to be multi-instance, causing every item in a collection to be given its own instance of the element or sub-process. Let’s make your freshly refactored sub-process to work over a collection:</p>
+<ol class="arabic simple">
+<li><p>Re-use the model from the previous exercise.</p></li>
+<li><p>Add new <img alt="" class="role-bpmn" src="../_images/robot-task.svg" /> service task <em>Get work items</em> between the main <img alt="" class="role-bpmn" src="../_images/start-event.svg" /> start event and the sub-process.</p></li>
+<li><p>Add local variable <code class="docutils literal notranslate"><span class="pre">results</span></code> with FEEL expression <code class="docutils literal notranslate"><span class="pre">[]</span></code> into <img alt="" class="role-bpmn" src="../_images/robot-task.svg" /> service task <strong>Inputs</strong> and process variable <code class="docutils literal notranslate"><span class="pre">workItems</span></code> with FEEL expression <code class="docutils literal notranslate"><span class="pre">results</span></code> into <img alt="" class="role-bpmn" src="../_images/robot-task.svg" /> service task <strong>Outputs</strong>.</p></li>
+<li><p><a class="reference internal" href="#toggle-element-multi-instance"><span class="std std-doc">Toggle sequential multi-instance on the embedded sub-process</span></a></p></li>
+<li><p><a class="reference internal" href="#configure-multi-instance-properties"><span class="std std-doc">Configure multi-instance properties</span></a> on the sub-process as following:</p>
+<ul class="simple">
+<li><p>Input collection: <code class="docutils literal notranslate"><span class="pre">workItems</span></code></p></li>
+<li><p>Input element: <code class="docutils literal notranslate"><span class="pre">workItem</span></code></p></li>
+<li><p>Output collection: <code class="docutils literal notranslate"><span class="pre">workItemsCompleted</span></code></p></li>
+<li><p>Output element: <code class="docutils literal notranslate"><span class="pre">workCompleted</span></code></p></li>
+</ul>
+</li>
+<li><p>Add local variable <code class="docutils literal notranslate"><span class="pre">ẁorkCompleted</span></code> with FEEL expression <code class="docutils literal notranslate"><span class="pre">false</span></code> into the sub-process’ <strong>Inputs</strong> to ensure it remain in sub-process’ scope.</p></li>
+<li><p>Deploy process to <strong>Zeebe</strong>, start an instances of it, open it at <strong>Zeebe Play</strong>, complete the first <img alt="" class="role-bpmn" src="../_images/robot-task.svg" /> service task <strong>with variables</strong> <code class="docutils literal notranslate"><span class="pre">{&quot;results&quot;:</span> <span class="pre">[null,</span> <span class="pre">null,</span> <span class="pre">null]}</span></code>, continue to complete the process and, eventually, confirm that it ends with <code class="docutils literal notranslate"><span class="pre">workItemsCompleted</span></code> process variable having meaningful result.</p></li>
+</ol>
+<figure class="align-default" id="id5">
+<a class="reference internal image-reference" href="../_images/multi-instance-subprocess1.svg"><img alt="../_images/multi-instance-subprocess1.svg" src="../_images/multi-instance-subprocess1.svg" width="" /></a>
+<figcaption>
+<p><span class="caption-text"><a class="reference download internal" download="" href="../_downloads/e61c72a46ee741d78ccae62c9a0c08a0/multi-instance-subprocess.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">multi-instance-subprocess.bpmn</span></code></a></span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p><a class="reference download internal" download="" href="../_downloads/176849710326867e1fd21a8ebce62d8b/multi-instance-subprocess-with-timer.bpmn"><code class="xref download docutils literal notranslate"><span class="pre">multi-instance-subprocess-with-timer.bpmn</span></code></a></p>
+<section id="toggle-element-multi-instance">
+<h3>Toggle element multi-instance<a class="headerlink" href="#toggle-element-multi-instance" title="Permalink to this heading"></a></h3>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/modeler-multi-instance-menu.png"><img alt="" src="../_images/modeler-multi-instance-menu.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="configure-multi-instance-properties">
+<h3>Configure multi-instance properties<a class="headerlink" href="#configure-multi-instance-properties" title="Permalink to this heading"></a></h3>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/modeler-multi-instance1.png"><img alt="" src="../_images/modeler-multi-instance1.png" style="width: 100%;" /></a>
+</figure>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../execution/index.html" class="btn btn-neutral float-left" title="Camunda basics for execution" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../dmn/index.html" class="btn btn-neutral float-right" title="DMN, user tasks and forms" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
