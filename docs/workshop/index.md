@@ -30,5 +30,5 @@ This agenda is preliminary and is up to changes.
 
 * [More exercises...](../mockoon/index.md)
 * [About Camunda Platforms](../platforms.md)
-* Discussion
+* Discussion...
 
