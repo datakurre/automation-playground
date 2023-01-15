@@ -21,14 +21,9 @@ During the first run, Mockoon greets with a message
 :width: 100%
 ```
 
-and then creates starts with a demo project containing a few mocked endpoints.
+and then starts with a demo project containing a few mocked endpoints.
 
 ## Demo API
-
-```{figure} mockoon-users.png
-:alt:
-:width: 100%
-```
 
 ```{figure} mockoon-play.png
 :alt:
@@ -37,7 +32,12 @@ and then creates starts with a demo project containing a few mocked endpoints.
 
 Mockoon Mock API server, by default at `http://localhost:3000/`, can be started by clicking a green play button (turning red stop button while the API is running). Mock API endpoint templates can be edited while the server is running.
 
-### Enhance /users
+```{figure} mockoon-users.png
+:alt:
+:width: 100%
+```
+
+### Customized /users
 
 Update `/users` endpoint to include fields `email`, `consent` and `achievements` by replacing the existing template (this will also remove `friends` field).
 
@@ -57,6 +57,56 @@ Update `/users` endpoint to include fields `email`, `consent` and `achievements`
   "total": "{{queryParam 'total' '10'}}"
 }
 ```
+
+## Calling for participants
+
+At this point, it should be clear, that fetching participants from an API endpoint requires a {bpmn}`../bpmn/robot-task` *Fetch participants* robot task, which exports list of participants on its output mapping.
+
+RPA framework, which is included in every new robot created in Robocorp Code by default, comes with [RPA.HTTP keyword library](https://robocorp.com/docs/libraries/rpa-framework/rpa-http), its usage may not be obvious.
+
+So, take a look at this reference implementation:
+
+```robotframework
+*** Settings ***
+
+Library  RPA.HTTP
+Library  RPA.Robocorp.WorkItems
+
+*** Variables ***
+
+${PARTICIPANTS_API}    %{PARTICIPANTS_API=http://localhost:3000}
+${TOTAL}    6
+
+
+*** Tasks ***
+Fetch participants
+    ${url}          Set variable    ${PARTICIPANTS_API}/users?total=${TOTAL}
+    ${response}=    Http Get        ${url}
+    ${users}=       Set Variable    ${response.json()}[users]
+
+    Create Output Work Item
+    Set Work Item Variable    participants    ${users}
+    Save Work Item
+```
+
+
+## Looping through a list
+
+Now that `participants` is a list of workshop participants, the [previous process](../email/index.md) need to be iterated with for every participant. This is possible by copying th previous process and wrapping it into expanded embedded subprocess, which is then configured as multi-instance.
+
+```{figure} modeler-multi-instance.png
+:alt:
+:width: 100%
+```
+
+## DMN for mapping values
+
+Another change caused by the API is that instead of full achievement texts for the certificates, we now get a list of codes from `["a", "b", "c"]`. This list can be turned into list of full text descriptions with {bpmn}`../bpmn/business-rule-task` *Map achievements* business-rule task.: A multi-instance task for mapping list of codes into text with DMN:
+
+```{dmn-html} workshop-achievement
+```
+{download}`workshop-achievement.dmn`
+
 
 ## Resource summary
 
