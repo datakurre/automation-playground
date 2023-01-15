@@ -72,8 +72,8 @@ Just remember proper input mapping for mapping doain specific `participants` int
 
 {download}`create-certificate.bpmn`<br/>
 {download}`../mockoon/workshop-achievement.dmn`{download}`../mockoon/workshop-achievement.html`<br/>
-&nbsp;{bpmn}`../bpmn/robot-task`&nbsp; {download}`summary-sheet.zip`<br/>
 &nbsp;{bpmn}`../bpmn/robot-task`&nbsp; {download}`../mockoon/fetch-participants.zip`<br/>
-&nbsp;{bpmn}`../bpmn/robot-task`&nbsp; {download}`../email/create-certificate.zip`
+&nbsp;{bpmn}`../bpmn/robot-task`&nbsp; {download}`../email/create-certificate.zip`<br/>
+&nbsp;{bpmn}`../bpmn/robot-task`&nbsp; {download}`summary-sheet.zip`
 
 
