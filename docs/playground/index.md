@@ -92,6 +92,23 @@ RCC integration is not run automatically, but can be started from the desktop wh
 ```
 
 
+## Zeebe Play
+
+```{figure} ./desktop-play.png
+:alt: Zeebe Play desktop icon
+:align: left
+```
+
+[**Zeebe Play**](https://github.com/camunda-community-hub/zeebe-play) is an open source developer tool for playing with and learning how BPMN processes are being executed by Zeebe. Lately, Play has been getting more love from its developers than Simple Monitor, and is currently the recommended open source user interface for learning process automation and orchestration with Zeebe. *(Zeebe Play is a Camunda Community project and its use is not officially supported by Camunda.)*
+
+```{figure} ./window-play.png
+:alt:
+:width: 100%
+
+Zeebe Play allows to interact with the running processes with completing their service tasks, triggering timers and publishing BPMN messages directly from its user interface.
+```
+
+
 ## Zeebe Simple Monitor
 
 ```{figure} ./desktop-monitor.png
@@ -108,23 +125,6 @@ RCC integration is not run automatically, but can be started from the desktop wh
 :width: 100%
 
 **Zeebe Simple Monitor** is mostly read-only user-interface for observing processes. Yet, it does support creating new process instances and resolving incidents.
-```
-
-
-## Zeebe Play
-
-```{figure} ./desktop-play.png
-:alt: Zeebe Play desktop icon
-:align: left
-```
-
-[**Zeebe Play**](https://github.com/camunda-community-hub/zeebe-play) is an open source developer tool for playing with and learning how BPMN processes are being executed by Zeebe. Lately, Play has been getting more love from its developers than Simple Monitor, and is currently the recommended open source user interface for learning process automation and orchestration with Zeebe. *(Zeebe Play is a Camunda Community project and its use is not officially supported by Camunda.)*
-
-```{figure} ./window-play.png
-:alt:
-:width: 100%
-
-Zeebe Play allows to interact with the running processes with completing their service tasks, triggering timers and publishing BPMN messages directly from its user interface.
 ```
 
 
