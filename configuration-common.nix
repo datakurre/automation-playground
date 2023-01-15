@@ -912,6 +912,13 @@ WebBrowser=chromium
 EOF
 fi
 
+# Initial icons configuration
+mkdir -p $HOME/.config/xfce4/desktop
+if [ ! -e "$HOME/.config/xfce4/desktop/icons.screen.latest.rc" ]; then
+  cat ${./files/icons.rc} > $HOME/.config/xfce4/desktop/icons.screen0.1920x1080.rc
+  ln -s $HOME/.config/xfce4/desktop/icons.screen0.1920x1080.rc $HOME/.config/xfce4/desktop/icons.screen.latest.rc
+fi
+
 # VSCode defaults
 if [ ! -f "$HOME/.config/VSCodium/User/settings.json" ]; then
   mkdir -p $HOME/.config/VSCodium/User
