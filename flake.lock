@@ -302,16 +302,16 @@
     "zbctl_2": {
       "flake": false,
       "locked": {
-        "lastModified": 1670333412,
-        "narHash": "sha256-ongana4RWa0MNmbHAt4eieHio4fmq/EmKZWMAXqeN7k=",
+        "lastModified": 1676386272,
+        "narHash": "sha256-0J4dYEwRR7IldSGpAMZGF1pERtRt+NBzAZxWpTfA3xk=",
         "owner": "camunda",
         "repo": "zeebe",
-        "rev": "3b271d94838d9dd4c622f3dca2846c28f33a748a",
+        "rev": "9cf5f6fef909cb2e1a9d83d5610a43ff733f0845",
         "type": "github"
       },
       "original": {
         "owner": "camunda",
-        "ref": "clients/go/v8.1.5",
+        "ref": "clients/go/v8.1.8",
         "repo": "zeebe",
         "type": "github"
       }

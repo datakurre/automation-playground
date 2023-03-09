@@ -2,11 +2,11 @@
 
 stdenv.mkDerivation rec {
   pname = "zeebe";
-  version = "8.1.5";
+  version = "8.1.8";
   name = "${pname}-${version}";
   src = fetchurl {
     url = "https://github.com/camunda/zeebe/releases/download/${version}/camunda-zeebe-${version}.tar.gz";
-    sha256 = "sha256-M6bp80575RasND+bbiuZdHeMTTZhjsBD+kI7Qa41gJ4=";
+    sha256 = "sha256-SzVyFaYJVndL12YT5sKpz/NKgoXNoxTT0XIFuPw4B10=";
   };
   buildInputs = [ makeWrapper ];
   propagatedBuildInputs = [ jdk ];
