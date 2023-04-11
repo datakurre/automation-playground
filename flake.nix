@@ -16,7 +16,7 @@
 
   # Sources
   inputs.rcc = { url = "github:robocorp/rcc/c687438a726bd417437f4fbffae9db61f0010a87"; flake = false; }; # v11.36.5
-  inputs.zbctl = { url = "github:camunda/zeebe/clients/go/v8.1.8"; flake = false; };
+  inputs.zbctl = { url = "github:camunda/zeebe/clients/go/v8.2.1"; flake = false; };
 
   # Systems
   outputs = { self, nixpkgs, flake-utils, home-manager, npmlock2nix, bpmn-to-image, dmn-to-html, form-js-to-image, robot-task, lezer-feel, parrot-rcc, rcc, zbctl, ... }: flake-utils.lib.eachDefaultSystem (system: let pkgs = nixpkgs.legacyPackages.${system}; in {
@@ -24,7 +24,7 @@
     # Packages
     packages.camunda-modeler = pkgs.callPackage ./pkgs/camunda-modeler {};
     packages.mockoon = pkgs.callPackage ./pkgs/mockoon {};
-    packages.zbctl = pkgs.callPackage ./pkgs/zbctl { src = zbctl; version = "v8.1.8"; };
+    packages.zbctl = pkgs.callPackage ./pkgs/zbctl { src = zbctl; version = "v8.2.1"; };
     packages.rcc = pkgs.callPackage ./pkgs/rcc/rcc.nix { src = rcc; version = "v11.36.5"; };
     packages.rccFHSUserEnv = pkgs.callPackage ./pkgs/rcc { src = rcc; version = "v11.36.5"; };
     packages.zeebe = pkgs.callPackage ./pkgs/zeebe {};
