@@ -48,7 +48,7 @@
                     "'$out/lib'"
         substituteInPlace $out/lib/index.js \
           --replace "puppeteer.launch();" \
-                    "puppeteer.launch({executablePath: '${pkgs.chromium}/bin/chromium', args: ['--disable-gpu', '--disable-dev-shm-usage', '--disable-setuid-sandbox', '--no-sandbox']});" \
+                    "puppeteer.launch({executablePath: '${pkgs.chromium}/bin/chromium', args: ['--disable-gpu', '--disable-dev-shm-usage', '--disable-setuid-sandbox', '--no-sandbox'], headless: true});" \
           --replace "await loadScript(viewerScript);"\
                     "await loadScript(viewerScript); await loadScript('$out/lib/robot-task.js')"
         substituteInPlace $out/lib/skeleton.html \
