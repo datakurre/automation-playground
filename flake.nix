@@ -33,6 +33,9 @@
     packages.parrot-rcc = parrot-rcc.packages.${system}.default;
     packages.bpmn-to-image = (import npmlock2nix { inherit pkgs; }).v1.build rec {
       src = bpmn-to-image;
+      preBuild = ''
+        export HOME=$(mktemp -d)
+      '';
       installPhase = ''
         mkdir -p $out/bin $out/lib
         cp -a node_modules $out/lib
@@ -63,6 +66,9 @@
     };
     packages.dmn-to-html = (import npmlock2nix { inherit pkgs; }).v1.build rec {
       src = dmn-to-html;
+      preBuild = ''
+        export HOME=$(mktemp -d)
+      '';
       installPhase = ''
         mkdir -p $out/bin $out/lib
         cp -a node_modules $out/lib
@@ -87,6 +93,9 @@
     };
     packages.form-js-to-image = (import npmlock2nix { inherit pkgs; }).v1.build rec {
       src = form-js-to-image;
+      preBuild = ''
+        export HOME=$(mktemp -d)
+      '';
       installPhase = ''
         mkdir -p $out/bin $out/lib
         cp -a node_modules $out/lib
@@ -111,6 +120,9 @@
     };
     packages.feel-tokenizer = (import npmlock2nix { inherit pkgs; }).v2.build {
       src = lezer-feel;
+      preBuild = ''
+        export HOME=$(mktemp -d)
+      '';
       installPhase = ''
         mkdir -p $out/bin $out/lib $out/lib/lezer-feel/lezer-feel
         cp -a package.json $out/lib/lezer-feel/lezer-feel
@@ -171,6 +183,9 @@ EOF
     };
     packages.mockoon-cli = (import npmlock2nix { inherit pkgs; }).v2.build rec {
       src = "${self}/pkgs/mockoon";
+      preBuild = ''
+        export HOME=$(mktemp -d)
+      '';
       installPhase = ''
         mkdir -p $out/bin $out/lib
         cp -a node_modules $out/lib
