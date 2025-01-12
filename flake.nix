@@ -31,28 +31,13 @@
     packages.zeebe-play = pkgs.callPackage ./pkgs/zeebe-play {};
     packages.zeebe-simple-monitor = pkgs.callPackage ./pkgs/zeebe-simple-monitor {};
     packages.parrot-rcc = parrot-rcc.packages.${system}.default;
-      packages.chromium = pkgs.buildFHSUserEnv {
-        name = "chromium";
-        targetPkgs = pkgs: [
-          pkgs.chromium
-          pkgs.freefont_ttf
-#         (pkgs.makeFontsConf {
-#           fontDirectories = [
-#           ];
-#         })
-        ];
-        runScript = "chromium";
-      };
-    packages.bpmn-to-image = 
+    packages.bpmn-to-image =
       let chromium = pkgs.buildFHSUserEnv {
         name = "chromium";
         targetPkgs = pkgs: [
           pkgs.chromium
           pkgs.freefont_ttf
-#         (pkgs.makeFontsConf {
-#           fontDirectories = [
-#           ];
-#         })
+          pkgs.dejavu_fonts
         ];
         runScript = "chromium";
       };
@@ -74,8 +59,11 @@
         substituteInPlace $out/lib/index.js \
           --replace "puppeteer.launch();" \
                     "puppeteer.launch({executablePath: '${chromium}/bin/chromium', args: ['--disable-gpu', '--disable-dev-shm-usage', '--disable-setuid-sandbox', '--no-sandbox'], headless: true});" \
-          --replace "await loadScript(viewerScript);"\
-                    "await loadScript(viewerScript); await loadScript('$out/lib/robot-task.js')"
+          --replace "await loadScript(viewerScript);" \
+                    "await loadScript(viewerScript); await loadScript('$out/lib/robot-task.js')" \
+          --replace "module.exports.convertAll = convertAll;" \
+                    "module.exports.convertAll = async (conversions, options={}) => { await convertAll(conversions, options); process.exit(0); };"
+
         substituteInPlace $out/lib/skeleton.html \
           --replace "container: '#canvas'" \
                     "container: '#canvas', additionalModules: [ RobotTaskModule ]"
